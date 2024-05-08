@@ -1,7 +1,9 @@
-import 山海心决 from './山海心决'
+import 山海心诀 from './山海心诀'
+import 孤锋诀 from './孤锋诀'
 
 const 心法 = {
-  山海心决,
+  山海心诀,
+  孤锋诀,
 }
 export default 心法
 

@@ -1,5 +1,5 @@
 import { 属性类型 } from '@/@types/属性'
-import { 按数字生成数组 } from '@/utils/help'
+import { 按数字生成数组 } from '@/工具函数/help'
 import { 团队增益数据类型 } from '../interface'
 import { 获取心法数据 } from '@/心法模块'
 

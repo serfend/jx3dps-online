@@ -1,5 +1,5 @@
-import { 获取数据 } from '../src/containers/系统工具/开发者工具/装备导入/tool.mjs'
-import 赛季范围数据 from '../src/containers/系统工具/开发者工具/装备导入/赛季范围数据.mjs'
+import { 获取数据 } from '../src/功能模块/系统工具/开发者工具/装备导入/tool.mjs'
+import 赛季范围数据 from '../src/功能模块/系统工具/开发者工具/装备导入/赛季范围数据.mjs'
 import fs from 'fs'
 
 const 功法枚举={

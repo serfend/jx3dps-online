@@ -1,0 +1,27 @@
+.school-switch {
+  position: fixed;
+  right: 24px;
+  top: 24px;
+}
+
+.school-switch-img {
+  display: block;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  transition: .3s;
+  opacity: 0.8;
+}
+
+.school-switch-list-item {
+  display: flex;
+  align-items: center;
+  padding-right: 4px;
+}
+
+.school-switch-list-img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}

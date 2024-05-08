@@ -5,3 +5,7 @@ declare module '*.jpeg'
 declare module '*.gif'
 declare module '*.bmp'
 declare module '*.tiff'
+
+interface Window {
+  心法?: string
+}

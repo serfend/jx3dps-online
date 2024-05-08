@@ -6,7 +6,7 @@ interface BasicState {
   关闭背景图: boolean
 }
 
-const initialState: BasicState = { 关闭背景图: true }
+const initialState: BasicState = { 关闭背景图: false }
 
 export const basicStore = createSlice({
   name: 'basic',
