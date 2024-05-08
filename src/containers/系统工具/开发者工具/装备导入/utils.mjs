@@ -13,10 +13,13 @@ export const 接口装备数据格式化 = (list,赛季范围数据) => {
     const name = item.Name || '数据丢失-未知'
 
     const 装备特效 = 判断装备特效(item,赛季范围数据)
+    const 装备主属性 = 判断装备主属性(item)
     return {
       id: item.ID,
       uid: item.UiID,
       装备名称: name,
+      所属门派: item.BelongSchool !== '精简' && item.BelongSchool !== '通用' ? item.BelongSchool !== '精简' && item.BelongSchool : '通用',
+      装备主属性: 装备主属性,
       装备品级: item.Level,
       ...wuqishanghaiObj,
       ...(装备特效 ? { 装备特效 } : null),
@@ -29,8 +32,8 @@ export const 接口装备数据格式化 = (list,赛季范围数据) => {
             : +item.MaxStrengthLevel === 6
             ? `装备类型枚举.普通`
             : +item.MaxStrengthLevel === 8
-            ? `装备类型枚举.大CW`
-            : `装备类型枚举.小CW`
+            ? "装备类型枚举.橙武"
+            : `未匹配`
           : 装备特效?.toString()?.includes('切糕')
           ? `装备类型枚举.切糕`
           : 装备特效?.toString()?.includes('门派套装')
@@ -40,7 +43,7 @@ export const 接口装备数据格式化 = (list,赛季范围数据) => {
           : +item.MaxStrengthLevel === 3
           ? `装备类型枚举.试炼精简`
           : +item.MaxStrengthLevel === 8
-          ? `装备类型枚举.橙戒`
+          ? `装备类型枚举.橙武`
           : +item.MaxStrengthLevel === 6
           ? `装备类型枚举.普通`
           : `未匹配`,
@@ -105,7 +108,7 @@ export const 判断装备特效 = (item,赛季范围数据) => {
         }
       }
     })
-    特效效果 = "装备特效枚举.大橙武特效"
+    特效效果 = "装备特效枚举.小橙武特效"
   }
   // 特效腰坠
   if (item.SubType === 7) {
@@ -132,10 +135,12 @@ export const 判断装备特效 = (item,赛季范围数据) => {
   }
   if (item.BelongSchool !== '精简' && item.BelongSchool !== '通用') {
     if (item.GetType === '道具换取' && item.Name?.includes('·')) {
-      if (item.Level > 赛季范围数据.赛季英雄普通区分品级) {
-        特效效果 = "装备特效枚举.门派套装_英雄"
-      } else {
-        特效效果 = "装备特效枚举.门派套装_普通"
+      const firstKey = Object.keys(item._SetData)?.[0]
+      // 通过触发判断来判断是两件套双会还是四件套双会
+      if (item._SetData?.[firstKey].attr?.[0] === 'atSkillEventHandler') {
+        特效效果 = "装备特效枚举.门派套装_两件套双会"
+      } else if (item._SetData?.[firstKey].attr?.[0] === 'atSetEquipmentRecipe') {
+        特效效果 = "装备特效枚举.门派套装_四件套双会"
       }
     }
   }
@@ -170,6 +175,20 @@ export const 判断装备特效 = (item,赛季范围数据) => {
   return 特效效果
 }
 
+export const 判断装备主属性 = (item) => {
+  if (item?._AttrType?.includes("atStrengthBase")) {
+    return "力道"
+  } else if (item?._AttrType?.includes("atAgilityBase")) {
+    return "身法"
+  } else if (item?._AttrType?.includes("atSpunkBase")) {
+    return "元气"
+  } else if (item?._AttrType?.includes("atSpiritBase")) {
+    return "根骨"
+  } else {
+    return "通用"
+  }
+}
+
 // 属性类型枚举（转化魔盒的属性类型为本地属性类型
 const ShuxingMeiju = {
   atVitalityBase: '属性类型.体质',
@@ -186,10 +205,29 @@ const ShuxingMeiju = {
   atPhysicsCriticalStrike: '属性类型.外功会心等级',
   atPhysicsCriticalDamagePowerBase: '属性类型.外功会心效果等级',
   atPhysicsOvercomeBase: '属性类型.外功破防等级',
+
   atMagicAttackPowerBase: '属性类型.内功基础攻击',
+  atPoisonAttackPowerBase:'属性类型.内功基础攻击',
+  atSolarAttackPowerBase:'属性类型.内功基础攻击',
+  atNeutralAttackPowerBase:'属性类型.内功基础攻击',
+  atLunarAttackPowerBase:'属性类型.内功基础攻击',
+
+  atAllTypeCriticalStrike: '属性类型.全会心等级',
   atMagicCriticalStrike: '属性类型.内功会心等级',
+  atNeutralCriticalStrike: '属性类型.内功会心等级',
+  atSolarCriticalStrike: '属性类型.内功会心等级',
+  atPoisonCriticalStrike: '属性类型.内功会心等级',
+  atLunarCriticalStrike: '属性类型.内功会心等级',
+
   atMagicCriticalDamagePowerBase: '属性类型.内功会心效果等级',
-  atMagicOvercomeBase: '属性类型.内功破防等级',
+  atAllTypeCriticalDamagePowerBase: '属性类型.全会心效果等级',
+
+  atMagicOvercome: '属性类型.内功破防等级',
+  atPoisonOvercomeBase: '属性类型.内功破防等级',
+  atNeutralOvercomeBase: '属性类型.内功破防等级',
+  atSolarOvercomeBase: '属性类型.内功破防等级',
+  atLunarOvercomeBase: '属性类型.内功破防等级',
+  atSolarAndLunarOvercomeBase: '属性类型.内功破防等级',
 }
 
 const 镶嵌名称枚举 = {
@@ -206,8 +244,27 @@ const 镶嵌名称枚举 = {
   atPhysicsCriticalStrike: '镶嵌增伤类型枚举.会心',
   atPhysicsCriticalDamagePowerBase: '镶嵌增伤类型枚举.会效',
   atPhysicsOvercomeBase: '镶嵌增伤类型枚举.破防',
+
   atMagicAttackPowerBase: '镶嵌增伤类型枚举.内攻',
+  atPoisonAttackPowerBase:'镶嵌增伤类型枚举.内攻',
+  atSolarAttackPowerBase:'镶嵌增伤类型枚举.内攻',
+  atNeutralAttackPowerBase:'镶嵌增伤类型枚举.内攻',
+  atLunarAttackPowerBase:'镶嵌增伤类型枚举.内攻',
+  
+  atAllTypeCriticalStrike: '镶嵌增伤类型枚举.会心',
   atMagicCriticalStrike: '镶嵌增伤类型枚举.会心',
+  atNeutralCriticalStrike: '镶嵌增伤类型枚举.会心',
+  atSolarCriticalStrike: '镶嵌增伤类型枚举.会心',
+  atPoisonCriticalStrike: '镶嵌增伤类型枚举.会心',
+  atLunarCriticalStrike: '镶嵌增伤类型枚举.会心',
+
   atMagicCriticalDamagePowerBase: '镶嵌增伤类型枚举.会效',
-  atMagicOvercomeBase: '镶嵌增伤类型枚举.破防',
+  atAllTypeCriticalDamagePowerBase: '镶嵌增伤类型枚举.会效',
+
+  atMagicOvercome: '镶嵌增伤类型枚举.破防',
+  atPoisonOvercomeBase: '镶嵌增伤类型枚举.破防',
+  atNeutralOvercomeBase: '镶嵌增伤类型枚举.破防',
+  atSolarOvercomeBase: '镶嵌增伤类型枚举.破防',
+  atLunarOvercomeBase: '镶嵌增伤类型枚举.破防',
+  atSolarAndLunarOvercomeBase: '镶嵌增伤类型枚举.破防',
 }

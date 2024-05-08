@@ -95,7 +95,9 @@
     "test": "node scripts/test.js",
     "deploy": "gh-pages -d build",
     "predeploy": "npm run build",
-    "equip": "node node/importEquip.mjs"
+    "equip": "GONG_FA=ALL node node/importEquip.mjs",
+    "equip:physics": "GONG_FA=physics node node/importEquip.mjs",
+    "equip:magic": "GONG_FA=magic node node/importEquip.mjs"
   },
   "eslintConfig": {
     "extends": [
