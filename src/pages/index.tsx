@@ -1,14 +1,9 @@
-import React, { useRef, useState } from 'react'
+import React from 'react'
+import Tools from '@/containers/系统工具'
+
 import './index.css'
 
 function Pages() {
-  // const dpsRef = useRef<any>()
-  // const [zengyiVisible, setZengyiVisible] = useState<boolean>(true)
-
-  // const getDps = () => {
-  //   dpsRef?.current?.getDps()
-  // }
-
   return (
     <>
       {/* 顶部说明 */}
@@ -20,7 +15,7 @@ function Pages() {
       {/* 更新日志 */}
       {/* <Log /> */}
       {/* 开发者工具 */}
-      {/* <Tools /> */}
+      <Tools />
       {/* 清除缓存 */}
       {/* <ClearCache /> */}
     </>

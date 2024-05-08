@@ -94,7 +94,8 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "deploy": "gh-pages -d build",
-    "predeploy": "npm run build"
+    "predeploy": "npm run build",
+    "equip": "node node/importEquip.mjs"
   },
   "eslintConfig": {
     "extends": [

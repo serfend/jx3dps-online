@@ -1,5 +1,6 @@
 import { 属性类型 } from '@/@types/属性'
-import { 小吃类型枚举, 小药小吃数据类型 } from '../interface'
+import { 小药小吃数据类型 } from '../interface'
+import { 小吃类型枚举 } from '@/@types/枚举'
 
 // 用于增益计算的附魔
 const 外功小药小吃数据: 小药小吃数据类型[] = [

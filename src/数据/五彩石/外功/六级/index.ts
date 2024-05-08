@@ -1,5 +1,6 @@
 import { 属性类型 } from '@/@types/属性'
-import { 五彩石增益类型枚举, 五彩石数据类型 } from '../../interface'
+import { 五彩石增益类型枚举 } from '@/@types/枚举'
+import { 五彩石数据类型 } from '../../interface'
 
 const 五彩石_六级: 五彩石数据类型[] = [
   {
