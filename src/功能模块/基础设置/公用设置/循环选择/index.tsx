@@ -13,12 +13,7 @@ function 循环选择() {
   const { 全部循环 = [] } = useCycle()
 
   const 切换循环 = (val) => {
-    dispatch(
-      更新方案数据({
-        属性: '当前计算循环名称',
-        数据: val,
-      })
-    )
+    dispatch(更新方案数据({ 属性: '当前计算循环名称', 数据: val }))
   }
 
   return (

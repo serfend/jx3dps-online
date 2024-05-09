@@ -1,6 +1,7 @@
 import { 属性加成 } from '@/@types/属性'
 import { 循环数据 } from '@/@types/循环'
 import { 技能基础数据模型 } from '@/@types/技能'
+import { 角色基础属性类型 } from '@/@types/角色'
 
 // 心法配置类型
 export interface 心法配置类型 {
@@ -32,6 +33,11 @@ export interface 心法配置类型 {
    * @default 外功
    */
   伤害属性?: 伤害属性类型
+  /**
+   * @name 基础属性
+   * 该心法的被动基础属性
+   */
+  基础属性: Partial<角色基础属性类型>
   /**
    * @name 主属性额外加成
    * 该心法主属性对其他属性的加成系数

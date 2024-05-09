@@ -14,9 +14,6 @@ function 基础设置() {
         <基础设置标题 />
         {/* 公用设置/目标/循环/输出时间 */}
         <公用设置 />
-        {/* <CommonSet
-          更新增益面板展示={() => 更新增益面板展示(zengyiVisible ? false : true)}
-        /> */}
       </div>
       <div className={`basic-set-zengyi ${增益面板显示状态 ? 'basic-set-zengyi-visible' : null}`} />
     </div>

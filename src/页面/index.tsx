@@ -4,7 +4,7 @@ import 系统工具 from '@/功能模块/系统工具'
 import 心法切换 from '@/功能模块/心法切换'
 import './index.css'
 
-function 全局页面() {
+function 主页面() {
   return (
     <>
       <基础设置 />
@@ -22,4 +22,4 @@ function 全局页面() {
   )
 }
 
-export default 全局页面
+export default 主页面

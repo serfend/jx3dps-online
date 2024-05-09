@@ -9,10 +9,11 @@ import { 选中秘籍信息 } from '@/@types/秘籍'
 import { 全部方案数据, 更新方案数据入参 } from '@/@types/方案'
 import { 循环数据 } from '@/@types/循环'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
+import { 获取数据默认值 } from '@/工具函数/init'
 
 const { 缓存映射 } = 获取当前数据()
 
-interface 数据模块类型 {
+export interface 数据模块类型 {
   // 当前方案名称
   当前方案名称: string
   // 全部方案数据
@@ -29,8 +30,6 @@ interface 数据模块类型 {
   当前计算结果: 当前计算结果类型
   // 网络延迟
   网络延迟: number
-  // 关闭背景
-  关闭背景图: boolean
   // 奇穴信息
   当前奇穴信息: string[]
   // 自定义循环列表
@@ -43,32 +42,19 @@ interface 数据模块类型 {
   当前秘籍信息: 选中秘籍信息
 }
 
+const 数据默认值 = 获取数据默认值()
+
 const 默认值: 数据模块类型 = {
-  当前方案名称: '',
-  全部方案数据: {},
-  // 方案内信息
-  角色基础属性: {} as any,
-  装备信息: { 装备列表: [], 装备增益: {} },
-  增益启用: false,
-  增益数据: { 阵眼: '', 小吃: [], 团队增益: [] },
-  当前奇穴信息: [],
-  当前计算循环名称: '',
-  // 其他信息
-  当前计算结果: { 秒伤: 0, 总伤: 0, 秒伤计算时间: 0, 计算结果技能列表: [] },
-  网络延迟: 0,
-  当前输出计算目标名称: '',
-  关闭背景图: true,
-  自定义循环列表: [],
-  当前秘籍信息: {},
+  ...数据默认值,
 }
 
 export const 数据模块 = createSlice({
-  name: 'basic',
+  name: 'data',
   initialState: 默认值,
   reducers: {
-    // 更新全部属性: (state, action: PayloadAction<Partial<数据模块类型>>) => {
-    //   state = { ...state, ...action.payload }
-    // },
+    更新全部数据: (state, action: PayloadAction<Partial<数据模块类型>>) => {
+      state = { ...state, ...action.payload }
+    },
     更新角色基础属性: (state, action: PayloadAction<角色基础属性类型>) => {
       state.角色基础属性 = { ...action.payload }
     },
@@ -77,9 +63,6 @@ export const 数据模块 = createSlice({
     },
     更新当前计算结果: (state, action: PayloadAction<当前计算结果类型>) => {
       state.当前计算结果 = action.payload
-    },
-    更新当前关闭背景图片: (state, action: PayloadAction<boolean>) => {
-      state.关闭背景图 = action.payload
     },
     更新当前自定义循环列表: (state, action: PayloadAction<循环数据[]>) => {
       state.自定义循环列表 = action.payload
@@ -133,11 +116,10 @@ export const 数据模块 = createSlice({
 })
 
 export const {
-  // 更新全部属性,
+  更新全部数据,
   更新角色基础属性,
   更新网络延迟,
   更新当前计算结果,
-  更新当前关闭背景图片,
   更新当前自定义循环列表,
   更新当前输出计算目标名称,
   更新当前秘籍信息,

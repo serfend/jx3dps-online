@@ -2,10 +2,7 @@ import { Modal } from 'antd'
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { 更新背景图片显示状态 } from '@/store/system'
-import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 import './index.css'
-
-const 缓存映射 = 获取当前数据()?.缓存映射
 
 function 页面右下角工具() {
   const 背景图片显示状态 = useAppSelector((state) => state?.system?.背景图片显示状态)
@@ -24,8 +21,6 @@ function 页面右下角工具() {
   }
 
   const handleChangeBackground = () => {
-    const newData = 背景图片显示状态 ? '0' : '1'
-    localStorage.setItem(缓存映射.关闭背景图, newData)
     dispatch(更新背景图片显示状态(!背景图片显示状态))
   }
 

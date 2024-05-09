@@ -4,8 +4,8 @@ import 数据模块 from './data'
 
 const store = configureStore({
   reducer: {
-    system: 系统模块,
     data: 数据模块,
+    system: 系统模块,
   },
 })
 
