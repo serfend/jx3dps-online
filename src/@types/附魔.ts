@@ -1,4 +1,5 @@
 import { 属性加成 } from '@/@types/属性'
+import { 装备部位枚举 } from './枚举'
 
 export interface 附魔数据类型 {
   /**

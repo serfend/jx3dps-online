@@ -2,7 +2,9 @@
  * 常量文件
  */
 
-import type { NetworkDTO, TargetDTO } from './interface'
+import type { 延迟数据类型, 目标属性类型 } from '@/@types/常量'
+
+export const DEFAULT_PROJECT_NAME = '默认方案'
 
 export const 自身等级 = 120 // 当前角色等级
 export const 每等级减伤 = 0.05
@@ -36,7 +38,7 @@ export const 基础属性加成系数 = {
   元气转换破防: 0.3,
 }
 
-export const 目标集合: TargetDTO[] = [
+export const 目标集合: 目标属性类型[] = [
   {
     名称: '124级木桩',
     等级: 124,
@@ -67,7 +69,7 @@ export const 目标集合: TargetDTO[] = [
   },
 ]
 
-export const 延迟设定: NetworkDTO[] = [
+export const 延迟设定: 延迟数据类型[] = [
   {
     label: '超低延迟(0-30)',
     value: 0,

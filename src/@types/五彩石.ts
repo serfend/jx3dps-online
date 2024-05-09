@@ -1,4 +1,5 @@
 import { 属性类型 } from '@/@types/属性'
+import { 五彩石增益类型枚举 } from './枚举'
 
 export interface 五彩石数据类型 {
   五彩石名称: string

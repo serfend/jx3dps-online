@@ -1,14 +1,14 @@
 import { Modal } from 'antd'
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks'
-import { 更新当前关闭背景图片 } from '@/store/basicReducer'
+import { 更新背景图片显示状态 } from '@/store/system'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 import './index.css'
 
 const 缓存映射 = 获取当前数据()?.缓存映射
 
-function PageTools() {
-  const 关闭背景图 = useAppSelector((state) => state?.basic?.关闭背景图)
+function 页面右下角工具() {
+  const 背景图片显示状态 = useAppSelector((state) => state?.system?.背景图片显示状态)
   const dispatch = useAppDispatch()
 
   const clearCache = () => {
@@ -24,15 +24,15 @@ function PageTools() {
   }
 
   const handleChangeBackground = () => {
-    const newData = 关闭背景图 ? '0' : '1'
+    const newData = 背景图片显示状态 ? '0' : '1'
     localStorage.setItem(缓存映射.关闭背景图, newData)
-    dispatch(更新当前关闭背景图片(!关闭背景图))
+    dispatch(更新背景图片显示状态(!背景图片显示状态))
   }
 
   return (
     <div className='cache-wrapper'>
       <span className='cache-btn' onClick={handleChangeBackground}>
-        {+(关闭背景图 || '') ? '开启背景' : '关闭背景'}
+        {+(背景图片显示状态 || '') ? '关闭背景' : '开启背景'}
       </span>
       <span className='cache-btn' onClick={() => clearCache()}>
         清除缓存
@@ -41,4 +41,4 @@ function PageTools() {
   )
 }
 
-export default PageTools
+export default 页面右下角工具

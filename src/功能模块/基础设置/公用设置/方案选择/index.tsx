@@ -1,0 +1,39 @@
+import React from 'react'
+import { useAppDispatch, useAppSelector } from '@/hooks'
+import { 更新当前方案名称 } from '@/store/data'
+import { Select } from 'antd'
+
+function 方案选择() {
+  const dispatch = useAppDispatch()
+  const 当前方案名称 = useAppSelector((state) => state?.data?.当前方案名称)
+  const 全部方案数据 = useAppSelector((state) => state?.data?.全部方案数据)
+
+  const 切换方案 = (e) => {
+    dispatch(更新当前方案名称(e))
+  }
+
+  return (
+    <div className='common-item'>
+      <h1 className='common-label'>方案</h1>
+      <div className='common-content'>
+        <Select
+          className='current-project'
+          value={当前方案名称}
+          onChange={(v) => {
+            切换方案(v)
+          }}
+        >
+          {Object.keys(全部方案数据).map((item) => {
+            return (
+              <Select.Option value={item} key={item}>
+                {item}
+              </Select.Option>
+            )
+          })}
+        </Select>
+      </div>
+    </div>
+  )
+}
+
+export default 方案选择

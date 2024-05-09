@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import basic from './basicReducer'
+import 系统模块 from './system'
+import 数据模块 from './data'
 
 const store = configureStore({
   reducer: {
-    basic: basic,
+    system: 系统模块,
+    data: 数据模块,
   },
 })
 

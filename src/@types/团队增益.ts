@@ -1,5 +1,18 @@
 import { 属性加成 } from '@/@types/属性'
 
+export interface 增益选项数据类型 {
+  阵眼: string
+  小吃: string[]
+  团队增益: 团队增益选项数据类型[]
+}
+
+export interface 团队增益选项数据类型 {
+  增益名称: string
+  启用: boolean
+  覆盖率: number
+  层数: number
+}
+
 export interface 团队增益数据类型 {
   增益名称: string
   覆盖率: number

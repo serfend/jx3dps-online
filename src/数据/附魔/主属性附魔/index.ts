@@ -1,6 +1,6 @@
 import { 属性类型 } from '@/@types/属性'
 import { 装备部位枚举 } from '@/@types/枚举'
-import { 附魔数据类型 } from '../interface'
+import { 附魔数据类型 } from '@/@types/附魔'
 
 const 附魔数组 = [218, 198, 179, 162]
 

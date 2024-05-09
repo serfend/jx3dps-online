@@ -1,3 +1,7 @@
+/**
+ * @name 基础算法函数工具
+ * @description 基础JS相关算法，无业务属性
+ */
 export const 按数字生成数组 = (number) => {
   return Array.from({ length: number - 1 + 1 }, (_, index) => index + 1)
 }
@@ -29,4 +33,14 @@ export const hexToRgbaToDark = (hex, alpha, num = 10) => {
 export const 获取页面参数 = (param) => {
   const urlParams = new URLSearchParams(window.location.search)
   return urlParams.get(param)
+}
+
+export const 修改页面Logo = (src) => {
+  let link: any = document.querySelector("link[rel~='icon']")
+  if (!link) {
+    link = document.createElement('link')
+    link.rel = 'icon'
+    document.getElementsByTagName('head')[0].appendChild(link)
+  }
+  link.href = src
 }

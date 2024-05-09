@@ -1,4 +1,4 @@
-export interface NetworkDTO {
+export interface 延迟数据类型 {
   label: string
   value: number
 }
@@ -6,7 +6,7 @@ export interface NetworkDTO {
 /**
  * 当前目标属性
  */
-export interface TargetDTO {
+export interface 目标属性类型 {
   /**
    * @name 名称
    */

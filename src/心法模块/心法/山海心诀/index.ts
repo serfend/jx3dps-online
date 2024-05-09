@@ -8,6 +8,7 @@ import type { 心法配置类型 } from '@/心法模块/interface'
 import 背景图 from './资源/背景图'
 import 默认秘籍 from './默认秘籍/默认秘籍.json'
 import 技能系数 from './技能系数'
+import 奇穴数据 from './奇穴'
 import 计算循环 from './计算循环'
 
 const 心法配置: 心法配置类型 = {
@@ -26,6 +27,7 @@ const 心法配置: 心法配置类型 = {
     背景图: 背景图,
     背景色渐变: `linear-gradient(to right, rgba(124, 85, 2, 0.4) 5%, rgba(105, 86, 5, 0.15) 70%)`,
   },
+  奇穴数据: 奇穴数据,
   默认秘籍: 默认秘籍,
   技能系数: 技能系数,
   计算循环: 计算循环,

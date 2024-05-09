@@ -1,6 +1,6 @@
 import { 装备部位枚举 } from '@/@types/枚举'
-import { 附魔数据类型 } from '../interface'
 import { 属性类型 } from '@/@types/属性'
+import { 附魔数据类型 } from '@/@types/附魔'
 
 const 内功攻击附魔数组 = [524, 475, 430, 389, 262]
 const 外功攻击附魔数组 = [439, 398, 360, 326, 221]
