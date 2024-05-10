@@ -1,0 +1,211 @@
+import React, { useMemo, useState } from 'react'
+import { Checkbox, Tooltip } from 'antd'
+
+import { 属性系数 } from '@/数据/常量'
+// import DpsKernelOptimizer from '@/utils/dps-kernel-optimizer'
+import { QuestionCircleOutlined } from '@ant-design/icons'
+import { useAppSelector } from '@/hooks'
+import { 角色基础属性类型 } from '@/@types/角色'
+
+import 获取当前数据 from '@/数据/数据工具/获取当前数据'
+import { 获取判断增益后技能系数 } from '@/计算模块/统一工具函数/技能增益启用计算'
+import DpsKernelOptimizer from '@/计算模块/dps-kernel-optimizer'
+import useCycle from '@/hooks/use-cycle'
+import { 获取计算目标信息 } from '@/计算模块/统一工具函数/工具函数'
+import './index.css'
+import { 获取角色需要展示的面板数据 } from './工具'
+
+const { 主属性 } = 获取当前数据()
+
+function 面板信息() {
+  const 当前奇穴信息 = useAppSelector((state) => state?.data?.当前奇穴信息)
+  const 装备信息 = useAppSelector((state) => state?.data?.装备信息)
+  const 当前输出计算目标名称 = useAppSelector((state) => state?.data?.当前输出计算目标名称)
+  const 当前秘籍信息 = useAppSelector((state) => state?.data?.当前秘籍信息)
+  const 增益数据 = useAppSelector((state) => state?.data?.增益数据)
+  const 增益启用 = useAppSelector((state) => state?.data?.增益启用)
+  const 当前计算目标 = 获取计算目标信息(当前输出计算目标名称)
+
+  const { 计算循环详情 } = useCycle()
+
+  const { 装备基础属性 } = 装备信息 || {}
+
+  const [开启优化算法, 切换开启优化算法] = useState<boolean>(false)
+
+  const mapKeyList = [主属性, '攻击', '会心', '会效', '破防', '无双', '破招', '全能', '加速']
+
+  const 显示数据 = useMemo(() => {
+    return 获取角色需要展示的面板数据({ 装备信息, 当前奇穴信息, 增益数据, 增益启用 })
+  }, [装备信息, 当前奇穴信息, 增益数据, 增益启用])
+
+  const 最大秒伤数据: any = useMemo(() => {
+    if (!开启优化算法) {
+      return {}
+    }
+    if (显示数据?.基础攻击 && 计算循环详情?.技能详情?.length) {
+      const 计算后技能基础数据 = 获取判断增益后技能系数({
+        秘籍信息: 当前秘籍信息,
+        奇穴数据: 当前奇穴信息,
+        装备增益: 装备信息?.装备增益,
+      })
+
+      const res = DpsKernelOptimizer({
+        计算循环: 计算循环详情?.技能详情,
+        当前装备信息: 装备信息,
+        当前输出计算目标: 当前计算目标,
+        技能基础数据: 计算后技能基础数据,
+        增益启用,
+        增益数据,
+      })
+      return res
+    } else {
+      return {}
+    }
+  }, [当前计算目标, 计算循环详情, 装备信息, 当前奇穴信息, 增益启用, 增益数据, 开启优化算法])
+
+  return (
+    <div className={'character-show'}>
+      <div className={'character-title-wrapper'}>
+        <h1 className={'character-title'}>
+          角色属性
+          <Tooltip title='增益、大附魔的数值加成暂未体现在面板显示，不影响计算'>
+            <QuestionCircleOutlined className={'character-max-title-tip'} />
+          </Tooltip>
+        </h1>
+        <Checkbox checked={开启优化算法} onChange={(e) => 切换开启优化算法(e?.target?.checked)}>
+          优化算法
+          <Tooltip title='采用拟牛顿法对属性做优化演算，仅能代表在当前已穿装备总属性容量不变的情况下的，各属性近似最优收益方向。仅作参考，开启后会消耗额外性能。'>
+            <QuestionCircleOutlined className={'character-max-title-tip'} />
+          </Tooltip>
+        </Checkbox>
+      </div>
+      {mapKeyList.map((item) => {
+        const 最优属性: any =
+          开启优化算法 && 最大秒伤数据?.装备基础属性
+            ? 获取最优属性展示(item, 最大秒伤数据?.装备基础属性, 装备基础属性)
+            : {}
+        return (
+          <div className='character-item' key={item}>
+            <h1 className='character-label'>{item}</h1>
+            <Tooltip placement='topLeft' title={() => getCharacterDataNumber(item, 显示数据)}>
+              <div className='character-content'>
+                <span className='character-content-normal'>{getCharacterData(item, 显示数据)}</span>
+                {开启优化算法 && 最优属性 && 最优属性?.value !== '-1' ? (
+                  <span
+                    className={`character-content-max ${
+                      !最优属性?.upperStatus ? 'character-content-upper' : 'character-content-down'
+                    }`}
+                  >
+                    {最优属性?.value}
+                  </span>
+                ) : null}
+              </div>
+            </Tooltip>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
+export default 面板信息
+
+// 获取属性展示
+export const getCharacterData = (key: string, 角色最终属性: 角色基础属性类型) => {
+  switch (key) {
+    case 主属性:
+      return 角色最终属性?.[主属性] || 0
+    case '攻击':
+      return 角色最终属性.面板攻击 || 0
+    case '会心':
+      return ((角色最终属性.会心等级 / 属性系数.会心) * 100).toFixed(2) + `%`
+    case '会效':
+      return ((角色最终属性.会心效果等级 / 属性系数.会效) * 100 + 175).toFixed(2) + `%`
+    case '破防':
+      return ((角色最终属性.破防等级 / 属性系数.破防) * 100).toFixed(2) + `%`
+    case '无双':
+      return ((角色最终属性.无双等级 / 属性系数.无双) * 100).toFixed(2) + `%`
+    case '破招':
+      return 角色最终属性.破招值 || 0
+    case '全能':
+      return 角色最终属性.全能等级 || 0
+    case '加速':
+      return (
+        <>
+          <span>{(((角色最终属性.加速等级 || 0) / 属性系数.急速) * 100).toFixed(2) + `%`}</span>
+          <span>
+            {(角色最终属性.加速等级 || 0) < 95
+              ? '零段加速'
+              : 角色最终属性.加速等级 < 4241
+              ? '一段加速'
+              : 角色最终属性.加速等级 < 8857
+              ? '二段加速'
+              : 角色最终属性.加速等级 < 13851
+              ? '三段加速'
+              : 角色最终属性.加速等级 < 19316
+              ? '四段加速'
+              : '五段加速'}
+          </span>
+        </>
+      )
+  }
+  return ''
+}
+
+export const getCharacterDataNumber = (key: string, 角色最终属性: 角色基础属性类型) => {
+  switch (key) {
+    case 主属性:
+      return 角色最终属性?.[主属性] || 0
+    case '攻击':
+      return (
+        <div>
+          <p>基础攻击：{角色最终属性.基础攻击 || 0}</p>
+          <p>面板攻击：{角色最终属性.面板攻击 || 0}</p>
+        </div>
+      )
+    case '会心':
+      return 角色最终属性.会心等级
+    case '会效':
+      return 角色最终属性.会心效果等级
+    case '破防':
+      return 角色最终属性.破防等级
+    case '无双':
+      return 角色最终属性.无双等级
+    case '破招':
+      return 角色最终属性.破招值 || 0
+    case '全能':
+      return 角色最终属性.全能等级
+    case '加速':
+      return 角色最终属性.加速等级
+  }
+  return ''
+}
+
+// 获取最优属性展示
+export const 获取最优属性展示 = (key: string, 装备基础属性: 角色基础属性类型, oldData) => {
+  const data = 装备基础属性
+  let value: number | string | undefined = '-1'
+  let upperStatus = false
+  switch (key) {
+    case '会心':
+      value = ((data.会心等级 / 属性系数.会心) * 100).toFixed(2) + `%`
+      upperStatus = data.会心等级 >= oldData?.会心等级
+      break
+    case '破防':
+      value = ((data.破防等级 / 属性系数.破防) * 100).toFixed(2) + `%`
+      upperStatus = data.破防等级 >= oldData?.破防等级
+      break
+    case '无双':
+      value = ((data.无双等级 / 属性系数.无双) * 100).toFixed(2) + `%`
+      upperStatus = data.无双等级 >= oldData?.无双等级
+      break
+    case '破招':
+      value = Math.floor(data.破招值) || 0
+      upperStatus = data.破招值 >= oldData?.破招值
+      break
+    default:
+      break
+  }
+
+  return { value, upperStatus }
+}

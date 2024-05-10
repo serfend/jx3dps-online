@@ -41,11 +41,11 @@ export interface 循环详情 {
   /**
    * 循环加速等级
    */
-  循环加速等级: number
+  循环加速等级: number | string
   /**
    * 循环延迟要求
    */
-  循环延迟要求?: number
+  循环延迟要求?: number | string
   /**
    * @name 计算战斗时间
    * 单位（秒）

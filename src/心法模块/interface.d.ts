@@ -1,6 +1,6 @@
-import { 属性加成 } from '@/@types/属性'
+import { 奇穴列表数据类型 } from '@/@types/奇穴'
 import { 循环数据 } from '@/@types/循环'
-import { 技能基础数据模型 } from '@/@types/技能'
+import { 技能基础数据模型, 技能增益列表类型 } from '@/@types/技能'
 import { 角色基础属性类型 } from '@/@types/角色'
 
 // 心法配置类型
@@ -57,6 +57,10 @@ export interface 心法配置类型 {
    * @name 技能系数
    */
   技能系数: 技能基础数据模型[]
+  /**
+   * @name 技能增益
+   */
+  技能增益: { [key: string]: 技能增益列表类型[] }
   /**
    * @name 计算循环
    */

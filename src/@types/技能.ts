@@ -90,6 +90,13 @@ export interface 技能增益列表类型 {
    */
   增益名称: string
   /**
+   * @name 是否常驻面板
+   * @description 只对“通用增益”生效
+   * @description 开启以后，当增益启用时候。将常驻面板展示
+   * @description 一般只处理奇穴部分
+   */
+  是否常驻面板?: boolean
+  /**
    * @name 增益所在位置
    */
   增益所在位置: '秘籍' | '奇穴' | '技能' | '职业' | '装备'

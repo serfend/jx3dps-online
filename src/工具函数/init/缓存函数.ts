@@ -4,7 +4,7 @@ import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 import useCycle from '@/hooks/use-cycle'
 import { DEFAULT_CHARACTER } from './默认数据'
 
-const { 缓存映射, 默认秘籍 = {} } = 获取当前数据()
+const { 缓存映射, 默认秘籍 = {}, 奇穴数据 = [] } = 获取当前数据()
 
 export const 加载缓存网络延迟 = () => {
   const localNetwork = localStorage.getItem(缓存映射.网络延迟)
@@ -48,6 +48,10 @@ export const 加载缓存全部方案数据 = () => {
   const 当前循环奇穴 =
     useCycle({ 覆盖数据: { 当前计算循环名称: 当前循环名称 }, 使用内存数据: false })?.当前循环信息
       ?.奇穴 || []
+
+  const 默认奇穴 = 奇穴数据.map((item) => {
+    return item?.奇穴列表?.[0]?.奇穴名称
+  })
   const 默认全部方案数据: 全部方案数据 = {
     默认方案: {
       方案名称: DEFAULT_PROJECT_NAME,
@@ -55,7 +59,7 @@ export const 加载缓存全部方案数据 = () => {
       增益启用: false,
       增益数据: { 阵眼: '', 小吃: [], 团队增益: [] },
       当前计算循环名称: 当前循环名称,
-      当前奇穴信息: 当前循环奇穴,
+      当前奇穴信息: 当前循环奇穴 || 默认奇穴,
     },
   }
 

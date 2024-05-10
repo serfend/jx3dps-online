@@ -58,7 +58,13 @@ const 阵眼选择: React.FC<阵眼选择类型> = (props) => {
   }
 
   return (
-    <Select allowClear placeholder='请选择阵眼' optionFilterProp='label' {...rest}>
+    <Select
+      className={'xuanze-zhenyan'}
+      allowClear
+      placeholder='请选择阵眼'
+      optionFilterProp='label'
+      {...rest}
+    >
       {(展示的阵眼数组() || [])?.map((item) => {
         return (
           <Select.Option
