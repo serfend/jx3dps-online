@@ -1,6 +1,6 @@
 import { 小药小吃数据类型 } from '@/@types/小药小吃'
 import { useAppDispatch, useAppSelector } from '@/hooks'
-import { currentDpsFunction } from '@/store/basicReducer/current-dps-function'
+import { 秒伤计算 } from '@/计算模块/计算函数'
 import { Select, SelectProps } from 'antd'
 import React, { useState } from 'react'
 
@@ -37,12 +37,12 @@ const XiaochiSelect: React.FC<XiaochiSelectProps> = (props) => {
   // 计算阵眼收益
   const getAfterChangeXiaochiDps = (小吃名称) => {
     const 过滤原小吃数组 = 增益数据.小吃.filter((item) => !data?.some((a) => a.小吃名称 === item))
-    const { dpsPerSecond } = dispatch(
-      currentDpsFunction({
-        更新团队增益数据: { ...增益数据, 小吃: [...(过滤原小吃数组 || []), 小吃名称] },
+    const { 秒伤 } = dispatch(
+      秒伤计算({
+        更新增益数据: { ...增益数据, 小吃: [...(过滤原小吃数组 || []), 小吃名称] },
       })
     )
-    return dpsPerSecond || 0
+    return 秒伤 || 0
   }
 
   return (

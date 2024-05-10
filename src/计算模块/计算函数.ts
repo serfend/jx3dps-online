@@ -26,7 +26,7 @@ interface CurrentDpsFunctionProps {
   更新秘籍信息?: 选中秘籍信息
 
   // 勇于模拟器计算
-  更新循环技能列表: 循环技能详情[]
+  更新循环技能列表?: 循环技能详情[]
   更新计算时间?: number
 }
 

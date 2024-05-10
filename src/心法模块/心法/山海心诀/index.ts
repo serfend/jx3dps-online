@@ -2,7 +2,6 @@
  * @name 心法模块-山海心诀
  * 模块写入者：唐宋
  */
-import { 属性类型 } from '@/@types/属性'
 import type { 心法配置类型 } from '@/心法模块/interface'
 
 import 背景图 from './资源/背景图'

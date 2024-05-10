@@ -1,6 +1,6 @@
 import { 属性类型 } from '@/@types/属性'
 import { 镶嵌增伤类型枚举 } from '@/@types/枚举'
-import { 镶嵌孔数据类型 } from './interface'
+import { 镶嵌孔数据类型 } from '@/@types/镶嵌'
 
 const 镶嵌孔数据: 镶嵌孔数据类型[] = [
   {

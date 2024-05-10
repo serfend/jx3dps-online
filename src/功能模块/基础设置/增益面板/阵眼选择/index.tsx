@@ -1,34 +1,34 @@
 import React from 'react'
-import { Zhenyan_DATA } from '@/数据/阵眼'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { Select, SelectProps } from 'antd'
-import { ZhenyanGainDTO } from '@/@types/zhenyan'
-
-import { currentDpsFunction } from '@/store/basicReducer/current-dps-function'
+import { 秒伤计算 } from '@/计算模块/计算函数'
+import 获取当前数据 from '@/数据/数据工具/获取当前数据'
+import { 阵眼数据类型 } from '@/数据/阵眼/interface'
 import './index.css'
 
-interface ZhenyanXuanzeProps extends SelectProps {
+const { 阵眼 } = 获取当前数据()
+interface 阵眼选择类型 extends SelectProps {
   开启智能对比?: boolean
 }
 
-const ZhenyanXuanze: React.FC<ZhenyanXuanzeProps> = (props) => {
+const 阵眼选择: React.FC<阵眼选择类型> = (props) => {
   const { 开启智能对比, ...rest } = props
-  const 增益数据 = useAppSelector((state) => state?.basic?.增益数据)
-  const 增益启用 = useAppSelector((state) => state?.basic?.增益启用)
-  const 当前计算结果DPS = useAppSelector((state) => state?.basic?.当前计算结果DPS)
+  const 增益数据 = useAppSelector((state) => state?.data?.增益数据)
+  const 增益启用 = useAppSelector((state) => state?.data?.增益启用)
+  const 当前计算结果 = useAppSelector((state) => state?.data?.当前计算结果)
   const dispatch = useAppDispatch()
 
   const 展示的阵眼数组 = () => {
-    let list: ZhenyanGainDTO[] = [...Zhenyan_DATA]
+    let list: 阵眼数据类型[] = [...阵眼]
 
-    if (增益启用 && 开启智能对比 && 当前计算结果DPS) {
+    if (增益启用 && 开启智能对比 && 当前计算结果?.秒伤) {
       list = list.map((item) => {
-        const dps = getAfterChangeZhenyanDps(item?.阵眼名称)
+        const dps = 计算更换后秒伤(item?.阵眼名称)
 
         return {
           ...item,
-          伤害提升百分比: Number((dps / 当前计算结果DPS) * 100) || 100,
-          伤害是否提升: dps > 当前计算结果DPS,
+          伤害提升百分比: Number((dps / 当前计算结果?.秒伤) * 100) || 100,
+          伤害是否提升: dps > 当前计算结果?.秒伤,
         }
       })
 
@@ -48,13 +48,13 @@ const ZhenyanXuanze: React.FC<ZhenyanXuanzeProps> = (props) => {
   }
 
   // 计算阵眼收益
-  const getAfterChangeZhenyanDps = (阵眼名称) => {
-    const { dpsPerSecond } = dispatch(
-      currentDpsFunction({
-        更新团队增益数据: { ...增益数据, 阵眼: 阵眼名称 },
+  const 计算更换后秒伤 = (阵眼名称) => {
+    const { 秒伤 } = dispatch(
+      秒伤计算({
+        更新增益数据: { ...增益数据, 阵眼: 阵眼名称 },
       })
     )
-    return dpsPerSecond || 0
+    return 秒伤 || 0
   }
 
   return (
@@ -71,7 +71,7 @@ const ZhenyanXuanze: React.FC<ZhenyanXuanzeProps> = (props) => {
               {item.伤害排名 ? (
                 <img
                   className={`zhenyan-paiming`}
-                  src={require(`../../../../assets/paiming/paiming-${item.伤害排名}.png`)}
+                  src={require(`@/assets/paiming/paiming-${item.伤害排名}.png`)}
                 />
               ) : null}
               {item.阵眼名称}
@@ -96,4 +96,4 @@ const ZhenyanXuanze: React.FC<ZhenyanXuanzeProps> = (props) => {
   )
 }
 
-export default ZhenyanXuanze
+export default 阵眼选择

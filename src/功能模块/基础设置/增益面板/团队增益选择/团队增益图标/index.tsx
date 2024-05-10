@@ -1,11 +1,11 @@
-import { TuanduiZengySelectedDataDTO, TuanduiZengyiBasicDataDTO } from '@/@types/zengyi'
 import { Popover } from 'antd'
 import React, { useMemo } from 'react'
+import { 团队增益数据类型, 团队增益选项数据类型 } from '@/@types/团队增益'
 import './index.css'
 
 interface 团队增益图标类型 {
-  data: TuanduiZengyiBasicDataDTO
-  当前数据: TuanduiZengySelectedDataDTO | undefined
+  data: 团队增益数据类型
+  当前数据: 团队增益选项数据类型 | undefined
   disabled?: boolean
 }
 

@@ -104,7 +104,6 @@ export const 数据模块 = createSlice({
       if (目标方案) {
         state.当前方案名称 = 切换的目标方案名称
         localStorage.setItem(缓存映射.当前方案名称, action.payload)
-        state.角色基础属性 = 目标方案.角色基础属性
         state.装备信息 = 目标方案.装备信息
         state.增益启用 = 目标方案.增益启用
         state.增益数据 = 目标方案.增益数据

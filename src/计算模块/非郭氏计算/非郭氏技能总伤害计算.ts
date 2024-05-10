@@ -81,3 +81,5 @@ export const 获取属性加成后的面板 = (最终计算属性: 最终计算�
 
   return 计算人物面板
 }
+
+export default 非郭氏技能总伤害计算
