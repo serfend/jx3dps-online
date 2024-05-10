@@ -2,7 +2,7 @@
 // import { 获取全部循环 } from '@/数据/计算循环'
 import { 增益选项数据类型 } from '@/@types/团队增益'
 import { 循环数据, 循环详情 } from '@/@types/循环'
-import { 角色基础属性类型 } from '@/@types/角色'
+import { 装备信息数据类型 } from '@/@types/装备'
 import { useAppSelector } from '@/hooks'
 import { 获取加速等级, 计算增益数据中加速值 } from '@/工具函数/data'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
@@ -13,7 +13,7 @@ interface UseCycleProps {
 }
 
 interface 计算循环依赖数据 {
-  角色基础属性: 角色基础属性类型
+  装备信息: 装备信息数据类型
   增益数据: 增益选项数据类型
   增益启用: boolean
   网络延迟: number
@@ -27,7 +27,7 @@ function useCycle(props?: UseCycleProps): 获取计算循环结果 {
   const { 覆盖数据, 使用内存数据 = true } = props || { 使用内存数据: true, 覆盖数据: {} }
   const 计算数据: 计算循环依赖数据 = 使用内存数据
     ? {
-        角色基础属性: useAppSelector((state) => state?.data?.角色基础属性),
+        装备信息: useAppSelector((state) => state?.data?.装备信息),
         增益数据: useAppSelector((state) => state?.data?.增益数据),
         增益启用: useAppSelector((state) => state?.data?.增益启用),
         网络延迟: useAppSelector((state) => state?.data?.网络延迟),
@@ -35,7 +35,7 @@ function useCycle(props?: UseCycleProps): 获取计算循环结果 {
         自定义循环列表: useAppSelector((state) => state?.data?.自定义循环列表),
       }
     : {
-        角色基础属性: {} as any,
+        装备信息: {} as any,
         增益数据: { 阵眼: '', 小吃: [], 团队增益: [] },
         增益启用: false,
         网络延迟: 0,
@@ -47,7 +47,7 @@ function useCycle(props?: UseCycleProps): 获取计算循环结果 {
     Object.assign(计算数据, 覆盖数据)
   }
 
-  const 人物属性加速等级 = 计算数据?.角色基础属性?.加速等级 || 0
+  const 人物属性加速等级 = 计算数据?.装备信息?.装备基础属性?.加速等级 || 0
   const 增益加速等级 = 计算数据?.增益启用 ? 计算增益数据中加速值(计算数据?.增益数据) : 0
   const 加速等级 = 获取加速等级(人物属性加速等级 + 增益加速等级)
 

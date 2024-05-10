@@ -1,7 +1,7 @@
 import { 角色基础属性类型 } from '@/@types/角色'
-import 获取当前数据 from '@/数据/数据工具/获取当前数据'
+// import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 
-const { 基础属性 = {} } = 获取当前数据()
+// const { 基础属性 = {} } = 获取当前数据()
 
 export const DEFAULT_CHARACTER: 角色基础属性类型 = {
   等级: 120,
@@ -20,5 +20,5 @@ export const DEFAULT_CHARACTER: 角色基础属性类型 = {
   根骨: 41,
   体质: 0,
   加速等级: 0,
-  ...基础属性,
+  // ...基础属性,
 }

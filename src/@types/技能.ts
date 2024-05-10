@@ -74,15 +74,17 @@ export interface 技能基础数据模型 {
  * @name 技能增益列表
  * @description 技能增益的计算要符合郭氏理论：https://www.jx3box.com/bps/12752
  */
-export interface 技能增益列表类型 extends Partial<属性加成> {
+export interface 技能增益列表类型 {
   /**
-   * @name 常驻增益是否启用
+   * @name 增益启用增益类型
+   * @description 全局启用 - 对整个循环内所有该技能生效
+   * @description 部分启用 - 是否生效需要判断循环传入的技能是否携带了该增益
    */
-  常驻增益?: boolean
+  增益类型: '全局启用' | '部分启用'
   /**
    * @name 增益是否启用
    */
-  增益启用开关?: boolean
+  增益启用?: boolean
   /**
    * @name 增益名称
    */

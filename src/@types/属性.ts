@@ -39,51 +39,49 @@ export enum 属性类型 {
 
   // 会心
   全会心等级 = 'atAllTypeCriticalStrike',
-  全会心等级百分比 = 'atAllCriticalStrikeBaseRate',
   外功会心等级 = 'atPhysicsCriticalStrike',
   内功会心等级 = 'atMagicCriticalStrike',
+
+  全会心等级百分比 = 'atAllCriticalStrikeBaseRate',
   外功会心百分比 = 'atPhysicsCriticalStrikeBaseRate',
   内功会心百分比 = 'atMagicCriticalStrikeBaseRate',
 
   // 会心效果
   全会心效果等级 = 'atAllTypeCriticalDamagePowerBase',
-  郭氏全会心效果等级 = 'atAllCriticalDamagePowerBaseKiloNumRate',
-
   外功会心效果等级 = 'atPhysicsCriticalDamagePowerBase',
-  郭氏外功会心效果等级 = 'atPhysicsCriticalDamagePowerBaseKiloNumRate',
-
   内功会心效果等级 = 'atMagicCriticalDamagePowerBase',
+
+  郭氏全会心效果等级 = 'atAllCriticalDamagePowerBaseKiloNumRate',
+  郭氏外功会心效果等级 = 'atPhysicsCriticalDamagePowerBaseKiloNumRate',
   郭氏内功会心效果等级 = 'atMagicCriticalDamagePowerBaseKiloNumRate',
 
   // 破防
   全破防等级 = 'atAllOvercome',
-  郭氏全破防等级 = 'atAllOvercomePercent',
-
   外功破防等级 = 'atPhysicsOvercomeBase',
-  郭氏外功破防等级 = 'atPhysicsOvercomePercent',
-
   内功破防等级 = 'atMagicOvercome',
+
+  郭氏全破防等级 = 'atAllOvercomePercent',
+  郭氏外功破防等级 = 'atPhysicsOvercomePercent',
   郭氏内功破防等级 = 'atMagicOvercomePercent',
 
   // 基础攻击
   全基础攻击 = 'allAttackPowerBase',
-  郭氏全基础攻击 = 'allAttackPowerPercent',
-
   外功基础攻击 = 'atPhysicsAttackPowerBase',
-  郭氏外功基础攻击 = 'atPhysicsAttackPowerPercent',
-
   内功基础攻击 = 'atMagicAttackPowerBase',
+
+  郭氏全基础攻击 = 'allAttackPowerPercent',
+  郭氏外功基础攻击 = 'atPhysicsAttackPowerPercent',
   郭氏内功基础攻击 = 'atMagicAttackPowerPercent',
 
   // 面板攻击
   面板攻击 = 'toPhysicsAttackPowerCof',
 
   // 无视防御
-  郭氏全无视防御 = 'atAllShieldIgnorePercent',
-  外功基础防御 = 'atPhysicsShieldBase',
   郭氏外功基础防御 = 'atPhysicsShieldPercent',
-  内功基础防御 = 'atMagicShield',
   郭氏内功基础防御 = 'atMagicShieldPercent',
+  内功基础防御 = 'atMagicShield',
+  外功基础防御 = 'atPhysicsShieldBase',
+  郭氏全无视防御 = 'atAllShieldIgnorePercent',
 
   // 加速等级
   加速等级 = 'atHasteBase',

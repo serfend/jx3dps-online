@@ -7,7 +7,7 @@ export interface 角色基础属性类型 {
   /**
    * @name 个人等级
    */
-  等级: number
+  等级?: number
   /**
    * @name 攻击力-基础攻击力
    * @description 显示的基础攻击力

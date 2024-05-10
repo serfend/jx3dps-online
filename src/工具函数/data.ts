@@ -8,6 +8,22 @@ import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 
 const { 小药小吃 } = 获取当前数据()
 
+export const 获取郭氏结果值 = (原值 = 0, 郭氏值 = 0) => {
+  return Math.floor((原值 * 郭氏值) / 1024)
+}
+
+export const 获取郭氏加成值 = (原值 = 0, 郭氏值 = 0) => {
+  return 原值 + 获取郭氏结果值(原值, 郭氏值)
+}
+
+export const 获取非郭氏结果值 = (原值 = 0, 郭氏值 = 0) => {
+  return (原值 * 郭氏值) / 1024
+}
+
+export const 获取非郭氏加成值 = (原值 = 0, 郭氏值 = 0) => {
+  return 原值 + 获取郭氏结果值(原值, 郭氏值)
+}
+
 export const 获取加速等级 = (number) => {
   return (number || 0) < 95
     ? 0

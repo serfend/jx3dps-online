@@ -1,10 +1,10 @@
 import { 增益选项数据类型 } from './团队增益'
 import { 装备信息数据类型 } from './装备'
-import { 角色基础属性类型 } from './角色'
+// import { 角色基础属性类型 } from './角色'
 
 export interface 方案数据类型 {
   方案名称: string
-  角色基础属性: 角色基础属性类型
+  // 角色基础属性: 角色基础属性类型
   装备信息: 装备信息数据类型
   当前计算循环名称: string
   当前奇穴信息: string[]

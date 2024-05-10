@@ -44,3 +44,5 @@ export const 修改页面Logo = (src) => {
   }
   link.href = src
 }
+
+export const INT = (val) => Math.floor(val)
