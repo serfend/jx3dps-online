@@ -13,7 +13,7 @@ export interface 阵眼数据类型 {
   /**
    * @name 增益集合
    */
-  增益集合?: 属性加成[]
+  增益集合?: 阵眼增益[]
   /**
    * @name 伤害提升百分比
    */
@@ -26,4 +26,11 @@ export interface 阵眼数据类型 {
    * @name 伤害排名
    */
   伤害排名?: number
+}
+
+export interface 阵眼增益 extends 属性加成 {
+  /**
+   * 代表本增益为触发形增益，不体现在面板上
+   */
+  触发型增益?: true
 }

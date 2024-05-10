@@ -31,12 +31,19 @@ function 面板信息() {
   const { 装备基础属性 } = 装备信息 || {}
 
   const [开启优化算法, 切换开启优化算法] = useState<boolean>(false)
+  const [显示增益后面板, 切换显示增益后面板] = useState<boolean>(false)
 
   const mapKeyList = [主属性, '攻击', '会心', '会效', '破防', '无双', '破招', '全能', '加速']
 
   const 显示数据 = useMemo(() => {
-    return 获取角色需要展示的面板数据({ 装备信息, 当前奇穴信息, 增益数据, 增益启用 })
-  }, [装备信息, 当前奇穴信息, 增益数据, 增益启用])
+    return 获取角色需要展示的面板数据({
+      装备信息,
+      当前奇穴信息,
+      增益数据,
+      增益启用,
+      显示增益后面板,
+    })
+  }, [装备信息, 当前奇穴信息, 增益数据, 增益启用, 显示增益后面板])
 
   const 最大秒伤数据: any = useMemo(() => {
     if (!开启优化算法) {
@@ -66,18 +73,21 @@ function 面板信息() {
   return (
     <div className={'character-show'}>
       <div className={'character-title-wrapper'}>
-        <h1 className={'character-title'}>
-          角色属性
-          <Tooltip title='增益、大附魔的数值加成暂未体现在面板显示，不影响计算'>
-            <QuestionCircleOutlined className={'character-max-title-tip'} />
-          </Tooltip>
-        </h1>
-        <Checkbox checked={开启优化算法} onChange={(e) => 切换开启优化算法(e?.target?.checked)}>
-          优化算法
-          <Tooltip title='采用拟牛顿法对属性做优化演算，仅能代表在当前已穿装备总属性容量不变的情况下的，各属性近似最优收益方向。仅作参考，开启后会消耗额外性能。'>
-            <QuestionCircleOutlined className={'character-max-title-tip'} />
-          </Tooltip>
-        </Checkbox>
+        <h1 className={'character-title'}>角色属性</h1>
+        <div>
+          <Checkbox
+            checked={显示增益后面板}
+            onChange={(e) => 切换显示增益后面板(e?.target?.checked)}
+          >
+            <Tooltip title={'开启后将展示阵眼常驻增益、小吃小药、团队宴席增益'}>增益面板</Tooltip>
+          </Checkbox>
+          <Checkbox checked={开启优化算法} onChange={(e) => 切换开启优化算法(e?.target?.checked)}>
+            优化算法
+            <Tooltip title='采用拟牛顿法对属性做优化演算，仅能代表在当前已穿装备总属性容量不变的情况下的，各属性近似最优收益方向。仅作参考，开启后会消耗额外性能。'>
+              <QuestionCircleOutlined className={'character-max-title-tip'} />
+            </Tooltip>
+          </Checkbox>
+        </div>
       </div>
       {mapKeyList.map((item) => {
         const 最优属性: any =
