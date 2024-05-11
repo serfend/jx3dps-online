@@ -97,9 +97,9 @@ function 面板信息() {
         return (
           <div className='character-item' key={item}>
             <h1 className='character-label'>{item}</h1>
-            <Tooltip placement='topLeft' title={() => getCharacterDataNumber(item, 显示数据)}>
+            <Tooltip placement='topLeft' title={() => 获取面板显示数据数值(item, 显示数据)}>
               <div className='character-content'>
-                <span className='character-content-normal'>{getCharacterData(item, 显示数据)}</span>
+                <span className='character-content-normal'>{获取面板显示数据(item, 显示数据)}</span>
                 {开启优化算法 && 最优属性 && 最优属性?.value !== '-1' ? (
                   <span
                     className={`character-content-max ${
@@ -121,7 +121,7 @@ function 面板信息() {
 export default 面板信息
 
 // 获取属性展示
-export const getCharacterData = (key: string, 角色最终属性: 角色基础属性类型) => {
+export const 获取面板显示数据 = (key: string, 角色最终属性: 角色基础属性类型) => {
   switch (key) {
     case 主属性:
       return 角色最终属性?.[主属性] || 0
@@ -162,7 +162,7 @@ export const getCharacterData = (key: string, 角色最终属性: 角色基础�
   return ''
 }
 
-export const getCharacterDataNumber = (key: string, 角色最终属性: 角色基础属性类型) => {
+export const 获取面板显示数据数值 = (key: string, 角色最终属性: 角色基础属性类型) => {
   switch (key) {
     case 主属性:
       return 角色最终属性?.[主属性] || 0

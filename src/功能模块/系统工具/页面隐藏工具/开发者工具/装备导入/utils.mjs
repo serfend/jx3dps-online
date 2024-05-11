@@ -72,7 +72,7 @@ export const 接口装备数据格式化 = (list,赛季范围数据) => {
 const getZengyi = ({ attr }) => {
   if (attr?.length) {
     return {
-      属性: ShuxingMeiju[attr?.[0]] || '未匹配',
+      属性: 属性枚举[attr?.[0]] || '未匹配',
       值: +attr?.[1],
     }
   } else {
@@ -83,7 +83,7 @@ const getZengyi = ({ attr }) => {
 const getXiangqian = (data) => {
   if (data?.length) {
     return {
-      镶嵌类型: 镶嵌名称枚举[data?.[0]],
+      镶嵌类型: 属性枚举[data?.[0]],
     }
   } else {
     return null
@@ -190,7 +190,7 @@ export const 判断装备主属性 = (item) => {
 }
 
 // 属性类型枚举（转化魔盒的属性类型为本地属性类型
-const ShuxingMeiju = {
+const 属性枚举 = {
   atVitalityBase: '属性类型.体质',
   atStrengthBase: '属性类型.力道',
   atAgilityBase: '属性类型.身法',
@@ -228,43 +228,4 @@ const ShuxingMeiju = {
   atSolarOvercomeBase: '属性类型.内功破防等级',
   atLunarOvercomeBase: '属性类型.内功破防等级',
   atSolarAndLunarOvercomeBase: '属性类型.内功破防等级',
-}
-
-const 镶嵌名称枚举 = {
-  atVitalityBase: '镶嵌增伤类型枚举.体质',
-  atStrengthBase: '镶嵌增伤类型枚举.力道',
-  atAgilityBase: '镶嵌增伤类型枚举.身法',
-  atSpunkBase: '镶嵌增伤类型枚举.元气',
-  atSpiritBase: '镶嵌增伤类型枚举.根骨',
-  atMaxLifeAdditional: '镶嵌增伤类型枚举.气血',
-  atStrainBase: '镶嵌增伤类型枚举.无双',
-  atPVXAllRound: '镶嵌增伤类型枚举.全能',
-  atSurplusValueBase: '镶嵌增伤类型枚举.破招',
-  atPhysicsAttackPowerBase: '镶嵌增伤类型枚举.外攻',
-  atPhysicsCriticalStrike: '镶嵌增伤类型枚举.会心',
-  atPhysicsCriticalDamagePowerBase: '镶嵌增伤类型枚举.会效',
-  atPhysicsOvercomeBase: '镶嵌增伤类型枚举.破防',
-
-  atMagicAttackPowerBase: '镶嵌增伤类型枚举.内攻',
-  atPoisonAttackPowerBase:'镶嵌增伤类型枚举.内攻',
-  atSolarAttackPowerBase:'镶嵌增伤类型枚举.内攻',
-  atNeutralAttackPowerBase:'镶嵌增伤类型枚举.内攻',
-  atLunarAttackPowerBase:'镶嵌增伤类型枚举.内攻',
-  
-  atAllTypeCriticalStrike: '镶嵌增伤类型枚举.会心',
-  atMagicCriticalStrike: '镶嵌增伤类型枚举.会心',
-  atNeutralCriticalStrike: '镶嵌增伤类型枚举.会心',
-  atSolarCriticalStrike: '镶嵌增伤类型枚举.会心',
-  atPoisonCriticalStrike: '镶嵌增伤类型枚举.会心',
-  atLunarCriticalStrike: '镶嵌增伤类型枚举.会心',
-
-  atMagicCriticalDamagePowerBase: '镶嵌增伤类型枚举.会效',
-  atAllTypeCriticalDamagePowerBase: '镶嵌增伤类型枚举.会效',
-
-  atMagicOvercome: '镶嵌增伤类型枚举.破防',
-  atPoisonOvercomeBase: '镶嵌增伤类型枚举.破防',
-  atNeutralOvercomeBase: '镶嵌增伤类型枚举.破防',
-  atSolarOvercomeBase: '镶嵌增伤类型枚举.破防',
-  atLunarOvercomeBase: '镶嵌增伤类型枚举.破防',
-  atSolarAndLunarOvercomeBase: '镶嵌增伤类型枚举.破防',
 }

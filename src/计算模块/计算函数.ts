@@ -74,6 +74,7 @@ export const 秒伤计算 =
         自定义循环列表: 自定义循环列表,
         当前计算循环名称: 当前计算循环名称,
       },
+      使用内存数据: false,
     })
 
     const 当前循环技能列表 = 更新循环技能列表?.length ? 更新循环技能列表 : 计算循环详情?.技能详情
@@ -107,3 +108,10 @@ export const 秒伤计算 =
 
     return 计算结果
   }
+
+// 增加setTimeout，等dispatch的state都更新完了再执行计算函数
+export const 触发秒伤计算 = (props?: CurrentDpsFunctionProps) => (dispatch) => {
+  setTimeout(() => {
+    dispatch(秒伤计算(props))
+  }, 0)
+}

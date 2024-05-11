@@ -2,7 +2,7 @@ import { useAppSelector } from '@/hooks'
 import React, { useMemo } from 'react'
 import { 小药小吃数据类型 } from '@/@types/小药小吃'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
-import XiaochiSelect from './xiaochiSelect'
+import 小药小吃选择框 from './小药小吃选择框'
 import './index.css'
 
 const { 小药小吃 } = 获取当前数据()
@@ -63,7 +63,7 @@ function XiaochiXuanze({ 保存数据并计算, 开启智能对比 }) {
         return (
           <div className='zengyi-xiaochi-item' key={item.type}>
             <h1 className='zengyi-xiaochi-title'>{item.type}</h1>
-            <XiaochiSelect
+            <小药小吃选择框
               data={item?.data}
               value={selectedValue}
               onChange={(e) => changeSelectedXiaochi(e, item?.type)}

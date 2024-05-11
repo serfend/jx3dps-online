@@ -43,20 +43,33 @@ export enum 五彩石增益类型枚举 {
   破招值 = '破招',
 }
 
-// 镶嵌增伤类型
-export enum 镶嵌增伤类型枚举 {
-  力道 = '力道',
-  身法 = '身法',
-  元气 = '元气',
-  根骨 = '根骨',
-  外攻 = '外攻',
-  内攻 = '内攻',
-  破招 = '破招',
-  会心 = '会心',
-  会效 = '会效',
-  破防 = '破防',
-  无双 = '无双',
-  加速 = '加速',
-  气血 = '气血',
-  全能 = '全能',
+export const 属性简写枚举 = {
+  atVitalityBase: '体质',
+  atStrengthBase: '力道',
+  atSpunkBase: '元气',
+  atAgilityBase: '身法',
+  atSpiritBase: '根骨',
+  atPVXAllRound: '全能',
+
+  allAttackPowerBase: '攻击',
+  atPhysicsAttackPowerBase: '攻击',
+  atMagicAttackPowerBase: '攻击',
+  atSurplusValueBase: '破招',
+
+  atAllTypeCriticalStrike: '会心',
+  atPhysicsCriticalStrike: '会心',
+  atMagicCriticalStrike: '会心',
+
+  atAllTypeCriticalDamagePowerBase: '会效',
+  atPhysicsCriticalDamagePowerBase: '会效',
+  atMagicCriticalDamagePowerBase: '会效',
+
+  atPhysicsOvercomeBase: '破防',
+  atAllOvercome: '破防',
+  atMagicOvercome: '破防',
+
+  atMeleeWeaponDamageBase: '武伤',
+
+  atStrainBase: '无双',
+  atHasteBase: '加速',
 }

@@ -1,0 +1,147 @@
+/**
+ * 装备选择
+ */
+import React, { forwardRef, useMemo } from 'react'
+import 装备部位选择 from './装备部位选择'
+import 精炼等级选择 from './精炼等级选择'
+import 镶嵌孔选择 from './镶嵌孔选择'
+import 附魔选择 from './附魔选择'
+import { 装备部位枚举 } from '@/@types/枚举'
+import { 装备位置部位枚举, 装备属性信息模型, 装备类型枚举, 选择装备数据类型 } from '@/@types/装备'
+import './index.css'
+import 获取当前数据 from '@/数据/数据工具/获取当前数据'
+
+interface 装备选择入参 {
+  value?: 选择装备数据类型
+  onChange?: (e: 选择装备数据类型) => void
+  form: any
+  部位: 装备部位枚举
+  部位索引: string
+  默认镶嵌宝石等级: number
+  开启装备智能对比: boolean
+}
+
+const { 装备数据, 附魔 } = 获取当前数据()
+
+function 装备选择(props: 装备选择入参, ref) {
+  const { value, onChange, 部位, 默认镶嵌宝石等级, 部位索引, form, 开启装备智能对比 } = props
+
+  const list: 装备属性信息模型[] = useMemo(() => {
+    return 装备数据[部位] || []
+  }, [部位])
+
+  // 选择装备
+  const 选择装备 = (e) => {
+    const obj = list.find((item) => item.id === e)
+    onChange &&
+      onChange({
+        ...value,
+        镶嵌孔数组: obj?.镶嵌孔数组?.map((item) => {
+          return {
+            ...item,
+            镶嵌宝石等级: 默认镶嵌宝石等级,
+          }
+        }),
+        当前精炼等级: 获取最大精炼等级(obj),
+        id: e,
+        装备部位: 装备位置部位枚举[部位索引],
+      } as any)
+  }
+
+  // 选择精炼等级
+  const 选择精炼等级 = (e) => {
+    onChange &&
+      onChange({
+        ...value,
+        当前精炼等级: e,
+      } as any)
+  }
+
+  // 选择精炼等级
+  const onXiangQianSelect = (e) => {
+    onChange &&
+      onChange({
+        ...value,
+        镶嵌孔数组: e,
+      } as any)
+  }
+
+  const onFumoSelect = (e) => {
+    onChange &&
+      onChange({
+        ...value,
+        附魔: e,
+      } as any)
+  }
+
+  const 当前选择装备数据: 装备属性信息模型 = useMemo(() => {
+    const obj = list.find((item) => item.id === value?.id)
+    return {
+      ...obj,
+      最大精炼等级: obj ? 获取最大精炼等级(obj) || 0 : undefined,
+    } as any
+  }, [value?.id])
+
+  const 当前装备支持附魔列表 = useMemo(() => {
+    return (附魔 || []).filter((item) => {
+      return item?.附魔支持部位?.some((a) => a === 部位)
+    })
+  }, [部位, 附魔])
+
+  return (
+    <div className={'zhuangbei-form-item'} ref={ref}>
+      <div className='zhuangbei-form-item-left-1'>
+        <装备部位选择
+          value={value?.id}
+          allValue={value}
+          onChange={选择装备}
+          form={form}
+          装备数据列表={list}
+          部位={部位}
+          部位索引={部位索引}
+          默认镶嵌宝石等级={默认镶嵌宝石等级}
+          开启装备智能对比={开启装备智能对比}
+        />
+      </div>
+      <div className='zhuangbei-form-item-left-2'>
+        <精炼等级选择
+          disabled={!当前选择装备数据?.id}
+          key={当前选择装备数据?.id}
+          value={value?.当前精炼等级}
+          defaultValue={当前选择装备数据?.最大精炼等级}
+          onChange={选择精炼等级}
+          装备数据={当前选择装备数据}
+        />
+      </div>
+      <div className='zhuangbei-form-item-left-3'>
+        <镶嵌孔选择
+          data={当前选择装备数据 as any}
+          value={value?.镶嵌孔数组}
+          onChange={onXiangQianSelect}
+          部位索引={部位索引}
+        />
+      </div>
+      {当前装备支持附魔列表?.length && 当前选择装备数据?.id ? (
+        <div className='zhuangbei-form-item-left-4'>
+          <附魔选择 list={当前装备支持附魔列表} value={value?.附魔} onChange={onFumoSelect} />
+        </div>
+      ) : null}
+    </div>
+  )
+}
+
+export default forwardRef(装备选择)
+
+export const 获取最大精炼等级 = (data?: 装备属性信息模型) => {
+  switch (data?.装备类型) {
+    case 装备类型枚举.橙武:
+      return 8
+    case 装备类型枚举.副本精简:
+    case 装备类型枚举.特效武器:
+      return 4
+    case 装备类型枚举.试炼精简:
+      return 3
+    default:
+      return 6
+  }
+}

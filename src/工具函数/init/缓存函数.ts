@@ -2,7 +2,7 @@ import { DEFAULT_PROJECT_NAME, 目标集合 } from '@/数据/常量'
 import { 全部方案数据 } from '@/@types/方案'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 import useCycle from '@/hooks/use-cycle'
-import { DEFAULT_CHARACTER } from './默认数据'
+import { 角色默认基础属性 } from './默认数据'
 
 const { 缓存映射, 默认秘籍 = {}, 奇穴数据 = [] } = 获取当前数据()
 
@@ -55,7 +55,7 @@ export const 加载缓存全部方案数据 = () => {
   const 默认全部方案数据: 全部方案数据 = {
     默认方案: {
       方案名称: DEFAULT_PROJECT_NAME,
-      装备信息: { 装备基础属性: DEFAULT_CHARACTER, 装备列表: [], 装备增益: {} },
+      装备信息: { 装备基础属性: 角色默认基础属性, 装备列表: [], 装备增益: {}, 五彩石: '' },
       增益启用: false,
       增益数据: { 阵眼: '', 小吃: [], 团队增益: [] },
       当前计算循环名称: 当前循环名称,

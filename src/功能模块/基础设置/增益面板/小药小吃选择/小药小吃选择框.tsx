@@ -4,12 +4,12 @@ import { 秒伤计算 } from '@/计算模块/计算函数'
 import { Select, SelectProps } from 'antd'
 import React, { useState } from 'react'
 
-interface XiaochiSelectProps extends SelectProps {
+interface 小药小吃选择框入参 extends SelectProps {
   开启智能对比?: boolean
   data?: 小药小吃数据类型[]
 }
 
-const XiaochiSelect: React.FC<XiaochiSelectProps> = (props) => {
+const 小药小吃选择框: React.FC<小药小吃选择框入参> = (props) => {
   const { 开启智能对比, data, ...rest } = props
 
   const 增益数据 = useAppSelector((state) => state?.data?.增益数据)
@@ -98,4 +98,4 @@ const XiaochiSelect: React.FC<XiaochiSelectProps> = (props) => {
   )
 }
 
-export default XiaochiSelect
+export default 小药小吃选择框

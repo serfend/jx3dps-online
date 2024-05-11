@@ -18,7 +18,7 @@ const 获取魔盒饰品数据 = (params) => 魔盒配装接口.get(`/equip/trin
 import { 接口装备数据格式化 } from './utils.mjs'
 import 赛季范围数据 from './赛季范围数据.mjs'
 
-export const 获取数据 = async ({ 功法, 装备部位, 品级范围, 装备质量 }) => {
+export const 获取数据 = async ({ 功法, 装备部位, 品级范围, 装备质量, 所属方向 = "1" }) => {
   const 接口 = [0, 1]?.includes(装备部位)
     ? 获取魔盒武器数据
     : [4, 5, 7]?.includes(装备部位)
@@ -29,7 +29,7 @@ export const 获取数据 = async ({ 功法, 装备部位, 品级范围, 装备�
 
   const 参数 = {
     position: 装备部位,
-    pv_type: '1,3', // 1PVE 3PVX
+    pv_type: 所属方向, // 1PVE 3PVX
     duty: 功法,
     // MagicKind: '力道,身法,外功',
     Quality: 装备质量 || undefined, // 4 紫武 ，5 橙武
