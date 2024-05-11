@@ -22,6 +22,7 @@ function 配装器(props: ModalProps) {
   const { open, onCancel } = props
   const dispatch = useAppDispatch()
   const 当前计算结果 = useAppSelector((state) => state?.data?.当前计算结果)
+
   const 装备信息 = useAppSelector((state) => state?.data?.装备信息)
 
   const [当前装备信息, 更新当前装备信息] = useState<装备信息数据类型>()
@@ -86,7 +87,7 @@ function 配装器(props: ModalProps) {
     form.validateFields().then((value) => {
       const 装备信息 = 根据表单选项获取装备信息(value)
       dispatch(更新方案数据({ 数据: 装备信息, 属性: '装备信息' }))
-      dispatch(触发秒伤计算())
+      dispatch(触发秒伤计算({ 是否更新显示计算结果: true }))
       onCancel?.({} as any)
     })
   }

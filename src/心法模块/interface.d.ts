@@ -52,7 +52,7 @@ export interface 心法配置类型 {
   /**
    * @name 默认秘籍
    */
-  默认秘籍: { [key: string]: string[] }
+  默认数据: any
   /**
    * @name 技能系数
    */
