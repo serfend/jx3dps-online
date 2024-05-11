@@ -340,7 +340,7 @@ export const 通用增益计算 = (增益: 属性加成, 最终计算属性: 最
       技能系数 += 值
       break
     default:
-      console.warn(`存在未计算增益${增益?.属性}`, 增益)
+      // console.warn(`存在未计算增益${增益?.属性}`, 增益)
       break
   }
 

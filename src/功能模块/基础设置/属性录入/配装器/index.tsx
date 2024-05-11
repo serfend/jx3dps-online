@@ -37,10 +37,31 @@ function 配装器(props: ModalProps) {
       设置魔盒导入弹窗(false)
       设置开启装备智能对比(false)
       设置默认镶嵌宝石等级(8)
+      初始化表单(装备信息)
     }
   }, [open])
 
   const [form] = Form.useForm()
+
+  const 初始化表单 = (装备信息: 装备信息数据类型) => {
+    const newObj = {
+      五彩石: 装备信息.五彩石,
+      大附魔_伤帽: 装备信息?.装备增益?.大附魔_伤帽,
+      大附魔_伤衣: 装备信息?.装备增益?.大附魔_伤衣,
+      大附魔_伤腰: 装备信息?.装备增益?.大附魔_伤腰,
+      大附魔_伤腕: 装备信息?.装备增益?.大附魔_伤腕,
+      大附魔_伤鞋: 装备信息?.装备增益?.大附魔_伤鞋,
+    }
+    Object.keys(装备位置部位枚举).map((item, index) => {
+      const o = 装备信息.装备列表?.find(
+        (a, i) => a.装备部位 === 装备位置部位枚举[item] && index === i
+      )
+      if (o) {
+        newObj[`${item}`] = o
+      }
+    })
+    form.setFieldsValue(newObj)
+  }
 
   const 更换装备计算秒伤 = (_, value) => {
     try {

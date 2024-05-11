@@ -22,7 +22,6 @@ export const 修改装备属性 = (装备基础属性: 角色基础属性类型,
 
 export const 初始化所有组合 = () => {
   const res = {}
-  console.log('附魔', 附魔)
   // 先找出该装备部位支持的同种类的最大数值的附魔
   Object.keys(装备部位枚举).forEach((key) => {
     附魔?.forEach((item) => {

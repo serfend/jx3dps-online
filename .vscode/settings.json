@@ -1,6 +1,7 @@
 {
   "conventionalCommits.scopes": [
     "common",
-    "计算"
+    "计算",
+    "装备"
   ]
 }

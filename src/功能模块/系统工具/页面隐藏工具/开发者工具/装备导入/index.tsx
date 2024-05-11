@@ -109,7 +109,6 @@ function EquipmentImport() {
                     onChange={(e) => {
                       const newV = Math.min(e || 0, 品级数组?.[1]) || 0
                       const newData = [newV, 品级数组?.[1] || 0]
-                      console.log('1newData', newData)
                       更新品级数组(newData)
                       form?.setFieldsValue({ range: newData })
                     }}
