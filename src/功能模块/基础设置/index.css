@@ -22,7 +22,7 @@
   width: 0;
   opacity: 0;
   transition: .2s;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 .basic-set-zengyi.basic-set-zengyi-visible {

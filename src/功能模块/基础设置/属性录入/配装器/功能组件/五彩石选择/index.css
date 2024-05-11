@@ -1,5 +1,6 @@
 .wucaishi-wrap {
   width: 100%;
+  position: relative;
 }
 
 .wucaishi-xuanze-wrap .wucaishi-xuanze {
@@ -15,9 +16,13 @@
 }
 
 .wucaishi-value {
-  margin-top: 12px;
-  font-size: 16px;
-  line-height: 30px;
+  position: absolute;
+  top: -35px;
+  right: 0px;
+  width: 196px;
+  height: 26px;
+  font-size: 14px;
+  line-height: 24px;
   border: 1px solid #d9d9d9;
   padding: 0 11px;
   text-align: center;

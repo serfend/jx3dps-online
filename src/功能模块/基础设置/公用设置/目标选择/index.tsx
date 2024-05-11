@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from '@/hooks'
 import { Select } from 'antd'
 import { 更新当前输出计算目标名称 } from '@/store/data'
 import { 目标集合 } from '@/数据/常量'
+import { 触发秒伤计算 } from '@/计算模块/计算函数'
 
 function 目标选择() {
   const dispatch = useAppDispatch()
@@ -10,6 +11,7 @@ function 目标选择() {
 
   const 切换目标 = (v) => {
     dispatch(更新当前输出计算目标名称(v))
+    dispatch(触发秒伤计算({ 是否更新显示计算结果: true }))
   }
 
   return (

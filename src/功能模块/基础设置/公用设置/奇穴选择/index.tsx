@@ -3,6 +3,7 @@ import { Button, Drawer, Form, Select } from 'antd'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { 更新方案数据 } from '@/store/data'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
+import { 触发秒伤计算 } from '@/计算模块/计算函数'
 import './index.css'
 
 const { 奇穴数据 = [] } = 获取当前数据()
@@ -14,16 +15,13 @@ const 奇穴选择: React.FC = () => {
   const dispatch = useAppDispatch()
   const 当前奇穴信息 = useAppSelector((state) => state?.data?.当前奇穴信息)
 
-  const handleChangeQixue = () => {
-    setTimeout(() => {
-      form?.validateFields().then((values) => {
-        const newArray = Object.keys(values).map((key) => {
-          return values[key]
-        })
+  const handleChangeQixue = (_, values) => {
+    const newArray = Object.keys(values).map((key) => {
+      return values[key]
+    })
 
-        dispatch(更新方案数据({ 数据: newArray, 属性: '当前奇穴信息' }))
-      })
-    }, 0)
+    dispatch(更新方案数据({ 数据: newArray, 属性: '当前奇穴信息' }))
+    dispatch(触发秒伤计算({ 是否更新显示计算结果: true }))
   }
 
   // 监听表单变化
@@ -50,14 +48,14 @@ const 奇穴选择: React.FC = () => {
         height={200}
         className={'qixue-set-drawer'}
       >
-        <Form form={form} className={'qixue-set-drawer-wrap'}>
+        <Form onValuesChange={handleChangeQixue} form={form} className={'qixue-set-drawer-wrap'}>
           {奇穴数据.map((重, index) => {
             return (
               <Form.Item className={'qixue-set-item'} name={index} key={index + 1}>
                 <Select
                   className={'qixue-set-item-select'}
                   disabled={重?.是否不可编辑}
-                  onChange={handleChangeQixue}
+                  // onChange={handleChangeQixue}
                   dropdownMatchSelectWidth={false}
                   optionLabelProp='label'
                   showArrow={false}

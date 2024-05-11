@@ -21,8 +21,8 @@ import './index.css'
 function 配装器(props: ModalProps) {
   const { open, onCancel } = props
   const dispatch = useAppDispatch()
-  const 当前计算结果 = useAppSelector((state) => state?.data?.当前计算结果)
 
+  const 当前计算结果 = useAppSelector((state) => state?.data?.当前计算结果)
   const 装备信息 = useAppSelector((state) => state?.data?.装备信息)
 
   const [当前装备信息, 更新当前装备信息] = useState<装备信息数据类型>()
@@ -71,7 +71,6 @@ function 配装器(props: ModalProps) {
       设置更换装备后秒伤(秒伤)
       更新当前装备信息(装备信息)
     } catch (_) {
-      console.log('_', _)
       更新当前装备信息(undefined)
       设置更换装备后秒伤(0)
     }

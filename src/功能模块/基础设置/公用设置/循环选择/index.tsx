@@ -4,6 +4,7 @@ import { Select } from 'antd'
 import { 更新方案数据 } from '@/store/data'
 import classnames from 'classnames'
 import useCycle from '@/hooks/use-cycle'
+import { 触发秒伤计算 } from '@/计算模块/计算函数'
 import './index.css'
 
 function 循环选择() {
@@ -14,6 +15,7 @@ function 循环选择() {
 
   const 切换循环 = (val) => {
     dispatch(更新方案数据({ 属性: '当前计算循环名称', 数据: val }))
+    dispatch(触发秒伤计算({ 是否更新显示计算结果: true }))
   }
 
   return (

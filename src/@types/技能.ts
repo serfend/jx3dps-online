@@ -12,6 +12,11 @@ export interface 技能基础数据模型 {
    */
   技能名称: string
   /**
+   * @name 统计名称
+   * @description 在最终显示时可以选择合并成同一个名称显示
+   */
+  统计名称?: string
+  /**
    * @name 技能伤害系数
    * @description 游戏面板技能伤害 / 角色面板攻击
    * @default 0

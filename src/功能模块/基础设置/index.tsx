@@ -6,6 +6,7 @@ import 公用设置 from './公用设置'
 import 增益面板 from './增益面板'
 import 面板信息 from './面板信息'
 import 属性录入 from './属性录入'
+import 底部配置 from './底部配置'
 
 import './index.css'
 
@@ -16,10 +17,10 @@ function 基础设置() {
     <div className={'basic-set'}>
       <div className={'basic-set-info'}>
         <基础设置标题 />
-        {/* 公用设置/目标/循环/输出时间 */}
         <公用设置 />
         <面板信息 />
         <属性录入 />
+        <底部配置 />
       </div>
       <div className={`basic-set-zengyi ${增益面板显示状态 ? 'basic-set-zengyi-visible' : null}`}>
         <增益面板 />

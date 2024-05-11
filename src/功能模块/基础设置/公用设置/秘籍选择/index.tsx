@@ -3,6 +3,7 @@ import { Button, Checkbox, Col, Drawer, Row } from 'antd'
 import { 技能秘籍信息 } from '@/@types/秘籍'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { 更新当前秘籍信息 } from '@/store/data'
+import { 触发秒伤计算 } from '@/计算模块/计算函数'
 import { 获取当前职业的所有秘籍信息 } from './utils'
 import './index.css'
 
@@ -19,6 +20,7 @@ function 秘籍选择() {
       [技能信息?.技能名称]: 新秘籍列表,
     }
     dispatch(更新当前秘籍信息(newData))
+    dispatch(触发秒伤计算({ 是否更新显示计算结果: true }))
   }
 
   return (
@@ -40,11 +42,11 @@ function 秘籍选择() {
           return (
             <div className={'miji-selected-item'} key={技能.技能名称}>
               <h1 className={'miji-skill-title'}>{技能.技能名称}</h1>
-              <Row>
-                <Checkbox.Group
-                  value={当前秘籍信息?.[技能?.技能名称] || []}
-                  onChange={(新秘籍列表) => 选择秘籍(新秘籍列表 as string[], 技能)}
-                >
+              <Checkbox.Group
+                value={当前秘籍信息?.[技能?.技能名称] || []}
+                onChange={(新秘籍列表) => 选择秘籍(新秘籍列表 as string[], 技能)}
+              >
+                <Row>
                   {技能.技能秘籍列表.map((秘籍) => {
                     return (
                       <Col key={`${技能?.技能名称}${秘籍}`} span={8}>
@@ -52,8 +54,8 @@ function 秘籍选择() {
                       </Col>
                     )
                   })}
-                </Checkbox.Group>
-              </Row>
+                </Row>
+              </Checkbox.Group>
             </div>
           )
         })}

@@ -24,4 +24,5 @@ export interface 计算结果技能列表类型 {
   技能数量: number
   技能总输出: number
   会心几率?: number
+  总会心个数?: number
 }

@@ -1,0 +1,115 @@
+import { Checkbox, Modal } from 'antd'
+import React, { useMemo, useState } from 'react'
+import { useAppSelector } from '@/hooks'
+import { 计算结果技能列表类型 } from '@/@types/输出'
+import './index.css'
+
+function 结果统计({ visible, onClose, title = '技能统计' as any }) {
+  const 当前计算结果 = useAppSelector((state) => state?.data?.当前计算结果)
+
+  const [合并同名技能, 设置合并同名技能] = useState<boolean>(true)
+
+  const sortDpsList = useMemo(() => {
+    let list: 计算结果技能列表类型[] = []
+    if (合并同名技能) {
+      const 根据统计名称生成数组: 计算结果技能列表类型[] = []
+      const 同名数组: { [key: string]: 计算结果技能列表类型 } = {}
+      console.log('当前计算结果?.计算结果技能列表', 当前计算结果?.计算结果技能列表)
+      当前计算结果?.计算结果技能列表?.forEach((技能) => {
+        if (技能?.统计名称) {
+          同名数组[技能?.统计名称] = {
+            统计名称: 技能?.统计名称,
+            技能名称: 技能?.统计名称,
+            技能数量: (同名数组[技能?.统计名称]?.技能数量 || 0) + (技能?.技能数量 || 0),
+            总会心个数:
+              (同名数组[技能?.统计名称]?.总会心个数 || 0) + (技能?.会心几率 || 0) * 技能?.技能数量,
+            技能总输出: (同名数组[技能?.统计名称]?.技能总输出 || 0) + (技能?.技能总输出 || 0),
+          }
+        } else {
+          根据统计名称生成数组.push(技能)
+        }
+      })
+      console.log('同名数组', 同名数组)
+      Object.keys(同名数组).forEach((key) => {
+        const 技能 = 同名数组[key]
+        根据统计名称生成数组.push({
+          ...技能,
+          会心几率: (技能.总会心个数 || 0) / 技能.技能数量,
+        })
+      })
+      list = [...根据统计名称生成数组]
+    } else {
+      list = [...(当前计算结果?.计算结果技能列表 || [])]
+    }
+
+    list.sort((a, b) => {
+      return b.技能总输出 - a.技能总输出
+    })
+
+    return list.filter((item) => {
+      return +item.技能总输出 > 0
+    })
+  }, [当前计算结果, 合并同名技能])
+
+  return (
+    <Modal
+      className='dps-count-modal'
+      width={700}
+      centered
+      title={
+        <div className={'dps-count-modal-title'}>
+          <span>{title || '技能统计'}</span>
+          <Checkbox checked={合并同名技能} onChange={(e) => 设置合并同名技能(e?.target?.checked)}>
+            合并同名技能
+          </Checkbox>
+        </div>
+      }
+      open={visible}
+      onCancel={() => onClose()}
+      footer={false}
+    >
+      <div>
+        <div className={'dps-skill-count'}>
+          <div className={'dps-line-header dps-total'}>
+            <span>技能名称</span>
+            <div className={'dps-count'}>
+              <span className='dps-count-1'>技能数量</span>
+              <span className='dps-count-2'>技能总伤</span>
+              <span className='dps-count-3'>会心几率</span>
+              <span className='dps-count-4'>技能比例</span>
+            </div>
+          </div>
+        </div>
+        {sortDpsList?.length ? (
+          <div className={'dps-skill-count'}>
+            {sortDpsList.map((item, index) => {
+              return (
+                <div className={'dps-line-wrap'} key={item.技能名称 + index}>
+                  <div className={'dps-line'}>
+                    <span>{item.统计名称 || item.技能名称}</span>
+                    <div className={'dps-count'}>
+                      <span className='dps-count-1'>{item.技能数量}</span>
+                      <span className='dps-count-2'>{item.技能总输出}</span>
+                      <span className='dps-count-3'>
+                        {((item?.会心几率 || 0) * 100).toFixed(2)}%
+                      </span>
+                      <span className='dps-count-4'>
+                        {((item.技能总输出 / 当前计算结果?.总伤) * 100).toFixed(2)}%
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    className={'dps-line-bg'}
+                    style={{ width: `${(item.技能总输出 / sortDpsList?.[0]?.技能总输出) * 100}%` }}
+                  />
+                </div>
+              )
+            })}
+          </div>
+        ) : null}
+      </div>
+    </Modal>
+  )
+}
+
+export default 结果统计

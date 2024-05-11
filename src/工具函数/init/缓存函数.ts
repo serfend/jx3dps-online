@@ -100,7 +100,7 @@ export const 加载缓存当前秘籍信息 = () => {
     try {
       const obj = JSON.parse(local) || {}
       if (obj) {
-        return { ...obj }
+        return { ...默认秘籍, ...obj }
       }
       return { ...默认秘籍 }
     } catch {

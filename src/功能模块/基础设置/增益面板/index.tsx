@@ -7,6 +7,7 @@ import 阵眼选择 from './阵眼选择'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 import { 更新方案数据 } from '@/store/data'
 import './index.css'
+import { 触发秒伤计算 } from '@/计算模块/计算函数'
 
 const { 增益快捷设置数据 = [] } = 获取当前数据()
 
@@ -25,13 +26,13 @@ function 增益面板() {
   const 保存数据并计算 = (newData) => {
     dispatch(更新方案数据({ 数据: newData, 属性: '增益数据' }))
     if (增益启用) {
-      // getDpsFunction()
+      dispatch(触发秒伤计算({ 是否更新显示计算结果: true }))
     }
   }
 
   const 切换增益启用状态 = (checked) => {
     dispatch(更新方案数据({ 数据: checked ? true : false, 属性: '增益启用' }))
-    // getDpsFunction()
+    dispatch(触发秒伤计算({ 是否更新显示计算结果: true }))
   }
 
   return (

@@ -30,6 +30,7 @@
 .zhuangbei-form-header {
   display: flex;
   margin-bottom: 8px;
+  height: 26px;
 }
 
 .zhuangbei-form-title {

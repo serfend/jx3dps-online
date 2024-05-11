@@ -4,6 +4,7 @@ import { Select } from 'antd'
 import { 更新网络延迟 } from '@/store/data'
 import { 延迟设定 } from '@/数据/常量'
 import useCycle from '@/hooks/use-cycle'
+import { 触发秒伤计算 } from '@/计算模块/计算函数'
 
 function 延迟选择() {
   const dispatch = useAppDispatch()
@@ -13,11 +14,12 @@ function 延迟选择() {
   const { 全部循环 = [] } = useCycle()
 
   const 当前是否有循环包含延迟 = 全部循环?.some((item) =>
-    item?.循环详情?.some((循环) => typeof 循环?.循环延迟要求 === 'number')
+    item?.循环详情?.some((循环) => !!循环?.循环延迟要求)
   )
 
   const 切换延迟 = (v) => {
     dispatch(更新网络延迟(v))
+    dispatch(触发秒伤计算({ 是否更新显示计算结果: true }))
   }
 
   return 当前是否有循环包含延迟 ? (

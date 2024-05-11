@@ -2,19 +2,17 @@ import React from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { 更新当前方案名称 } from '@/store/data'
 import { Select } from 'antd'
+import { 触发秒伤计算 } from '@/计算模块/计算函数'
 
 function 方案选择() {
   const dispatch = useAppDispatch()
   const 当前方案名称 = useAppSelector((state) => state?.data?.当前方案名称)
-  const state = useAppSelector((state) => state)
-  console.log('state', state)
   const 全部方案数据 = useAppSelector((state) => state?.data?.全部方案数据)
 
   const 切换方案 = (e) => {
     dispatch(更新当前方案名称(e))
+    dispatch(触发秒伤计算({ 是否更新显示计算结果: true }))
   }
-
-  console.log('当前方案名称', 当前方案名称)
 
   return (
     <div className='common-item'>

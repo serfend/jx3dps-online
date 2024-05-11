@@ -58,7 +58,7 @@ function 装备选择(props: 装备选择入参, ref) {
   }
 
   // 选择精炼等级
-  const onXiangQianSelect = (e) => {
+  const 选择镶嵌孔 = (e) => {
     onChange &&
       onChange({
         ...value,
@@ -117,7 +117,7 @@ function 装备选择(props: 装备选择入参, ref) {
         <镶嵌孔选择
           data={当前选择装备数据 as any}
           value={value?.镶嵌孔数组}
-          onChange={onXiangQianSelect}
+          onChange={选择镶嵌孔}
           部位索引={部位索引}
         />
       </div>
