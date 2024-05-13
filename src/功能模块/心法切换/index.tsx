@@ -9,7 +9,10 @@ const 当前数据 = 获取当前数据()
 function 心法切换() {
   const 当前Logo = 当前数据?.系统配置?.心法图标
   const 切换至对应心法 = (目标心法) => {
-    window.location.href = `${location.origin}/?心法=${目标心法}`
+    const allPathList = location.href?.split('/')
+    allPathList[allPathList.length - 1] = `?心法=${目标心法}`
+    const newPath = allPathList.join('/')
+    window.location.href = newPath
   }
   const menu = (
     <Menu
