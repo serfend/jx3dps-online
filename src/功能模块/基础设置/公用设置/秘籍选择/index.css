@@ -12,3 +12,8 @@
   font-weight: 700;
   margin-bottom:8px;
 }
+
+.miji-selected-item .ant-checkbox-group {
+  display: block;
+  width: 100%;
+}
