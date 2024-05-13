@@ -90,7 +90,7 @@
   margin-left: 4px;
 }
 
-.cycle-simulator-setting-btn {
+.wanling-cycle-simulator-setting-btn {
   padding: 0px 4px;
   font-size: 14px;
   cursor: pointer;
@@ -248,7 +248,7 @@
   margin: 0 12px;
 }
 
-.cycle-btn-type {
+.wanling-cycle-btn-type {
   display: block;
   width: 24px;
   height: 70px;
@@ -269,16 +269,16 @@
   justify-content: flex-start;
 }
 
-.cycle-simulator-setting-btn:hover .cycle-add-btn-text{
+.wanling-cycle-simulator-setting-btn:hover .cycle-add-btn-text{
   color: var(--ant-primary-color);
 }
 
-.cycle-simulator-setting-btn:hover .cycle-add-btn {
+.wanling-cycle-simulator-setting-btn:hover .cycle-add-btn {
   -webkit-filter: hue-rotate(340deg);
 }
 
-.cycle-simulator-setting-btn.cycle-simulator-setting-btn-error .cycle-add-btn-text,
-.cycle-simulator-setting-btn.cycle-simulator-setting-btn-error .cycle-add-btn {
+.wanling-cycle-simulator-setting-btn.wanling-cycle-simulator-setting-btn-error .cycle-add-btn-text,
+.wanling-cycle-simulator-setting-btn.wanling-cycle-simulator-setting-btn-error .cycle-add-btn {
   color: rgba(3, 10, 26, 0.85);
   -webkit-filter: grayscale(1) saturate(10%) contrast(50%);
 }

@@ -113,7 +113,7 @@ function CycleSkillItem(props: CycleSkillItemProps) {
             </div>
           }
         >
-          <img className={'cycle-simulator-setting-skill-img'} src={图标} />
+          <img className={'wanling-cycle-simulator-setting-skill-img'} src={图标} />
         </Tooltip>
         <CloseCircleFilled
           className={'cycle-simulator-setting-skill-close'}

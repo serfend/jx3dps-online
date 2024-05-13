@@ -3,11 +3,11 @@
   position: relative;
 }
 
-.cycle-simulator-setting-skill.cycle-simulator-setting-skill-error .cycle-simulator-setting-skill-img {
+.cycle-simulator-setting-skill.cycle-simulator-setting-skill-error .wanling-cycle-simulator-setting-skill-img {
   -webkit-filter: grayscale(1) saturate(10%) contrast(50%);
 }
 
-.cycle-simulator-setting-skill.cycle-simulator-setting-skill-highlight .cycle-simulator-setting-skill-img {
+.cycle-simulator-setting-skill.cycle-simulator-setting-skill-highlight .wanling-cycle-simulator-setting-skill-img {
   -webkit-filter: hue-rotate(-30deg) saturate(90%) contrast(90%);
   transition: .2s;
 }
@@ -17,7 +17,7 @@
   pointer-events: unset;
 }
 
-.cycle-simulator-setting-skill-img {
+.wanling-cycle-simulator-setting-skill-img {
   width: 48px;
   /* transition: .2s; */
 }
