@@ -20,6 +20,7 @@ export interface 当前计算结果类型 {
 // 结果列表类型
 export interface 计算结果技能列表类型 {
   统计名称?: string
+  显示名称?: string
   技能名称: string
   技能数量: number
   技能总输出: number

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Checkbox, Col, Drawer, Row } from 'antd'
+import { Button, Checkbox, Col, Drawer, Row, message } from 'antd'
 import { 技能秘籍信息 } from '@/@types/秘籍'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { 更新当前秘籍信息 } from '@/store/data'
@@ -15,6 +15,10 @@ function 秘籍选择() {
   const 当前秘籍信息 = useAppSelector((state) => state?.data?.当前秘籍信息)
 
   const 选择秘籍 = (新秘籍列表: string[], 技能信息: 技能秘籍信息) => {
+    if (新秘籍列表?.length > 4) {
+      message.error('一个技能最多选择四个秘籍')
+      return
+    }
     const newData = {
       ...当前秘籍信息,
       [技能信息?.技能名称]: 新秘籍列表,

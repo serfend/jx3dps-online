@@ -6,6 +6,8 @@ import 循环选择 from './循环选择'
 import 延迟选择 from './延迟选择'
 import 秘籍选择 from './秘籍选择'
 import 奇穴选择 from './奇穴选择'
+import 循环模拟 from './循环模拟'
+
 import './index.css'
 
 function 公用设置() {
@@ -18,7 +20,7 @@ function 公用设置() {
       <div className='common-item' style={{ height: 'unset' }}>
         <秘籍选择 />
         <奇穴选择 />
-        {/* <CycleSimulator disabled={是否为无界平台} /> */}
+        <循环模拟 />
       </div>
     </div>
   )

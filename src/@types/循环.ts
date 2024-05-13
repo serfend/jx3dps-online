@@ -8,7 +8,7 @@ export interface 循环数据 {
    * @name 标题
    * 循环标题，用作展示显示循环名，可以不唯一
    */
-  标题: string
+  标题?: string
   /**
    * @name 默认隐藏
    * 是否默认隐藏，不展示在循环选择框内
@@ -25,16 +25,28 @@ export interface 循环数据 {
    * @name 标记
    * 循环标记，用作辅助性类别区分
    */
-  标记: string
+  标记?: string
   /**
    * @name 奇穴
    * 循环默认奇穴信息
    */
   奇穴: string[]
   /**
-   * 循环详情
+   * @name 循环详情
    */
   循环详情: 循环详情[]
+  /**
+   * @name 额外配置信息
+   * 部分职业的额外需要保存的数据
+   * 例：万灵宠物顺序
+   */
+  额外配置信息?: {
+    [key: string]: any
+  }
+  /**
+   * @name 用于模拟器的技能序列
+   */
+  技能序列?: string[]
 }
 
 export interface 循环详情 {

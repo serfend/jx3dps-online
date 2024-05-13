@@ -1,11 +1,17 @@
 import { Checkbox, Modal } from 'antd'
 import React, { useMemo, useState } from 'react'
 import { useAppSelector } from '@/hooks'
-import { 计算结果技能列表类型 } from '@/@types/输出'
+import { 当前计算结果类型, 计算结果技能列表类型 } from '@/@types/输出'
 import './index.css'
 
-function 结果统计({ visible, onClose, title = '技能统计' as any }) {
+function 结果统计({
+  visible,
+  onClose,
+  title = '技能统计' as any,
+  计算结果 = {} as Partial<当前计算结果类型>,
+}) {
   const 当前计算结果 = useAppSelector((state) => state?.data?.当前计算结果)
+  const 显示计算结果 = { ...当前计算结果, ...计算结果 }
 
   const [合并同名技能, 设置合并同名技能] = useState<boolean>(true)
 
@@ -14,11 +20,12 @@ function 结果统计({ visible, onClose, title = '技能统计' as any }) {
     if (合并同名技能) {
       const 根据统计名称生成数组: 计算结果技能列表类型[] = []
       const 同名数组: { [key: string]: 计算结果技能列表类型 } = {}
-      当前计算结果?.计算结果技能列表?.forEach((技能) => {
+      显示计算结果?.计算结果技能列表?.forEach((技能) => {
         if (技能?.统计名称) {
           同名数组[技能?.统计名称] = {
+            显示名称: 技能?.统计名称,
             统计名称: 技能?.统计名称,
-            技能名称: 技能?.统计名称,
+            技能名称: 技能?.技能名称,
             技能数量: (同名数组[技能?.统计名称]?.技能数量 || 0) + (技能?.技能数量 || 0),
             总会心个数:
               (同名数组[技能?.统计名称]?.总会心个数 || 0) + (技能?.会心几率 || 0) * 技能?.技能数量,
@@ -37,7 +44,7 @@ function 结果统计({ visible, onClose, title = '技能统计' as any }) {
       })
       list = [...根据统计名称生成数组]
     } else {
-      list = [...(当前计算结果?.计算结果技能列表 || [])]
+      list = [...(显示计算结果?.计算结果技能列表 || [])]
     }
 
     list.sort((a, b) => {
@@ -47,7 +54,7 @@ function 结果统计({ visible, onClose, title = '技能统计' as any }) {
     return list.filter((item) => {
       return +item.技能总输出 > 0
     })
-  }, [当前计算结果, 合并同名技能])
+  }, [显示计算结果, 合并同名技能])
 
   return (
     <Modal
@@ -84,7 +91,7 @@ function 结果统计({ visible, onClose, title = '技能统计' as any }) {
               return (
                 <div className={'dps-line-wrap'} key={item.技能名称 + index}>
                   <div className={'dps-line'}>
-                    <span>{item.统计名称 || item.技能名称}</span>
+                    <span>{item.显示名称 || item?.技能名称 || item.统计名称}</span>
                     <div className={'dps-count'}>
                       <span className='dps-count-1'>{item.技能数量}</span>
                       <span className='dps-count-2'>{item.技能总输出}</span>
@@ -92,7 +99,7 @@ function 结果统计({ visible, onClose, title = '技能统计' as any }) {
                         {((item?.会心几率 || 0) * 100).toFixed(2)}%
                       </span>
                       <span className='dps-count-4'>
-                        {((item.技能总输出 / 当前计算结果?.总伤) * 100).toFixed(2)}%
+                        {((item.技能总输出 / 显示计算结果?.总伤) * 100).toFixed(2)}%
                       </span>
                     </div>
                   </div>

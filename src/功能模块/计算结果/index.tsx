@@ -4,7 +4,7 @@ import { useAppSelector } from '@/hooks'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 
 import 结果统计 from './结果统计'
-// import Income from './Income'
+import 收益图表 from './收益图表'
 import './index.css'
 
 const { 系统配置 } = 获取当前数据()
@@ -25,7 +25,7 @@ function 计算结果() {
   return 当前计算结果?.秒伤 ? (
     <div
       className={`dps ${增益面板显示状态 ? `dps-zengyi-visible` : ''}`}
-      style={{ backgroundColor: 系统配置?.背景色 || 'rgba(0, 0, 0, 0.4)' }}
+      style={{ backgroundColor: 系统配置?.背景色 || 'rgba(0, 0, 0, 0.5)' }}
     >
       <h1 className={'dps-title'}>伤害计算</h1>
       <Divider />
@@ -41,8 +41,8 @@ function 计算结果() {
           {当前计算结果?.秒伤计算时间}秒
         </div>
       </div>
-      <p className={'dps-number-tip'}>数值仅供参考，请以实际游戏内实装系数为准</p>
-      {/* <Income ref={incomeRef} /> */}
+      <p className={'dps-number-tip'}>数值仅供参考，请以实际游戏内数值为准</p>
+      <收益图表 ref={incomeRef} />
       <结果统计 visible={技能统计弹窗} onClose={() => 打开技能统计弹窗(false)} />
     </div>
   ) : null

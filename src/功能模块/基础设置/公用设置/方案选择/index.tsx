@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks'
-import { 更新当前方案名称 } from '@/store/data'
+import { 更新选中的方案数据 } from '@/store/data'
 import { Select } from 'antd'
 import { 触发秒伤计算 } from '@/计算模块/计算函数'
 
@@ -10,7 +10,7 @@ function 方案选择() {
   const 全部方案数据 = useAppSelector((state) => state?.data?.全部方案数据)
 
   const 切换方案 = (e) => {
-    dispatch(更新当前方案名称(e))
+    dispatch(更新选中的方案数据(e))
     dispatch(触发秒伤计算({ 是否更新显示计算结果: true }))
   }
 

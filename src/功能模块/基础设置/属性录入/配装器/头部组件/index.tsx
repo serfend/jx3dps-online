@@ -1,5 +1,5 @@
 import React from 'react'
-import { 装备部位枚举 } from '@/@types/枚举'
+// import { 装备部位枚举 } from '@/@types/枚举'
 import { 装备信息数据类型 } from '@/@types/装备'
 
 import 最佳附魔设置 from './最佳附魔设置'
@@ -32,15 +32,15 @@ function 头部组件(props: 头部组件类型) {
   const 一键替换附魔 = (附魔信息) => {
     form?.validateFields().then((values) => {
       const obj = { ...values }
-      Object.keys(附魔信息).forEach((fumoKey) => {
-        const 附魔位置 = 装备部位枚举[fumoKey]
-        const formKey = `${附魔位置}${fumoKey}`
+      Object.keys(附魔信息).forEach((附魔位置索引) => {
+        // const 附魔位置 = 装备部位枚举[fumoKey]
+        // const formKey = `${附魔位置}${fumoKey}`
 
-        const 附魔属性 = Object.keys(附魔信息[fumoKey])?.[0]
-        const 附魔值 = Object.values(附魔信息[fumoKey])?.[0]
-        if (values[formKey]) {
-          obj[formKey] = {
-            ...obj[formKey],
+        const 附魔属性 = Object.keys(附魔信息[附魔位置索引])?.[0]
+        const 附魔值 = Object.values(附魔信息[附魔位置索引])?.[0]
+        if (values[附魔位置索引]) {
+          obj[附魔位置索引] = {
+            ...obj[附魔位置索引],
             附魔: `${附魔属性}+${附魔值}`,
           }
         }
