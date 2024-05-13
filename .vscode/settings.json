@@ -2,6 +2,7 @@
   "conventionalCommits.scopes": [
     "common",
     "计算",
-    "装备"
+    "装备",
+    "系数"
   ]
 }
