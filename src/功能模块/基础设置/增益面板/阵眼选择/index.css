@@ -30,6 +30,7 @@
 .zhenyan-option-text {
   display: flex;
   align-items: center;
+  flex: 1
 }
 
 .zhenyan-paiming {

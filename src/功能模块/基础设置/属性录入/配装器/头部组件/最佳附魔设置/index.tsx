@@ -3,9 +3,10 @@ import { Button, Modal, message } from 'antd'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { useAppDispatch } from '@/hooks'
 import { RiseOutlined } from '@ant-design/icons'
-import { 装备部位枚举 } from '@/@types/枚举'
+// import { 装备部位枚举 } from '@/@types/枚举'
 import { 角色基础属性类型 } from '@/@types/角色'
 import { 秒伤计算 } from '@/计算模块/计算函数'
+import { 装备位置部位枚举 } from '@/@types/装备'
 
 import 根据装备信息获取基础属性 from '../../工具函数/根据装备信息获取基础属性'
 import { 修改装备属性, 初始化所有组合 } from './util'
@@ -31,7 +32,7 @@ function 最佳附魔设置({ 一键替换附魔, 对比秒伤, 对比装备信�
     if (Object.keys(最大组合)?.length !== 0) {
       const 列表 = 对比装备信息?.装备列表
       Object.keys(最大组合).forEach((key) => {
-        const 装备位置 = 装备部位枚举[key]
+        const 装备位置 = 装备位置部位枚举[key]
         const 当前附魔 = 列表?.find((item) => item?.装备部位 === 装备位置)?.附魔 || ''
         res.push({
           部位: 装备位置,
@@ -177,7 +178,7 @@ function 最佳附魔设置({ 一键替换附魔, 对比秒伤, 对比装备信�
                     }`}
                     key={key}
                   >
-                    <span className='max-fumo-label'>{装备部位枚举[key]}</span>
+                    <span className='max-fumo-label'>{装备位置部位枚举[key]}</span>
                     <span className='max-fumo-value'>{`${附魔属性}+${附魔值}`}</span>
                   </div>
                 )

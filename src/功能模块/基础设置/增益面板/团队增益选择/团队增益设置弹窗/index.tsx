@@ -66,7 +66,7 @@ function 团队增益设置弹窗({ open, onCancel, onChangeZengyi, 快捷设置
       placement='left'
       onClose={onCancel}
       footer={null}
-      width={784}
+      width={804}
       mask={false}
       destroyOnClose
     >

@@ -1,7 +1,7 @@
-import { 装备部位枚举 } from '@/@types/枚举'
 import { 角色基础属性类型 } from '@/@types/角色'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 import { 基础属性计算 } from '../../工具函数/根据装备信息获取基础属性'
+import { 装备位置部位枚举 } from '@/@types/装备'
 
 const { 附魔 } = 获取当前数据()
 
@@ -23,9 +23,9 @@ export const 修改装备属性 = (装备基础属性: 角色基础属性类型,
 export const 初始化所有组合 = () => {
   const res = {}
   // 先找出该装备部位支持的同种类的最大数值的附魔
-  Object.keys(装备部位枚举).forEach((key) => {
+  Object.keys(装备位置部位枚举).forEach((key) => {
     附魔?.forEach((item) => {
-      if (item?.附魔支持部位?.includes(装备部位枚举[key] as any)) {
+      if (item?.附魔支持部位?.includes(装备位置部位枚举[key] as any)) {
         // const 部位表单key = `${EquipmentCharacterPositionEnum[key]}${key}`
         const 附魔类型 = item?.附魔名称?.split('+')?.[0]
         const 附魔数值 = item?.附魔名称?.split('+')?.[1]

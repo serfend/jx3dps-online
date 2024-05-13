@@ -26,6 +26,10 @@ export interface 阵眼数据类型 {
    * @name 伤害排名
    */
   伤害排名?: number
+  /**
+   * @name 部分阵眼覆盖率
+   */
+  覆盖率?: number
 }
 
 export interface 阵眼增益 extends 属性加成 {

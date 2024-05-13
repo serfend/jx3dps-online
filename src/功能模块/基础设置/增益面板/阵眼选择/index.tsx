@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks'
-import { Select, SelectProps } from 'antd'
+import { Select, SelectProps, Tooltip } from 'antd'
 import { 秒伤计算 } from '@/计算模块/计算函数'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 import { 阵眼数据类型 } from '@/数据/阵眼/interface'
@@ -73,28 +73,41 @@ const 阵眼选择: React.FC<阵眼选择类型> = (props) => {
             value={item.阵眼名称}
             label={item.阵眼名称}
           >
-            <div className={'zhenyan-option-text'}>
-              {item.伤害排名 ? (
-                <img
-                  className={`zhenyan-paiming`}
-                  src={require(`@/assets/paiming/paiming-${item.伤害排名}.png`)}
-                />
+            <Tooltip
+              title={
+                item.覆盖率 && item?.覆盖率 !== 1 ? (
+                  <span>覆盖率：{(item.覆盖率 * 100)?.toFixed(0)}%</span>
+                ) : (
+                  ''
+                )
+              }
+              placement='topLeft'
+            >
+              <div className={'zhenyan-option-text'}>
+                {item.伤害排名 ? (
+                  <img
+                    className={`zhenyan-paiming`}
+                    src={require(`@/assets/paiming/paiming-${item.伤害排名}.png`)}
+                  />
+                ) : null}
+                {item.阵眼名称}
+              </div>
+            </Tooltip>
+            <div>
+              {item.伤害提升百分比 ? (
+                <span
+                  className={`zhenyan-baifenbi ${
+                    item.阵眼名称 !== 增益数据?.阵眼
+                      ? item.伤害是否提升
+                        ? 'zhenyan-up'
+                        : 'zhenyan-down'
+                      : ''
+                  }`}
+                >
+                  {item.伤害提升百分比?.toFixed(2)}%
+                </span>
               ) : null}
-              {item.阵眼名称}
             </div>
-            {item.伤害提升百分比 ? (
-              <span
-                className={`zhenyan-baifenbi ${
-                  item.阵眼名称 !== 增益数据?.阵眼
-                    ? item.伤害是否提升
-                      ? 'zhenyan-up'
-                      : 'zhenyan-down'
-                    : ''
-                }`}
-              >
-                {item.伤害提升百分比?.toFixed(2)}%
-              </span>
-            ) : null}
           </Select.Option>
         )
       })}
