@@ -1,4 +1,5 @@
 import { 属性简写枚举 } from '@/@types/枚举'
+import { 装备位置部位枚举 } from '@/@types/装备'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 
 const { 附魔 } = 获取当前数据()
@@ -28,13 +29,13 @@ export const getEquipData = (data) => {
         equip[EquipPositionMap[item]] = {
           当前精炼等级: basicData?.strength,
           id: basicData?.equip.ID,
-          装备部位: EquipPositionMap[item].split('_')?.[0],
+          装备部位: 装备位置部位枚举[EquipPositionMap[item]],
           镶嵌孔数组: basicData?.embedding?.map((a) => {
             if (!属性简写枚举[a?.raw?.[0]]) {
               console.warn(`存在计算器未内置镶嵌孔${a?.raw?.[0]}`)
             }
             return {
-              镶嵌类型: 属性简写枚举[a?.raw?.[0]],
+              镶嵌类型: a?.raw?.[0],
               镶嵌宝石等级: a?.level,
             }
           }),
@@ -74,16 +75,16 @@ const DaFuMoMap = {
 }
 
 const EquipPositionMap = {
-  HAT: '帽子_1',
-  JACKET: '衣服_2',
-  BELT: '腰带_3',
-  WRIST: '护腕_4',
-  BOTTOMS: '下装_5',
-  SHOES: '鞋子_6',
-  NECKLACE: '项链_7',
-  PENDANT: '腰坠_8',
-  RING_1: '戒指_9',
-  RING_2: '戒指_10',
-  SECONDARY_WEAPON: '暗器_11',
-  PRIMARY_WEAPON: '武器_12',
+  HAT: '_1',
+  JACKET: '_2',
+  BELT: '_3',
+  WRIST: '_4',
+  BOTTOMS: '_5',
+  SHOES: '_6',
+  NECKLACE: '_7',
+  PENDANT: '_8',
+  RING_1: '_9',
+  RING_2: '_10',
+  SECONDARY_WEAPON: '_11',
+  PRIMARY_WEAPON: '_12',
 }

@@ -17,6 +17,11 @@ export interface 技能基础数据模型 {
    */
   统计名称?: string
   /**
+   * @name 所属武学技能
+   * @description 部分多个技能映射同一个技能的秘籍时，使用此字段表明
+   */
+  所属武学技能?: string
+  /**
    * @name 技能伤害系数
    * @description 游戏面板技能伤害 / 角色面板攻击
    * @default 0
@@ -86,6 +91,11 @@ export interface 技能增益列表类型 {
    * @description 部分启用 - 是否生效需要判断循环传入的技能是否携带了该增益
    */
   增益类型: '全局启用' | '部分启用'
+  /**
+   * @name 依赖奇穴
+   * @description 如果没特殊表名，依赖奇穴的名字就为增益本身
+   */
+  依赖奇穴?: string
   /**
    * @name 增益是否启用
    * @description 如果在设置增益时直接设为了true，则默认启用。跳过所有计算

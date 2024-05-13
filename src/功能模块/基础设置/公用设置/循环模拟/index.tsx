@@ -2,12 +2,15 @@
  * 当前只内置了部分心法的循环模拟
  */
 import React from 'react'
-import 山海心诀循环模拟 from './心法循环模拟/山海心诀'
-import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 import { Button, Tooltip } from 'antd'
+import 获取当前数据 from '@/数据/数据工具/获取当前数据'
+
+import 山海心诀循环模拟 from './心法循环模拟/山海心诀'
+import 孤锋诀循环模拟 from './心法循环模拟/孤锋诀'
 
 const 循环模拟枚举 = {
   山海心诀: <山海心诀循环模拟 />,
+  孤锋诀: <孤锋诀循环模拟 />,
 }
 
 const { 名称 } = 获取当前数据()

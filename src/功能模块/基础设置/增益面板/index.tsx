@@ -9,7 +9,8 @@ import { 更新方案数据 } from '@/store/data'
 import './index.css'
 import { 触发秒伤计算 } from '@/计算模块/计算函数'
 
-const { 增益快捷设置数据 = [] } = 获取当前数据()
+const { 默认数据 = {} } = 获取当前数据()
+const { 增益快捷设置数据 = [] } = 默认数据
 
 function 增益面板() {
   const dispatch = useAppDispatch()

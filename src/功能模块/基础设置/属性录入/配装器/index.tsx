@@ -78,8 +78,8 @@ function 配装器(props: ModalProps) {
 
   // 导入配装数据
   const 保存数据并计算 = (e) => {
-    更换装备计算秒伤(undefined, e)
     form.setFieldsValue({ ...e })
+    更换装备计算秒伤(undefined, e)
   }
 
   const onOk = () => {

@@ -15,7 +15,8 @@ import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 import { 团队增益类型 } from '@/@types/团队增益'
 import 团队增益图标 from '../团队增益图标'
 
-const { 增益快捷设置数据, 团队增益 } = 获取当前数据()
+const { 默认数据 = {}, 团队增益 } = 获取当前数据()
+const { 增益快捷设置数据 = [] } = 默认数据
 
 import './index.css'
 

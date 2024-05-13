@@ -146,7 +146,7 @@ function 收益图表(_, ref) {
     chart
       .interval()
       .position('key*收益')
-      .color(系统配置?.主题色)
+      .color(系统配置?.收益柱形图颜色 || 系统配置?.主题色)
       .label('收益', {
         offset: 16,
         style: {
