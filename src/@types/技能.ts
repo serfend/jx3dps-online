@@ -88,6 +88,7 @@ export interface 技能增益列表类型 {
   增益类型: '全局启用' | '部分启用'
   /**
    * @name 增益是否启用
+   * @description 如果在设置增益时直接设为了true，则默认启用。跳过所有计算
    */
   增益启用?: boolean
   /**
@@ -110,4 +111,9 @@ export interface 技能增益列表类型 {
    * @description 当一个增益有多个效果时
    */
   增益集合?: 属性加成[]
+}
+
+// 额外展示增益来源，方便后续debug
+export interface 技能计算增益数据列表 extends 属性加成 {
+  增益来源?: string
 }

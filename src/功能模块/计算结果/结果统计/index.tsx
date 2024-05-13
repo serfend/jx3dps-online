@@ -14,7 +14,6 @@ function 结果统计({ visible, onClose, title = '技能统计' as any }) {
     if (合并同名技能) {
       const 根据统计名称生成数组: 计算结果技能列表类型[] = []
       const 同名数组: { [key: string]: 计算结果技能列表类型 } = {}
-      console.log('当前计算结果?.计算结果技能列表', 当前计算结果?.计算结果技能列表)
       当前计算结果?.计算结果技能列表?.forEach((技能) => {
         if (技能?.统计名称) {
           同名数组[技能?.统计名称] = {
@@ -29,7 +28,6 @@ function 结果统计({ visible, onClose, title = '技能统计' as any }) {
           根据统计名称生成数组.push(技能)
         }
       })
-      console.log('同名数组', 同名数组)
       Object.keys(同名数组).forEach((key) => {
         const 技能 = 同名数组[key]
         根据统计名称生成数组.push({

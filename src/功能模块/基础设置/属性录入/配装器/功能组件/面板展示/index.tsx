@@ -23,7 +23,6 @@ function 面板展示(props: 面板展示入参) {
   const 增益数据 = useAppSelector((state) => state?.data?.增益数据)
   const 增益启用 = useAppSelector((state) => state?.data?.增益启用)
   const [显示增益后面板, 切换显示增益后面板] = useState<boolean>(false)
-  console.log('切换显示增益后面板', 切换显示增益后面板)
 
   const 获取计算后原始属性 = (计算装备信息) => {
     return 获取角色需要展示的面板数据({
@@ -36,12 +35,8 @@ function 面板展示(props: 面板展示入参) {
   }
 
   const 显示数据 = useMemo(() => {
-    console.log('装备信息', 装备信息)
     const 计算后的原始最终属性 = 获取计算后原始属性(装备信息)
-    console.log('计算后的原始最终属性', 计算后的原始最终属性)
-    console.log('当前装备信息', 当前装备信息)
     const 计算后的当前显示属性 = 获取计算后原始属性(当前装备信息)
-    console.log('计算后的当前显示属性', 计算后的当前显示属性)
     const 对比枚举 = {}
     Object.keys(计算后的当前显示属性).forEach((key) => {
       const 原始属性数值 = 计算后的原始最终属性[key]
