@@ -14,6 +14,7 @@ interface DpsKernelOptimizerParams {
   技能基础数据: 技能基础数据模型[]
   增益数据: 增益选项数据类型
   增益启用: boolean
+  快照计算: boolean
 }
 
 // 计算dps最大期望值的算法
@@ -24,6 +25,7 @@ const DpsKernelOptimizer = ({
   技能基础数据,
   增益启用,
   增益数据,
+  快照计算,
 }: DpsKernelOptimizerParams) => {
   // 当前计算环境下的原属性总量
   const 当前装备基础信息 = { ...当前装备信息 }
@@ -49,6 +51,7 @@ const DpsKernelOptimizer = ({
       增益数据,
       是否郭氏计算: false,
       战斗时间: 300, // 这里只需要算总dps，算固定300秒的dps
+      快照计算,
     })
 
     // 由于dps太大，导致用1除灰远小于计算容差，所以这里取一个较大的值去除以最终结果。以达到dps越大最终结果越小的目的，用于算法计算

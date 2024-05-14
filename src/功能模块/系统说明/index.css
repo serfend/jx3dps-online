@@ -1,5 +1,5 @@
 .title-tip {
-  width: 348px;
+  /* width: 348px; */
   position: fixed;
   bottom: 0;
   left: 36px;
@@ -8,5 +8,15 @@
   line-height: 36px;
   font-size: 14px;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+}
+
+.service-tip {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  color: #fff;
+  margin: 0;
+  line-height: 36px;
+  font-size: 14px;
 }

@@ -23,6 +23,8 @@ interface 计算循环依赖数据 {
 
 const { 计算循环 } = 获取当前数据()
 
+console.log('计算循环', 计算循环)
+
 function useCycle(props?: UseCycleProps): 获取计算循环结果 {
   const { 覆盖数据, 使用内存数据 = true } = props || { 使用内存数据: true, 覆盖数据: {} }
   const 计算数据: 计算循环依赖数据 = 使用内存数据
@@ -70,6 +72,11 @@ function useCycle(props?: UseCycleProps): 获取计算循环结果 {
     该循环用于计算的循环详情 = 匹配名字的循环?.循环详情?.find(
       (item) => item?.循环加速等级?.toString() === 加速等级?.toString()
     )
+  }
+
+  // 还是没匹配到加速的循环，那就取第一个循环
+  if (!该循环用于计算的循环详情) {
+    该循环用于计算的循环详情 = 匹配名字的循环?.循环详情?.[0]
   }
 
   // 加速也没有匹配到说明没有可以用于计算的循环，不返回

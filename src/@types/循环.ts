@@ -47,13 +47,20 @@ export interface 循环数据 {
    * @name 用于模拟器的技能序列
    */
   技能序列?: string[]
+  /**
+   * @name 快照计算
+   * @default false
+   * 启用快照计算后，部分期望计算将不再默认计算
+   * 目前包含：套装双会、腰带大附魔、水特效、风特效
+   */
+  快照计算?: boolean
 }
 
 export interface 循环详情 {
   /**
    * 循环加速等级
    */
-  循环加速等级: number | string
+  循环加速等级?: number | string
   /**
    * 循环延迟要求
    */

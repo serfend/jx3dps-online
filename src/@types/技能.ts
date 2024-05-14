@@ -97,6 +97,16 @@ export interface 技能增益列表类型 {
    */
   依赖奇穴?: string
   /**
+   * @name 依赖装备增益
+   * @description 用于部分增益的判断
+   */
+  依赖装备增益?: string
+  /**
+   * @name 快照增益
+   * @description 当为快照增益时，只会在快照计算循环中计算
+   */
+  快照增益?: boolean
+  /**
    * @name 增益是否启用
    * @description 如果在设置增益时直接设为了true，则默认启用。跳过所有计算
    */
