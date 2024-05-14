@@ -19,13 +19,10 @@ function JCL战斗记录解析() {
   const 获取远程数据 = async () => {
     form.validateFields().then(async (values) => {
       setLoading(true)
-      console.log('values', values)
       const res = await 获取数据({
         心法: values?.目标心法,
         数据: values?.数据,
       })
-      console.log('res', res)
-      console.log('res?.技能详情?.length', res?.技能详情?.length)
       if (res?.技能详情?.length) {
         更新结果数据(res)
       } else {

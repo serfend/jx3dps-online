@@ -23,8 +23,6 @@ interface 计算循环依赖数据 {
 
 const { 计算循环 } = 获取当前数据()
 
-console.log('计算循环', 计算循环)
-
 function useCycle(props?: UseCycleProps): 获取计算循环结果 {
   const { 覆盖数据, 使用内存数据 = true } = props || { 使用内存数据: true, 覆盖数据: {} }
   const 计算数据: 计算循环依赖数据 = 使用内存数据

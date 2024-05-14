@@ -19,7 +19,6 @@ function 奇穴导入() {
   const 获取远程数据 = async () => {
     form.validateFields().then(async (values) => {
       setLoading(true)
-      console.log('values', values)
       const res = await 获取数据(values?.数据)
       if (res?.length) {
         更新结果数据(res)
