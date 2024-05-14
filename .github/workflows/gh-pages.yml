@@ -16,6 +16,6 @@ jobs:
           username: 'root'
           server: '${{ secrets.TENCENT_SERVER_HOST }}'
           ssh_private_key: '${{ secrets.TENCENT_SERVER_PRIVATE_KEY }}'
-          local_path: './dist/*'
+          local_path: './*'
           remote_path: '/home/CICD'
           args: "-o ConnectTimeout=5"
