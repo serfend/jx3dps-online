@@ -2,8 +2,9 @@ name: publish
 
 on:
   push:
-    branches: gh-pages # master 分支提交时触发
-
+    branches: 
+    - master # master 分支提交时触发
+    - gh-pages # master 分支提交时触发
 jobs:
   publish:
     runs-on: ubuntu-latest # 运行环境
