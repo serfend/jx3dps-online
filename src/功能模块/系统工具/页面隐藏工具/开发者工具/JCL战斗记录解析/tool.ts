@@ -51,20 +51,11 @@ export const 获取数据 = ({ 心法, 数据 }): 循环详情 => {
           } else {
             // 分号分割成三部分 当前Buff，快照Buff，目标Buff
             const 用分号分割 = zengyiKey?.split(';')
-            let 最终分割数组: string[] = []
-            if (用分号分割?.length) {
-              用分号分割.forEach((分号KEY) => {
-                if (分号KEY) {
-                  const 用逗号分隔 = 分号KEY?.split(',')
-                  if (用逗号分隔?.length) {
-                    最终分割数组 = 最终分割数组.concat(用逗号分隔)
-                  }
-                }
-              })
-            }
+            const 是否吃快照 = 心法数据枚举?.吃快照技能?.includes(技能名称ID)
+            const 最终分割数组: string[] = 快照判断(用分号分割, 是否吃快照, 心法数据枚举)
+
             if (最终分割数组?.length) {
               const 增益buff名称列表: string[] = []
-              console.log('最终分割数组', 最终分割数组)
               最终分割数组.forEach((zengyi) => {
                 const splitZengyi = zengyi?.split('-')
                 if (splitZengyi?.length) {
@@ -141,4 +132,55 @@ export const 获取数据 = ({ 心法, 数据 }): 循环详情 => {
     战斗时间: 战斗时间 / 16,
     技能详情: res,
   }
+}
+
+/**
+ * 快照那个逻辑我再复述一遍你看看我理解的对不对
+ * 先声明一个吃快照的属性集合
+ * 然后在判断 一个 吃快照的技能时
+ * 吃快照的属性只检查第二个数组的情况
+ * 不吃快照的属性只检查第一个数组和第三个分组的情况
+ * @params 数组 当前Buff，快照Buff，目标Buff
+ */
+
+const 快照判断 = (数组: string[] = [], 是否吃快照 = false, 心法数据枚举): string[] => {
+  const 最终Buff: string[] = []
+  const 当前Buff = 数组?.[0]?.split(',')
+  const 快照Buff = 数组?.[1]?.split(',')
+  const 目标Buff = 数组?.[2]?.split(',')
+  const 非快照buff = [...(当前Buff || []), ...(目标Buff || [])]
+
+  if (是否吃快照) {
+    if (快照Buff?.length) {
+      快照Buff.forEach((增益) => {
+        const splitZengyi = 增益?.split('-')
+        const 增益名称ID = splitZengyi[0]
+        if (增益 && 增益名称ID && 心法数据枚举?.快照Buff列表?.includes(增益名称ID)) {
+          if (!最终Buff?.includes(增益)) {
+            最终Buff.push(增益)
+          }
+        }
+      })
+    }
+    非快照buff.forEach((增益) => {
+      const splitZengyi = 增益?.split('-')
+      const 增益名称ID = splitZengyi[0]
+      if (增益 && 增益名称ID && !心法数据枚举?.快照Buff列表?.includes(增益名称ID)) {
+        if (!最终Buff?.includes(增益)) {
+          最终Buff.push(增益)
+        }
+      }
+    })
+  } else {
+    非快照buff.forEach((增益) => {
+      const splitZengyi = 增益?.split('-')
+      const 增益名称ID = splitZengyi[0]
+      if (增益 && 增益名称ID) {
+        if (!最终Buff?.includes(增益)) {
+          最终Buff.push(增益)
+        }
+      }
+    })
+  }
+  return 最终Buff
 }

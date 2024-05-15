@@ -94,7 +94,7 @@ function 结果统计({
                     <span>{item.显示名称 || item?.技能名称 || item.统计名称}</span>
                     <div className={'dps-count'}>
                       <span className='dps-count-1'>{item.技能数量}</span>
-                      <span className='dps-count-2'>{item.技能总输出}</span>
+                      <span className='dps-count-2'>{item.技能总输出.toFixed(2)}</span>
                       <span className='dps-count-3'>
                         {((item?.会心几率 || 0) * 100).toFixed(2)}%
                       </span>
