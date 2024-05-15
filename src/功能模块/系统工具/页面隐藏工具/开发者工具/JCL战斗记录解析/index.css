@@ -8,6 +8,23 @@
   align-items: center;
 }
 
+.tools-jcl-params {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tools-jcl-params .ant-form-item {
+  width: 100%;
+}
+
+.tools-jcl-params .ant-form-item.tools-jcl-form-item {
+  width: 50%;
+  padding-right: 24px;
+}
+
+.tools-jcl-params .ant-form-item.tools-jcl-form-item-2 {
+  width: 50%;
+}
 
 .tools-jcl-input {
   height: 200px;

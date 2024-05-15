@@ -7,7 +7,7 @@ const 心法枚举 = {
   凌海诀: 凌海诀枚举,
 }
 
-export const 获取数据 = ({ 心法, 数据 }): 循环详情 => {
+export const 获取数据 = ({ 心法, 数据, 最大时间 }): 循环详情 => {
   const 心法数据枚举 = 心法枚举[心法]
   const JSONData = JSON.parse(数据 || '{}')
   const res: 循环技能详情[] = []
@@ -41,13 +41,15 @@ export const 获取数据 = ({ 心法, 数据 }): 循环详情 => {
             let 增益数量获取 = 1
             const 战斗时间数组 = 技能增益结果对象[zengyiKey]?.[0]
             const 最终战斗时间 = 战斗时间数组[战斗时间数组.length]?.[0]
-            增益数量获取 = 战斗时间数组?.length || 1
-            if (typeof 最终战斗时间 === 'number') {
-              if (战斗时间 < 最终战斗时间) {
-                战斗时间 = 最终战斗时间
+            if (最终战斗时间 <= 最大时间 * 16) {
+              增益数量获取 = 战斗时间数组?.length || 1
+              if (typeof 最终战斗时间 === 'number') {
+                if (战斗时间 < 最终战斗时间) {
+                  战斗时间 = 最终战斗时间
+                }
               }
+              技能数量 += 增益数量获取
             }
-            技能数量 += 增益数量获取
           } else {
             // 分号分割成三部分 当前Buff，快照Buff，目标Buff
             const 用分号分割 = zengyiKey?.split(';')
@@ -75,41 +77,43 @@ export const 获取数据 = ({ 心法, 数据 }): 循环详情 => {
                     console.log('心法数据枚举?.buff', 心法数据枚举?.buff)
                     console.log('心法数据枚举?.buff', 心法数据枚举?.buff?.[增益名称ID])
                     console.log('增益名称ID', 增益名称ID)
-                    message.error(`增益名称ID未匹配${增益名称ID}`)
+                    // message.error(`增益名称ID未匹配${增益名称ID}`)
                   }
                 }
               })
               let 增益数量获取 = 1
               const 战斗时间数组 = 技能增益结果对象[zengyiKey]
               const 最终战斗时间 = 战斗时间数组[战斗时间数组.length - 1]?.[0]
-              增益数量获取 = 战斗时间数组?.length || 1
-              // console.log('增益数量获取', 增益数量获取)
-              if (typeof 最终战斗时间 === 'number') {
-                if (战斗时间 < 最终战斗时间) {
-                  战斗时间 = 最终战斗时间
+              console.log('最终战斗时间', 最终战斗时间)
+              if (最终战斗时间 <= 最大时间 * 16) {
+                增益数量获取 = 战斗时间数组?.length || 1
+                // console.log('增益数量获取', 增益数量获取)
+                if (typeof 最终战斗时间 === 'number') {
+                  if (战斗时间 < 最终战斗时间) {
+                    战斗时间 = 最终战斗时间
+                  }
                 }
-              }
-              增益buff名称列表.sort((a, b) => a.localeCompare(b))
-              const 增益buff列表名字 = 增益buff名称列表.join(',')
-              console.log('增益buff列表名字', 增益buff列表名字)
+                增益buff名称列表.sort((a, b) => a.localeCompare(b))
+                const 增益buff列表名字 = 增益buff名称列表.join(',')
+                console.log('增益buff列表名字', 增益buff列表名字)
 
-              if (技能增益列表?.some((item) => item?.增益名称 === 增益buff列表名字)) {
-                console.log('11111')
-                技能增益列表 = 技能增益列表.map((item) => {
-                  return item?.增益名称 === 增益buff列表名字
-                    ? {
-                        ...item,
-                        增益技能数: item.增益技能数 + 增益数量获取,
-                      }
-                    : item
-                })
-              } else {
-                技能增益列表.push({
-                  增益名称: 增益buff列表名字,
-                  增益技能数: 增益数量获取,
-                })
+                if (技能增益列表?.some((item) => item?.增益名称 === 增益buff列表名字)) {
+                  技能增益列表 = 技能增益列表.map((item) => {
+                    return item?.增益名称 === 增益buff列表名字
+                      ? {
+                          ...item,
+                          增益技能数: item.增益技能数 + 增益数量获取,
+                        }
+                      : item
+                  })
+                } else {
+                  技能增益列表.push({
+                    增益名称: 增益buff列表名字,
+                    增益技能数: 增益数量获取,
+                  })
+                }
+                技能数量 += 增益数量获取
               }
-              技能数量 += 增益数量获取
             } else {
               console.log('zengyiKey', zengyiKey)
             }

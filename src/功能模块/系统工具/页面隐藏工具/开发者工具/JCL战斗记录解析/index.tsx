@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Form, Input, Select, Spin, message } from 'antd'
+import { Button, Form, Input, InputNumber, Select, Spin, message } from 'antd'
 import { 获取数据 } from './tool'
 import './index.css'
 
@@ -12,9 +12,10 @@ function JCL战斗记录解析() {
 
   useEffect(() => {
     form?.setFieldsValue({
-      当前心法: 支持导入心法列表?.[0],
+      目标心法: 支持导入心法列表?.[0],
+      战斗时间: 300,
     })
-  }, [])
+  }, [form, 支持导入心法列表])
 
   const 获取远程数据 = async () => {
     form.validateFields().then(async (values) => {
@@ -22,6 +23,7 @@ function JCL战斗记录解析() {
       const res = await 获取数据({
         心法: values?.目标心法,
         数据: values?.数据,
+        最大时间: values?.战斗时间,
       })
       if (res?.技能详情?.length) {
         更新结果数据(res)
@@ -58,12 +60,15 @@ function JCL战斗记录解析() {
     <div>
       <Spin spinning={loading}>
         <Form form={form} className={'tools-jcl-params'} layout='vertical'>
-          <Form.Item name='目标心法' label='心法' required>
+          <Form.Item className={'tools-jcl-form-item'} name='目标心法' label='心法' required>
             <Select
               className={'tools-jcl-params-select'}
               options={支持导入心法列表.map((item) => ({ value: item, label: item }))}
               placeholder={'请选择解析心法'}
             />
+          </Form.Item>
+          <Form.Item className={'tools-jcl-form-item-2'} name='战斗时间' label='战斗时间' required>
+            <InputNumber style={{ width: '100%' }} />
           </Form.Item>
           <Form.Item name='数据' label='数据' required>
             <Input.TextArea className={'tool-jcl-input-area'} />
