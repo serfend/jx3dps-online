@@ -19,5 +19,5 @@ jobs:
           server: '${{ secrets.TENCENT_SERVER_HOST }}'
           ssh_private_key: '${{ secrets.TENCENT_SERVER_PRIVATE_KEY }}'
           local_path: './*'
-          remote_path: '/home/CICD'
+          remote_path: '/home/CICD/jx3dps-online/'
           args: "-o ConnectTimeout=5"
