@@ -2,15 +2,24 @@ import React from 'react'
 import 全部心法 from '@/心法模块/心法'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 import { Dropdown, Menu } from 'antd'
+import 所有心法数据 from '@/心法模块/心法'
+
 import './index.css'
 
 const 当前数据 = 获取当前数据()
 
 function 心法切换() {
   const 当前Logo = 当前数据?.系统配置?.心法图标
+
   const 切换至对应心法 = (目标心法) => {
+    const 目标心法简写 = 所有心法数据?.[目标心法]?.简写
     const allPathList = location.href?.split('/')
-    allPathList[allPathList.length - 1] = `?心法=${目标心法}`
+    // allPathList[allPathList.length - 1] = `?心法=${目标心法}`
+    if (目标心法简写) {
+      allPathList[allPathList.length - 1] = `?xf=${目标心法简写}`
+    } else {
+      allPathList[allPathList.length - 1] = `?心法=${目标心法}`
+    }
     const newPath = allPathList.join('/')
     window.location.href = newPath
   }
