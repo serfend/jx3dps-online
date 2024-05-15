@@ -40,7 +40,7 @@ function AddCycleSkillBtns(props: AddCycleSkillBtnsProps) {
     }
   }
 
-  const hrefDev = location.href?.includes('?dev=1')
+  const hrefDev = location.href?.includes('dev=1')
   const DEV = hrefDev
 
   return (

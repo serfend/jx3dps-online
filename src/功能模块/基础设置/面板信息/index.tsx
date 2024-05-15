@@ -26,7 +26,7 @@ function 面板信息() {
   const 增益启用 = useAppSelector((state) => state?.data?.增益启用)
   const 当前计算目标 = 获取计算目标信息(当前输出计算目标名称)
 
-  const { 计算循环详情 } = useCycle()
+  const { 计算循环详情, 当前循环信息 } = useCycle()
 
   const [开启优化算法, 切换开启优化算法] = useState<boolean>(false)
   const [显示增益后面板, 切换显示增益后面板] = useState<boolean>(false)
@@ -61,6 +61,7 @@ function 面板信息() {
         技能基础数据: 计算后技能基础数据,
         增益启用,
         增益数据,
+        快照计算: 当前循环信息?.快照计算 || false,
       })
 
       // 计算最大秒伤数据的面板
@@ -81,6 +82,7 @@ function 面板信息() {
     }
   }, [
     当前计算目标,
+    当前循环信息,
     计算循环详情,
     装备信息,
     当前奇穴信息,

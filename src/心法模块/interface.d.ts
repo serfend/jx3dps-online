@@ -6,6 +6,11 @@ import { 角色基础属性类型 } from '@/@types/角色'
 // 心法配置类型
 export interface 心法配置类型 {
   /**
+   * @name 数据提供
+   * 本心法模块的数据提供者
+   */
+  数据提供: string
+  /**
    * @name 名称
    * 对应心法名称
    */

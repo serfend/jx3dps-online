@@ -18,10 +18,14 @@ export const 获取实际系数 = (系数: number, 参数: 获取实际系数入
   return Math.floor(系数) / 基础系数
 }
 
+export const 获取破招实际系数 = (系数) => {
+  return (((系数 + 系数 < 0 ? 1 : 0) / 1024 + 1024) / 1024) * 破招全局系数
+}
+
 interface 获取实际系数入参类型 {
   功法?: '外功' | '内功'
   dot跳数?: number
   dot间隔?: number
 }
 
-export const 破招全局系数 = 13.1925
+export const 破招全局系数 = 13.192
