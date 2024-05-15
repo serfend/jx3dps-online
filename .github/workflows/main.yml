@@ -1,9 +1,8 @@
-name: publish
+name: autopublish
 
 on:
   push:
     branches: 
-    - master # master 分支提交时触发
     - gh-pages # master 分支提交时触发
 jobs:
   publish:
