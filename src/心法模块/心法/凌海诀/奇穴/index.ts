@@ -2,6 +2,7 @@ import { 奇穴列表数据类型 } from '@/@types/奇穴'
 
 const 奇穴数据: 奇穴列表数据类型[] = [
   {
+    是否不可编辑: true,
     奇穴列表: [
       { 奇穴名称: '海隅', 奇穴图片: 'https://icon.jx3box.com/icon/10760.png' },
       { 奇穴名称: '江汉', 奇穴图片: 'https://icon.jx3box.com/icon/10855.png' },
@@ -9,6 +10,8 @@ const 奇穴数据: 奇穴列表数据类型[] = [
     ],
   },
   {
+    是否不可编辑: true,
+
     奇穴列表: [
       { 奇穴名称: '苍梧', 奇穴图片: 'https://icon.jx3box.com/icon/10882.png' },
       { 奇穴名称: '扶桑', 奇穴图片: 'https://icon.jx3box.com/icon/10768.png' },
@@ -16,6 +19,8 @@ const 奇穴数据: 奇穴列表数据类型[] = [
     ],
   },
   {
+    是否不可编辑: true,
+
     奇穴列表: [
       { 奇穴名称: '羽彰', 奇穴图片: 'https://icon.jx3box.com/icon/10863.png' },
       { 奇穴名称: '乘龙', 奇穴图片: 'https://icon.jx3box.com/icon/10837.png' },
@@ -24,6 +29,8 @@ const 奇穴数据: 奇穴列表数据类型[] = [
     ],
   },
   {
+    是否不可编辑: true,
+
     奇穴列表: [
       { 奇穴名称: '清源', 奇穴图片: 'https://icon.jx3box.com/icon/10764.png' },
       { 奇穴名称: '遥思', 奇穴图片: 'https://icon.jx3box.com/icon/10857.png' },
@@ -32,6 +39,8 @@ const 奇穴数据: 奇穴列表数据类型[] = [
     ],
   },
   {
+    是否不可编辑: true,
+
     奇穴列表: [
       { 奇穴名称: '澄穆', 奇穴图片: 'https://icon.jx3box.com/icon/11849.png' },
       { 奇穴名称: '兰棹', 奇穴图片: 'https://icon.jx3box.com/icon/10884.png' },
@@ -40,6 +49,8 @@ const 奇穴数据: 奇穴列表数据类型[] = [
     ],
   },
   {
+    是否不可编辑: true,
+
     奇穴列表: [
       { 奇穴名称: '青冥', 奇穴图片: 'https://icon.jx3box.com/icon/14108.png' },
       { 奇穴名称: '遨宇', 奇穴图片: 'https://icon.jx3box.com/icon/10876.png' },
@@ -48,6 +59,8 @@ const 奇穴数据: 奇穴列表数据类型[] = [
     ],
   },
   {
+    是否不可编辑: true,
+
     奇穴列表: [
       { 奇穴名称: '惊潮', 奇穴图片: 'https://icon.jx3box.com/icon/17167.png' },
       { 奇穴名称: '鸿轨', 奇穴图片: 'https://icon.jx3box.com/icon/10917.png' },
@@ -56,6 +69,8 @@ const 奇穴数据: 奇穴列表数据类型[] = [
     ],
   },
   {
+    是否不可编辑: true,
+
     奇穴列表: [
       { 奇穴名称: '怅归', 奇穴图片: 'https://icon.jx3box.com/icon/10840.png' },
       { 奇穴名称: '崔嵬', 奇穴图片: 'https://icon.jx3box.com/icon/10875.png' },
@@ -65,6 +80,8 @@ const 奇穴数据: 奇穴列表数据类型[] = [
     ],
   },
   {
+    是否不可编辑: true,
+
     奇穴列表: [
       { 奇穴名称: '藏锋', 奇穴图片: 'https://icon.jx3box.com/icon/10851.png' },
       { 奇穴名称: '溯徊', 奇穴图片: 'https://icon.jx3box.com/icon/10869.png' },
@@ -74,6 +91,8 @@ const 奇穴数据: 奇穴列表数据类型[] = [
     ],
   },
   {
+    是否不可编辑: true,
+
     奇穴列表: [
       { 奇穴名称: '驰行', 奇穴图片: 'https://icon.jx3box.com/icon/10753.png' },
       { 奇穴名称: '神降', 奇穴图片: 'https://icon.jx3box.com/icon/10918.png' },
@@ -83,6 +102,8 @@ const 奇穴数据: 奇穴列表数据类型[] = [
     ],
   },
   {
+    是否不可编辑: true,
+
     奇穴列表: [
       { 奇穴名称: '梦悠', 奇穴图片: 'https://icon.jx3box.com/icon/10859.png' },
       { 奇穴名称: '无涯', 奇穴图片: 'https://icon.jx3box.com/icon/10881.png' },
@@ -92,6 +113,8 @@ const 奇穴数据: 奇穴列表数据类型[] = [
     ],
   },
   {
+    是否不可编辑: true,
+
     奇穴列表: [
       { 奇穴名称: '罔象', 奇穴图片: 'https://icon.jx3box.com/icon/10752.png' },
       { 奇穴名称: '濯流', 奇穴图片: 'https://icon.jx3box.com/icon/10824.png' },
