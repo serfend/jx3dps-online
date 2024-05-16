@@ -13,7 +13,7 @@ function JCL战斗记录解析() {
   useEffect(() => {
     form?.setFieldsValue({
       目标心法: 支持导入心法列表?.[0],
-      战斗时间: 300,
+      战斗时间: 301,
     })
   }, [form, 支持导入心法列表])
 

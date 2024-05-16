@@ -66,7 +66,7 @@ export const 获取数据 = ({ 心法, 数据, 最大时间 }): 循环详情 => 
                   let 增益名称 =
                     心法数据枚举?.buff?.[增益名称ID] || 心法数据枚举?.buff?.[`;${增益名称ID}`]
                   // 判断伤腰大附魔
-                  if (增益层数 > 1 && 增益名称ID === '15455') {
+                  if (增益层数 > 1 && 增益名称 && 增益名称ID === '15455') {
                     增益名称 = `${增益名称}·${增益层数}`
                   }
                   if (增益名称) {
@@ -74,46 +74,43 @@ export const 获取数据 = ({ 心法, 数据, 最大时间 }): 循环详情 => 
                       增益buff名称列表.push(增益名称)
                     }
                   } else {
-                    console.log('心法数据枚举?.buff', 心法数据枚举?.buff)
-                    console.log('心法数据枚举?.buff', 心法数据枚举?.buff?.[增益名称ID])
-                    console.log('增益名称ID', 增益名称ID)
                     // message.error(`增益名称ID未匹配${增益名称ID}`)
                   }
                 }
               })
               let 增益数量获取 = 1
               const 战斗时间数组 = 技能增益结果对象[zengyiKey]
-              const 最终战斗时间 = 战斗时间数组[战斗时间数组.length - 1]?.[0]
-              console.log('最终战斗时间', 最终战斗时间)
-              if (最终战斗时间 <= 最大时间 * 16) {
-                增益数量获取 = 战斗时间数组?.length || 1
-                // console.log('增益数量获取', 增益数量获取)
-                if (typeof 最终战斗时间 === 'number') {
-                  if (战斗时间 < 最终战斗时间) {
-                    战斗时间 = 最终战斗时间
-                  }
-                }
-                增益buff名称列表.sort((a, b) => a.localeCompare(b))
-                const 增益buff列表名字 = 增益buff名称列表.join(',')
-                console.log('增益buff列表名字', 增益buff列表名字)
+              // 获取该战斗时间数组内在最大时间范围内的数量
+              const 生效战斗时间数组 = 战斗时间数组.filter((item) =>
+                Number(item?.[0] <= 最大时间 * 16)
+              )
+              增益数量获取 = 生效战斗时间数组?.length || 1
+              增益buff名称列表.sort((a, b) => a.localeCompare(b))
+              const 最终战斗时间 = 生效战斗时间数组[生效战斗时间数组.length - 1]?.[0]
 
-                if (技能增益列表?.some((item) => item?.增益名称 === 增益buff列表名字)) {
-                  技能增益列表 = 技能增益列表.map((item) => {
-                    return item?.增益名称 === 增益buff列表名字
-                      ? {
-                          ...item,
-                          增益技能数: item.增益技能数 + 增益数量获取,
-                        }
-                      : item
-                  })
-                } else {
-                  技能增益列表.push({
-                    增益名称: 增益buff列表名字,
-                    增益技能数: 增益数量获取,
-                  })
+              if (typeof 最终战斗时间 === 'number') {
+                if (战斗时间 < 最终战斗时间) {
+                  战斗时间 = 最终战斗时间
                 }
-                技能数量 += 增益数量获取
               }
+              const 增益buff列表名字 = 增益buff名称列表.join(',')
+
+              if (技能增益列表?.some((item) => item?.增益名称 === 增益buff列表名字)) {
+                技能增益列表 = 技能增益列表.map((item) => {
+                  return item?.增益名称 === 增益buff列表名字
+                    ? {
+                        ...item,
+                        增益技能数: item.增益技能数 + 增益数量获取,
+                      }
+                    : item
+                })
+              } else {
+                技能增益列表.push({
+                  增益名称: 增益buff列表名字,
+                  增益技能数: 增益数量获取,
+                })
+              }
+              技能数量 += 增益数量获取
             } else {
               console.log('zengyiKey', zengyiKey)
             }

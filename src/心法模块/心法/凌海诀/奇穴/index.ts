@@ -2,7 +2,7 @@ import { 奇穴列表数据类型 } from '@/@types/奇穴'
 
 const 奇穴数据: 奇穴列表数据类型[] = [
   {
-    是否不可编辑: true,
+    // 是否不可编辑: true,
     奇穴列表: [
       { 奇穴名称: '海隅', 奇穴图片: 'https://icon.jx3box.com/icon/10760.png' },
       { 奇穴名称: '江汉', 奇穴图片: 'https://icon.jx3box.com/icon/10855.png' },
@@ -10,8 +10,7 @@ const 奇穴数据: 奇穴列表数据类型[] = [
     ],
   },
   {
-    是否不可编辑: true,
-
+    // 是否不可编辑: true,
     奇穴列表: [
       { 奇穴名称: '苍梧', 奇穴图片: 'https://icon.jx3box.com/icon/10882.png' },
       { 奇穴名称: '扶桑', 奇穴图片: 'https://icon.jx3box.com/icon/10768.png' },
@@ -20,7 +19,6 @@ const 奇穴数据: 奇穴列表数据类型[] = [
   },
   {
     是否不可编辑: true,
-
     奇穴列表: [
       { 奇穴名称: '羽彰', 奇穴图片: 'https://icon.jx3box.com/icon/10863.png' },
       { 奇穴名称: '乘龙', 奇穴图片: 'https://icon.jx3box.com/icon/10837.png' },

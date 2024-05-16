@@ -97,8 +97,8 @@ function Log() {
               <Timeline.Item key={item.version}>
                 <div className='log-content-text'>
                   {Array.isArray(item.content)
-                    ? item.content.map((a) => {
-                        return <p key={a}>{a}</p>
+                    ? item.content.map((a: any) => {
+                        return <div key={a}>{a}</div>
                       })
                     : item.content}
                 </div>
