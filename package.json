@@ -6,6 +6,7 @@
   "dependencies": {
     "@antv/g2": "^4.2.8",
     "@babel/core": "^7.16.0",
+    "@koale/useworker": "3.3.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
     "@reduxjs/toolkit": "^1.8.6",
     "@svgr/webpack": "^5.5.0",
@@ -69,7 +70,8 @@
     "webpack": "^5.64.4",
     "webpack-dev-server": "^4.6.0",
     "webpack-manifest-plugin": "^4.0.2",
-    "workbox-webpack-plugin": "^6.4.1"
+    "workbox-webpack-plugin": "^6.4.1",
+    "worker-loader": "^3.0.8"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.39.0",

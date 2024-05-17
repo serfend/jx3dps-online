@@ -215,13 +215,13 @@ module.exports = function (webpackEnv) {
       // libraryTarget: isEnvDevelopment ? undefined : 'commonjs', // 将指定文件打包为 CommonJS
       // There will be one main bundle, and one file per asynchronous chunk.
       // In development, it does not produce real files.
-      filename: (pathData) => {
-      if (pathData.chunk.name === 'getDps' && isEnvProduction) {
-        return 'static/js/getDps.js';
-      }
+      filename: () => {
+      // if (pathData.chunk.name === 'getDps' && isEnvProduction) {
+      //   return 'static/js/getDps.js';
+      // }
       return isEnvProduction
         ? 'static/js/[name].[contenthash:8].js'
-        : isEnvDevelopment && 'static/js/bundle.js'
+        : 'static/js/[name].[fullhash:8].js'
       },
       // There are also additional JS chunk files if you use code splitting.
       chunkFilename: isEnvProduction
@@ -559,6 +559,11 @@ module.exports = function (webpackEnv) {
               // See https://github.com/webpack/webpack/issues/6571
               sideEffects: true,
             },
+            {
+              test: /\.worker\.(js|jsx|ts|tsx)$/,
+              exclude: /node_modules/,
+              use: ['worker-loader'],
+            },
             // Adds support for CSS Modules, but using SASS
             // using the extension .module.scss or .module.sass
             {
@@ -610,7 +615,7 @@ module.exports = function (webpackEnv) {
           {
             inject: true,
             template: paths.appHtml,
-            excludeChunks: ['getDps'],
+            // excludeChunks: ['getDps'],
           },
           isEnvProduction
             ? {

@@ -152,3 +152,5 @@ const uncmin = (f, x0, tol, gradient, maxit, callback, options) => {
   }
   return { solution: x0, f: f0, gradient: g0, invHessian: H1, iterations: it, message: msg }
 }
+
+export default optimizationTool

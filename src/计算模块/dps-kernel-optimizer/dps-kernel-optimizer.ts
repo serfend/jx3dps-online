@@ -1,4 +1,4 @@
-import { optimizationTool } from './optimization-tool'
+import optimizationTool from './optimization-tool'
 import 循环秒伤计算 from '../循环秒伤计算'
 import { 装备信息数据类型 } from '@/@types/装备'
 import { 循环技能详情 } from '@/@types/循环'
