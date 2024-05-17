@@ -5,10 +5,20 @@
   padding-right: 24px;
 }
 
+.max-fumo-all-check {
+  text-align: right;
+  padding-right: 21px;
+}
+
 .max-fumo-wrap {
   display: flex;
   align-items: flex-start;
   justify-content: center;
+}
+
+.max-fumo-check-col {
+  text-align: center;
+  margin-bottom: 12px;
 }
 
 .max-fumo-content {

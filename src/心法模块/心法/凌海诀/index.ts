@@ -32,6 +32,7 @@ const 心法配置: 心法配置类型 = {
     背景色渐变: `linear-gradient(to right, #08122b 30%, rgba(8, 18, 43, 0) 100%)`,
     背景色: 'rgba(0, 0, 0, 0.26)',
   },
+  性能功能关闭数组: ['优化算法'],
 }
 
 export default 心法配置

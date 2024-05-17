@@ -1,5 +1,5 @@
 // 一键设置最佳附魔
-import { Button, Modal, message } from 'antd'
+import { Button, Checkbox, Col, Divider, Modal, Row, message } from 'antd'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { useAppDispatch } from '@/hooks'
 import { RiseOutlined } from '@ant-design/icons'
@@ -7,24 +7,47 @@ import { RiseOutlined } from '@ant-design/icons'
 import { 角色基础属性类型 } from '@/@types/角色'
 import { 秒伤计算 } from '@/计算模块/计算函数'
 import { 装备位置部位枚举 } from '@/@types/装备'
+import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 
 import 根据装备信息获取基础属性 from '../../工具函数/根据装备信息获取基础属性'
 import { 修改装备属性, 初始化所有组合 } from './util'
 import './index.css'
 
+const { 默认数据 = {} } = 获取当前数据()
+const { 一键附魔默认部位 = [] } = 默认数据
+
+const 没有附魔的部位 = ['_7', '_8']
+const 全部部位: 装备位置部位枚举[] = Object.keys(装备位置部位枚举).filter(
+  (key) => !没有附魔的部位?.includes(key)
+) as 装备位置部位枚举[]
+
 function 最佳附魔设置({ 一键替换附魔, 对比秒伤, 对比装备信息 }) {
   const [open, setOpen] = useState<boolean>(false)
+  const [部位选择弹窗, 更新部位选择弹窗] = useState<boolean>(false)
   const [最大组合, 更新最大组合] = useState<any>({})
   const [最大Dps, 更新最大秒伤] = useState<number>(0)
   const [计算用时, 更新计算用时] = useState<number>(0)
   const [无附魔装备属性, 设置无附魔装备属性] = useState<角色基础属性类型>()
+
+  const [当前选择计算部位, 更新当前选择计算部位] = useState<装备位置部位枚举[]>(
+    一键附魔默认部位?.length ? 一键附魔默认部位 : 全部部位
+  )
+
+  const 是否选择部分 = useMemo(() => {
+    return !!(当前选择计算部位?.length && 当前选择计算部位?.length < 全部部位?.length)
+  }, [当前选择计算部位, 全部部位])
+
+  const 是否全选 = useMemo(() => {
+    return !全部部位?.some((key) => !当前选择计算部位?.includes(key))
+  }, [当前选择计算部位, 全部部位])
+
   // 所有组合的缓存数据
   const dispatch = useAppDispatch()
   const dataRef = useRef<any>()
 
   useEffect(() => {
-    初始化()
-  }, [对比装备信息])
+    初始化(当前选择计算部位)
+  }, [对比装备信息, 当前选择计算部位])
 
   const 当前附魔信息 = useMemo(() => {
     const res: any[] = []
@@ -53,14 +76,14 @@ function 最佳附魔设置({ 一键替换附魔, 对比秒伤, 对比装备信�
   }, [对比装备信息, 最大组合])
 
   // 先根据当前的附魔列表，计算出最后计算dps时所需要的排列组合
-  const 初始化 = () => {
-    const res = 初始化所有组合()
-    获取当前装备信息去除附魔加成的面板()
+  const 初始化 = (计算部位) => {
+    const res = 初始化所有组合(计算部位)
+    获取当前装备信息去除附魔加成的面板(计算部位)
     dataRef.current = res
   }
 
-  const 获取当前装备信息去除附魔加成的面板 = () => {
-    const { 装备基础属性 } = 根据装备信息获取基础属性(对比装备信息, { 计算附魔: false })
+  const 获取当前装备信息去除附魔加成的面板 = (计算部位) => {
+    const { 装备基础属性 } = 根据装备信息获取基础属性(对比装备信息, { 过滤附魔部位: 计算部位 })
     设置无附魔装备属性(装备基础属性)
   }
 
@@ -68,11 +91,23 @@ function 最佳附魔设置({ 一键替换附魔, 对比秒伤, 对比装备信�
     if (无附魔装备属性) {
       Modal.confirm({
         title: `确定开始计算吗`,
-        content: `共 ${dataRef?.current?.length} 种组合，计算将造成一定卡顿`,
+        content: (
+          <div>
+            <p>共 {dataRef?.current?.length} 种组合，计算将造成一定卡顿</p>
+            {dataRef?.current?.length > 500 ? (
+              <p>「凌海诀」玩家电脑性能不佳情况下请慎重使用</p>
+            ) : null}
+          </div>
+        ),
         okText: '我要计算',
         onOk: async () => {
           开始计算()
         },
+        cancelText: '重新选择',
+        onCancel: () => {
+          更新部位选择弹窗(true)
+        },
+        closable: true,
       })
     }
   }
@@ -119,9 +154,50 @@ function 最佳附魔设置({ 一键替换附魔, 对比秒伤, 对比装备信�
 
   return (
     <>
-      <Button type='primary' size='small' onClick={() => 计算前提示()}>
+      <Button type='primary' size='small' onClick={() => 更新部位选择弹窗(true)}>
         一键设置附魔
       </Button>
+      <Modal
+        title={'需计算的附魔部位'}
+        // centered
+        open={部位选择弹窗}
+        width={460}
+        okText={'计算选中部位'}
+        onOk={() => {
+          更新部位选择弹窗(false)
+          计算前提示()
+        }}
+        onCancel={() => 更新部位选择弹窗(false)}
+      >
+        <div className={'max-fumo-all-check'}>
+          <Checkbox
+            indeterminate={是否选择部分}
+            onChange={() => {
+              if (是否全选) {
+                更新当前选择计算部位([])
+              } else {
+                更新当前选择计算部位(全部部位)
+              }
+            }}
+            checked={是否全选}
+          >
+            全选
+          </Checkbox>
+        </div>
+        <Divider style={{ margin: '12px 0' }} />
+
+        <Checkbox.Group value={当前选择计算部位} onChange={(e) => 更新当前选择计算部位(e as any)}>
+          <Row>
+            {全部部位.map((key) => {
+              return (
+                <Col className={'max-fumo-check-col'} span={6} key={key}>
+                  <Checkbox value={key}>{装备位置部位枚举[key]}</Checkbox>
+                </Col>
+              )
+            })}
+          </Row>
+        </Checkbox.Group>
+      </Modal>
       {/* 设置提醒和结果弹窗 */}
       <Modal
         title={

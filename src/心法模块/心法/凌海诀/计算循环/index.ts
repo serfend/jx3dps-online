@@ -7,10 +7,9 @@ import type { 循环数据 } from '@/@types/循环'
 
 // 循环
 import 烟涛 from './烟涛.json'
-// import 烟涛_测试 from './烟涛_测试.json'
-// import 烟涛_测试_2 from './烟涛_测试_2.json'
-// import 技能对照 from './技能对照.json'
 import 橙武 from './橙武.json'
+// import 烟涛_期望计算 from './烟涛_期望计算.json'
+// import 技能对照 from './技能对照.json'
 
 const 计算循环: 循环数据[] = [烟涛, 橙武]
 

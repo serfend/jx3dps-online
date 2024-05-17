@@ -7,7 +7,6 @@ const { 附魔 } = 获取当前数据()
 
 export const 修改装备属性 = (装备基础属性: 角色基础属性类型, 当前附魔数据) => {
   let 计算后属性 = { ...装备基础属性 }
-
   Object.keys(当前附魔数据).forEach((key) => {
     const 当前附魔 = 当前附魔数据[key]
     const 附魔属性 = Object.keys(当前附魔)?.[0]
@@ -20,24 +19,26 @@ export const 修改装备属性 = (装备基础属性: 角色基础属性类型,
   return 计算后属性
 }
 
-export const 初始化所有组合 = () => {
+export const 初始化所有组合 = (计算部位) => {
   const res = {}
   // 先找出该装备部位支持的同种类的最大数值的附魔
-  Object.keys(装备位置部位枚举).forEach((key) => {
-    附魔?.forEach((item) => {
-      if (item?.附魔支持部位?.includes(装备位置部位枚举[key] as any)) {
-        // const 部位表单key = `${EquipmentCharacterPositionEnum[key]}${key}`
-        const 附魔类型 = item?.附魔名称?.split('+')?.[0]
-        const 附魔数值 = item?.附魔名称?.split('+')?.[1]
-        if (!res?.[key]?.[附魔类型] || res[key][附魔类型] < 附魔数值) {
-          res[key] = {
-            ...(res[key] || {}),
-            [附魔类型]: 附魔数值,
+  Object.keys(装备位置部位枚举)
+    .filter((key) => 计算部位?.includes(key))
+    .forEach((key) => {
+      附魔?.forEach((item) => {
+        if (item?.附魔支持部位?.includes(装备位置部位枚举[key] as any)) {
+          // const 部位表单key = `${EquipmentCharacterPositionEnum[key]}${key}`
+          const 附魔类型 = item?.附魔名称?.split('+')?.[0]
+          const 附魔数值 = item?.附魔名称?.split('+')?.[1]
+          if (!res?.[key]?.[附魔类型] || res[key][附魔类型] < 附魔数值) {
+            res[key] = {
+              ...(res[key] || {}),
+              [附魔类型]: 附魔数值,
+            }
           }
         }
-      }
+      })
     })
-  })
 
   const generateCombinationsRes = generateCombinations(res)
   const filterUniqueObjectsRes = filterUniqueObjects(generateCombinationsRes)

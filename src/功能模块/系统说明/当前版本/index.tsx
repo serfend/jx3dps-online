@@ -1,6 +1,6 @@
 import { Button, Modal, Timeline } from 'antd'
 import React, { useEffect, useState } from 'react'
-import log_data from './log_data'
+import log_data from '@/更新日志'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 import './index.css'
 

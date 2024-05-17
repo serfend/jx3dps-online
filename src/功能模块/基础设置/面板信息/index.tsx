@@ -15,7 +15,7 @@ import { 获取计算目标信息 } from '@/计算模块/统一工具函数/工�
 import { 获取角色需要展示的面板数据 } from './工具'
 import './index.css'
 
-const { 主属性 } = 获取当前数据()
+const { 主属性, 性能功能关闭数组 = [] } = 获取当前数据()
 
 function 面板信息() {
   const 当前奇穴信息 = useAppSelector((state) => state?.data?.当前奇穴信息)
@@ -103,12 +103,14 @@ function 面板信息() {
           >
             <Tooltip title={'开启后将展示阵眼常驻增益、小吃小药、团队宴席增益'}>增益面板</Tooltip>
           </Checkbox>
-          <Checkbox checked={开启优化算法} onChange={(e) => 切换开启优化算法(e?.target?.checked)}>
-            优化算法
-            <Tooltip title='采用拟牛顿法对属性做优化演算，仅能代表在当前已穿装备总属性容量不变的情况下的，各属性近似最优收益方向。仅作参考，开启后会消耗额外性能。'>
-              <QuestionCircleOutlined className={'character-max-title-tip'} />
-            </Tooltip>
-          </Checkbox>
+          {!性能功能关闭数组?.includes('优化算法') ? (
+            <Checkbox checked={开启优化算法} onChange={(e) => 切换开启优化算法(e?.target?.checked)}>
+              优化算法
+              <Tooltip title='采用拟牛顿法对属性做优化演算，仅能代表在当前已穿装备总属性容量不变的情况下的，各属性近似最优收益方向。仅作参考，开启后会消耗额外性能。'>
+                <QuestionCircleOutlined className={'character-max-title-tip'} />
+              </Tooltip>
+            </Checkbox>
+          ) : null}
         </div>
       </div>
       {mapKeyList.map((item) => {
