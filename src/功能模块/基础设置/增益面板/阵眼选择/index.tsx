@@ -74,13 +74,7 @@ const 阵眼选择: React.FC<阵眼选择类型> = (props) => {
             label={item.阵眼名称}
           >
             <Tooltip
-              title={
-                item.覆盖率 && item?.覆盖率 !== 1 ? (
-                  <span>覆盖率：{(item.覆盖率 * 100)?.toFixed(0)}%</span>
-                ) : (
-                  ''
-                )
-              }
+              title={item.覆盖率 ? <span>覆盖率：{item.覆盖率?.toFixed(0)}%</span> : ''}
               placement='topLeft'
             >
               <div className={'zhenyan-option-text'}>
