@@ -14,7 +14,9 @@ function 循环选择() {
   const { 全部循环 = [] } = useCycle()
 
   const 切换循环 = (val) => {
+    const 目标循环数据 = 全部循环?.find((item) => item?.名称 === val)
     dispatch(更新方案数据({ 属性: '当前计算循环名称', 数据: val }))
+    dispatch(更新方案数据({ 属性: '当前奇穴信息', 数据: 目标循环数据?.奇穴 }))
     dispatch(触发秒伤计算({ 是否更新显示计算结果: true }))
   }
 

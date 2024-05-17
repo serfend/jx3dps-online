@@ -60,7 +60,7 @@ function 配装组件标题({
           className={'zhuangbei-diff-btn'}
         >
           智能对比
-          <Tooltip title='对比默认精炼等级下切换至另一件装备dps波动。考虑性能当前仅放出12800+品装备及精简。如使用卡顿请及时反馈'>
+          <Tooltip title='对比默认精炼等级下切换至另一件装备dps波动。开启后打开装备选择框时会略微卡顿。'>
             <QuestionCircleOutlined className={'zhuangbei-diff-tip'} />
           </Tooltip>
         </Checkbox>

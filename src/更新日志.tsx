@@ -6,6 +6,7 @@ export default [
       '综合',
       <p style={{ paddingLeft: 12 }} key='1.0.3.1'>
         <p>- 配装器快速一键附魔功能增加选择计算部位功能，大大提高计算效率</p>
+        <p>- 修复切换循环没有自动切换至对应循环奇穴的BUG</p>
       </p>,
       '凌海诀',
       <p style={{ paddingLeft: 12 }} key='1.0.3.2'>
