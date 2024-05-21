@@ -31,8 +31,13 @@ export const hexToRgbaToDark = (hex, alpha, num = 10) => {
 }
 
 export const 获取页面参数 = (param) => {
-  const urlParams = new URLSearchParams(window.location.search)
-  return urlParams.get(param)
+  if (global.xf && param === 'xf') {
+    return global.xf
+  } else if (window?.location?.search) {
+    const urlParams = new URLSearchParams(window?.location?.search)
+    return urlParams.get(param)
+  }
+  return ''
 }
 
 export const 修改页面Logo = (src) => {

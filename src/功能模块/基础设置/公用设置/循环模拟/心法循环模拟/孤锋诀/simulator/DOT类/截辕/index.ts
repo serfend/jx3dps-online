@@ -22,8 +22,10 @@ class 截辕 extends 通用DOT类 {
 
     待生效数据.forEach((数据) => {
       const 生效时间 = 数据.生效时间 || 0
+      const 快照buff列表 = 数据.快照buff列表 || []
+
       if (生效时间) {
-        this.触发伤害行为('截辕（DOT）', 1, [], 生效时间)
+        this.触发伤害行为('截辕（DOT）', 1, 快照buff列表, 生效时间, true)
       }
     })
   }

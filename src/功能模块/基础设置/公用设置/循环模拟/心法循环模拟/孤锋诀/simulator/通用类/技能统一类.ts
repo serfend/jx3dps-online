@@ -28,9 +28,10 @@ class 技能统一类 {
     伤害名称,
     伤害次数 = 1,
     额外增益列表: string[] = [],
-    触发伤害时间: number | undefined = undefined
+    触发伤害时间: number | undefined = undefined,
+    DOT伤害 = false
   ) {
-    this.模拟循环.技能造成伤害?.(伤害名称, 伤害次数, 额外增益列表, 触发伤害时间)
+    this.模拟循环.技能造成伤害?.(伤害名称, 伤害次数, 额外增益列表, 触发伤害时间, DOT伤害)
   }
 
   破浪三式触发鸣锋() {

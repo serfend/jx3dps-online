@@ -40,6 +40,13 @@ const BattleLogModal: React.FC<BattleLogModalProps> = (props) => {
       onFilter: (value: any, record) => record.日志类型.indexOf(value) === 0,
     },
     {
+      title: '伤害次数',
+      dataIndex: '伤害次数',
+      render: (_, row) => {
+        return row?.其他数据?.伤害次数 || ''
+      },
+    },
+    {
       title: 'buff列表',
       dataIndex: 'buff列表',
       render: (_, record) => {

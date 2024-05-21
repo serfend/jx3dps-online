@@ -19,5 +19,5 @@ export interface 数据类型 extends 心法配置类型 {
   装备数据: { [key: string]: 装备属性信息模型[] }
   缓存映射: 缓存映射类型
   装备增益数据: 装备增益数据类型
-  覆盖率?: { [key in 支持修改覆盖率类型]: number }
+  覆盖率?: Partial<{ [key in 支持修改覆盖率类型]: number }>
 }
