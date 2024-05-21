@@ -5,7 +5,7 @@ import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 import 小药小吃选择框 from './小药小吃选择框'
 import './index.css'
 
-const { 小药小吃 } = 获取当前数据()
+const { 小药小吃 = [] } = 获取当前数据()
 
 interface 小吃数据 {
   type: string

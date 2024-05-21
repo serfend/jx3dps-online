@@ -84,6 +84,11 @@ export interface 心法配置类型 {
    * @description 针对某些心法需要关闭的很耗费性能的功能
    */
   性能功能关闭数组?: 性能功能关闭数组类型[]
+  /**
+   * @name 覆盖率
+   * @description 针对心法的覆盖率数值覆盖
+   */
+  覆盖率?: Partial<{ [key in 支持修改覆盖率类型]: number }>
 }
 
 type 主属性类型 = '力道' | '身法' | '根骨' | '元气'
