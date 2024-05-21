@@ -31,11 +31,15 @@ export const hexToRgbaToDark = (hex, alpha, num = 10) => {
 }
 
 export const 获取页面参数 = (param) => {
-  if (global.xf && param === 'xf') {
-    return global.xf
-  } else if (window?.location?.search) {
-    const urlParams = new URLSearchParams(window?.location?.search)
-    return urlParams.get(param)
+  if (global?.心法 && param === '心法') {
+    return global?.心法
+  } else if (global?.xf && param === 'xf') {
+    return global?.xf
+  } else if (window) {
+    if (window?.location?.search) {
+      const urlParams = new URLSearchParams(window?.location?.search)
+      return urlParams.get(param)
+    }
   }
   return ''
 }

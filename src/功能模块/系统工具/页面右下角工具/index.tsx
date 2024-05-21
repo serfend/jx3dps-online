@@ -15,7 +15,7 @@ function 页面右下角工具() {
       content: '仅作为计算数据异常、页面异常时使用。',
       onOk: () => {
         localStorage.clear()
-        window.location.reload()
+        window?.location?.reload()
       },
     })
   }

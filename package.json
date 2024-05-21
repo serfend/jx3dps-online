@@ -92,6 +92,7 @@
     "dev": "rimraf build/static/js/getDps.js && node scripts/start.js --stack-size=10000",
     "start": "node scripts/start.js --stack-size=10000",
     "build": "node scripts/build.js",
+    "buildGetDps": "GET_DPS=true node scripts/build.js",
     "test": "node scripts/test.js",
     "deploy": "gh-pages -d build",
     "predeploy": "npm run build",

@@ -90,6 +90,7 @@ const hasJsxRuntime = (() => {
 module.exports = function (webpackEnv) {
   const isEnvDevelopment = webpackEnv === 'development';
   const isEnvProduction = webpackEnv === 'production';
+  const isGetDpsMoment = process.env.GET_DPS === 'true';
 
   // Variable used for enabling profiling in Production
   // passed into alias object. Uses a flag if passed into the build command
@@ -202,9 +203,9 @@ module.exports = function (webpackEnv) {
     // This means they will be the "root" imports that are included in JS bundle.
     entry: {
       main: paths.appIndexJs,
-      // ...(isEnvDevelopment ? {} : {
-      //   getDps: paths.getDps,
-      // })
+      ...(isEnvDevelopment || !isGetDpsMoment ? {} : {
+        getDps: paths.getDps,
+      })
     },
     output: {
       // The build folder.
@@ -216,7 +217,7 @@ module.exports = function (webpackEnv) {
       // There will be one main bundle, and one file per asynchronous chunk.
       // In development, it does not produce real files.
       filename: (pathData) => {
-      if (pathData.chunk.name === 'getDps' && isEnvProduction) {
+      if (pathData.chunk.name === 'getDps' && isEnvProduction && isGetDpsMoment) {
         return 'static/js/getDps.js';
       }
       return isEnvProduction
@@ -304,7 +305,7 @@ module.exports = function (webpackEnv) {
         // This is only used in production mode
         new CssMinimizerPlugin(),
       ],
-      splitChunks:isEnvProduction ? {
+      splitChunks:(isEnvProduction && !isGetDpsMoment) ? {
         chunks: 'all',
         minSize: 30000,
         maxSize: 0,

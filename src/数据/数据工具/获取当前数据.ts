@@ -14,7 +14,13 @@ let 缓存数据: any = null
 
 const 获取当前数据 = (心法?): 数据类型 => {
   if (缓存数据) {
-    return 缓存数据
+    if (global?.心法 || global?.xf) {
+      if (global?.心法 === 缓存数据?.名称 || global?.xf === 缓存数据?.简写) {
+        return 缓存数据
+      }
+    } else {
+      return 缓存数据
+    }
   }
 
   const 心法数据 = 获取心法数据(心法)

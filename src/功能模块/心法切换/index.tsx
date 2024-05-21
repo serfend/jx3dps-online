@@ -21,7 +21,9 @@ function 心法切换() {
       allPathList[allPathList.length - 1] = `?心法=${目标心法}`
     }
     const newPath = allPathList.join('/')
-    window.location.href = newPath
+    if (window) {
+      window.location.href = newPath
+    }
   }
   const menu = (
     <Menu
