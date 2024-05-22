@@ -1,9 +1,11 @@
 import { 心法配置类型 } from '@/心法模块/interface'
 import { 阵眼数据类型 } from './interface'
 import 外功阵眼数据 from './外功'
+import 内功阵眼数据 from './内功'
 
 const 阵眼数据 = {
   外功: 外功阵眼数据,
+  内功: 内功阵眼数据,
 }
 
 // 过滤出自己本门派的阵眼睛

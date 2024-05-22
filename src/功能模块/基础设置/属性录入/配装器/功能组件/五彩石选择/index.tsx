@@ -7,8 +7,8 @@ import './index.css'
 const { 五彩石 } = 获取当前数据()
 
 interface WucaishiFilterList {
-  value: 五彩石增益类型枚举
-  label: 五彩石增益类型枚举
+  value: 五彩石增益类型枚举 | string
+  label: 五彩石增益类型枚举 | string
   children?: WucaishiFilterList[]
 }
 
@@ -72,7 +72,7 @@ function WuCaiShiXuanZe(props: WuCaiShiXuanZeProps) {
           value={jibie}
           options={[
             { label: '六级', value: 6 },
-            { label: '五级', value: 5 },
+            // { label: '五级', value: 5 },
           ]}
           onChange={(e) => changeJiBie(e)}
         />

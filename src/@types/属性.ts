@@ -42,7 +42,7 @@ export enum 属性类型 {
   外功会心等级 = 'atPhysicsCriticalStrike',
   内功会心等级 = 'atMagicCriticalStrike',
 
-  全会心等级百分比 = 'atAllCriticalStrikeBaseRate',
+  全会心百分比 = 'atAllCriticalStrikeBaseRate',
   外功会心百分比 = 'atPhysicsCriticalStrikeBaseRate',
   内功会心百分比 = 'atMagicCriticalStrikeBaseRate',
 
