@@ -8,6 +8,7 @@ function 计算 () {
   const DPS = require('../../build/static/js/getDps.js')
   // const DPS = require('./getDps.js')
   const 计算结果 = DPS?.计算秒伤?.(data)
+  console.log('计算结果',计算结果)
   return 计算结果
 }
 

@@ -9,6 +9,7 @@ export default [
       <p style={{ paddingLeft: 12 }} key='1.0.5.2'>
         <p>{`- 修正「停云势」和「断云势」的武器伤害系数「2.5」=> 「2」`}</p>
         <p>{`- 精细破招系数的算法`}</p>
+        <p>{`- 修复门派套装双会buff的覆盖率时间`}</p>
       </p>,
       '山海心诀',
       <p style={{ paddingLeft: 12 }} key='1.0.5.2'>

@@ -1,4 +1,6 @@
+import { 获取实际帧数 } from '../../utils'
 import { DOT待生效数据类型, DOT运行数据类型, DotDTO } from '../type'
+import { 根据加速等级获取虚拟加速值 } from '../utils'
 import 技能统一类 from './技能统一类'
 
 class 通用DOT类 extends 技能统一类 {
@@ -53,9 +55,16 @@ class 通用DOT类 extends 技能统一类 {
   // 对当前dot进行结算和运行数据
   更新待生效数据(当前层数: number, DOT数据: DotDTO) {
     const DOT是否吃加速 = DOT数据.是否吃加速 !== undefined ? DOT数据.是否吃加速 : true
-    const 加速减少帧 = DOT是否吃加速 ? this.模拟循环.加速等级 || 0 : 0
-    const 实际初次频率 = (DOT数据.初次频率 || DOT数据.伤害频率) - 加速减少帧
-    const 实际伤害频率 = DOT数据.伤害频率 - 加速减少帧
+
+    const 循环加速值 = 根据加速等级获取虚拟加速值(this.模拟循环.加速等级)
+    const 实际初次频率 = DOT是否吃加速
+      ? 获取实际帧数(DOT数据.初次频率 || DOT数据.伤害频率, 循环加速值)
+      : DOT数据.初次频率 || DOT数据.伤害频率
+
+    const 实际伤害频率 = DOT是否吃加速
+      ? 获取实际帧数(DOT数据.伤害频率, 循环加速值)
+      : DOT数据.伤害频率
+
     const 当前时间 = this.模拟循环.当前时间 || 0
     const 待生效数据: DOT待生效数据类型[] =
       // 只更新在刷新buff之后的数据的层数
