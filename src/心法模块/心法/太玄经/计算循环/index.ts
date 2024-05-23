@@ -6,13 +6,9 @@ import type { 循环数据 } from '@/@types/循环'
  */
 
 // 循环
-import 朝仪_考古 from './朝仪_考古.json'
-import 朝仪_三压 from './朝仪_三压.json'
-import 朝仪_丛云 from './朝仪_丛云.json'
-import 朱厌_丛云 from './朱厌_丛云.json'
-import 朝仪_橙武 from './朝仪_橙武.json'
-import 朱厌_压缩 from './朱厌_压缩.json'
+import 堪炸 from './堪炸.json'
+import 鬼列 from './鬼列.json'
 
-const 计算循环: 循环数据[] = [朝仪_丛云, 朱厌_丛云, 朝仪_三压, 朝仪_考古, 朱厌_压缩, 朝仪_橙武]
+const 计算循环: 循环数据[] = [堪炸, 鬼列]
 
 export default 计算循环

@@ -32,14 +32,20 @@ export interface 技能基础数据模型 {
    * @description 游戏面板技能造成基础伤害
    * @default 0
    */
-  技能基础伤害_基础值?: number
+  基础伤害_基础值?: number
   /**
    * @name 技能基础伤害-浮动值
    * @description 游戏面板技能造成浮动伤害
    * @description 技能最大伤害为基础值 + 浮动值
    * @default 0
    */
-  技能基础伤害_浮动值?: number
+  基础伤害_浮动值?: number
+  /**
+   * @name 基础伤害_倍率-浮动值
+   * @description 基础值和浮动值都吃此倍率
+   * @default 0
+   */
+  基础伤害_倍率?: number
   /**
    * @name 武器伤害系数
    * @description 游戏面板描述 “造成xxx%武器伤害”
@@ -82,7 +88,30 @@ export interface 技能基础数据模型 {
    * key代表技能等级范围，如果key为单个数字，代表只有对应等级满足
    * 如果key为 1,10 代表1级到10级都满足
    */
-  技能等级数据?: { [key: string]: Partial<技能基础数据模型> }
+  技能等级数据?: { [key: string]: 技能等级数据类型 }
+}
+
+export interface 技能等级数据类型
+  extends Partial<Omit<技能基础数据模型, '技能伤害系数' | '基础伤害_基础值' | '基础伤害_浮动值'>> {
+  /**
+   * @name 技能伤害系数
+   * @description 游戏面板技能伤害 / 角色面板攻击
+   * @default 0
+   */
+  技能伤害系数?: number | ((等级: number) => number)
+  /**
+   * @name 技能基础伤害-基础值
+   * @description 游戏面板技能造成基础伤害
+   * @default 0
+   */
+  基础伤害_基础值?: number | number[] | { [key: number]: number }
+  /**
+   * @name 技能基础伤害-浮动值
+   * @description 游戏面板技能造成浮动伤害
+   * @description 技能最大伤害为基础值 + 浮动值
+   * @default 0
+   */
+  基础伤害_浮动值?: number | number[] | { [key: number]: number }
 }
 
 /**

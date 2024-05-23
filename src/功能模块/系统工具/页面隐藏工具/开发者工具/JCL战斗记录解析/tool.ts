@@ -1,10 +1,12 @@
 import { 循环技能详情, 循环详情, 技能增益列表数据 } from '@/@types/循环'
 import commonMap from './common'
 import 凌海诀枚举 from './凌海诀/map.json'
+import 太玄经枚举 from './太玄经/map.json'
 import { message } from 'antd'
 
 const 心法枚举 = {
   凌海诀: 凌海诀枚举,
+  太玄经: 太玄经枚举,
 }
 
 export const 获取数据 = ({ 心法, 数据, 最大时间 }): 循环详情 => {
@@ -24,12 +26,14 @@ export const 获取数据 = ({ 心法, 数据, 最大时间 }): 循环详情 => 
       const splitKey = key?.split('-')
       if (splitKey?.length) {
         const 技能名称ID = splitKey[0]
+        const 技能等级 = +splitKey[1] === 1 ? undefined : +splitKey[1]
         const 技能层数 = Number(splitKey[2])
         let 技能名称 = 心法数据枚举?.skills?.[技能名称ID]
         if (技能名称?.includes('DOT')) {
           技能名称 = `${技能名称}·${commonMap?.StackMap?.[技能层数]}`
         }
         if (!技能名称) {
+          console.log(`技能名称ID未获取：${技能名称ID}`)
           message.error(`技能名称ID未获取：${技能名称ID}`)
         }
         let 技能数量 = 0
@@ -74,6 +78,7 @@ export const 获取数据 = ({ 心法, 数据, 最大时间 }): 循环详情 => 
                       增益buff名称列表.push(增益名称)
                     }
                   } else {
+                    console.log(`增益名称ID未匹配${增益名称ID}`)
                     // message.error(`增益名称ID未匹配${增益名称ID}`)
                   }
                 }
@@ -118,16 +123,18 @@ export const 获取数据 = ({ 心法, 数据, 最大时间 }): 循环详情 => 
         })
 
         技能增益列表.sort((a, b) => a.增益名称.localeCompare(b.增益名称))
-
+        console.log('res', res)
         res.push({
           技能名称,
+          技能等级,
           技能数量,
           技能增益列表,
         })
       }
     })
   }
-  res.sort((a, b) => a.技能名称.localeCompare(b.技能名称))
+  console.log('res', res)
+  res.sort((a, b) => a.技能名称?.localeCompare(b?.技能名称))
 
   return {
     战斗时间: 战斗时间 / 16,

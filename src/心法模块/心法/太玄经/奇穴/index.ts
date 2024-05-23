@@ -1,309 +1,103 @@
 import { 奇穴列表数据类型 } from '@/@types/奇穴'
 
 const 奇穴数据: 奇穴列表数据类型[] = [
-  // 1
   {
     奇穴列表: [
-      {
-        奇穴名称: '彤弓',
-        奇穴图片: 'https://icon.jx3box.com/icon/20314.png',
-      },
-      {
-        奇穴名称: '素矰',
-        奇穴图片: 'https://icon.jx3box.com/icon/20313.png',
-      },
-      {
-        奇穴名称: '争疾',
-        奇穴图片: 'https://icon.jx3box.com/icon/20312.png',
-      },
+      { 奇穴名称: '正夏', 奇穴图片: 'https://icon.jx3box.com/icon/14020.png' },
+      { 奇穴名称: '明心', 奇穴图片: 'https://icon.jx3box.com/icon/14016.png' },
+      { 奇穴名称: '水盈', 奇穴图片: 'https://icon.jx3box.com/icon/14163.png' },
     ],
   },
-  // 2
   {
-    是否不可编辑: true,
     奇穴列表: [
-      {
-        奇穴名称: '棘矢',
-        奇穴图片: 'https://icon.jx3box.com/icon/20272.png',
-      },
-      {
-        奇穴名称: '孰湖',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20271.png',
-      },
-      {
-        奇穴名称: '弧旌',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20270.png',
-      },
+      { 奇穴名称: '望旗', 奇穴图片: 'https://icon.jx3box.com/icon/14017.png' },
+      { 奇穴名称: '度冥', 奇穴图片: 'https://icon.jx3box.com/icon/19197.png' },
+      { 奇穴名称: '天网', 奇穴图片: 'https://icon.jx3box.com/icon/17190.png' },
     ],
   },
-  // 3
   {
-    是否不可编辑: true,
     奇穴列表: [
-      {
-        奇穴名称: '襄尺',
-        奇穴图片: 'https://icon.jx3box.com/icon/20287.png',
-      },
-      {
-        奇穴名称: '冉遗',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20289.png',
-      },
-      {
-        奇穴名称: '虹流',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20288.png',
-      },
-      {
-        奇穴名称: '弋矰',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20286.png',
-      },
+      { 奇穴名称: '顺祝', 奇穴图片: 'https://icon.jx3box.com/icon/14036.png' },
+      { 奇穴名称: '燃灯', 奇穴图片: 'https://icon.jx3box.com/icon/18320.png' },
+      { 奇穴名称: '连蜷', 奇穴图片: 'https://icon.jx3box.com/icon/14043.png' },
+      { 奇穴名称: '星迹', 奇穴图片: 'https://icon.jx3box.com/icon/18323.png' },
     ],
   },
-  // 4
   {
-    是否不可编辑: true,
     奇穴列表: [
-      {
-        奇穴名称: '长右',
-        奇穴图片: 'https://icon.jx3box.com/icon/20305.png',
-      },
-      {
-        奇穴名称: '射革',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20306.png',
-      },
-      {
-        奇穴名称: '蓄锐',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20307.png',
-      },
-      {
-        奇穴名称: '沃焦',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20304.png',
-      },
+      { 奇穴名称: '枭神', 奇穴图片: 'https://icon.jx3box.com/icon/14054.png' },
+      { 奇穴名称: '列宿游', 奇穴图片: 'https://icon.jx3box.com/icon/17712.png' },
+      { 奇穴名称: '龙回首', 奇穴图片: 'https://icon.jx3box.com/icon/14023.png' },
+      { 奇穴名称: '神皆寂', 奇穴图片: 'https://icon.jx3box.com/icon/14165.png' },
     ],
   },
-  // 5
   {
-    是否不可编辑: true,
     奇穴列表: [
-      {
-        奇穴名称: '鹿蜀',
-        奇穴图片: 'https://icon.jx3box.com/icon/20311.png',
-      },
-      {
-        奇穴名称: '镇祟',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20292.png',
-      },
-      {
-        奇穴名称: '反曲',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20309.png',
-      },
-      {
-        奇穴名称: '腾驾',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20310.png',
-      },
+      { 奇穴名称: '重山', 奇穴图片: 'https://icon.jx3box.com/icon/14040.png' },
+      { 奇穴名称: '神占', 奇穴图片: 'https://icon.jx3box.com/icon/14162.png' },
+      { 奇穴名称: '地遁', 奇穴图片: 'https://icon.jx3box.com/icon/14047.png' },
+      { 奇穴名称: '星合', 奇穴图片: 'https://icon.jx3box.com/icon/13874.png' },
     ],
   },
-  // 6
   {
-    是否不可编辑: true,
     奇穴列表: [
-      {
-        奇穴名称: '诸怀',
-        奇穴图片: 'https://icon.jx3box.com/icon/20281.png',
-      },
-      {
-        奇穴名称: '片羽',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20285.png',
-      },
-      {
-        奇穴名称: '祓厄',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20308.png',
-      },
-      {
-        奇穴名称: '桑柘',
-        奇穴图片: 'https://icon.jx3box.com/icon/20280.png',
-      },
+      { 奇穴名称: '鬼遁', 奇穴图片: 'https://icon.jx3box.com/icon/14046.png' },
+      { 奇穴名称: '神遁', 奇穴图片: 'https://icon.jx3box.com/icon/14052.png' },
+      { 奇穴名称: '风遁', 奇穴图片: 'https://icon.jx3box.com/icon/14034.png' },
+      { 奇穴名称: '堪卜', 奇穴图片: 'https://icon.jx3box.com/icon/16230.png' },
     ],
   },
-  // 7
   {
-    是否不可编辑: true,
     奇穴列表: [
-      {
-        奇穴名称: '于狩',
-        奇穴图片: 'https://icon.jx3box.com/icon/20284.png',
-      },
-      {
-        奇穴名称: '九婴',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20283.png',
-      },
-      {
-        奇穴名称: '上岩',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20282.png',
-      },
-      {
-        奇穴名称: '同渡',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20285.png',
-      },
+      { 奇穴名称: '祝祷', 奇穴图片: 'https://icon.jx3box.com/icon/14030.png' },
+      { 奇穴名称: '追叙', 奇穴图片: 'https://icon.jx3box.com/icon/17189.png' },
+      { 奇穴名称: '亘天', 奇穴图片: 'https://icon.jx3box.com/icon/14161.png' },
+      { 奇穴名称: '司命', 奇穴图片: 'https://icon.jx3box.com/icon/14050.png' },
     ],
   },
-  // 8
   {
     奇穴列表: [
-      {
-        奇穴名称: '白矢',
-        奇穴图片: 'https://icon.jx3box.com/icon/20267.png',
-      },
-      {
-        奇穴名称: '领胡',
-        奇穴图片: 'https://icon.jx3box.com/icon/20269.png',
-      },
-      {
-        奇穴名称: '时祯',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20265.png',
-      },
-      {
-        奇穴名称: '九乌',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20266.png',
-      },
-      {
-        奇穴名称: '卢令',
-        奇穴图片: 'https://icon.jx3box.com/icon/20268.png',
-      },
+      { 奇穴名称: '神元', 奇穴图片: 'https://icon.jx3box.com/icon/14035.png' },
+      { 奇穴名称: '连断', 奇穴图片: 'https://icon.jx3box.com/icon/14025.png' },
+      { 奇穴名称: '趋时', 奇穴图片: 'https://icon.jx3box.com/icon/18317.png' },
+      { 奇穴名称: '相蚀', 奇穴图片: 'https://icon.jx3box.com/icon/14160.png' },
+      { 奇穴名称: '知微', 奇穴图片: 'https://icon.jx3box.com/icon/14058.png' },
     ],
   },
-  // 9
   {
-    是否不可编辑: true,
     奇穴列表: [
-      {
-        奇穴名称: '陆吾',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20274.png',
-      },
-      {
-        奇穴名称: '畴野',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20277.png',
-      },
-      {
-        奇穴名称: '兴游',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20275.png',
-      },
-      {
-        奇穴名称: '托月',
-        奇穴图片: 'https://icon.jx3box.com/icon/20276.png',
-      },
-      {
-        奇穴名称: '禳灾',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20279.png',
-      },
+      { 奇穴名称: '荧入白', 奇穴图片: 'https://icon.jx3box.com/icon/14031.png' },
+      { 奇穴名称: '移魂', 奇穴图片: 'https://icon.jx3box.com/icon/14056.png' },
+      { 奇穴名称: '踏斗', 奇穴图片: 'https://icon.jx3box.com/icon/14019.png' },
+      { 奇穴名称: '休囚', 奇穴图片: 'https://icon.jx3box.com/icon/14042.png' },
+      { 奇穴名称: '延年', 奇穴图片: 'https://icon.jx3box.com/icon/14038.png' },
     ],
   },
-  // 10
   {
-    是否不可编辑: true,
     奇穴列表: [
-      {
-        奇穴名称: '佩弦',
-        奇穴图片: 'https://icon.jx3box.com/icon/20298.png',
-      },
-      {
-        奇穴名称: '扶国',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20296.png',
-      },
-      {
-        奇穴名称: '泑泽',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20301.png',
-      },
-      {
-        奇穴名称: '丛云隐月',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20297.png',
-      },
-      {
-        奇穴名称: '涉野徒林',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20294.png',
-      },
+      { 奇穴名称: '征凶', 奇穴图片: 'https://icon.jx3box.com/icon/14055.png' },
+      { 奇穴名称: '坍缩', 奇穴图片: 'https://icon.jx3box.com/icon/18321.png' },
+      { 奇穴名称: '天钺', 奇穴图片: 'https://icon.jx3box.com/icon/14022.png' },
+      { 奇穴名称: '龙马出河', 奇穴图片: 'https://icon.jx3box.com/icon/14028.png' },
+      { 奇穴名称: '荧惑守心', 奇穴图片: 'https://icon.jx3box.com/icon/19193.png' },
     ],
   },
-  // 11
   {
-    是否不可编辑: true,
     奇穴列表: [
-      {
-        奇穴名称: '命俦',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20302.png',
-      },
-      {
-        奇穴名称: '贯侯',
-        奇穴图片: 'https://icon.jx3box.com/icon/20299.png',
-      },
-      {
-        奇穴名称: '风止',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20300.png',
-      },
-      {
-        奇穴名称: '审固',
-        奇穴图片: 'https://icon.jx3box.com/icon/20303.png',
-      },
-      {
-        奇穴名称: '祛邪',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20295.png',
-      },
+      { 奇穴名称: '擎羊', 奇穴图片: 'https://icon.jx3box.com/icon/14029.png' },
+      { 奇穴名称: '灵器', 奇穴图片: 'https://icon.jx3box.com/icon/14037.png' },
+      { 奇穴名称: '焚如', 奇穴图片: 'https://icon.jx3box.com/icon/14053.png' },
+      { 奇穴名称: '华盖', 奇穴图片: 'https://icon.jx3box.com/icon/14015.png' },
+      { 奇穴名称: '覆舟', 奇穴图片: 'https://icon.jx3box.com/icon/14021.png' },
     ],
   },
-  // 12
   {
-    是否不可编辑: true,
     奇穴列表: [
-      {
-        奇穴名称: '朱厌',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20293.png',
-      },
-      {
-        奇穴名称: '祝灵',
-        是否不可编辑: true,
-        奇穴图片: 'https://icon.jx3box.com/icon/20290.png',
-      },
-      {
-        奇穴名称: '星烨',
-        奇穴图片: 'https://icon.jx3box.com/icon/20278.png',
-      },
-      {
-        奇穴名称: '朝仪万汇',
-        奇穴图片: 'https://icon.jx3box.com/icon/19602.png',
-      },
-      {
-        奇穴名称: '白虹贯日',
-        奇穴图片: 'https://icon.jx3box.com/icon/19598.png',
-      },
+      { 奇穴名称: '增卜', 奇穴图片: 'https://icon.jx3box.com/icon/14048.png' },
+      { 奇穴名称: '镇星入舆', 奇穴图片: 'https://icon.jx3box.com/icon/18319.png' },
+      { 奇穴名称: '洞彻九宫', 奇穴图片: 'https://icon.jx3box.com/icon/14057.png' },
+      { 奇穴名称: '杀星在尾', 奇穴图片: 'https://icon.jx3box.com/icon/14059.png' },
+      { 奇穴名称: '连极阵', 奇穴图片: 'https://icon.jx3box.com/icon/14164.png' },
     ],
   },
 ]

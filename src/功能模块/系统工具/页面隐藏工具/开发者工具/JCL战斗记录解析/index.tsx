@@ -3,7 +3,7 @@ import { Button, Form, Input, InputNumber, Select, Spin, message } from 'antd'
 import { 获取数据 } from './tool'
 import './index.css'
 
-const 支持导入心法列表 = ['凌海诀']
+const 支持导入心法列表 = ['凌海诀', '太玄经']
 
 function JCL战斗记录解析() {
   const [结果数据, 更新结果数据] = useState<any>()
