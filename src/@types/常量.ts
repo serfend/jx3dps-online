@@ -23,8 +23,4 @@ export interface 目标属性类型 {
    * @name 防御系数
    */
   防御系数: number
-  /**
-   * @name 防御值
-   */
-  防御值: number
 }
