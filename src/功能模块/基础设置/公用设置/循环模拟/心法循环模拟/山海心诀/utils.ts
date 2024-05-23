@@ -1,6 +1,6 @@
 import { 循环日志数据类型 } from './simulator/type'
 import { 每秒郭氏帧 } from './constant'
-import { 属性系数 } from '@/数据/常量'
+import { 自身属性系数 } from '@/数据/常量'
 import { 循环技能详情, 技能增益列表数据 } from '@/@types/循环'
 
 export const getDpsCycle = (data: 循环日志数据类型[]): 循环技能详情[] => {
@@ -171,7 +171,7 @@ const 获取当前日志对应技能枚举 = (日志) => {
 
 // 读条技能的实际帧数
 export const 获取实际帧数 = (原始帧数, 加速值) => {
-  return Math.floor((1024 * 原始帧数) / (Math.floor((1024 * 加速值) / 属性系数?.急速) + 1024))
+  return Math.floor((1024 * 原始帧数) / (Math.floor((1024 * 加速值) / 自身属性系数?.急速) + 1024))
 }
 
 export const 根据加速等级获取虚拟加速值 = (加速等级) => {

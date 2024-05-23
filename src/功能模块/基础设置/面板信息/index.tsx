@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import { Checkbox, Tooltip } from 'antd'
 
-import { 属性系数 } from '@/数据/常量'
+import { 自身属性系数 } from '@/数据/常量'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 import { QuestionCircleOutlined } from '@ant-design/icons'
 import { useAppSelector } from '@/hooks'
@@ -152,13 +152,13 @@ export const 获取面板显示数据 = (key: string, 角色最终属性: 角色
     case '攻击':
       return 角色最终属性.面板攻击 || 0
     case '会心':
-      return ((角色最终属性.会心等级 / 属性系数.会心) * 100).toFixed(2) + `%`
+      return ((角色最终属性.会心等级 / 自身属性系数.会心) * 100).toFixed(2) + `%`
     case '会效':
-      return ((角色最终属性.会心效果等级 / 属性系数.会效) * 100 + 175).toFixed(2) + `%`
+      return ((角色最终属性.会心效果等级 / 自身属性系数.会效) * 100 + 175).toFixed(2) + `%`
     case '破防':
-      return ((角色最终属性.破防等级 / 属性系数.破防) * 100).toFixed(2) + `%`
+      return ((角色最终属性.破防等级 / 自身属性系数.破防) * 100).toFixed(2) + `%`
     case '无双':
-      return ((角色最终属性.无双等级 / 属性系数.无双) * 100).toFixed(2) + `%`
+      return ((角色最终属性.无双等级 / 自身属性系数.无双) * 100).toFixed(2) + `%`
     case '破招':
       return 角色最终属性.破招值 || 0
     case '全能':
@@ -166,7 +166,7 @@ export const 获取面板显示数据 = (key: string, 角色最终属性: 角色
     case '加速':
       return (
         <>
-          <span>{(((角色最终属性.加速等级 || 0) / 属性系数.急速) * 100).toFixed(2) + `%`}</span>
+          <span>{(((角色最终属性.加速等级 || 0) / 自身属性系数.急速) * 100).toFixed(2) + `%`}</span>
           <span>
             {(角色最终属性.加速等级 || 0) < 95
               ? '零段加速'
@@ -222,15 +222,15 @@ export const 获取最优属性展示 = (key: string, 装备基础属性: 角色
   let upperStatus = false
   switch (key) {
     case '会心':
-      value = ((data.会心等级 / 属性系数.会心) * 100).toFixed(2) + `%`
+      value = ((data.会心等级 / 自身属性系数.会心) * 100).toFixed(2) + `%`
       upperStatus = data.会心等级 >= oldData?.会心等级
       break
     case '破防':
-      value = ((data.破防等级 / 属性系数.破防) * 100).toFixed(2) + `%`
+      value = ((data.破防等级 / 自身属性系数.破防) * 100).toFixed(2) + `%`
       upperStatus = data.破防等级 >= oldData?.破防等级
       break
     case '无双':
-      value = ((data.无双等级 / 属性系数.无双) * 100).toFixed(2) + `%`
+      value = ((data.无双等级 / 自身属性系数.无双) * 100).toFixed(2) + `%`
       upperStatus = data.无双等级 >= oldData?.无双等级
       break
     case '破招':
