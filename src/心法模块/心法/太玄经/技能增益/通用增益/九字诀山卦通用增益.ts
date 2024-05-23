@@ -1,7 +1,7 @@
 import { 属性类型 } from '@/@types/属性'
 import { 技能增益列表类型 } from '@/@types/技能'
 
-const 九字诀通用增益: 技能增益列表类型[] = [
+const 九字诀山卦通用增益: 技能增益列表类型[] = [
   {
     增益名称: '重山',
     依赖奇穴: '重山',
@@ -32,4 +32,4 @@ const 九字诀通用增益: 技能增益列表类型[] = [
   },
 ]
 
-export default 九字诀通用增益
+export default 九字诀山卦通用增益

@@ -55,3 +55,13 @@ export const 修改页面Logo = (src) => {
 }
 
 export const INT = (val) => Math.floor(val)
+
+export const 去除对象中的无效值 = (obj) => {
+  const newObj: any = {}
+  Object.keys(obj).forEach((prop) => {
+    if (obj[prop] !== null && obj[prop] !== undefined) {
+      newObj[prop] = obj[prop]
+    }
+  })
+  return newObj
+}
