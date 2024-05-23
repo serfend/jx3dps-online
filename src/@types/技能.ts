@@ -28,17 +28,18 @@ export interface 技能基础数据模型 {
    */
   技能伤害系数?: number
   /**
-   * @name 技能基础伤害-基础值（最小值）
+   * @name 技能基础伤害-基础值
    * @description 游戏面板技能造成基础伤害
    * @default 0
    */
-  技能基础伤害_最小值?: number
+  技能基础伤害_基础值?: number
   /**
-   * @name 技能基础伤害-浮动值（最大值）
+   * @name 技能基础伤害-浮动值
    * @description 游戏面板技能造成浮动伤害
+   * @description 技能最大伤害为基础值 + 浮动值
    * @default 0
    */
-  技能基础伤害_最大值?: number
+  技能基础伤害_浮动值?: number
   /**
    * @name 武器伤害系数
    * @description 游戏面板描述 “造成xxx%武器伤害”
@@ -62,11 +63,6 @@ export interface 技能基础数据模型 {
    */
   技能破招系数?: number
   /**
-   * @name 宠物伤害
-   * @description 是否为宠物造成的伤害
-   */
-  宠物伤害?: boolean
-  /**
    * @name 真实伤害
    * @description 大部分百战技能和大附魔技能的伤害
    * @description 只吃秋肃和等级减伤
@@ -78,6 +74,15 @@ export interface 技能基础数据模型 {
    * @default [增伤, 破防, 会心, 等级减伤, 无双, 非侠, 易伤]
    */
   伤害计算类型标记?: 计算公式计算类型[]
+  /**
+   * @name 技能等级数据
+   * @description 当传入技能等级进行系数等取值时，优先从满足条件的技能等级取值，不满足再取对象外面的默认属性值
+   * @description 取到的值对原值进行直接覆盖处理
+   * @key
+   * key代表技能等级范围，如果key为单个数字，代表只有对应等级满足
+   * 如果key为 1,10 代表1级到10级都满足
+   */
+  技能等级数据?: { [key: string]: Partial<技能基础数据模型> }
 }
 
 /**

@@ -32,6 +32,7 @@ import 斩浪破锋 from './DOT类/斩浪破锋'
 import 截辕 from './DOT类/截辕'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 import { 获取加速等级 } from '@/工具函数/data'
+import 获取技能信息 from '@/数据/数据工具/获取技能等级信息'
 
 const { 技能系数 } = 获取当前数据()
 
@@ -351,7 +352,8 @@ class 循环主类 {
     造成时间 = this.当前时间,
     DOT伤害 = false
   ) {
-    const 技能增益列表 = 技能系数?.find((item) => item.技能名称 === 来源)?.技能增益列表 || []
+    const 对应技能 = 技能系数?.find((item) => item.技能名称 === 来源)
+    const 技能增益列表 = 获取技能信息(对应技能)?.技能增益列表 || []
 
     const 有关的buff列表 =
       技能增益列表
