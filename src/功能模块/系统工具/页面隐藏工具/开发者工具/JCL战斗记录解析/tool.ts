@@ -89,33 +89,42 @@ export const 获取数据 = ({ 心法, 数据, 最大时间 }): 循环详情 => 
               const 生效战斗时间数组 = 战斗时间数组.filter((item) =>
                 Number(item?.[0] <= 最大时间 * 16)
               )
+
+              if (技能名称ID === '33236') {
+                // console.log('战斗时间数组', 战斗时间数组)
+                // console.log('生效战斗时间数组', 生效战斗时间数组)
+                // console.log('最大时间 * 16', 最大时间 * 16)
+                console.log('生效战斗时间数组', 生效战斗时间数组.length)
+              }
               增益数量获取 = 生效战斗时间数组?.length || 1
               增益buff名称列表.sort((a, b) => a.localeCompare(b))
-              const 最终战斗时间 = 生效战斗时间数组[生效战斗时间数组.length - 1]?.[0]
+              if (生效战斗时间数组?.length) {
+                const 最终战斗时间 = 生效战斗时间数组[生效战斗时间数组.length - 1]?.[0]
 
-              if (typeof 最终战斗时间 === 'number') {
-                if (战斗时间 < 最终战斗时间) {
-                  战斗时间 = 最终战斗时间
+                if (typeof 最终战斗时间 === 'number') {
+                  if (战斗时间 < 最终战斗时间) {
+                    战斗时间 = 最终战斗时间
+                  }
                 }
-              }
-              const 增益buff列表名字 = 增益buff名称列表.join(',')
+                const 增益buff列表名字 = 增益buff名称列表.join(',')
 
-              if (技能增益列表?.some((item) => item?.增益名称 === 增益buff列表名字)) {
-                技能增益列表 = 技能增益列表.map((item) => {
-                  return item?.增益名称 === 增益buff列表名字
-                    ? {
-                        ...item,
-                        增益技能数: item.增益技能数 + 增益数量获取,
-                      }
-                    : item
-                })
-              } else {
-                技能增益列表.push({
-                  增益名称: 增益buff列表名字,
-                  增益技能数: 增益数量获取,
-                })
+                if (技能增益列表?.some((item) => item?.增益名称 === 增益buff列表名字)) {
+                  技能增益列表 = 技能增益列表.map((item) => {
+                    return item?.增益名称 === 增益buff列表名字
+                      ? {
+                          ...item,
+                          增益技能数: item.增益技能数 + 增益数量获取,
+                        }
+                      : item
+                  })
+                } else {
+                  技能增益列表.push({
+                    增益名称: 增益buff列表名字,
+                    增益技能数: 增益数量获取,
+                  })
+                }
+                技能数量 += 增益数量获取
               }
-              技能数量 += 增益数量获取
             } else {
               console.log('zengyiKey', zengyiKey)
             }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Form, Input, InputNumber, Select, Spin, message } from 'antd'
+import { Button, Form, Input, Select, Spin, message } from 'antd'
 import { 获取数据 } from './tool'
 import './index.css'
 
@@ -68,7 +68,7 @@ function JCL战斗记录解析() {
             />
           </Form.Item>
           <Form.Item className={'tools-jcl-form-item-2'} name='战斗时间' label='战斗时间' required>
-            <InputNumber style={{ width: '100%' }} />
+            <Input style={{ width: '100%' }} />
           </Form.Item>
           <Form.Item name='数据' label='数据' required>
             <Input.TextArea className={'tool-jcl-input-area'} />
