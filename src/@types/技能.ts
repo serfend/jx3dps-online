@@ -17,6 +17,11 @@ export interface 技能基础数据模型 {
    */
   统计名称?: string
   /**
+   * @name 伤害类型
+   * @description 不吃另一个类型的 攻击破防会心会效增伤
+   */
+  伤害类型?: '内功' | '外功'
+  /**
    * @name 所属武学技能
    * @description 部分多个技能映射同一个技能的秘籍时，使用此字段表明
    */
@@ -27,6 +32,14 @@ export interface 技能基础数据模型 {
    * @default 0
    */
   技能伤害系数?: number
+  /**
+   * @name DOT跳数
+   */
+  DOT跳数?: number
+  /**
+   * @name DOT生效间隔
+   */
+  DOT生效间隔?: number
   /**
    * @name 技能基础伤害-基础值
    * @description 游戏面板技能造成基础伤害

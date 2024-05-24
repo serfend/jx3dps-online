@@ -219,8 +219,12 @@ const 属性枚举 = {
   atPoisonCriticalStrike: '属性类型.内功会心等级',
   atLunarCriticalStrike: '属性类型.内功会心等级',
 
-  atMagicCriticalDamagePowerBase: '属性类型.内功会心效果等级',
   atAllTypeCriticalDamagePowerBase: '属性类型.全会心效果等级',
+  atMagicCriticalDamagePowerBase: '属性类型.内功会心效果等级',
+  atNeutralCriticalDamagePowerBase: '属性类型.内功会心效果等级',
+  atSolarCriticalDamagePowerBase: '属性类型.内功会心效果等级',
+  atPoisonCriticalDamagePowerBase: '属性类型.内功会心效果等级',
+  atLunarCriticalDamagePowerBase: '属性类型.内功会心效果等级',
 
   atMagicOvercome: '属性类型.内功破防等级',
   atPoisonOvercomeBase: '属性类型.内功破防等级',

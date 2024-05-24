@@ -54,7 +54,9 @@ export const 修改页面Logo = (src) => {
   link.href = src
 }
 
-export const INT = (val) => Math.floor(val)
+// 这个是只取整数，如果用Math.floor 会导致负数取整不正确
+// 理论上 负数时 Math.ceil 正数时 Math.floor
+export const INT = (val) => val | 0
 
 export const 去除对象中的无效值 = (obj) => {
   const newObj: any = {}

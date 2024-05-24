@@ -8,7 +8,8 @@ import type { 循环数据 } from '@/@types/循环'
 // 循环
 import 堪炸 from './堪炸.json'
 import 鬼列 from './鬼列.json'
+import 橙武 from './橙武.json'
 
-const 计算循环: 循环数据[] = [堪炸, 鬼列]
+const 计算循环: 循环数据[] = [鬼列, 堪炸, 橙武]
 
 export default 计算循环

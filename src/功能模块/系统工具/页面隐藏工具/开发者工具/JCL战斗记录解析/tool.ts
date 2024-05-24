@@ -43,8 +43,8 @@ export const 获取数据 = ({ 心法, 数据, 最大时间 }): 循环详情 => 
         ;(Object.keys(技能增益结果对象) || []).forEach((zengyiKey) => {
           if (zengyiKey === ';;') {
             let 增益数量获取 = 1
-            const 战斗时间数组 = 技能增益结果对象[zengyiKey]?.[0]
-            const 最终战斗时间 = 战斗时间数组[战斗时间数组.length]?.[0]
+            const 战斗时间数组 = 技能增益结果对象[zengyiKey]
+            const 最终战斗时间 = 战斗时间数组[战斗时间数组.length]?.[0] || 0
             if (最终战斗时间 <= 最大时间 * 16) {
               增益数量获取 = 战斗时间数组?.length || 1
               if (typeof 最终战斗时间 === 'number') {
@@ -123,7 +123,6 @@ export const 获取数据 = ({ 心法, 数据, 最大时间 }): 循环详情 => 
         })
 
         技能增益列表.sort((a, b) => a.增益名称.localeCompare(b.增益名称))
-        console.log('res', res)
         res.push({
           技能名称,
           技能等级,
