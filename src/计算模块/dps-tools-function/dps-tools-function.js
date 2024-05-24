@@ -158,6 +158,14 @@ const 获取对应的循环名称 = (心法, 奇穴 = [], 循环类型) => {
     } else {
       return '烟涛'
     }
+  } else if (心法 === '太玄经') {
+    if (循环类型 === '橙武') {
+      return '橙武'
+    } else if (奇穴.includes('列宿游')) {
+      return '鬼列'
+    } else {
+      return '堪炸'
+    }
   }
 }
 
