@@ -11,8 +11,6 @@ import { 自身属性系数, 每等级减伤 } from '@/数据/常量'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 import { 获取实际系数 } from '@/数据/数据工具/获取技能系数'
 
-const { 功法 } = 获取当前数据()
-
 /**
  * @name 破招原始伤害计算
  */
@@ -46,6 +44,8 @@ export const 技能基础伤害 = (
     const 破招伤害 = 破招原始伤害计算(破招值, 技能伤害系数)
     return 破招伤害
   }
+
+  const { 功法 } = 获取当前数据()
 
   const dot参数 = DOT跳数 && DOT生效间隔 ? { dot跳数: DOT跳数, dot间隔: DOT生效间隔 } : undefined
 
