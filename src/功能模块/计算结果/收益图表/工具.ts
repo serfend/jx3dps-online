@@ -2,10 +2,8 @@ import { 属性简写枚举 } from '@/@types/枚举'
 import { 角色基础属性类型 } from '@/@types/角色'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 
-const { 附魔 } = 获取当前数据()
-const { 主属性 } = 获取当前数据()
-
-export const 获取当前各属性最大附魔 = () => {
+export const 获取当前各属性最大附魔 = (心法?) => {
+  const { 附魔 } = 获取当前数据(心法)
   const res = {}
   附魔?.forEach((item) => {
     // const 部位表单key = `${EquipmentCharacterPositionEnum[key]}${key}`
@@ -27,7 +25,9 @@ export const 获取当前各属性最大附魔 = () => {
     })
 }
 
-export const 获取单点属性收益列表 = () => {
+export const 获取单点属性收益列表 = (心法?) => {
+  const { 主属性 } = 获取当前数据(心法)
+
   const mapKeyList = [主属性, '攻击', '武伤', '无双', '破防', '会心', '会效', '破招', '全能']
   return mapKeyList.map((key) => {
     return {
@@ -40,8 +40,11 @@ export const 获取单点属性收益列表 = () => {
 export const 收益增益属性计算 = (
   属性: string,
   值,
-  角色最终属性: 角色基础属性类型
+  角色最终属性: 角色基础属性类型,
+  心法?
 ): 角色基础属性类型 => {
+  const { 主属性 } = 获取当前数据(心法)
+
   const 最终属性 = { ...角色最终属性 }
   switch (属性) {
     case 主属性:

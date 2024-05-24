@@ -22,6 +22,7 @@ export default [
       <p style={{ paddingLeft: 12 }} key='1.0.5.2'>
         <p>{`- 新增太玄经心法`}</p>
         <p>{`- 支持循环「鬼列」「堪炸」「橙武」`}</p>
+        <p style={{ color: 'red' }}>注意，太玄经循环目前均为一段加速固定计算。</p>
       </p>,
     ],
   },
