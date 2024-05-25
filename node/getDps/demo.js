@@ -3,10 +3,13 @@ function 计算 (心法) {
   global.localStorage = { getItem:() => { return ''} }
 
   const 太玄经 = require('./demo_太玄.json')
+  // const 太玄经 = require('./zwyt.json')
   const 山海心诀 = require('./demo_山海.json')
+  const 凌海诀 = require('./zwpl.json')
   const 心法枚举 = {
     '山海心诀':山海心诀,
     '太玄经':太玄经,
+    "凌海诀":凌海诀,
     // '山海心诀':山海心诀,
     // '山海心诀':山海心诀,
   }
@@ -27,5 +30,6 @@ function 计算 (心法) {
   return 计算结果
 }
 
+计算("凌海诀")
 计算("太玄经")
 计算("山海心诀")
