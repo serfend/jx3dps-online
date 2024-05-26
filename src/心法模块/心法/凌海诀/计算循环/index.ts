@@ -11,6 +11,6 @@ import 橙武 from './橙武.json'
 // import 烟涛_期望计算 from './烟涛_期望计算.json'
 // import 技能对照 from './技能对照.json'
 
-const 计算循环: 循环数据[] = [烟涛, 橙武]
+const 计算循环: 循环数据[] = [烟涛, 橙武] as 循环数据[]
 
 export default 计算循环

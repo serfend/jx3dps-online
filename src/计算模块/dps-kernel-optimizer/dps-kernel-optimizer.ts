@@ -3,7 +3,7 @@ import 循环秒伤计算 from '../循环秒伤计算'
 import { 装备信息数据类型 } from '@/@types/装备'
 import { 循环技能详情 } from '@/@types/循环'
 import { 目标属性类型 } from '@/@types/常量'
-import { 技能基础数据模型 } from '@/@types/技能'
+import { 快照类型, 技能基础数据模型 } from '@/@types/技能'
 import { 增益选项数据类型 } from '@/@types/团队增益'
 
 interface DpsKernelOptimizerParams {
@@ -14,7 +14,7 @@ interface DpsKernelOptimizerParams {
   技能基础数据: 技能基础数据模型[]
   增益数据: 增益选项数据类型
   增益启用: boolean
-  快照计算: boolean
+  快照计算: 快照类型[]
 }
 
 // 计算dps最大期望值的算法

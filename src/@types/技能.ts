@@ -149,11 +149,6 @@ export interface 技能增益列表类型 {
    */
   依赖装备增益?: string
   /**
-   * @name 快照增益
-   * @description 当为快照增益时，只会在快照计算循环中计算
-   */
-  快照增益?: boolean
-  /**
    * @name 增益是否启用
    * @description 如果在设置增益时直接设为了true，则默认启用。跳过所有计算
    */
@@ -178,7 +173,18 @@ export interface 技能增益列表类型 {
    * @description 当一个增益有多个效果时
    */
   增益集合?: 属性加成[]
+  // /**
+  //  * @name 快照增益
+  //  * @description 当为快照增益时，只会在快照计算循环中计算
+  //  */
+  // 快照增益?: boolean
+  /**
+   * @name 快照类型
+   */
+  快照类型?: 快照类型
 }
+
+export type 快照类型 = '水特效' | '风特效' | '套装会心会效' | '大附魔_伤腰'
 
 // 额外展示增益来源，方便后续debug
 export interface 技能计算增益数据列表 extends 属性加成 {

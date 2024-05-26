@@ -1,3 +1,5 @@
+import { 快照类型 } from './技能'
+
 export interface 循环数据 {
   /**
    * @name 名称
@@ -56,9 +58,9 @@ export interface 循环数据 {
    * @name 快照计算
    * @default false
    * 启用快照计算后，部分期望计算将不再默认计算
-   * 目前包含：套装双会、腰带大附魔、水特效、风特效
+   * 目前包含：套装会心会效、大附魔_伤腰、水特效、风特效
    */
-  快照计算?: boolean
+  快照计算?: 快照类型[]
 }
 
 export interface 循环详情 {

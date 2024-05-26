@@ -1,6 +1,6 @@
 import { 目标属性类型 } from '@/@types/常量'
 import { 循环技能详情 } from '@/@types/循环'
-import { 技能基础数据模型 } from '@/@types/技能'
+import { 快照类型, 技能基础数据模型 } from '@/@types/技能'
 import { 角色基础属性类型 } from '@/@types/角色'
 import { 增益选项数据类型 } from './团队增益'
 import { 装备信息数据类型 } from './装备'
@@ -27,7 +27,7 @@ export interface 技能总伤害计算入参类型 {
   增益数据: 增益选项数据类型
   战斗时间: number
   是否郭氏计算: boolean
-  快照计算: boolean
+  快照计算: 快照类型[]
 }
 
 // 最终计算属性 用于统计、合并、区分各类型增益做统一计算
