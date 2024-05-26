@@ -4,7 +4,7 @@ import { 属性加成 } from '@/@types/属性'
 import { 循环技能详情 } from '@/@types/循环'
 import { 角色基础属性类型 } from '@/@types/角色'
 import { 目标属性类型 } from '@/@types/常量'
-import { 技能基础数据模型, 技能计算增益数据列表 } from '@/@types/技能'
+import { 快照类型, 技能基础数据模型, 技能计算增益数据列表 } from '@/@types/技能'
 import { 装备增益类型 } from '@/@types/装备'
 
 import {
@@ -32,7 +32,7 @@ export const 循环秒伤计算 = (props: 技能总伤害计算入参类型) => 
     增益数据,
     战斗时间,
     是否郭氏计算,
-    快照计算 = false,
+    快照计算 = [],
   } = props
   // 总dps
   let 循环总伤 = 0
@@ -94,7 +94,7 @@ export const 计算循环内某技能总伤害 = (
   技能基础数据: 技能基础数据模型[],
   总增益集合: 技能计算增益数据列表[],
   是否郭氏计算: boolean,
-  快照计算: boolean
+  快照计算: 快照类型[]
 ) => {
   // 在技能数据模型中找到当前执行循环内技能的数据，获取各种系数
   const 完整技能属性 = 技能基础数据.find((item) => item.技能名称 === 循环?.技能名称)
