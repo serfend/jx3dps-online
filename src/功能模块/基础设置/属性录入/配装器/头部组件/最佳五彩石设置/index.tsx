@@ -100,6 +100,7 @@ function 最佳五彩石设置({ 一键替换五彩石, 对比秒伤, 对比装�
             <span>计算用时：{计算用时}ms</span>
           </div>
         }
+        maskClosable={false}
         centered
         open={open}
         onCancel={() => setOpen(false)}

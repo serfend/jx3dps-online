@@ -206,6 +206,7 @@ function 最佳附魔设置({ 一键替换附魔, 对比秒伤, 对比装备信�
             <span>计算用时：{计算用时}ms</span>
           </div>
         }
+        maskClosable={false}
         centered
         open={open}
         width={500}

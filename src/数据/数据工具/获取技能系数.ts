@@ -20,15 +20,13 @@ export const 获取实际系数 = (
   const 实际功法 = 功法 || '外功'
 
   const 基础系数 = (实际功法 === '外功' ? 外功系数 : 内功系数) * 每秒帧数
+
   if (dot跳数 && dot间隔) {
-    return Math.max(
-      (Math.floor(系数 * 系数增伤) *
-        Math.max(Math.floor((dot跳数 * dot间隔) / dot系数), 每秒帧数)) /
-        dot跳数 /
-        每秒帧数 /
-        基础系数,
-      0.0625
-    )
+    let 间隔 = dot间隔
+    if ((dot跳数 * dot间隔) / dot系数 < 每秒帧数) {
+      间隔 = (每秒帧数 * dot系数) / dot跳数
+    }
+    return (INT(系数 * 系数增伤) * 间隔) / 每秒帧数 / dot系数 / 基础系数
   }
 
   return Math.floor(系数 * 系数增伤) / 基础系数

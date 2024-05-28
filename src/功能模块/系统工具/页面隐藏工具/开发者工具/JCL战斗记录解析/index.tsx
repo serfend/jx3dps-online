@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Form, Input, Select, Spin, message } from 'antd'
-import { 获取数据 } from './tool'
+import { 心法枚举, 获取数据 } from './tool'
 import './index.css'
 
-const 支持导入心法列表 = ['凌海诀', '太玄经']
+const 支持导入心法列表 = Object.keys(心法枚举)
 
 function JCL战斗记录解析() {
   const [结果数据, 更新结果数据] = useState<any>()

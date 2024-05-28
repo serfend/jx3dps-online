@@ -88,6 +88,7 @@ function 装备部位选择(props: 装备部位选择入参, ref) {
     <div>
       <Select
         showSearch
+        // allowClear
         // optionLabelProp={'label'}
         className='zhuangbei-select'
         placeholder={`请选择${部位}`}
