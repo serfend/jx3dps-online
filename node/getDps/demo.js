@@ -6,12 +6,14 @@ function 计算 (心法) {
   // const 太玄经 = require('./zwyt.json')
   const 山海心诀 = require('./demo_山海.json')
   const 孤锋诀 = require('./demo_孤锋.json')
+  const 无方 = require('./demo_无方.json')
   const 凌海诀 = require('./zwpl.json')
   const 心法枚举 = {
     '山海心诀': 山海心诀,
     '太玄经': 太玄经,
     "凌海诀": 凌海诀,
     "孤锋诀": 孤锋诀,
+    "无方": 无方,
     // '山海心诀':山海心诀,
     // '山海心诀':山海心诀,
   }
@@ -32,7 +34,8 @@ function 计算 (心法) {
   return 计算结果
 }
 
-计算("孤锋诀")
+计算("无方")
+// 计算("孤锋诀")
 // 计算("凌海诀")
 // 计算("太玄经")
 // 计算("山海心诀")
