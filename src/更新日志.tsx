@@ -1,22 +1,33 @@
 export default [
   {
+    version: '[雾海寻龙] 1.0.8',
+    date: '2024-05-29 11:15:00',
+    content: [
+      '山海心诀',
+      <p style={{ paddingLeft: 12 }} key='1.0.8.2'>
+        <p>{`- 生成了新的丛云朝仪循环，时间为第五轮大招打完`}</p>
+        <p>{`- 模拟器增加了对倒读条技能的延迟补偿逻辑`}</p>
+      </p>,
+    ],
+  },
+  {
     version: '[雾海寻龙] 1.0.7',
     date: '2024-05-28 12:40:00',
     content: [
       '综合',
-      <p style={{ paddingLeft: 12 }} key='1.0.5.1'>
+      <p style={{ paddingLeft: 12 }} key='1.0.7.1'>
         <p>{`- 修改了全局的DOT系数计算公式，使其更加合理易懂`}</p>
         <p>{`- 新增了新的增益类型，无双百分比。对面板无双乘法计算，例：养荣`}</p>
       </p>,
       '无方',
-      <p style={{ paddingLeft: 12 }} key='1.0.5.2'>
+      <p style={{ paddingLeft: 12 }} key='1.0.7.2'>
         <p>{`- 新增无方心法`}</p>
         <p>{`- 无方循环数据均由长倦大佬提供`}</p>
         <p>养荣循环经长倦确认定为按千枝全程覆盖计算</p>
         <p style={{ color: 'red' }}>注意，无方循环目前均为一段加速固定计算。</p>
       </p>,
       '孤锋诀',
-      <p style={{ paddingLeft: 12 }} key='1.0.5.2'>
+      <p style={{ paddingLeft: 12 }} key='1.0.7.2'>
         <p>{`- 生成了新的二段加速橙武循环`}</p>
       </p>,
       '太玄经',
@@ -30,7 +41,7 @@ export default [
     date: '2024-05-27 09:30:00',
     content: [
       '孤锋诀',
-      <p style={{ paddingLeft: 12 }} key='1.0.5.2'>
+      <p style={{ paddingLeft: 12 }} key='1.0.6.2'>
         <p>{`- 非侠系数修改「6」=> 「13」`}</p>
         <p>{`- 流岚无视防御「40%」=>「25%」`}</p>
         <p>{`- 以上两条数值待更新后测试，暂定133和256`}</p>
@@ -39,12 +50,12 @@ export default [
         <p style={{ color: 'red' }}>{`- 最终伤害正负1%上下浮动，约等于没变`}</p>
       </p>,
       '凌海诀',
-      <p style={{ paddingLeft: 12 }} key='1.0.5.2'>
+      <p style={{ paddingLeft: 12 }} key='1.0.6.2'>
         <p>{`- 移除非侠3%加成`}</p>
         <p style={{ color: 'red' }}>{`- 最终伤害削弱2%-3%`}</p>
       </p>,
       '太玄经',
-      <p style={{ paddingLeft: 12 }} key='1.0.5.2'>
+      <p style={{ paddingLeft: 12 }} key='1.0.6.2'>
         <p>{`- 由于JCL解析鬼遁丢失问题，暂时将鬼遁视作全局覆盖计算`}</p>
         <p>{`- 更新了新的橙武循环`}</p>
         <p>{`- 修复了紫武鬼列循环鬼遁覆盖计算有问题的BUG`}</p>
