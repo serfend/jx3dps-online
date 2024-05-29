@@ -51,7 +51,7 @@ const QixueSetModal: React.FC<QixueSetProps> = (props) => {
       placement='bottom'
       height={140}
       mask={false}
-      className={'qixue-simulator-set-drawer'}
+      className={'qixue-simulator-set-drawer qixue-shxj'}
     >
       <Form form={form} className={'qixue-simulator-set-drawer-wrap'}>
         {奇穴数据.map((重, index) => {
