@@ -447,7 +447,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
         循环模拟
       </Button>
       <Modal
-        className='cycle-simulator-modal'
+        className='cycle-simulator-modal simulator-shxj'
         maskClosable={false}
         width={'100%'}
         title={

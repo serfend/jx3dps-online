@@ -31,7 +31,8 @@ class 通用DOT类 extends 技能统一类 {
       const 未结算数组: DOT待生效数据类型[] = []
       const 当前时间 = 事件时间 || this.模拟循环.当前时间 || 0
       待生效数据.forEach((数据) => {
-        if ((数据.生效时间 || 0) <= 当前时间) {
+        // 将dot结算放在触发上DOT、引爆等行为之后。所以当前时间的dot不结算。放在下一次时间结算
+        if ((数据.生效时间 || 0) < 当前时间) {
           结算数组.push(数据)
         } else {
           未结算数组.push(数据)
@@ -69,7 +70,7 @@ class 通用DOT类 extends 技能统一类 {
     const 待生效数据: DOT待生效数据类型[] =
       // 只更新在刷新buff之后的数据的层数
       this.DOT运行数据?.待生效数据.map((item) => {
-        if ((item.生效时间 || 0) <= this.模拟循环.当前时间) {
+        if ((item.生效时间 || 0) < this.模拟循环.当前时间) {
           return item
         } else {
           return { ...item, 当前层数 }
