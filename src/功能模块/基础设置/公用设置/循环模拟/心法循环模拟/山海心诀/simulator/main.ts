@@ -38,6 +38,7 @@ import 寒更晓箭 from './技能类/寒更晓箭'
 import 金乌见坠 from './技能类/金乌见坠'
 import 饮羽簇 from './技能类/饮羽簇'
 import 丛云隐月 from './技能类/丛云隐月'
+import 风尽浮生 from './技能类/风尽浮生'
 import { 宠物基础数据 } from '../constant/skill'
 import { 箭形态枚举 } from '../constant/enum'
 import 空弦惊雁 from './技能类/空弦惊雁'
@@ -144,6 +145,7 @@ class 循环主类 {
       空弦惊雁: new 空弦惊雁(this),
       弛律召野: new 弛律召野(this),
       丛云隐月: new 丛云隐月(this),
+      风尽浮生: new 风尽浮生(this),
       触发橙武: new 触发橙武(this),
     }
   }
