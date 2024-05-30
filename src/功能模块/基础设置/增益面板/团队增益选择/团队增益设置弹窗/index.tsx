@@ -29,6 +29,7 @@ function 团队增益设置弹窗({ open, onCancel, onChangeZengyi, 快捷设置
     '坦克Buff增益',
     '治疗Buff增益',
     '食物增益',
+    '节日增益',
     '稀缺增益',
   ]
 
