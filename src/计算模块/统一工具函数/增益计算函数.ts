@@ -150,14 +150,16 @@ export const 增益排序 = (list: 属性加成[]): 属性加成[] => {
 export const 增益合并并排序 = (list: 属性加成[]): 属性加成[] => {
   const obj = {}
   list.forEach((item) => {
-    if (obj[item.属性]) {
-      if (obj[item.属性] === 属性类型.技能系数) {
-        obj[item.属性] = obj[item.属性] * item.值
+    if (item) {
+      if (obj[item.属性]) {
+        if (obj[item.属性] === 属性类型.技能系数) {
+          obj[item.属性] = obj[item.属性] * item.值
+        } else {
+          obj[item.属性] += item.值
+        }
       } else {
-        obj[item.属性] += item.值
+        obj[item.属性] = item.值
       }
-    } else {
-      obj[item.属性] = item.值
     }
   })
   const SortKeyList = Object.values(属性类型)
