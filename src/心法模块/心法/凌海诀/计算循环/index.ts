@@ -7,6 +7,7 @@ import type { 循环数据 } from '@/@types/循环'
 
 // 循环
 import 烟涛 from './烟涛.json'
+// import 烟涛_2 from './烟涛_2.json'
 import 怅归 from './怅归.json'
 import 橙武 from './橙武.json'
 // import 烟涛_期望计算 from './烟涛_期望计算.json'

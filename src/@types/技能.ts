@@ -22,10 +22,10 @@ export interface 技能基础数据模型 {
    */
   伤害类型?: '内功' | '外功'
   /**
-   * @name 所属武学技能
+   * @name 秘籍依赖技能
    * @description 部分多个技能映射同一个技能的秘籍时，使用此字段表明
    */
-  所属武学技能?: string
+  秘籍依赖技能?: string
   /**
    * @name 技能伤害系数
    * @description 游戏面板技能伤害 / 角色面板攻击
