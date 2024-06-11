@@ -1,4 +1,4 @@
-import { 目标集合 } from '@/数据/常量'
+import { 目标集合 } from '@/数据/目标'
 import { 计算公式计算类型 } from '../常量'
 import { 角色基础属性类型 } from '@/@types/角色'
 
