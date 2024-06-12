@@ -1,5 +1,19 @@
 export default [
   {
+    version: '[雾海寻龙] 1.0.12',
+    date: '2024-06-12 18:00:00',
+    content: [
+      '综合',
+      <p style={{ paddingLeft: 12 }} key='1.0.12.1'>
+        <p>- 新增会破比、招无比两个收益图表</p>
+      </p>,
+      '太玄经',
+      <p style={{ paddingLeft: 12 }} key='1.0.12.2'>
+        <p>{`- 压缩了背景图片的尺寸`}</p>
+      </p>,
+    ],
+  },
+  {
     version: '[雾海寻龙] 1.0.11',
     date: '2024-06-11 10:00:00',
     content: [

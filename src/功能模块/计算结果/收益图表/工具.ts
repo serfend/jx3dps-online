@@ -81,3 +81,35 @@ export const 收益增益属性计算 = (
   }
   return 最终属性
 }
+
+export const 找到最大最小值 = (data) => {
+  let maxValue = undefined
+  let minValue = undefined
+  let maxObj: any = null
+  let minObj: any = null
+  for (const d of data) {
+    if (!maxValue || d.收益 > maxValue) {
+      maxValue = d.收益
+      maxObj = d
+    }
+    if (!minValue || d.收益 < minValue) {
+      minValue = d.收益
+      minObj = d
+    }
+  }
+  return { max: maxObj || {}, min: minObj || {} }
+}
+
+export const 获取当前比例 = (类型, 装备基础属性: 角色基础属性类型): number => {
+  if (类型 === '会破比') {
+    const 当前会心等级 = 装备基础属性?.会心等级
+    const 当前破防等级 = 装备基础属性?.破防等级
+    return Math.round((当前会心等级 / (当前破防等级 + 当前会心等级)) * 100)
+  } else if (类型 === '招无比') {
+    const 当前破招值 = 装备基础属性?.破招值
+    const 当前无双等级 = 装备基础属性?.无双等级
+    return Math.round((当前破招值 / (当前无双等级 + 当前破招值)) * 100)
+  } else {
+    return 0
+  }
+}
