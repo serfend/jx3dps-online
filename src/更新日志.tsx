@@ -5,7 +5,7 @@ export default [
     content: [
       '综合',
       <p style={{ paddingLeft: 12 }} key='1.0.12.1'>
-        <p>- 新增会破比、招无比两个收益图表</p>
+        <p>- 新增会破比、招无比两个收益图表（花里胡哨的功能又增加了）</p>
       </p>,
       '太玄经',
       <p style={{ paddingLeft: 12 }} key='1.0.12.2'>
