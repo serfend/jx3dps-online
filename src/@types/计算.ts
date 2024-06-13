@@ -128,6 +128,7 @@ export interface 最终计算属性类型 {
 
 export interface 技能增伤类型 {
   通用增伤: number
+  目标移动状增伤: number
   易伤增伤: number
   非侠增伤: number
   技能系数: number // 这里的系数增伤直接修改系数，不乘在最后

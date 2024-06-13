@@ -100,6 +100,7 @@ export enum 属性类型 {
   郭氏武器伤害 = 'atMeleeWeaponDamagePercent',
 
   // 技能增伤 同类增伤相加计算，系数增伤相乘计算。具体看计算公式
+  目标移动状增伤 = 'atSkillDamageDstMoveStateAdd',
   通用增伤 = 'atSkillDamageCommonAdd',
   易伤增伤 = 'atSkillDamageFragileAdd',
   非侠增伤 = 'atSkillDamageNPCAdd',
