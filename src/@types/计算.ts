@@ -128,7 +128,8 @@ export interface 最终计算属性类型 {
 
 export interface 技能增伤类型 {
   通用增伤: number
-  目标移动状增伤: number
+  目标移动状增伤: number // ADD_DAMAGE_BY_DST_MOVE_STATE 根据目标移动状态增伤
+  全局伤害因子: number // GLOBAL_DAMAGE_FACTOR 用于修正破招伤害，同时特殊作用于 [正律和鸣]，[青冠]
   易伤增伤: number
   非侠增伤: number
   技能系数: number // 这里的系数增伤直接修改系数，不乘在最后
