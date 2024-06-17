@@ -48,7 +48,13 @@ const 奇穴选择: React.FC = () => {
         height={200}
         className={'qixue-set-drawer'}
       >
-        <Form onValuesChange={handleChangeQixue} form={form} className={'qixue-set-drawer-wrap'}>
+        <Form
+          onValuesChange={handleChangeQixue}
+          form={form}
+          className={`qixue-set-drawer-wrap ${
+            奇穴数据?.length === 4 ? 'qixue-set-drawer-wrap-small' : ''
+          }`}
+        >
           {奇穴数据.map((重, index) => {
             return (
               <Form.Item className={'qixue-set-item'} name={index} key={index + 1}>

@@ -48,6 +48,7 @@ function 心法切换() {
       <Dropdown overlay={menu}>
         <img src={当前Logo} className='school-switch-img' />
       </Dropdown>
+      {当前数据?.心法所属端 === '无界' ? <div className='school-switch-wujie-bg' /> : null}
     </div>
   )
 }

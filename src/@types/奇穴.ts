@@ -29,4 +29,8 @@ export interface 奇穴数据类型 {
    * @name 奇穴图片
    */
   奇穴图片: string
+  /**
+   * @name 奇穴描述
+   */
+  奇穴描述?: string
 }
