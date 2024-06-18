@@ -9,8 +9,7 @@ import './index.css'
 
 const 系统配置 = 获取当前数据()?.系统配置 || {}
 
-// const 背景图 = (系统配置.背景图 || []).concat(全局背景)
-const 背景图 = 全局背景
+const 背景图 = (系统配置.背景图 || []).concat(全局背景)
 const 背景色渐变 = 系统配置.背景色渐变 || 默认系统渐变色(系统配置.主题色)
 
 interface LayoutProps {

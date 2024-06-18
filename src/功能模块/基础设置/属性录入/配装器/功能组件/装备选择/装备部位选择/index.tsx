@@ -51,32 +51,34 @@ function 装备部位选择(props: 装备部位选择入参, ref) {
       const { 秒伤: 旧秒伤 } = dispatch(秒伤计算({ 更新装备信息: 当前装备信息 }))
 
       // 传入新的装备
-      const newDpsUpList = 装备数据列表.map((item) => {
-        const 新装备数据 = {
-          ...allValue,
-          镶嵌孔数组: item?.镶嵌孔数组?.map((a) => {
-            return {
-              ...a,
-              镶嵌宝石等级: 默认镶嵌宝石等级,
-            }
-          }),
-          当前精炼等级: 获取最大精炼等级(item),
-          id: item?.id,
-          装备部位: 装备位置部位枚举[部位索引],
-        }
+      const newDpsUpList = 装备数据列表
+        .filter((item) => item.装备品级 >= 13200 || item.装备类型 === '橙武')
+        .map((item) => {
+          const 新装备数据 = {
+            ...allValue,
+            镶嵌孔数组: item?.镶嵌孔数组?.map((a) => {
+              return {
+                ...a,
+                镶嵌宝石等级: 默认镶嵌宝石等级,
+              }
+            }),
+            当前精炼等级: 获取最大精炼等级(item),
+            id: item?.id,
+            装备部位: 装备位置部位枚举[部位索引],
+          }
 
-        const 更新后装备信息 = 根据表单选项获取装备信息({
-          ...当前装备列表信息,
-          [`${部位索引}`]: 新装备数据,
+          const 更新后装备信息 = 根据表单选项获取装备信息({
+            ...当前装备列表信息,
+            [`${部位索引}`]: 新装备数据,
+          })
+
+          const { 秒伤: 更新后秒伤 } = dispatch(秒伤计算({ 更新装备信息: 更新后装备信息 }))
+
+          return {
+            uuid: `${item?.uid}${item?.id}` || '',
+            dpsUp: 更新后秒伤 - (旧秒伤 || 当前计算结果?.秒伤),
+          }
         })
-
-        const { 秒伤: 更新后秒伤 } = dispatch(秒伤计算({ 更新装备信息: 更新后装备信息 }))
-
-        return {
-          uuid: `${item?.uid}${item?.id}` || '',
-          dpsUp: 更新后秒伤 - (旧秒伤 || 当前计算结果?.秒伤),
-        }
-      })
 
       if (newDpsUpList?.length) {
         setDpsUpList(newDpsUpList)

@@ -91,6 +91,7 @@ export enum 属性类型 {
   // 破招无双全能
   全能等级 = 'atPVXAllRound',
   破招值 = 'atSurplusValueBase',
+  郭氏破招 = 'atSurplusValueAddPercent',
   无双等级 = 'atStrainBase',
   郭氏无双 = 'atStrainPercent',
   郭氏额外无双 = 'atStrainRate',
