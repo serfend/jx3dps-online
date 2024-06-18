@@ -91,6 +91,7 @@ export enum 属性类型 {
   // 破招无双全能
   全能等级 = 'atPVXAllRound',
   破招值 = 'atSurplusValueBase',
+  郭氏破招 = 'atSurplusValueAddPercent',
   无双等级 = 'atStrainBase',
   郭氏无双 = 'atStrainPercent',
   郭氏额外无双 = 'atStrainRate',
@@ -100,6 +101,8 @@ export enum 属性类型 {
   郭氏武器伤害 = 'atMeleeWeaponDamagePercent',
 
   // 技能增伤 同类增伤相加计算，系数增伤相乘计算。具体看计算公式
+  全局伤害因子 = 'atGlobalSkillDamageFactorAdd',
+  目标移动状增伤 = 'atSkillDamageDstMoveStateAdd',
   通用增伤 = 'atSkillDamageCommonAdd',
   易伤增伤 = 'atSkillDamageFragileAdd',
   非侠增伤 = 'atSkillDamageNPCAdd',

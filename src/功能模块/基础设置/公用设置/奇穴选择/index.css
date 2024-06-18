@@ -16,6 +16,14 @@
   max-width: 1366px;
 }
 
+.qixue-set-drawer-wrap.qixue-set-drawer-wrap-small {
+  max-width: 428px;
+}
+
+.qixue-set-drawer-wrap.qixue-set-drawer-wrap-small .qixue-set-item {
+  width: calc(100% / 4 - 24px);
+}
+
 .qixue-set-item {
   width: calc(100% / 12 - 24px);
   margin: 0;

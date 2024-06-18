@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { Select, SelectProps, Tooltip } from 'antd'
 import { 秒伤计算 } from '@/计算模块/计算函数'
@@ -18,7 +18,22 @@ const 阵眼选择: React.FC<阵眼选择类型> = (props) => {
   const 当前计算结果 = useAppSelector((state) => state?.data?.当前计算结果)
   const dispatch = useAppDispatch()
 
+  const [selectOpen, setSelectOpen] = useState<boolean>(false)
+
+  // 计算阵眼收益
+  const 计算更换后秒伤 = (阵眼名称) => {
+    const { 秒伤 } = dispatch(
+      秒伤计算({
+        更新增益数据: { ...增益数据, 阵眼: 阵眼名称 },
+      })
+    )
+    return 秒伤 || 0
+  }
+
   const 展示的阵眼数组 = () => {
+    if (!selectOpen) {
+      return 阵眼
+    }
     let list: 阵眼数据类型[] = [...阵眼]
 
     if (增益启用 && 开启智能对比 && 当前计算结果?.秒伤) {
@@ -47,22 +62,14 @@ const 阵眼选择: React.FC<阵眼选择类型> = (props) => {
     return list
   }
 
-  // 计算阵眼收益
-  const 计算更换后秒伤 = (阵眼名称) => {
-    const { 秒伤 } = dispatch(
-      秒伤计算({
-        更新增益数据: { ...增益数据, 阵眼: 阵眼名称 },
-      })
-    )
-    return 秒伤 || 0
-  }
-
   return (
     <Select
       className={'xuanze-zhenyan'}
       allowClear
       placeholder='请选择阵眼'
       optionFilterProp='label'
+      open={selectOpen}
+      onDropdownVisibleChange={setSelectOpen}
       {...rest}
     >
       {(展示的阵眼数组() || [])?.map((item) => {

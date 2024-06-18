@@ -1,4 +1,5 @@
-import { DEFAULT_PROJECT_NAME, 目标集合 } from '@/数据/常量'
+import { DEFAULT_PROJECT_NAME } from '@/数据/常量'
+import { 目标集合 } from '@/数据/目标'
 import { 全部方案数据 } from '@/@types/方案'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 import useCycle from '@/hooks/use-cycle'

@@ -29,8 +29,9 @@ const 心法配置: 心法配置类型 = {
     收益柱形图颜色: '#5d607b',
     心法图标: 'https://img.jx3box.com/image/xf/10533.png',
     背景图: 背景图,
-    背景色渐变: `linear-gradient(to right, #08122b 30%, rgba(8, 18, 43, 0) 100%)`,
-    背景色: 'rgba(0, 0, 0, 0.26)',
+    // 背景色渐变: `linear-gradient(to right, #08122b 30%, rgba(8, 18, 43, 0) 100%)`,
+    背景色渐变: `linear-gradient(to right, rgba(0,0,0,0.6) 5%, rgba(93,96,123, 0.25) 70%)`,
+    背景色: 'rgba(0, 0, 0, 0.5)',
   },
   性能功能关闭数组: ['优化算法'],
 }

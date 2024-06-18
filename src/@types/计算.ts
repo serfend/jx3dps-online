@@ -101,6 +101,12 @@ export interface 最终计算属性类型 {
    */
   郭氏无双: number
   /**
+   * @name 郭氏破招
+   * @description 郭氏破招百分比加成
+   * 对面板破招进行百分比计算，例：万花钟灵
+   */
+  郭氏破招: number
+  /**
    * @name 郭氏额外无双等级
    * @description 郭氏额外无双等级
    * 郭氏额外无双等级，当前基本为阵眼的无双加成。直接加无双面板，和当前身上无双属性无关
@@ -128,6 +134,8 @@ export interface 最终计算属性类型 {
 
 export interface 技能增伤类型 {
   通用增伤: number
+  目标移动状增伤: number // ADD_DAMAGE_BY_DST_MOVE_STATE 根据目标移动状态增伤
+  全局伤害因子: number // GLOBAL_DAMAGE_FACTOR 用于修正破招伤害，同时特殊作用于 [正律和鸣]，[青冠]
   易伤增伤: number
   非侠增伤: number
   技能系数: number // 这里的系数增伤直接修改系数，不乘在最后
