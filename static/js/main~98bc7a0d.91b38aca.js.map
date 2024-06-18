@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/main~98bc7a0d.91b38aca.js","mappings":"mHAAA,KACE,6CAAW,CACT,MACA,MAEF,+DAAc,CACZ,IACA,MAEF,+DAAc,K","sources":["功能模块/系统工具/页面隐藏工具/开发者工具/装备导入/赛季范围数据.mjs"],"sourcesContent":["export default {\n  \"本赛季默认品级\": [\n    12800,\n    16000\n  ],\n  \"本赛季橙武器默认品级\": [\n    10000,\n    16000\n  ],\n  \"赛季英雄普通区分品级\": 15000\n}"],"names":[],"sourceRoot":""}
