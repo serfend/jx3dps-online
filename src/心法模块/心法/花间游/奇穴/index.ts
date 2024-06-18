@@ -83,6 +83,7 @@ const 奇穴数据: 奇穴列表数据类型[] = [
     ],
   },
   {
+    是否不可编辑: true,
     奇穴列表: [
       { 奇穴名称: '焚玉', 奇穴图片: 'https://icon.jx3box.com/icon/411.png' },
       { 奇穴名称: '故幽', 奇穴图片: 'https://icon.jx3box.com/icon/11828.png' },
