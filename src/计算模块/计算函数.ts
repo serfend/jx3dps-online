@@ -49,6 +49,7 @@ export const 秒伤计算 =
       更新秘籍信息,
     } = props || {}
 
+    // console.time('计算耗时')
     const currentState: RootState = getState?.() || {}
 
     const 网络延迟 = currentState?.data?.网络延迟 || 0
@@ -114,6 +115,8 @@ export const 秒伤计算 =
     if (是否更新显示计算结果) {
       dispatch?.(更新当前计算结果(计算结果))
     }
+
+    // console.timeEnd('计算耗时')
 
     return 计算结果
   }

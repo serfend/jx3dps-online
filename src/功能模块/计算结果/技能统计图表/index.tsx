@@ -72,21 +72,7 @@ function 技能统计图表(_, ref) {
     }
 
     const dataSource = getDataSource()
-
     chart.clear()
-
-    // chart.axis('key', {
-    //   label: {
-    //     style: {
-    //       textAlign: 'center', // 文本对齐方向，可取值为： start middle end
-    //       fill: '#ffffff', // 文本的颜色
-    //       fontSize: 12, // 文本大小
-    //     },
-    //     offset: 32,
-    //   },
-    // })
-
-    // chart.axis('key', false)
     chart.axis('key', {
       title: null,
       tickLine: null,
@@ -96,17 +82,16 @@ function 技能统计图表(_, ref) {
           fill: '#ffffff', // 文本的颜色
           fontSize: 12, // 文本大小
         },
-        offset: 16,
+        offset: 12,
       },
     })
-
     chart.axis('技能总输出', false)
-
     chart.coordinate().transpose()
     chart
       .interval()
       .position('key*技能总输出')
       .color(系统配置?.收益柱形图颜色 || 系统配置?.主题色)
+      .tooltip('技能总输出*会心期望*技能比例')
       .label('技能数量', {
         offset: 16,
         style: {
@@ -114,7 +99,6 @@ function 技能统计图表(_, ref) {
           fontSize: 16,
         },
       })
-      .tooltip('技能总输出*会心期望*技能比例')
 
     chart.data(dataSource)
     chart.render()
