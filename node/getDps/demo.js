@@ -3,7 +3,7 @@ function 计算 (心法) {
   global.localStorage = { getItem:() => { return ''} }
 
   const 太玄经 = require('./demo_太玄.json')
-  // const 太玄经 = require('./zwyt.json')
+  const 花间游 = require('./demo_花间.json')
   const 山海心诀 = require('./demo_山海.json')
   const 孤锋诀 = require('./demo_孤锋.json')
   const 无方 = require('./demo_无方.json')
@@ -14,7 +14,7 @@ function 计算 (心法) {
     "凌海诀": 凌海诀,
     "孤锋诀": 孤锋诀,
     "无方": 无方,
-    // "花间游": 花间游,
+    "花间游": 花间游,
     // '山海心诀':山海心诀,
     // '山海心诀':山海心诀,
   }
@@ -35,8 +35,26 @@ function 计算 (心法) {
   return 计算结果
 }
 
-计算("无方")
-计算("孤锋诀")
+console.time('【凌海诀】计算完成，用时')
 计算("凌海诀")
+console.timeEnd('【凌海诀】计算完成，用时')
+
+console.time('【无方】计算完成，用时')
+计算("无方")
+console.timeEnd('【无方】计算完成，用时')
+
+console.time('【花间游】计算完成，用时')
+计算("花间游")
+console.timeEnd('【花间游】计算完成，用时')
+
+console.time('【太玄经】计算完成，用时')
 计算("太玄经")
+console.timeEnd('【太玄经】计算完成，用时')
+
+console.time('【孤锋诀】计算完成，用时')
+计算("孤锋诀")
+console.timeEnd('【孤锋诀】计算完成，用时')
+
+console.time('【山海心诀】计算完成，用时')
 计算("山海心诀")
+console.timeEnd('【山海心诀】计算完成，用时')
