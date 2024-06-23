@@ -26,11 +26,13 @@ function 计算 (心法) {
   // const DPS = require('./getDps.js')
   const 计算结果 = DPS?.计算秒伤?.(params)
   const fs = require('fs')
+  // console.log(`开始写入${params?.心法}计算结果文件`)
   fs.writeFile(`计算结果${params?.心法}.json`, JSON.stringify(计算结果), err => {
     if (err) {
       console.log('err',err)
     }
   })
+  // console.log(`写入完成`)
   // console.log('计算结果',计算结果)
   return 计算结果
 }
