@@ -1,5 +1,5 @@
 .dps {
-  width: calc(100vw - 348px - 36px - 36px);
+  width: calc(100vw - 348px - 24px - 24px);
   background-color: rgba(0, 0, 0, 0.4);
   color: #fff;
   padding: 24px;
@@ -8,7 +8,7 @@
 }
 
 .dps.dps-zengyi-visible {
-  width: calc(100vw - 300px - 420px - 48px - 72px);
+  width: calc(100vw - 300px - 420px - 48px - 48px);
 }
 
 .dps .ant-divider {
@@ -74,6 +74,25 @@
   font-size: 20px;
 }
 
+.dps-number-count-skill-btn {
+  font-weight: 700;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.12);
+  margin-bottom: 8px;
+  /* font-size: 20px; */
+}
+
 .dps-number-count-skill:hover {
   color: #fa7528;
+}
+
+.dps-res-chart {
+  display: flex;
+}
+
+.dps-res-chart.dps-chart-show-skill .dps-res-chart-wrap{
+  width: 50%
+}
+
+.dps-res-chart-wrap {
+  width: 100%;
 }

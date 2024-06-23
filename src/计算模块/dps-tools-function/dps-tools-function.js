@@ -199,6 +199,8 @@ const 获取对应的循环名称 = (心法, 奇穴 = [], 循环类型) => {
       return '橙武'
     } else if (奇穴.includes('列宿游')) {
       return '鬼列'
+    } else if (奇穴.includes('枭神') && 奇穴.includes('追叙')) {
+      return '鬼追'
     } else {
       return '堪炸'
     }

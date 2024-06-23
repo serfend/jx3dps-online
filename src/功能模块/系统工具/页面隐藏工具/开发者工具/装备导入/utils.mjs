@@ -65,7 +65,7 @@ export const 接口装备数据格式化 = (list,赛季范围数据) => {
         })
         .filter((a) => a),
     }
-  })
+  }).filter(item => (赛季范围数据.门派列表 ||[]).includes(item.所属门派))
   return 装备列表
 }
 

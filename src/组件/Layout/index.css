@@ -15,7 +15,7 @@
   z-index: 2;
   margin: auto;
   display: flex;
-  padding: 36px;
+  padding: 36px 24px;
   flex-direction: row;
   box-sizing: border-box;
   /* background: #08122b; */

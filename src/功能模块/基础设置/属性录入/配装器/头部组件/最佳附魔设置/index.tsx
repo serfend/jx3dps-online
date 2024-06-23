@@ -13,7 +13,7 @@ import 根据装备信息获取基础属性 from '../../工具函数/根据装�
 import { 修改装备属性, 初始化所有组合 } from './util'
 import './index.css'
 
-const { 默认数据 = {} } = 获取当前数据()
+const { 默认数据 = {}, 性能功能关闭数组, 名称: 心法名称 } = 获取当前数据()
 const { 一键附魔默认部位 = [] } = 默认数据
 
 const 没有附魔的部位 = ['_7', '_8']
@@ -94,8 +94,8 @@ function 最佳附魔设置({ 一键替换附魔, 对比秒伤, 对比装备信�
         content: (
           <div>
             <p>共 {dataRef?.current?.length} 种组合，计算将造成一定卡顿</p>
-            {dataRef?.current?.length > 500 ? (
-              <p>「凌海诀」玩家电脑性能不佳情况下请慎重使用</p>
+            {dataRef?.current?.length > 500 && 性能功能关闭数组?.length ? (
+              <p>「{心法名称}」玩家电脑性能不佳情况下请慎重使用</p>
             ) : null}
           </div>
         ),

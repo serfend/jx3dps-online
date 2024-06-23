@@ -31,7 +31,7 @@ const checkTypeList = [
     list: 附魔收益列表,
     tip: (
       <div>
-        <p>X轴：在现有装备基础上额外增加同分附魔的对应属性</p>
+        <p>X轴：在现有装备基础上额外增加本赛季紫色附魔的对应属性</p>
         <p>Y轴：增加对应属性后秒伤和原装备秒伤的差值</p>
         <p>由于【郭氏计算】增益不线性</p>
         <p>收益部分采用【非郭氏计算】仅供参考</p>
@@ -136,9 +136,11 @@ function 收益图表(_, ref) {
         const 增益后装备基础数据 = 收益增益属性计算(item?.收益, item?.值, 装备信息?.装备基础属性)
         const 新秒伤 = 计算增加后收益(增益后装备基础数据)
         const 收益 = Number(新秒伤 - 旧秒伤)
-        const 收益结果 = Number(收益.toFixed(3))
+        // const 收益结果 = 增益面板显示状态 ? Number(收益.toFixed(3)) : Number(收益.toFixed(1))
+        const 收益结果 = Number(收益.toFixed(1))
         return {
-          key: `${item.收益}${item?.值 !== 1 ? item?.值 : ''}`,
+          // key: `${item.收益}${item?.值 !== 1 ? item?.值 : ''}`,
+          key: `${item.收益}`,
           收益: 收益结果,
         }
       })
