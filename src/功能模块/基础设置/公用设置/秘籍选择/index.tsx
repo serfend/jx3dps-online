@@ -5,7 +5,10 @@ import { useAppDispatch, useAppSelector } from '@/hooks'
 import { 更新当前秘籍信息 } from '@/store/data'
 import { 触发秒伤计算 } from '@/计算模块/计算函数'
 import { 获取当前职业的所有秘籍信息 } from './utils'
+import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 import './index.css'
+
+const { 心法所属端 } = 获取当前数据()
 
 const 当前职业的所有秘籍信息 = 获取当前职业的所有秘籍信息()
 
@@ -29,7 +32,12 @@ function 秘籍选择() {
 
   return (
     <>
-      <Button size='small' className='miji-set-button' onClick={() => setVisible(true)}>
+      <Button
+        size='small'
+        className='miji-set-button'
+        onClick={() => setVisible(true)}
+        disabled={心法所属端 === '无界'}
+      >
         秘籍设置
       </Button>
       <Drawer

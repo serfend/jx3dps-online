@@ -42,13 +42,13 @@ export const 获取技能增益判断 = (
 
 export const 判断增益是否启用 = (增益: 技能增益列表类型, 装备增益: 装备增益类型) => {
   switch (增益?.增益名称) {
-    case 'CW5%':
+    case '大橙武技能增伤':
       return 装备增益?.大橙武特效
-    case '小CW会心5%':
+    case '小橙武技能会心提高':
       return 装备增益?.小橙武特效
-    case '套装10%_1':
+    case '套装技能增伤_1':
       return !!装备增益?.套装技能
-    case '套装10%_2':
+    case '套装技能增伤_2':
       return +(装备增益?.套装技能 || 0) > 1
     default:
       return false

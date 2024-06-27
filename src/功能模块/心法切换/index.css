@@ -31,10 +31,19 @@
   opacity: 0.8;
 }
 
+.school-switch-list-active {
+  color: var(--ant-primary-color);
+  font-weight: 500;
+}
+
 .school-switch-list-item {
   display: flex;
   align-items: center;
   padding-right: 4px;
+}
+
+.school-switch-list-item-active {
+  background-color: #f0f0f0;
 }
 
 .school-switch-list-img {

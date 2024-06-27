@@ -29,15 +29,19 @@ function 心法切换() {
     <Menu
       items={Object.keys(全部心法).map((心法) => {
         const 当前心法数据 = 全部心法[心法]
+        const 是当前心法 = 当前心法数据.名称 === 当前数据.名称
         return {
           key: 心法,
           label: (
-            <div className={'school-switch-list-item'}>
+            <div className={`school-switch-list-item`}>
               <img className='school-switch-list-img' src={当前心法数据?.系统配置?.心法图标} />
-              {当前心法数据?.名称}
+              <span className={是当前心法 ? 'school-switch-list-active' : ''}>
+                {当前心法数据?.名称}
+              </span>
             </div>
           ),
           onClick: () => 切换至对应心法(心法),
+          className: 是当前心法 ? 'school-switch-list-item-active' : '',
         }
       })}
     />

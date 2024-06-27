@@ -64,15 +64,15 @@ export const 精炼加成系数 = {
 
 export const 延迟设定: 延迟数据类型[] = [
   {
-    label: '超低延迟(0-30)',
+    label: '理论无延迟(0-30)',
     value: 0,
   },
   {
-    label: '中低延迟(30-60)',
+    label: '低延迟(30-60)',
     value: 1,
   },
   {
-    label: '一般延迟(60-90)',
+    label: '中延迟(60-90)',
     value: 2,
   },
   {

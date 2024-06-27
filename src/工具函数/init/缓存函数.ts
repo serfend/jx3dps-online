@@ -7,10 +7,11 @@ import { 角色默认基础属性 } from './默认数据'
 
 const { 缓存映射, 默认数据 = {}, 奇穴数据 = [] } = 获取当前数据()
 const 默认秘籍 = 默认数据?.秘籍 || {}
+const 默认延迟 = 默认数据?.网络延迟 || 0
 const 默认装备信息 = 默认数据?.配装 || {}
 
 export const 加载缓存网络延迟 = () => {
-  const localNetwork = localStorage.getItem(缓存映射.网络延迟)
+  const localNetwork = localStorage.getItem(缓存映射.网络延迟) || 默认延迟 || 0
   if (localNetwork) {
     return +localNetwork
   } else {

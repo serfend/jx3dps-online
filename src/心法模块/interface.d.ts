@@ -89,6 +89,12 @@ export interface 心法配置类型 {
    */
   性能功能关闭数组?: 性能功能关闭数组类型[]
   /**
+   * @name 基础GCD
+   * @default 1.5
+   */
+  基础GCD?: number
+
+  /**
    * @name 覆盖率
    * @description 针对心法的覆盖率数值覆盖
    */

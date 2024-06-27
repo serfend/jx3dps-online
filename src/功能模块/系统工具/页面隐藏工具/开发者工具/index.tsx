@@ -1,6 +1,6 @@
 import { Modal, Tabs } from 'antd'
 import React from 'react'
-// import JclSkillDaoru from './JclSkillDaoru'
+import JclSkillDaoru from './JCL技能序列导入'
 import WucaishiDaoru from './五彩石导入'
 import EquipmentImport from './装备导入'
 import JCL战斗记录解析 from './JCL战斗记录解析'
@@ -13,7 +13,7 @@ function DeveloperModal({ visible, onClose }) {
     { label: 'JCL战斗记录解析', key: 'JCL战斗记录解析', children: <JCL战斗记录解析 /> },
     { label: '奇穴导入', key: '奇穴导入', children: <奇穴导入 /> },
     { label: '五彩石导入', key: '五彩石导入', children: <WucaishiDaoru /> },
-    // { label: 'JCL技能序列导入', key: 'JCL技能序列导入', children: <JclSkillDaoru /> },
+    { label: 'JCL技能序列导入', key: 'JCL技能序列导入', children: <JclSkillDaoru /> },
   ]
   return (
     <Modal
@@ -24,6 +24,7 @@ function DeveloperModal({ visible, onClose }) {
       open={visible}
       onCancel={() => onClose(false)}
       footer={null}
+      destroyOnClose
     >
       <Tabs items={items} />
     </Modal>
