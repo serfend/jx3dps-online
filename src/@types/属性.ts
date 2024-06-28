@@ -106,7 +106,7 @@ export enum 属性类型 {
   通用增伤 = 'atSkillDamageCommonAdd',
   易伤增伤 = 'atSkillDamageFragileAdd',
   非侠增伤 = 'atSkillDamageNPCAdd',
-  技能系数 = 'atSkillCoefficientAdd',
+  系数增伤 = 'atSkillCoefficientAdd',
 }
 
 export interface 属性加成 {
