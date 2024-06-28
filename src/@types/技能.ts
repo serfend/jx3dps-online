@@ -7,6 +7,11 @@ import { 计算公式计算类型 } from './伤害计算'
  */
 export interface 技能基础数据模型 {
   /**
+   * @name 技能ID
+   * @description 技能ID
+   */
+  技能ID?: number
+  /**
    * @name 技能名称
    * @description 实际造成的技能伤害名称
    */

@@ -1,7 +1,7 @@
 /**
  * 装备选择
  */
-import React, { forwardRef, useState } from 'react'
+import React, { forwardRef, useMemo, useState } from 'react'
 import { Select } from 'antd'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { 装备部位枚举 } from '@/@types/枚举'
@@ -41,6 +41,14 @@ function 装备部位选择(props: 装备部位选择入参, ref) {
   const [dpsUpList, setDpsUpList] = useState<{ uuid: string; dpsUp: number }[]>()
   const dispatch = useAppDispatch()
 
+  // const 当前精炼等级 = useMemo(() => {
+  //   return allValue?.当前精炼等级 || 0
+  // }, [allValue])
+
+  const 当前镶嵌等级数组 = useMemo(() => {
+    return allValue?.镶嵌孔数组?.map((item) => item.镶嵌宝石等级) || []
+  }, [allValue])
+
   // 获取dps提升装备列表
   const getDpsUpList = () => {
     if (开启装备智能对比) {
@@ -54,15 +62,18 @@ function 装备部位选择(props: 装备部位选择入参, ref) {
       const newDpsUpList = 装备数据列表
         .filter((item) => item.装备品级 >= 13200 || item.装备类型 === '橙武')
         .map((item) => {
+          const 装备最大精炼等级 = 获取最大精炼等级(item)
+          // const 切换后精炼等级 = 当前精炼等级 > 装备最大精炼等级 ? 装备最大精炼等级 : 当前精炼等级
+
           const 新装备数据 = {
             ...allValue,
-            镶嵌孔数组: item?.镶嵌孔数组?.map((a) => {
+            镶嵌孔数组: item?.镶嵌孔数组?.map((a, index) => {
               return {
                 ...a,
-                镶嵌宝石等级: 默认镶嵌宝石等级,
+                镶嵌宝石等级: 当前镶嵌等级数组?.[index] || 默认镶嵌宝石等级,
               }
             }),
-            当前精炼等级: 获取最大精炼等级(item),
+            当前精炼等级: 装备最大精炼等级,
             id: item?.id,
             装备部位: 装备位置部位枚举[部位索引],
           }

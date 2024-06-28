@@ -277,8 +277,8 @@
   -webkit-filter: hue-rotate(20deg);
 }
 
-.daozong-cycle-simulator-setting-btn.daozong-cycle-simulator-setting-btn-error .cycle-add-btn-text,
-.daozong-cycle-simulator-setting-btn.daozong-cycle-simulator-setting-btn-error .cycle-add-btn {
+.daozong-cycle-simulator-setting-btn.cycle-simulator-setting-btn-error .cycle-add-btn-text,
+.daozong-cycle-simulator-setting-btn.cycle-simulator-setting-btn-error .cycle-add-btn {
   color: rgba(3, 10, 26, 0.85);
   -webkit-filter: grayscale(1) saturate(10%) contrast(50%);
 }

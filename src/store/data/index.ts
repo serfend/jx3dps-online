@@ -60,6 +60,7 @@ export const 数据模块 = createSlice({
     },
     更新网络延迟: (state, action: PayloadAction<number>) => {
       state.网络延迟 = action.payload
+      localStorage?.setItem(缓存映射.网络延迟, action.payload.toString())
     },
     更新当前计算结果: (state, action: PayloadAction<当前计算结果类型>) => {
       state.当前计算结果 = action.payload

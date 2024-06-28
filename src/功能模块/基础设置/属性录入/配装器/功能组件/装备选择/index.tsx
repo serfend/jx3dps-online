@@ -26,6 +26,16 @@ const { 装备数据, 附魔 } = 获取当前数据()
 function 装备选择(props: 装备选择入参, ref) {
   const { value, onChange, 部位, 默认镶嵌宝石等级, 部位索引, form, 开启装备智能对比 } = props
 
+  // const 当前精炼等级 = useMemo(() => {
+  //   return value?.当前精炼等级 || 0
+  // }, [value])
+
+  const 当前镶嵌等级数组 = useMemo(() => {
+    return value?.镶嵌孔数组?.map((item) => item.镶嵌宝石等级) || []
+  }, [value])
+
+  // const 当前精炼等级 =
+
   const list: 装备属性信息模型[] = useMemo(() => {
     return 装备数据[部位] || []
   }, [部位])
@@ -33,16 +43,18 @@ function 装备选择(props: 装备选择入参, ref) {
   // 选择装备
   const 选择装备 = (e) => {
     const obj = list.find((item) => item.id === e)
+    const 装备最大精炼等级 = 获取最大精炼等级(obj)
+    // const 切换后精炼等级 = 当前精炼等级 > 装备最大精炼等级 ? 装备最大精炼等级 : 当前精炼等级
     onChange &&
       onChange({
         ...value,
-        镶嵌孔数组: obj?.镶嵌孔数组?.map((item) => {
+        镶嵌孔数组: obj?.镶嵌孔数组?.map((item, index) => {
           return {
             ...item,
-            镶嵌宝石等级: 默认镶嵌宝石等级,
+            镶嵌宝石等级: 当前镶嵌等级数组?.[index] || 默认镶嵌宝石等级,
           }
         }),
-        当前精炼等级: 获取最大精炼等级(obj),
+        当前精炼等级: 装备最大精炼等级,
         id: e,
         装备部位: 装备位置部位枚举[部位索引],
       } as any)
