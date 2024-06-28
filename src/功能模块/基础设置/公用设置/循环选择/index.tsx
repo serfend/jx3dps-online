@@ -38,7 +38,8 @@ function 循环选择() {
               const cls = classnames(
                 'cycle-select-item-tag',
                 item.标记 === '紫武' ? 'cycle-select-item-tag-purple' : '',
-                item.标记 === '橙武' ? 'cycle-select-item-tag-orange' : ''
+                item.标记 === '橙武' ? 'cycle-select-item-tag-orange' : '',
+                item.标记 === '助手' ? 'cycle-select-item-tag-green' : ''
               )
               return (
                 <Select.Option value={item?.名称} key={item.名称} label={item.名称}>

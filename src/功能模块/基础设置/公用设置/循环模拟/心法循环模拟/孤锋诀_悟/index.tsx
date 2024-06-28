@@ -72,6 +72,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
     技能基础数据: [...循环模拟技能基础数据],
     技能释放记录: [],
     当前各技能运行状态: {},
+    当前DOT运行状态: {},
     当前GCD组: {},
   })
 
@@ -126,7 +127,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
     if (是否实时计算 && basicModalOpen) {
       simulator({})
     }
-  }, [basicModalOpen, cycle, 是否实时计算, 起手留层数, 网络延迟, 加速值, 奇穴信息])
+  }, [basicModalOpen, cycle, 是否实时计算, 起手留层数, 网络延迟, 加速值, 奇穴信息, 开启武学助手])
 
   const simulator = (props?) => {
     const { 传入加速 = 加速值, 传入延迟 = 网络延迟, 更新展示 = true, 奇穴 } = props
@@ -137,6 +138,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
       奇穴: 奇穴 || 奇穴信息,
       起手留层数,
       大橙武模拟,
+      开启武学助手,
     })
 
     const {
@@ -421,7 +423,10 @@ function CycleSimulator(props: CycleSimulatorProps) {
             清空循环={() => setCycle([])}
             起手留层数={起手留层数}
             设置起手留层数={设置起手留层数}
-            快速导入循环={(循环) => setCycle(循环)}
+            快速导入循环={(循环, 循环标记) => {
+              setCycle(循环)
+              设置开启武学助手(循环标记 === '助手')
+            }}
             网络延迟={网络延迟}
             更新网络延迟={更新网络延迟}
             加速等级={加速等级}

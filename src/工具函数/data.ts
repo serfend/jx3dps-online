@@ -6,7 +6,7 @@ import { 增益选项数据类型 } from '@/@types/团队增益'
 import { 属性类型 } from '@/@types/属性'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 
-const { 小药小吃, 基础GCD } = 获取当前数据()
+const { 小药小吃, 基础GCD = 1.5 } = 获取当前数据()
 
 export const 获取郭氏结果值 = (原值 = 0, 郭氏值 = 0) => {
   return Math.floor((原值 * 郭氏值) / 1024)

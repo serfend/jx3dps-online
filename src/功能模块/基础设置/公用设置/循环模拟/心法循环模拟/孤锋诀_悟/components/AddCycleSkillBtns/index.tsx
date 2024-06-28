@@ -116,7 +116,10 @@ function AddCycleSkillBtns(props: AddCycleSkillBtnsProps) {
               <p>各种Bug包括但不限于</p>
               <p>1、异常跳过技能不按顺序释放</p>
               <p>2、相同武学助手打出不同效果</p>
-              <p>所以暂时不放开武学助手编辑功能，等待后续机制修改和研究明白再放出。</p>
+              <p>所以暂时不放开武学助手的顺序编辑功能，等待后续机制修改和研究明白再放出。</p>
+              <p style={{ fontWeight: 500 }}>
+                目前经过欧测试，武学助手自带-1段加速，开启后将增加1帧延迟
+              </p>
             </div>
           }
         >
@@ -126,7 +129,7 @@ function AddCycleSkillBtns(props: AddCycleSkillBtnsProps) {
             size='small'
             optionType='button'
             buttonStyle='solid'
-            disabled
+            // disabled
           >
             <Radio value={true}>开启</Radio>
             <Radio value={false}>关闭</Radio>

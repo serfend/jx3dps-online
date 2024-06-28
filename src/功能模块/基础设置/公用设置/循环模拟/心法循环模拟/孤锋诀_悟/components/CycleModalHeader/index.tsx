@@ -11,7 +11,7 @@ interface CycleModalHeaderProps {
   清空循环: () => void
   起手留层数: number
   设置起手留层数: (e: number) => void
-  快速导入循环: (e: 循环基础技能数据类型[]) => void
+  快速导入循环: (e: 循环基础技能数据类型[], 循环标记: string) => void
   网络延迟: number
   更新网络延迟: (e: number) => void
   加速等级: number
@@ -49,7 +49,7 @@ function CycleModalHeader(props: CycleModalHeaderProps) {
       })
       .filter((item) => item)
 
-    快速导入循环(技能序列信息)
+    快速导入循环(技能序列信息, 当前循环数据?.标记 || '')
     // if (当前循环数据?.奇穴) {
     //   更新奇穴信息(当前循环数据?.奇穴)
     // }
