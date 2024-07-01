@@ -7,7 +7,7 @@ function 页面右上角工具() {
 
   return (
     <div className='right-top-tools'>
-      <span className='cache-btn' onClick={() => 设置识别装备对比(true)}>
+      <span className='right-top-tools-btn' onClick={() => 设置识别装备对比(true)}>
         识别装备对比
       </span>
       <Ocr识别装备对比 open={识别装备对比} onCancel={() => 设置识别装备对比(false)} />

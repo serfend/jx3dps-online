@@ -250,9 +250,9 @@ const Ocr识别装备对比: React.FC<ModalProps> = (props) => {
                     <span style={{ color: '#F34242' }}>仅供娱乐</span>
                   </p>
                   <h1 className={'ocr-modal-tip-title'}>如何获取掉落列表</h1>
-                  <p>1、在掉落列表左上角的菜单中国呢点击“导出所有物品”</p>
+                  <p>1、在掉落列表左上角的菜单中点击“导出所有物品”</p>
                   <p>2、在团队中复制发送的掉落列表，到浏览器粘贴</p>
-                  <p>3、由于是插件自动发到团队的，可能会有点显眼包</p>
+                  <p style={{ marginBottom: 8 }}>3、由于是插件自动发到团队的，可能会有点显眼包</p>
                   <Image src={教程} height={100} />
                 </div>
               }
