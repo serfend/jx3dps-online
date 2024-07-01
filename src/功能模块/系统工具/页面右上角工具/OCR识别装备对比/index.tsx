@@ -359,6 +359,7 @@ const Ocr识别装备对比: React.FC<ModalProps> = (props) => {
                 title: (
                   <Popover
                     title={'性价比解释说明'}
+                    placement='left'
                     content={
                       <div>
                         <p>根据秒伤和拍价计算的性价比，仅供参考。理性消费！</p>
