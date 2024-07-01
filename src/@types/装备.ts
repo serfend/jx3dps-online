@@ -93,6 +93,10 @@ export interface 装备属性信息模型 {
    * @default 通用
    */
   所属门派?: '通用' | string
+  /**
+   * @name 装备部位
+   */
+  装备部位?: string
 }
 
 // 镶嵌孔数据
