@@ -1,8 +1,8 @@
-import ImgBg_1 from './1.png'
-import ImgBg_2 from './2.png'
-import ImgBg_3 from './3.png'
-import ImgBg_4 from './4.png'
-import ImgBg_5 from './5.png'
-import ImgBg_6 from './6.png'
+import { GLOBAL_CDN_PREFIX } from '@/工具函数/const'
 
-export default [ImgBg_1, ImgBg_2, ImgBg_3, ImgBg_4, ImgBg_5, ImgBg_6]
+const ImgBg_1 = `${GLOBAL_CDN_PREFIX}/bg_shxj_1.png`
+const ImgBg_2 = `${GLOBAL_CDN_PREFIX}/bg_shxj_2.png`
+const ImgBg_3 = `${GLOBAL_CDN_PREFIX}/bg_shxj_3.png`
+const ImgBg_4 = `${GLOBAL_CDN_PREFIX}/bg_shxj_3.png`
+
+export default [ImgBg_1, ImgBg_2, ImgBg_3, ImgBg_4]

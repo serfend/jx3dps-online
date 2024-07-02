@@ -20,8 +20,7 @@ export const 加载缓存网络延迟 = () => {
 }
 
 export const 加载缓存背景图片显示状态 = () => {
-  return true
-  // return !!+(localStorage.getItem(缓存映射.背景图片显示状态) || '0')
+  return !!+(localStorage.getItem(缓存映射.背景图片显示状态) || '1')
 }
 
 export const 加载缓存当前输出计算目标名称 = () => {

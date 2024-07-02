@@ -20,7 +20,7 @@ function Titai(props: TitaiProps) {
         <img
           className={'cycle-status-bar-titai-img'}
           src={角色状态信息?.体态 === '单刀' ? Img_Dandao : Img_Shuangdao}
-          alt=""
+          alt=''
         />
       </Tooltip>
     </div>
