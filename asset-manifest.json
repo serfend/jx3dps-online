@@ -1,38 +1,19 @@
 {
   "files": {
     "main.css": "./static/css/main.1012150d.css",
-    "main.js": "./static/js/main.00f829eb.js",
-    "static/css/191.6e51a642.css": "./static/css/191.6e51a642.css",
-    "static/js/191.7fb46db1.js": "./static/js/191.7fb46db1.js",
-    "static/media/3.png": "./static/media/3.475317e2cb9318a1ae3d.png",
-    "static/media/2.png": "./static/media/2.8739badccb8dd0a05f89.png",
-    "static/media/4.png": "./static/media/4.ff9d5ce5dd19e344e1f6.png",
-    "static/media/1.png": "./static/media/1.f66b855d857cb14696b7.png",
-    "static/media/3.jpg": "./static/media/3.2230bbe9e3babae1281f.jpg",
-    "static/media/2.jpg": "./static/media/2.02cb73e851b6a253fd26.jpg",
-    "static/media/1.jpg": "./static/media/1.84f01c71cbb5ccc0d4de.jpg",
-    "static/media/1.jpeg": "./static/media/1.5f8e02626f08c3b5f712.jpeg",
-    "static/media/6.png": "./static/media/6.38c16b4d2df279e24f98.png",
-    "static/media/5.png": "./static/media/5.6b3279ab2c2f0092f624.png",
-    "static/media/4.jpeg": "./static/media/4.6c6cc427c09ace3fca67.jpeg",
-    "static/media/daoru_help_2.png": "./static/media/daoru_help_2.8d37cf94d2cd6a48c68f.png",
-    "static/media/daoru_help_1.png": "./static/media/daoru_help_1.3e48a844d1bfb3a5117c.png",
-    "static/media/tip_1.png": "./static/media/tip_1.4f97e14a511e60a93313.png",
-    "static/media/tip_2.png": "./static/media/tip_2.301a428a4cc75244ebc3.png",
-    "static/media/paiming-3.png": "./static/media/paiming-3.aa2094d957d8c1493aa3.png",
-    "static/media/paiming-2.png": "./static/media/paiming-2.a2390d1e78a1de0da5ba.png",
-    "static/media/paiming-1.png": "./static/media/paiming-1.247b854286bb64dcebfe.png",
-    "static/media/tip_3.png": "./static/media/tip_3.2513047d584756aee42e.png",
+    "main.js": "./static/js/main.0e956b21.js",
+    "static/css/645.8f9d25e3.css": "./static/css/645.8f9d25e3.css",
+    "static/js/645.d9f87769.js": "./static/js/645.d9f87769.js",
     "index.html": "./index.html",
     "main.1012150d.css.map": "./static/css/main.1012150d.css.map",
-    "main.00f829eb.js.map": "./static/js/main.00f829eb.js.map",
-    "191.6e51a642.css.map": "./static/css/191.6e51a642.css.map",
-    "191.7fb46db1.js.map": "./static/js/191.7fb46db1.js.map"
+    "main.0e956b21.js.map": "./static/js/main.0e956b21.js.map",
+    "645.8f9d25e3.css.map": "./static/css/645.8f9d25e3.css.map",
+    "645.d9f87769.js.map": "./static/js/645.d9f87769.js.map"
   },
   "entrypoints": [
-    "static/css/191.6e51a642.css",
-    "static/js/191.7fb46db1.js",
+    "static/css/645.8f9d25e3.css",
+    "static/js/645.d9f87769.js",
     "static/css/main.1012150d.css",
-    "static/js/main.00f829eb.js"
+    "static/js/main.0e956b21.js"
   ]
 }
