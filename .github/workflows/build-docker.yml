@@ -56,7 +56,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: docker.io/${{ github.repository }}
+          images: docker.io/${{ secrets.DOCKER_USERNAME }}/jx3dps-online
           tags: |
             type=sha
 
