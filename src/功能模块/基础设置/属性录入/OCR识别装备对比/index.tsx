@@ -22,12 +22,13 @@ import { 角色默认基础属性 } from '@/工具函数/init/默认数据'
 import { 获取最大精炼等级 } from '@/功能模块/基础设置/属性录入/配装器/功能组件/装备选择'
 import { 秒伤计算 } from '@/计算模块/计算函数'
 import { v4 as uuidV4 } from 'uuid'
+import { GLOBAL_CDN_PREFIX } from '@/工具函数/const'
 import Map from './map.json'
-import 教程_1 from './教程/tip_1.png'
-import 教程_2 from './教程/tip_2.png'
-import 教程_3 from './教程/tip_3.png'
-
 import './index.css'
+
+const 教程_1 = `${GLOBAL_CDN_PREFIX}/help_equip_1.png`
+const 教程_2 = `${GLOBAL_CDN_PREFIX}/help_equip_2.png`
+const 教程_3 = `${GLOBAL_CDN_PREFIX}/help_equip_3.png`
 
 const 高性价比常数 = 5
 const 低性价比常数 = 3
