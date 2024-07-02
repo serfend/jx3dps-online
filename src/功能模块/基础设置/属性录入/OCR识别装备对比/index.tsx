@@ -10,6 +10,7 @@ import {
   Table,
   InputNumber,
   Image,
+  Divider,
 } from 'antd'
 import { QuestionCircleOutlined } from '@ant-design/icons'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
@@ -22,7 +23,9 @@ import { 获取最大精炼等级 } from '@/功能模块/基础设置/属性录�
 import { 秒伤计算 } from '@/计算模块/计算函数'
 import { v4 as uuidV4 } from 'uuid'
 import Map from './map.json'
-import 教程 from './教程/tip_1.png'
+import 教程_1 from './教程/tip_1.png'
+import 教程_2 from './教程/tip_2.png'
+import 教程_3 from './教程/tip_3.png'
 
 import './index.css'
 
@@ -250,10 +253,22 @@ const Ocr识别装备对比: React.FC<ModalProps> = (props) => {
                     <span style={{ color: '#F34242' }}>仅供娱乐</span>
                   </p>
                   <h1 className={'ocr-modal-tip-title'}>如何获取掉落列表</h1>
-                  <p>1、在掉落列表左上角的菜单中点击“导出所有物品”</p>
+                  <p>1、在掉落列表左上角的菜单中点击“贴出所有物品”</p>
                   <p>2、在团队中复制发送的掉落列表，到浏览器粘贴</p>
-                  <p style={{ marginBottom: 8 }}>3、由于是插件自动发到团队的，可能会有点显眼包</p>
-                  <Image src={教程} height={100} />
+                  <p>3、由于是插件自动发到团队的，可能会有点显眼包</p>
+                  <Divider style={{ margin: '8px 0' }} />
+                  <p>
+                    如果你不想太显眼包，你也可以 按住 「Ctrl」 +
+                    左键依次在掉落列表中点击你的装备，使它出现在聊天输入框内
+                  </p>
+                  <p style={{ marginBottom: 8 }}>
+                    然后 使用 「Ctrl」+「A」全选，「Ctrl」+「X」剪切，然后到浏览器内粘贴
+                  </p>
+                  <div className={'ocr-modal-tip-image-wrap'}>
+                    <Image className={'ocr-modal-tip-image'} src={教程_1} />
+                    <Image className={'ocr-modal-tip-image'} src={教程_2} />
+                    <Image className={'ocr-modal-tip-image'} src={教程_3} />
+                  </div>
                 </div>
               }
             >

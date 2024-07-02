@@ -158,3 +158,12 @@
 .dps-price-table {
   height: 520px;
 }
+
+.ocr-modal-tip-image-wrap .ant-image {
+  margin-right: 12px;
+  max-width: 300px;
+}
+
+.ocr-modal-tip-image {
+  height: 100px;
+}
