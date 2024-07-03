@@ -24,6 +24,14 @@ const jx3AppApi = axios.create({
   headers: { 'Content-Type': 'application/json' },
 })
 
+const yeApi = axios.create({
+  baseURL: 'https://inv.btcsg.top:3001', // 设置 baseURL 为您的服务器地址
+  timeout: 10000, // 设置超时时间
+  headers: {
+    'Content-Type': 'application/json',
+  },
+})
+
 // 根据配装ID获取配装方案
 export const getPzDataById = (params) =>
   axios.get(`/api/cms/app/pz/${params.id}`, { params: params })
@@ -36,20 +44,10 @@ export const getWuCaiShiDataById = (params) => axios.get(`/enchant/stone`, { par
 
 // 获取当前区服列表
 export const getServerList = (params?) =>
-  spiderApi.get(`/api/spider/server/server_state`, {
-    params: params,
-  })
+  spiderApi.get(`/api/spider/server/server_state`, { params: params })
 
 export const getEquipDataByUidV1 = (params?) => tlApi.post(`/j3dps/tl/getEquipByRoleId`, params)
 export const getEquipDataByUidV2 = (params?) => dlApi.post(`/mine/equip/get-role-equip`, params)
 export const getEquipDataByUidV3 = (params?) => jx3AppApi.post(`/mine/equip/get-role-equip`, params)
-
-const yeApi = axios.create({
-  baseURL: 'https://inv.btcsg.top:3001', // 设置 baseURL 为您的服务器地址
-  timeout: 10000, // 设置超时时间
-  headers: {
-    'Content-Type': 'application/json',
-  },
-})
 
 export const getUIdByName = (params?) => yeApi.post(`/role/role_detailed`, null, { params: params })
