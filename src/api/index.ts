@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const dlApi = axios.create({
-  baseURL: '/j3dps/', // 设置 baseURL 为您的服务器地址
+  baseURL: '/jx3dps/', // 设置 baseURL 为您的服务器地址
   timeout: 5000, // 设置超时时间
   headers: { 'Content-Type': 'application/json' },
 })
@@ -14,6 +14,12 @@ const tlApi = axios.create({
 
 const spiderApi = axios.create({
   baseURL: 'https://spider2.jx3box.com', // 设置 baseURL 为您的服务器地址
+  timeout: 5000, // 设置超时时间
+  headers: { 'Content-Type': 'application/json' },
+})
+
+const jx3AppApi = axios.create({
+  baseURL: 'https://jx3app.proxy.locez.com:44443', // 设置 baseURL 为您的服务器地址
   timeout: 5000, // 设置超时时间
   headers: { 'Content-Type': 'application/json' },
 })
@@ -34,8 +40,9 @@ export const getServerList = (params?) =>
     params: params,
   })
 
-export const getEquipDataByUid = (params?) => tlApi.post(`/j3dps/tl/getEquipByRoleId`, params)
+export const getEquipDataByUidV1 = (params?) => tlApi.post(`/j3dps/tl/getEquipByRoleId`, params)
 export const getEquipDataByUidV2 = (params?) => dlApi.post(`/mine/equip/get-role-equip`, params)
+export const getEquipDataByUidV3 = (params?) => jx3AppApi.post(`/mine/equip/get-role-equip`, params)
 
 const yeApi = axios.create({
   baseURL: 'https://inv.btcsg.top:3001', // 设置 baseURL 为您的服务器地址

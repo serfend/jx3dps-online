@@ -4,7 +4,7 @@ import { Button, Input, Modal, Spin } from 'antd'
 import React, { useState } from 'react'
 import { getEquipData } from './util'
 import ServerCascader from '@/组件/ServerCascader'
-import { getUIdByName, getEquipDataByUid, getEquipDataByUidV2 } from '@/api'
+import { getUIdByName, getEquipDataByUidV3, getEquipDataByUidV1 } from '@/api'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 import './index.css'
 
@@ -38,13 +38,13 @@ function AccountImport({ onOk }) {
       } else {
         if (userInfo?.roleId) {
           const request = window?.location?.href?.includes('localhost')
-            ? getEquipDataByUid
-            : getEquipDataByUidV2
+            ? getEquipDataByUidV1
+            : getEquipDataByUidV3
 
           const requestRes: any = await request({
             zone: server?.[0],
             server: server?.[1],
-            game_role_id: +userInfo?.roleId,
+            game_role_id: userInfo?.roleId,
           })
 
           if (
