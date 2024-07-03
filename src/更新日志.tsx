@@ -1,10 +1,38 @@
 export default [
   {
+    version: '[雾海寻龙] 1.1.4',
+    date: '2024-07-03 19:50:00',
+    content: [
+      '7月3日技改',
+      <p style={{ paddingLeft: 12 }} key='1.1.0.2'>
+        <a href='https://jx3.xoyo.com/announce/gg.html?id=1333872' target='_blank' rel='noreferrer'>
+          技改链接
+        </a>
+      </p>,
+      '花间游',
+      <p style={{ paddingLeft: 12 }} key='1.1.1.3'>
+        <p>- 非侠调整为11%（暂定系数为113）</p>
+      </p>,
+      '无方',
+      <p style={{ paddingLeft: 12 }} key='1.1.1.3'>
+        <p>- 养荣额外伤害提高90%</p>
+      </p>,
+      '孤锋诀',
+      <p style={{ paddingLeft: 12 }} key='1.1.1.3'>
+        <p>- 非侠调整为18%（暂定系数为184）</p>
+        <p>- 「戗风」被动8%，吃影子额外8%（暂定系数81</p>
+        <p>- 「击懈」诀云势增加100%非侠</p>
+        <p>- 模拟器同步更新威声、涣衍、流岚等逻辑</p>
+        <p>- 根据模拟器生成了新的六破、无影刀、橙武循环</p>
+      </p>,
+    ],
+  },
+  {
     version: '[雾海寻龙] 1.1.3',
     date: '2024-07-03 16:50:00',
     content: [
       '综合',
-      <p style={{ paddingLeft: 12 }} key='1.1.0.1'>
+      <p style={{ paddingLeft: 12 }} key='1.1.3.1'>
         <p>- 服务器资源更换，感谢「冰糖雪梨橙」的大力支持</p>
         <p>- 新增角色导入功能，可以直接导入游戏内角色配装。请在配装器内查看</p>
       </p>,
@@ -15,7 +43,7 @@ export default [
     date: '2024-07-01 17:00:00',
     content: [
       '综合',
-      <p style={{ paddingLeft: 12 }} key='1.1.0.1'>
+      <p style={{ paddingLeft: 12 }} key='1.1.2.1'>
         <p>- 页面新增了「识别装备对比」工具功能。使用前请阅读使用说明</p>
         <p>- 花里胡哨的功能又增加了</p>
         <p>
@@ -31,12 +59,12 @@ export default [
     date: '2024-06-28 12:00:00',
     content: [
       '综合',
-      <p style={{ paddingLeft: 12 }} key='1.1.0.1'>
+      <p style={{ paddingLeft: 12 }} key='1.1.1.1'>
         <p>- 修正了由于引入孤锋诀悟心法导致的其他心法加速阈值计算错误的问题</p>
         <p>- 优化了无界破招伤害的取整函数，和攻击力计算分开走取整链然后合并计算</p>
       </p>,
       '孤锋诀·悟',
-      <p style={{ paddingLeft: 12 }} key='1.1.0.3'>
+      <p style={{ paddingLeft: 12 }} key='1.1.1.3'>
         <p>- 根据风雪的JCL导入了助手循环</p>
         <p>- 修正了流血buff计算未计算加速导致横云势和留客雨伤害异常的问题</p>
       </p>,
