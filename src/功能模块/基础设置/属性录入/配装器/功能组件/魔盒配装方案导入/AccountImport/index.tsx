@@ -4,7 +4,7 @@ import { Button, Input, Modal, Spin } from 'antd'
 import React, { useState } from 'react'
 import { getEquipData } from './util'
 import ServerCascader from '@/组件/ServerCascader'
-import { getUIdByName, getEquipDataByUid } from '@/api'
+import { getUIdByName, getEquipDataByUid, getEquipDataByUidV2 } from '@/api'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 import './index.css'
 
@@ -37,7 +37,11 @@ function AccountImport({ onOk }) {
         errorMessage = `当前心法不匹配，请在页面右上角切换至${userInfo?.forceName}对应心法`
       } else {
         if (userInfo?.roleId) {
-          const requestRes: any = await getEquipDataByUid({
+          const request = !window?.location?.href?.includes('localhost')
+            ? getEquipDataByUid
+            : getEquipDataByUidV2
+
+          const requestRes: any = await request({
             zone: server?.[0],
             server: server?.[1],
             game_role_id: +userInfo?.roleId,
@@ -104,7 +108,11 @@ function AccountImport({ onOk }) {
           onChange={(e) => changeServer(e.target.value.trim())}
           placeholder='请输入区服名称'
         /> */}
-        <Button disabled={loading || !name || !server?.length} onClick={() => handleGetPzData()}>
+        <Button
+          type='primary'
+          disabled={loading || !name || !server?.length}
+          onClick={() => handleGetPzData()}
+        >
           查询角色
         </Button>
       </div>
