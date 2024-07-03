@@ -1,6 +1,6 @@
 // 根据账号角色导入
 // import { getEquipDataByName } from '@/api'
-import { Button, Input, Modal, Spin } from 'antd'
+import { Button, Input, Modal, Spin, message } from 'antd'
 import React, { useState } from 'react'
 import { getEquipData } from './util'
 import ServerCascader from '@/组件/ServerCascader'
@@ -34,31 +34,30 @@ function AccountImport({ onOk }) {
       })?.then((res) => res?.data)
       const 校验 = 校验门派(userInfo?.forceName)
       if (!校验) {
-        errorMessage = `当前心法不匹配，请在页面右上角切换至${userInfo?.forceName}对应心法`
-      } else {
-        if (userInfo?.roleId) {
-          const request = window?.location?.href?.includes('localhost')
-            ? getEquipDataByUidV1
-            : getEquipDataByUidV3
+        message.warn(`当前心法由于推烂查不到心法名称可能不匹配，导入时请注意`)
+      }
+      if (userInfo?.roleId) {
+        const request = window?.location?.href?.includes('localhost')
+          ? getEquipDataByUidV1
+          : getEquipDataByUidV3
 
-          const requestRes: any = await request({
-            zone: server?.[0],
-            server: server?.[1],
-            game_role_id: userInfo?.roleId,
-          })
+        const requestRes: any = await request({
+          zone: server?.[0],
+          server: server?.[1],
+          game_role_id: userInfo?.roleId,
+        })
 
-          if (
-            requestRes?.data &&
-            requestRes?.status === 200 &&
-            requestRes?.data?.data?.Equips?.length
-          ) {
-            res = requestRes?.data
-          } else {
-            errorMessage = '没有查询到角色信息，清稍后再试'
-          }
+        if (
+          requestRes?.data &&
+          requestRes?.status === 200 &&
+          requestRes?.data?.data?.Equips?.length
+        ) {
+          res = requestRes?.data
         } else {
           errorMessage = '没有查询到角色信息，清稍后再试'
         }
+      } else {
+        errorMessage = '没有查询到角色信息，清稍后再试'
       }
     } catch (e) {
       errorMessage = '没有查询到角色信息，清稍后再试'
