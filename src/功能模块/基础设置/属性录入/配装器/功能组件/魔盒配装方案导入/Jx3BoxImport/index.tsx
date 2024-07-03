@@ -1,9 +1,11 @@
 import { getPzDataById } from '@/api'
 import { Alert, Button, Input, Image, Modal, Spin } from 'antd'
 import React, { useState } from 'react'
+import { GLOBAL_CDN_PREFIX } from '@/工具函数/const'
+
 import { getEquipData } from './util'
 
-import { GLOBAL_CDN_PREFIX } from '@/工具函数/const'
+import './index.css'
 
 const Img_Help_1 = `${GLOBAL_CDN_PREFIX}/help_daoru_1.png`
 const Img_Help_2 = `${GLOBAL_CDN_PREFIX}/help_daoru_2.png`
