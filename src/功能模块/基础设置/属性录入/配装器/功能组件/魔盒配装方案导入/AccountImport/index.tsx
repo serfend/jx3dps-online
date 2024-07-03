@@ -37,7 +37,7 @@ function AccountImport({ onOk }) {
         errorMessage = `当前心法不匹配，请在页面右上角切换至${userInfo?.forceName}对应心法`
       } else {
         if (userInfo?.roleId) {
-          const request = !window?.location?.href?.includes('localhost')
+          const request = window?.location?.href?.includes('localhost')
             ? getEquipDataByUid
             : getEquipDataByUidV2
 
