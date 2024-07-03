@@ -52,9 +52,8 @@ export const getEquipData = (data) => {
     if (装备部位) {
       const 装备位置映射 =
         装备部位 === '戒指' ? (已经计算过一个戒指 ? '_10' : '_9') : EquipPositionMap[装备部位]
-      const 装备原始数据 = 装备数据[装备部位]?.find(
-        (data) => data.装备名称 === item.Name && +data.装备品级 === +item.Quality
-      )
+
+      const 装备原始数据 = 装备数据[装备部位]?.find((data) => +(data.id || 0) === +item.ID)
 
       if (装备原始数据) {
         equip[装备位置映射] = {
