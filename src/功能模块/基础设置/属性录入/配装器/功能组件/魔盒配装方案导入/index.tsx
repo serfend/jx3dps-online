@@ -1,11 +1,12 @@
-import { Modal, Tabs } from 'antd'
+import { Badge, Modal, Tabs } from 'antd'
 import React, { useState } from 'react'
 
 import Jx3BoxImport from './Jx3BoxImport'
+import AccountImport from './AccountImport'
 import './index.css'
 
 function 魔盒配装方案导入({ visible, onClose, onOk }) {
-  const [active, setActive] = useState('jx3box')
+  const [active, setActive] = useState('account')
   const beforeClose = () => {
     onClose()
   }
@@ -15,7 +16,17 @@ function 魔盒配装方案导入({ visible, onClose, onOk }) {
     beforeClose()
   }
 
-  const items = [{ label: '魔盒导入', key: 'jx3box' }]
+  const items = [
+    {
+      label: (
+        <Badge count='New' size='small' offset={[0, -6]}>
+          <span>角色导入</span>
+        </Badge>
+      ),
+      key: 'account',
+    },
+    { label: '魔盒导入', key: 'jx3box' },
+  ]
 
   return (
     <Modal
@@ -30,7 +41,7 @@ function 魔盒配装方案导入({ visible, onClose, onOk }) {
       onCancel={() => beforeClose()}
       footer={null}
     >
-      {active === 'jx3box' ? <Jx3BoxImport onOk={beforeOk} /> : null}
+      {active === 'jx3box' ? <Jx3BoxImport onOk={beforeOk} /> : <AccountImport onOk={beforeOk} />}
     </Modal>
   )
 }

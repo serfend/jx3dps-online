@@ -18,6 +18,7 @@ export interface 完整技能伤害入参类型 {
   技能增伤?: 技能增伤类型
 }
 
+export type 计算类型 = '普通伤害' | '端游破招' | '无界破招' | '真实伤害'
 export interface 技能总伤害计算入参类型 {
   计算循环: 循环技能详情[]
   装备信息: 装备信息数据类型
@@ -138,5 +139,5 @@ export interface 技能增伤类型 {
   全局伤害因子: number // GLOBAL_DAMAGE_FACTOR 用于修正破招伤害，同时特殊作用于 [正律和鸣]，[青冠]
   易伤增伤: number
   非侠增伤: number
-  技能系数: number // 这里的系数增伤直接修改系数，不乘在最后
+  系数增伤: number // 这里的系数增伤直接修改系数，不乘在最后
 }

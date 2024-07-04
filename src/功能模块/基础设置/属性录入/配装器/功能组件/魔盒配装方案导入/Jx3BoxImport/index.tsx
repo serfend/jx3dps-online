@@ -1,9 +1,14 @@
 import { getPzDataById } from '@/api'
 import { Alert, Button, Input, Image, Modal, Spin } from 'antd'
 import React, { useState } from 'react'
+import { GLOBAL_CDN_PREFIX } from '@/工具函数/const'
+
 import { getEquipData } from './util'
-import Img_Help_1 from '@/assets/daoru/daoru_help_1.png'
-import Img_Help_2 from '@/assets/daoru/daoru_help_2.png'
+
+import './index.css'
+
+const Img_Help_1 = `${GLOBAL_CDN_PREFIX}/help_daoru_1.png`
+const Img_Help_2 = `${GLOBAL_CDN_PREFIX}/help_daoru_2.png`
 
 function Jx3BoxImport({ onOk }) {
   const [loading, setLoading] = useState(false)
@@ -99,14 +104,14 @@ function Jx3BoxImport({ onOk }) {
         open={helpVisible}
         onCancel={() => setHelpVisible(false)}
       >
-        <p>
+        <div>
           1、打开你的配装方案，点击导出。
           <Image className='pz-daoru-help-img' src={Img_Help_1} />
-        </p>
-        <p>
+        </div>
+        <div>
           2、选择数据版,复制配装ID.
           <Image className='pz-daoru-help-img' src={Img_Help_2} />
-        </p>
+        </div>
       </Modal>
     </div>
   )

@@ -185,8 +185,16 @@ const 获取对应的循环名称 = (心法, 奇穴 = [], 循环类型) => {
   } else if (心法 === '孤锋诀') {
     if (循环类型 === '橙武') {
       return '橙武'
+    } else if (奇穴.includes('聚疏')) {
+      return '无影刀'
     } else {
-      return 'DMI'
+      return '六破'
+    }
+  } else if (心法 === '孤锋诀_悟') {
+    if (循环类型 === '橙武_手动') {
+      return '橙武_手动'
+    } else {
+      return '紫武_手动'
     }
   } else if (心法 === '凌海诀') {
     if (循环类型 === '橙武') {

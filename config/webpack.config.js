@@ -305,10 +305,9 @@ module.exports = function (webpackEnv) {
         // This is only used in production mode
         new CssMinimizerPlugin(),
       ],
-      splitChunks:(isEnvProduction && !isGetDpsMoment) ? {
+      splitChunks: (isEnvProduction && !isGetDpsMoment) ? {
         chunks: 'all',
         minSize: 30000,
-        maxSize: 0,
         minChunks: 1,
         maxAsyncRequests: 5,
         maxInitialRequests: 3,

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Form, Modal, ModalProps } from 'antd'
+import { Badge, Button, Form, Modal, ModalProps } from 'antd'
 import { 装备信息数据类型, 装备位置部位枚举 } from '@/@types/装备'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { 秒伤计算, 触发秒伤计算 } from '@/计算模块/计算函数'
@@ -27,7 +27,7 @@ function 配装器(props: ModalProps) {
 
   const [当前装备信息, 更新当前装备信息] = useState<装备信息数据类型>()
   const [更换装备后秒伤, 设置更换装备后秒伤] = useState<number>(0)
-  const [魔盒导入弹窗, 设置魔盒导入弹窗] = useState(false)
+  const [导入弹窗, 设置导入弹窗] = useState(false)
   const [开启装备智能对比, 设置开启装备智能对比] = useState<boolean>(false)
   const [默认镶嵌宝石等级, 设置默认镶嵌宝石等级] = useState<number>(8)
 
@@ -35,7 +35,7 @@ function 配装器(props: ModalProps) {
     if (open) {
       更新当前装备信息(装备信息)
       设置更换装备后秒伤(0)
-      设置魔盒导入弹窗(false)
+      设置导入弹窗(false)
       设置开启装备智能对比(false)
       设置默认镶嵌宝石等级(8)
       初始化表单(装备信息)
@@ -107,8 +107,10 @@ function 配装器(props: ModalProps) {
       destroyOnClose
       footer={
         <div>
-          <Button onClick={() => 设置魔盒导入弹窗(true)}>魔盒配装导入</Button>
-          <Button type='primary' onClick={() => onOk()}>
+          <Badge count='New' size='small' offset={[-10, 0]}>
+            <Button onClick={() => 设置导入弹窗(true)}>配装导入</Button>
+          </Badge>
+          <Button style={{ marginLeft: 12 }} type='primary' onClick={() => onOk()}>
             保存并计算
           </Button>
         </div>
@@ -172,8 +174,8 @@ function 配装器(props: ModalProps) {
         </div>
       </Form>
       <魔盒配装方案导入
-        visible={魔盒导入弹窗}
-        onClose={() => 设置魔盒导入弹窗(false)}
+        visible={导入弹窗}
+        onClose={() => 设置导入弹窗(false)}
         onOk={(e) => 保存数据并计算(e)}
       />
     </Modal>

@@ -1,0 +1,82 @@
+on:
+  push:
+    branches: [develop]
+
+# on: workflow_dispatch
+
+env:
+  ARGOCD_SERVER: argocd.arkwish.com
+  ARGOCD_APP_NAME: jx3dps
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+     
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies and Build
+        run: |
+          pnpm install --no-frozen-lockfile
+          pnpm build
+
+      - name: Log into registry
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+
+      - name: Extract Docker metadata for UI
+
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: docker.io/${{ secrets.DOCKER_USERNAME }}/jx3dps-online
+          tags: |
+            type=sha
+
+      - name: Build and push Docker image for UI
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.image_labels }}
+
+      - name: Update ArgoCD Image
+        uses: clowdhaus/argo-cd-action/@main
+        with:
+          version: 2.4.7
+          command: app set ${{ env.ARGOCD_APP_NAME }}
+          options: |
+            --server ${{ env.ARGOCD_SERVER }}
+            --kustomize-image ${{ fromJSON(steps.meta.outputs.json).tags[0] }}
+            --auth-token ${{ secrets.ARGOCD_TOKEN }}

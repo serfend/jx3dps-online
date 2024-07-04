@@ -43,8 +43,8 @@ export const getEquipData = (data) => {
         }
 
         // 判断大附魔
-        if (DaFuMoMap[item] && !!basicData?.enchant) {
-          equip[DaFuMoMap[item]] = 1
+        if (DaFuMoMap[item]) {
+          equip[DaFuMoMap[item]] = basicData?.enchant ? 1 : 0
         }
 
         if (item === 'PRIMARY_WEAPON' && basicData?.stone) {

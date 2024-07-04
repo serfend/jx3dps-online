@@ -9,4 +9,5 @@ declare module '*.json'
 
 interface Window {
   心法?: string
+  clipboardData?: any
 }

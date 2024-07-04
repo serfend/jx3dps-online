@@ -1,9 +1,12 @@
 name: autopublish
 
-on:
-  push:
-    branches: 
-    - master # master 分支提交时触发
+# on:
+#   push:
+#     branches:
+#       - develop # develop 分支提交时触发
+
+on: workflow_dispatch
+
 jobs:
   publish:
     runs-on: ubuntu-latest # 运行环境
@@ -20,4 +23,4 @@ jobs:
           ssh_private_key: '${{ secrets.TENCENT_SERVER_PRIVATE_KEY }}'
           local_path: './*'
           remote_path: '/home/CICD/jx3dps-online/'
-          args: "-o ConnectTimeout=5"
+          args: '-o ConnectTimeout=5'
