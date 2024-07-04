@@ -136,8 +136,29 @@ function AccountImport({ onOk }) {
                     <div className='account-daoru-success-title' title={data?.showData?.title}>
                       {data?.userInfo?.roleName}
                     </div>
-                    {`${data?.userInfo?.bodyName} | ${data?.userInfo?.serverName} | 
-                      ${data?.userInfo?.forceName}`}
+                    <span
+                      className={
+                        !data?.userInfo?.bodyName ? 'account-daoru-success-name-error' : ''
+                      }
+                    >
+                      {data?.userInfo?.bodyName || '体型未识别'}
+                    </span>
+                    {` | `}
+                    <span
+                      className={
+                        !data?.userInfo?.serverName ? 'account-daoru-success-name-error' : ''
+                      }
+                    >
+                      {data?.userInfo?.serverName || '服务器名称未识别'}
+                    </span>
+                    {` | `}
+                    <span
+                      className={
+                        !data?.userInfo?.forceName ? 'account-daoru-success-name-error' : ''
+                      }
+                    >
+                      {data?.userInfo?.forceName || '门派未识别'}
+                    </span>
                   </div>
                   <Button type='primary' onClick={handleClickImport}>
                     导入

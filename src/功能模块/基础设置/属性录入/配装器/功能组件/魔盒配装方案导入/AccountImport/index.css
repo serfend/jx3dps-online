@@ -53,7 +53,7 @@
   font-weight: 700;
   font-size: 16px;
   color: var(--ant-primary-color);
-  max-width: 134px;
+  /* max-width: 134px; */
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -100,4 +100,8 @@
 .account-daoru-res-tips-name {
   font-weight: 500;
   margin-bottom: 2px;
+}
+
+.account-daoru-success-name-error {
+  color: #F34242
 }
