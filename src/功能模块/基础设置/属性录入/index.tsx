@@ -1,6 +1,6 @@
 import { Badge, Button } from 'antd'
 import React, { useState } from 'react'
-import OCR识别装备对比 from './OCR识别装备对比'
+import 识别装备对比弹窗 from './识别装备对比'
 import 配装器 from './配装器'
 
 import './index.css'
@@ -36,7 +36,7 @@ function 属性录入() {
           切换配装器弹窗显示状态(false)
         }}
       />
-      <OCR识别装备对比 open={识别装备对比} onCancel={() => 设置识别装备对比(false)} />
+      <识别装备对比弹窗 open={识别装备对比} onCancel={() => 设置识别装备对比(false)} />
     </div>
   )
 }

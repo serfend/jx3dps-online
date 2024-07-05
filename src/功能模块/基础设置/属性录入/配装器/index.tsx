@@ -7,7 +7,7 @@ import { 更新方案数据 } from '@/store/data'
 import ValueCheckBox from '@/组件/ValueCheckBox'
 
 import 根据表单选项获取装备信息 from './工具函数/根据表单选项获取装备信息'
-import 魔盒配装方案导入 from './功能组件/魔盒配装方案导入'
+import 配装导入 from './功能组件/配装导入'
 import 配装组件标题 from './功能组件/配装组件标题'
 import 五彩石选择 from './功能组件/五彩石选择'
 import 装备选择 from './功能组件/装备选择'
@@ -173,7 +173,7 @@ function 配装器(props: ModalProps) {
           <秒伤结果对比 更换装备后秒伤={更换装备后秒伤} />
         </div>
       </Form>
-      <魔盒配装方案导入
+      <配装导入
         visible={导入弹窗}
         onClose={() => 设置导入弹窗(false)}
         onOk={(e) => 保存数据并计算(e)}
