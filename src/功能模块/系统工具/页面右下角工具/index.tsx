@@ -2,6 +2,7 @@ import { Modal } from 'antd'
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { 更新背景图片显示状态 } from '@/store/system'
+
 import './index.css'
 
 function 页面右下角工具() {
@@ -26,7 +27,7 @@ function 页面右下角工具() {
 
   return (
     <div className='cache-wrapper'>
-      <span className={'cache-btn'}>特别感谢「可乐」提供的服务器支持</span>
+      <span className={'cache-btn'}>特别感谢「可乐」「冰糖雪梨橙」提供的服务器支持</span>
       <span className='cache-btn' onClick={handleChangeBackground}>
         {+(背景图片显示状态 || '') ? '关闭背景' : '开启背景'}
       </span>
