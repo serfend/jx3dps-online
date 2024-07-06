@@ -1,4 +1,5 @@
 import 山海心诀 from './山海心诀'
+import 山海心诀_悟 from './山海心诀_悟'
 import 孤锋诀 from './孤锋诀'
 import 孤锋诀_悟 from './孤锋诀_悟'
 import 凌海诀 from './凌海诀'
@@ -14,6 +15,7 @@ const 心法 = {
   无方,
   花间游,
   孤锋诀_悟,
+  山海心诀_悟,
 }
 export default 心法
 
