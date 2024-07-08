@@ -252,7 +252,7 @@ const 校验门派 = (校验名称) => {
   } else if (简写 === 'w_gfj') {
     return 校验名称 === '刀宗'
   } else if (简写 === 'wf') {
-    return 校验名称 === '药宗'
+    return 校验名称 === '北天药宗'
   } else if (简写 === 'hjy') {
     return 校验名称 === '万花'
   }
