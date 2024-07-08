@@ -1,5 +1,33 @@
 export default [
   {
+    version: '[雾海寻龙] 1.1.6',
+    date: '2024-07-08 09:30:00',
+    content: [
+      '7月8日技改',
+      <p style={{ paddingLeft: 12 }} key='1.1.0.2'>
+        <a
+          href='https://jx3.xoyo.com/index/#/article-details?kid=1333878'
+          target='_blank'
+          rel='noreferrer'
+        >
+          技改链接
+        </a>
+      </p>,
+      '太玄经',
+      <p style={{ paddingLeft: 12 }} key='1.1.5.1'>
+        <p>非侠修改为「14%」（暂定数值144）</p>
+      </p>,
+      '无方',
+      <p style={{ paddingLeft: 12 }} key='1.1.5.1'>
+        <p>非侠修改为「10%」（暂定数值102）</p>
+      </p>,
+      '山海心诀·悟',
+      <p style={{ paddingLeft: 12 }} key='1.1.5.1'>
+        <p>循环可能变动，暂未更新相关数据，暂时隐藏入口</p>
+      </p>,
+    ],
+  },
+  {
     version: '[雾海寻龙] 1.1.5',
     date: '2024-07-07 00:30:00',
     content: [
