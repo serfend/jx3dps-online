@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [release]
+    branches: [publish]
 
 # on: workflow_dispatch
 
