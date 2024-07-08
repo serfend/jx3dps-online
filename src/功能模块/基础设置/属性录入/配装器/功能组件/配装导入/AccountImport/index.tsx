@@ -1,6 +1,6 @@
 // 根据账号角色导入
 // import { getEquipDataByName } from '@/api'
-import { Button, Input, Modal, Spin, message } from 'antd'
+import { Alert, Button, Input, Modal, Spin, message } from 'antd'
 import React, { useState } from 'react'
 import { getEquipData } from './util'
 import ServerCascader from '@/组件/ServerCascader'
@@ -87,6 +87,17 @@ function AccountImport({ onOk }) {
 
   return (
     <div>
+      <Alert
+        type='warning'
+        style={{ marginBottom: 16 }}
+        message={
+          <div>
+            <p>本功能仅作为查询使用者自身账号属性，用作辅助选择配装。</p>
+            <p>严禁使用本功能对他人进行出警、拉踩、诋毁等恶意行为。</p>
+            <p>若使用本功能出现纠纷，本人概不负责。</p>
+          </div>
+        }
+      />
       <div className='account-daoru-input-wrap no-padding'>
         <ServerCascader value={server} onChange={(e) => changeServer(e)} />
         <Input.Search
@@ -169,7 +180,7 @@ function AccountImport({ onOk }) {
               data?.equipData?.未内置附魔列表?.length ? (
                 <div className={'account-daoru-res-tips'}>
                   <h1 className={'account-daoru-res-tips-title'}>
-                    存在以下信息未识别，导入后请手动修改
+                    存在以下信息未识别，会跳过导入，导入后请手动修改
                   </h1>
                   {data?.equipData?.未识别装备列表?.length ? (
                     <div className={'account-daoru-res-tips-text'}>
@@ -229,6 +240,8 @@ const getPzData = (data) => {
 const 校验门派 = (校验名称) => {
   const { 简写 } = 获取当前数据()
   if (简写 === 'shxj') {
+    return 校验名称 === '万灵山庄'
+  } else if (简写 === 'w_shxj') {
     return 校验名称 === '万灵山庄'
   } else if (简写 === 'lhj') {
     return 校验名称 === '蓬莱'

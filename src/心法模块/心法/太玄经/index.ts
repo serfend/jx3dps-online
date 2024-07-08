@@ -1,5 +1,5 @@
 /**
- * @name 心法模块-山海心诀
+ * @name 心法模块-太玄经
  * 模块写入者：唐宋
  */
 import type { 心法配置类型 } from '@/心法模块/interface'

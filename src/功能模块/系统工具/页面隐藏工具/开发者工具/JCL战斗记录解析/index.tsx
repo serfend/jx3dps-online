@@ -24,6 +24,7 @@ function JCL战斗记录解析() {
         心法: values?.目标心法,
         数据: values?.数据,
         最大时间: values?.战斗时间,
+        最小时间: 0,
       })
       if (res?.技能详情?.length) {
         更新结果数据(res)

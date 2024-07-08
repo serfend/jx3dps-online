@@ -24,6 +24,7 @@ export const getEquipData = (data) => {
         ![
           'atVitalityBase',
           'atDecriticalDamageBase',
+          'atDecriticalDamagePowerBase',
           // 'atDamageToLifeForSelf',
           'atToughnessBase',
         ].includes(附魔数据?.Desc)
@@ -32,7 +33,7 @@ export const getEquipData = (data) => {
         const 附魔属性枚举 = 属性简写枚举?.[附魔属性]
         const 附魔值 = +附魔数据?.Attribute1Value1
         if (!附魔属性枚举) {
-          未内置附魔列表.push(未支持附魔属性枚举[附魔属性])
+          未内置附魔列表.push(未支持附魔属性枚举[附魔属性] || 附魔属性)
           console.warn(`存在计算器未内置附魔${未支持附魔属性枚举[附魔属性]}`)
         } else {
           const 附魔数据判断 = 附魔?.some((item) => item?.附魔名称 === `${附魔属性枚举}+${附魔值}`)
