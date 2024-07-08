@@ -241,6 +241,8 @@ const 校验门派 = (校验名称) => {
   const { 简写 } = 获取当前数据()
   if (简写 === 'shxj') {
     return 校验名称 === '万灵山庄'
+  } else if (简写 === 'w_shxj') {
+    return 校验名称 === '万灵山庄'
   } else if (简写 === 'lhj') {
     return 校验名称 === '蓬莱'
   } else if (简写 === 'txj') {
