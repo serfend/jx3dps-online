@@ -182,6 +182,12 @@ const 获取对应的循环名称 = (心法, 奇穴 = [], 循环类型) => {
     } else {
       return '朝仪_三压'
     }
+  } else if (心法 === '山海心诀_悟') {
+    if (循环类型 === '橙武_手动') {
+      return '橙武_手动'
+    } else {
+      return '紫武_手动'
+    }
   } else if (心法 === '孤锋诀') {
     if (循环类型 === '橙武') {
       return '橙武'
@@ -215,16 +221,12 @@ const 获取对应的循环名称 = (心法, 奇穴 = [], 循环类型) => {
   } else if (心法 === '无方') {
     if (循环类型 === '橙武') {
       if (奇穴.includes('养荣')) {
-        return '养荣_全程千枝_橙武'
-      } else if (奇穴.includes('折枝拂露')) {
-        return '武学助手_橙武'
+        return '养荣_橙武'
       } else {
         return '应理_橙武'
       }
     } else if (奇穴.includes('养荣')) {
-      return '养荣_全程千枝_紫武'
-    } else if (奇穴.includes('折枝拂露')) {
-      return '武学助手_紫武'
+      return '养荣_紫武'
     } else {
       return '资深战犯'
     }
