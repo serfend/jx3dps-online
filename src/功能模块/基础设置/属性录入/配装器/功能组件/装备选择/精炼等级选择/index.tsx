@@ -11,7 +11,9 @@ function 精炼等级选择(props: 精炼等级选择入参) {
   const { 装备数据, ...rest } = props
 
   const list = useMemo(() => {
-    return Array.from({ length: 装备数据?.最大精炼等级 || 0 }, (v, i) => i + 1)
+    const list = Array.from({ length: 装备数据?.最大精炼等级 || 0 }, (v, i) => i + 1)
+    list.sort((a, b) => b - a)
+    return list
   }, [装备数据?.最大精炼等级])
   const 是否未精炼满 = 装备数据?.最大精炼等级 && props.value < 装备数据?.最大精炼等级
 
