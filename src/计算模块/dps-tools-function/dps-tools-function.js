@@ -220,11 +220,15 @@ const 获取对应的循环名称 = (心法, 奇穴 = [], 循环类型) => {
     }
   } else if (心法 === '无方') {
     if (循环类型 === '橙武') {
-      if (奇穴.includes('养荣')) {
+      if (奇穴.includes('避奚') && 奇穴.includes('养荣')) {
+        return '避奚养荣_橙武'
+      } else if (奇穴.includes('养荣')) {
         return '养荣_橙武'
       } else {
         return '应理_橙武'
       }
+    } else if (奇穴.includes('避奚') && 奇穴.includes('养荣')) {
+      return '避奚养荣_紫武'
     } else if (奇穴.includes('养荣')) {
       return '养荣_紫武'
     } else {
