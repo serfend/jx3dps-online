@@ -541,6 +541,82 @@ const 五彩石_六级: 五彩石数据类型[] = [
     DiamondIntensity2: 90,
     DiamondIntensity3: 108,
   },
+  {
+    五彩石名称: '彩·真元·急速·激流(陆)',
+    五彩石等级: 6,
+    装备增益: [
+      { 增益数值: 131, 增益名称: '元气', 增益类型: 'atSpunkBase' },
+      { 增益数值: 1170, 增益名称: '加速', 增益类型: 'atHasteBase' },
+      {
+        增益数值: 1257,
+        增益名称: '内攻',
+        增益类型: 'atMagicAttackPowerBase',
+      },
+    ],
+    DiamondCount1: '14',
+    DiamondCount2: '16',
+    DiamondCount3: '18',
+    DiamondIntensity1: '50',
+    DiamondIntensity2: '90',
+    DiamondIntensity3: '108',
+  },
+  {
+    五彩石名称: '彩·灵根·急速·激流(陆)',
+    五彩石等级: 6,
+    装备增益: [
+      { 增益数值: 131, 增益名称: '根骨', 增益类型: 'atSpiritBase' },
+      { 增益数值: 1170, 增益名称: '加速', 增益类型: 'atHasteBase' },
+      {
+        增益数值: 1257,
+        增益名称: '内攻',
+        增益类型: 'atMagicAttackPowerBase',
+      },
+    ],
+    DiamondCount1: '14',
+    DiamondCount2: '16',
+    DiamondCount3: '18',
+    DiamondIntensity1: '50',
+    DiamondIntensity2: '90',
+    DiamondIntensity3: '108',
+  },
+  {
+    五彩石名称: '彩·无双·急速·激流(陆)',
+    五彩石等级: 6,
+    装备增益: [
+      { 增益数值: 585, 增益名称: '无双', 增益类型: 'atStrainBase' },
+      { 增益数值: 1170, 增益名称: '加速', 增益类型: 'atHasteBase' },
+      {
+        增益数值: 1257,
+        增益名称: '内攻',
+        增益类型: 'atMagicAttackPowerBase',
+      },
+    ],
+    DiamondCount1: '14',
+    DiamondCount2: '16',
+    DiamondCount3: '18',
+    DiamondIntensity1: '50',
+    DiamondIntensity2: '90',
+    DiamondIntensity3: '108',
+  },
+  {
+    五彩石名称: '彩·破招·急速·激流(陆)',
+    五彩石等级: 6,
+    装备增益: [
+      { 增益数值: 585, 增益名称: '破招', 增益类型: 'atSurplusValueBase' },
+      { 增益数值: 1170, 增益名称: '加速', 增益类型: 'atHasteBase' },
+      {
+        增益数值: 1257,
+        增益名称: '内攻',
+        增益类型: 'atMagicAttackPowerBase',
+      },
+    ],
+    DiamondCount1: '14',
+    DiamondCount2: '16',
+    DiamondCount3: '18',
+    DiamondIntensity1: '50',
+    DiamondIntensity2: '90',
+    DiamondIntensity3: '108',
+  },
 ]
 
 export default 五彩石_六级

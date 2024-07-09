@@ -72,7 +72,7 @@ function WuCaiShiXuanZe(props: WuCaiShiXuanZeProps) {
           value={jibie}
           options={[
             { label: '六级', value: 6 },
-            // { label: '五级', value: 5 },
+            { label: '五级', value: 5 },
           ]}
           onChange={(e) => changeJiBie(e)}
         />
