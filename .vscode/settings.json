@@ -10,5 +10,7 @@
     "衍天",
     "万灵",
     "花间"
-  ]
+  ],
+  "files.autoSaveWhenNoErrors": true,
+  "files.autoSaveWorkspaceFilesOnly": true
 }
