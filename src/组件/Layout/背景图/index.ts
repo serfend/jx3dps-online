@@ -1,5 +1,5 @@
-import ImgBg_1 from './1.jpeg'
-// import ImgBg_2 from './2.jpeg'
+import { GLOBAL_CDN_PREFIX } from '@/工具函数/const'
 
-// export default [ImgBg_1, ImgBg_2]
+const ImgBg_1 = `${GLOBAL_CDN_PREFIX}/bg_common_1.jpeg`
+
 export default [ImgBg_1]
