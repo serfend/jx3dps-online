@@ -67,6 +67,7 @@ export const 完整技能伤害 = (参数: 完整技能伤害入参类型) => {
 
   // debug
   // console.log('最终人物属性', 最终人物属性)
+  // console.log('参数', 参数)
   // console.log('总命中伤害', 总命中伤害)
   // console.log('总会心伤害', 总会心伤害)
   // console.log('期望伤害', 期望伤害)
