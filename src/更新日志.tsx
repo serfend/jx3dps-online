@@ -1,7 +1,6 @@
 export default [
   {
-    version: '
-    ',
+    version: '[雾海寻龙] 1.1.9',
     date: '2024-07-12 15:30:00',
     content: [
       '无方·悟',
