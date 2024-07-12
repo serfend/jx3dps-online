@@ -52,6 +52,7 @@ function 团队增益图标(props: 团队增益图标类型) {
         {当前数据?.层数 && 当前数据?.层数 > 1 ? (
           <span className='tuandui-zengyi-img-count'>{当前数据?.层数}</span>
         ) : null}
+        {data?.增益心法端 === '无界' ? <span className='tuandui-zengyi-img-wujie'>界</span> : null}
       </div>
     </Popover>
   )

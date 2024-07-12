@@ -4,6 +4,8 @@ import 凌海诀枚举 from './凌海诀/map.json'
 import 太玄经枚举 from './太玄经/map.json'
 import 无方枚举 from './无方/map.json'
 import 花间游枚举 from './花间游/map.json'
+import 山海心诀悟枚举 from './山海心诀悟/map.json'
+import 无方悟枚举 from './无方悟/map.json'
 import { message } from 'antd'
 
 export const 心法枚举 = {
@@ -11,9 +13,14 @@ export const 心法枚举 = {
   太玄经: 太玄经枚举,
   无方: 无方枚举,
   花间游: 花间游枚举,
+  '山海心诀·悟': 山海心诀悟枚举,
+  '无方·悟': 无方悟枚举,
 }
 
-export const 获取数据 = ({ 心法, 数据, 最大时间 }): 循环详情 => {
+const 无界统一buff = ['70161', '70188']
+const DOT直接生成层数心法 = ['花间游', '无方', '无方·悟']
+
+export const 获取数据 = ({ 心法, 数据, 最大时间, 最小时间 }): 循环详情 => {
   const 心法数据枚举 = 心法枚举[心法]
   const JSONData = JSON.parse(数据 || '{}')
   const res: 循环技能详情[] = []
@@ -24,6 +31,7 @@ export const 获取数据 = ({ 心法, 数据, 最大时间 }): 循环详情 => 
 
   const 解析战斗数据 = JSONData?.records?.[PlayersId]?.[TargetId] || JSONData
 
+  let 初始时间 = 0
   let 战斗时间 = 0
   if (心法数据枚举) {
     Object.keys(解析战斗数据).forEach((key) => {
@@ -36,7 +44,7 @@ export const 获取数据 = ({ 心法, 数据, 最大时间 }): 循环详情 => 
         if (心法数据枚举?.技能带等级?.includes(技能名称ID)) {
           技能名称ID = `${技能名称ID}_${技能等级 || 1}`
         }
-        let 技能层数 = splitKey[2] ? Number(splitKey[2]) : undefined
+        const 技能层数 = splitKey[2] ? Number(splitKey[2]) : undefined
 
         // dot触发技能特殊，第一个技能为dot技能id，第二个技能为触发技能id
         if (splitSkillKey?.length > 1 && !!splitSkillKey?.[1]) {
@@ -46,13 +54,10 @@ export const 获取数据 = ({ 心法, 数据, 最大时间 }): 循环详情 => 
           const actionSplitKey = 触发技能?.split('/')
           技能名称ID = `${dotSplitKey[0]}_${actionSplitKey[0]}`
           技能等级 = +actionSplitKey[1] === 1 ? undefined : +actionSplitKey[1]
-          技能层数 = Number(actionSplitKey[2])
         }
-        // console.log('splitKey', splitKey)
-        // console.log('key', key)
 
         let 技能名称 = 心法数据枚举?.skills?.[技能名称ID]
-        if (技能名称?.includes('DOT') && 心法 !== '花间游') {
+        if (技能名称?.includes('DOT') && !DOT直接生成层数心法?.includes(心法)) {
           if (技能层数) {
             技能名称 = `${技能名称}·${commonMap?.StackMap?.[技能层数]}`
           }
@@ -71,11 +76,14 @@ export const 获取数据 = ({ 心法, 数据, 最大时间 }): 循环详情 => 
             let 增益数量获取 = 1
             const 战斗时间数组 = 技能增益结果对象[zengyiKey]
             const 最终战斗时间 = 战斗时间数组[战斗时间数组.length]?.[0] || 0
-            if (最终战斗时间 <= 最大时间 * 16) {
+            if (最终战斗时间 <= 最大时间 * 16 && 最终战斗时间 >= 最小时间 * 16) {
               增益数量获取 = 战斗时间数组?.length || 1
               if (typeof 最终战斗时间 === 'number') {
                 if (战斗时间 < 最终战斗时间) {
                   战斗时间 = 最终战斗时间
+                }
+                if (!初始时间 || 最终战斗时间 < 初始时间) {
+                  初始时间 = 最终战斗时间
                 }
               }
               技能数量 += 增益数量获取
@@ -84,15 +92,25 @@ export const 获取数据 = ({ 心法, 数据, 最大时间 }): 循环详情 => 
             // 分号分割成三部分 当前Buff，快照Buff，目标Buff
             const 用分号分割 = zengyiKey?.split(';')
             const 是否吃快照 = 心法数据枚举?.吃快照技能?.includes(技能名称ID)
-            const 最终分割数组: string[] = 快照判断(用分号分割, 是否吃快照, 心法数据枚举, 心法)
+            const 是否是NPC技能 = 心法数据枚举?.npc技能?.includes(技能名称ID)
+            const 最终分割数组: string[] = 快照判断(
+              用分号分割,
+              是否吃快照,
+              心法数据枚举,
+              心法,
+              是否是NPC技能
+            )
             if (最终分割数组?.length) {
               const 增益buff名称列表: string[] = []
               最终分割数组.forEach((zengyi) => {
                 const splitZengyi = zengyi?.split('/')
                 if (splitZengyi?.length) {
-                  const 增益名称ID = splitZengyi[0]
+                  let 增益名称ID = splitZengyi[0]
                   const 增益等级 = Number(splitZengyi[1])
                   const 增益层数 = Number(splitZengyi[2])
+                  if (无界统一buff?.includes(增益名称ID)) {
+                    增益名称ID = `${增益名称ID}_${增益等级}`
+                  }
                   let 增益名称 =
                     心法数据枚举?.buff?.[增益名称ID] || 心法数据枚举?.buff?.[`;${增益名称ID}`]
                   // 判断伤腰大附魔
@@ -114,7 +132,10 @@ export const 获取数据 = ({ 心法, 数据, 最大时间 }): 循环详情 => 
                       }
                     }
                   } else {
-                    console.log(`增益名称ID未匹配${增益名称ID}`)
+                    // 过滤部分id
+                    if (!['15436', '71182']?.includes(增益名称ID)) {
+                      console.log(`增益名称ID未匹配${增益名称ID}`)
+                    }
                     // message.error(`增益名称ID未匹配${增益名称ID}`)
                   }
                 }
@@ -122,8 +143,8 @@ export const 获取数据 = ({ 心法, 数据, 最大时间 }): 循环详情 => 
               let 增益数量获取 = 1
               const 战斗时间数组 = 技能增益结果对象[zengyiKey]
               // 获取该战斗时间数组内在最大时间范围内的数量
-              const 生效战斗时间数组 = 战斗时间数组.filter((item) =>
-                Number(item?.[0] <= 最大时间 * 16)
+              const 生效战斗时间数组 = 战斗时间数组.filter(
+                (item) => Number(item?.[0] <= 最大时间 * 16) && Number(item?.[0] >= 最小时间 * 16)
               )
               增益数量获取 = 生效战斗时间数组?.length || 1
               增益buff名称列表.sort((a, b) => a.localeCompare(b))
@@ -133,6 +154,9 @@ export const 获取数据 = ({ 心法, 数据, 最大时间 }): 循环详情 => 
                 if (typeof 最终战斗时间 === 'number') {
                   if (战斗时间 < 最终战斗时间) {
                     战斗时间 = 最终战斗时间
+                  }
+                  if (!初始时间 || 最终战斗时间 <= 初始时间) {
+                    初始时间 = 最终战斗时间
                   }
                 }
                 const 增益buff列表名字 = 增益buff名称列表.join(',')
@@ -155,13 +179,30 @@ export const 获取数据 = ({ 心法, 数据, 最大时间 }): 循环详情 => 
                 技能数量 += 增益数量获取
               }
             } else {
+              console.log('此技能无增益')
               console.log('技能名称', 技能名称)
+              console.log('技能名称ID', 技能名称ID)
               console.log('zengyiKey', zengyiKey)
+              let 增益数量获取 = 1
+              const 战斗时间数组 = 技能增益结果对象[zengyiKey]
+              const 最终战斗时间 = 战斗时间数组[战斗时间数组.length]?.[0] || 0
+              if (最终战斗时间 <= 最大时间 * 16 && 最终战斗时间 >= 最小时间 * 16) {
+                增益数量获取 = 战斗时间数组?.length || 1
+                if (typeof 最终战斗时间 === 'number') {
+                  if (战斗时间 < 最终战斗时间) {
+                    战斗时间 = 最终战斗时间
+                  }
+                  if (!初始时间 || 最终战斗时间 < 初始时间) {
+                    初始时间 = 最终战斗时间
+                  }
+                }
+                技能数量 += 增益数量获取
+              }
             }
           }
         })
 
-        技能增益列表.sort((a, b) => a.增益名称.localeCompare(b.增益名称))
+        // 技能增益列表.sort((a, b) => a.增益名称.localeCompare(b.增益名称))
         if (技能层数) {
           res.push({
             技能名称,
@@ -185,7 +226,8 @@ export const 获取数据 = ({ 心法, 数据, 最大时间 }): 循环详情 => 
   res.sort((a, b) => a.技能名称?.localeCompare(b?.技能名称))
 
   return {
-    战斗时间: 战斗时间 / 16,
+    战斗时间: (战斗时间 - 初始时间) / 16,
+    // 战斗时间: 战斗时间 / 16,
     技能详情: res,
   }
 }
@@ -199,27 +241,45 @@ export const 获取数据 = ({ 心法, 数据, 最大时间 }): 循环详情 => 
  * 攻击会心会效无双增伤非侠吃快照
  */
 
-const 快照判断 = (数组: string[] = [], 是否吃快照 = false, 心法数据枚举, 心法): string[] => {
+const 快照判断 = (
+  数组: string[] = [],
+  是否吃快照 = false,
+  心法数据枚举,
+  心法,
+  是否是NPC技能 = false
+): string[] => {
   const 最终Buff: string[] = []
   const 当前Buff = 数组?.[0]?.split(',')
   const 快照Buff = 数组?.[1]?.split(',')
   const 目标Buff = 数组?.[2]?.split(',')
   const 非快照buff = [...(当前Buff || []), ...(目标Buff || [])]
 
+  let 快照Buff列表 = 心法数据枚举?.快照Buff列表
+  const Buff自身存在快照区分 = 心法数据枚举?.Buff自身存在快照区分
+
+  if (是否是NPC技能) {
+    快照Buff列表 = 快照Buff列表.concat(心法数据枚举?.npc额外快照buff列表 || [])
+  }
+
   if (是否吃快照) {
     if (快照Buff?.length) {
       快照Buff.forEach((增益) => {
         const splitZengyi = 增益?.split('/')
         const 增益名称ID = splitZengyi[0]
+        // const 增益等级 = Number(splitZengyi[1])
+        // if (无界统一buff?.includes(增益名称ID)) {
+        //   增益名称ID = `${增益名称ID}_${增益等级}`
+        // }
         // !特殊处理养荣
-        // if (增益 && 增益名称ID && 增益名称ID === '20699') {
-        //   if (!最终Buff?.includes('20699_2')) {
-        //     最终Buff.push('20699_2')
-        //   }
-        // } else {
-        if (增益 && 增益名称ID && 心法数据枚举?.快照Buff列表?.includes(增益名称ID)) {
-          if (!最终Buff?.includes(增益)) {
-            最终Buff.push(增益)
+        if (增益 && 增益名称ID) {
+          if (Buff自身存在快照区分?.includes(增益名称ID)) {
+            if (!最终Buff?.includes(`${增益名称ID}_快照`)) {
+              最终Buff.push(`${增益名称ID}_快照`)
+            }
+          } else if (快照Buff列表?.includes(增益名称ID)) {
+            if (!最终Buff?.includes(增益)) {
+              最终Buff.push(增益)
+            }
           }
         }
         // }
@@ -228,19 +288,39 @@ const 快照判断 = (数组: string[] = [], 是否吃快照 = false, 心法数�
     非快照buff.forEach((增益) => {
       const splitZengyi = 增益?.split('/')
       const 增益名称ID = splitZengyi[0]
-      // !特殊处理养荣
-      // if (增益 && 增益名称ID && 增益名称ID === '20699') {
-      //   if (!最终Buff?.includes('20699_1')) {
-      //     最终Buff.push('20699_1')
-      //   }
-      // } else {
-      if (增益 && 增益名称ID && !心法数据枚举?.快照Buff列表?.includes(增益名称ID)) {
-        if (!最终Buff?.includes(增益)) {
-          最终Buff.push(增益)
+      // !特殊处理养荣类型buff
+      if (增益 && 增益名称ID) {
+        if (Buff自身存在快照区分?.includes(增益名称ID)) {
+          if (!最终Buff?.includes(`${增益名称ID}_常驻`)) {
+            最终Buff.push(`${增益名称ID}_常驻`)
+          }
+        } else if (!快照Buff列表?.includes(增益名称ID)) {
+          if (!最终Buff?.includes(增益)) {
+            最终Buff.push(增益)
+          }
         }
       }
-      // }
     })
+    // 判断最终buff有没有遗漏某个buff
+    const 全部buff = [...当前Buff, ...快照Buff, ...目标Buff]
+    if (全部buff?.length) {
+      全部buff.forEach((增益) => {
+        const splitZengyi = 增益?.split('/')
+        let 增益名称ID = splitZengyi[0]
+        const 增益等级 = Number(splitZengyi[1])
+        if (无界统一buff?.includes(增益名称ID)) {
+          增益名称ID = `${增益名称ID}_${增益等级}`
+        }
+        if (增益 && 增益名称ID) {
+          if (!最终Buff?.includes(增益)) {
+            // console.log('最终Buff', 最终Buff)
+            // console.log('增益', 增益)
+            // console.log('增益名称ID', 增益名称ID)
+            // console.log(`存在遗漏快照buff${增益名称ID}`)
+          }
+        }
+      })
+    }
   } else {
     非快照buff.forEach((增益) => {
       const splitZengyi = 增益?.split('/')
@@ -254,8 +334,8 @@ const 快照判断 = (数组: string[] = [], 是否吃快照 = false, 心法数�
   }
 
   // !养荣循环默认全覆盖
-  if (!最终Buff?.includes('20699') && 心法 === '无方') {
-    最终Buff.push('20699')
-  }
+  // if (!最终Buff?.includes('20699') && 心法 === '无方') {
+  //   最终Buff.push('20699')
+  // }
   return 最终Buff
 }
