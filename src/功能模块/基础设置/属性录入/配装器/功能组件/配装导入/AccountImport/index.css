@@ -9,8 +9,8 @@
   padding: 0;
 }
 
-.account-daoru-input-wrap-input {
-  width: 35%;
+.account-daoru-form-content {
+  width:calc((100% - 88px - 24px) / 2);
 }
 
 .account-daoru-success {

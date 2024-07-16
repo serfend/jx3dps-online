@@ -40,6 +40,7 @@ function 魔盒配装方案导入({ visible, onClose, onOk }) {
       centered
       onCancel={() => beforeClose()}
       footer={null}
+      width={600}
     >
       {active === 'jx3box' ? <Jx3BoxImport onOk={beforeOk} /> : <AccountImport onOk={beforeOk} />}
     </Modal>

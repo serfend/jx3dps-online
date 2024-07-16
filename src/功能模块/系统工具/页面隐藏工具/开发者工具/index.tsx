@@ -9,8 +9,8 @@ import './index.css'
 
 function DeveloperModal({ visible, onClose }) {
   const items = [
-    { label: '装备导入', key: '装备导入', children: <EquipmentImport /> },
     { label: 'JCL战斗记录解析', key: 'JCL战斗记录解析', children: <JCL战斗记录解析 /> },
+    { label: '装备导入', key: '装备导入', children: <EquipmentImport /> },
     { label: '奇穴导入', key: '奇穴导入', children: <奇穴导入 /> },
     { label: '五彩石导入', key: '五彩石导入', children: <WucaishiDaoru /> },
     { label: 'JCL技能序列导入', key: 'JCL技能序列导入', children: <JclSkillDaoru /> },

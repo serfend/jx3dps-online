@@ -1,12 +1,16 @@
 // 根据账号角色导入
 // import { getEquipDataByName } from '@/api'
-import { Alert, Button, Input, Modal, Spin, message } from 'antd'
+import { Alert, Button, Image, Input, Modal, Spin, message } from 'antd'
 import React, { useState } from 'react'
 import { getEquipData } from './util'
 import ServerCascader from '@/组件/ServerCascader'
 import { getUIdByName, getEquipDataByUidV3, getEquipDataByUidV1 } from '@/api'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 import './index.css'
+import { GLOBAL_CDN_PREFIX } from '@/工具函数/const'
+
+const 教程_1 = `${GLOBAL_CDN_PREFIX}/account_tip_1.png`
+const 教程_2 = `${GLOBAL_CDN_PREFIX}/account_tip_2.png`
 
 function AccountImport({ onOk }) {
   const [loading, setLoading] = useState(false)
@@ -25,18 +29,28 @@ function AccountImport({ onOk }) {
     setData(undefined)
     setErrorMsg('')
     let res: any
-    let userInfo: any = ''
+    let userInfo: any = {}
     let errorMessage = ''
     try {
-      userInfo = await getUIdByName({
-        server: server?.[1],
-        name: name,
-      })?.then((res) => res?.data)
-      const 校验 = 校验门派(userInfo?.forceName)
-      if (!校验) {
-        message.warn(`当前心法由于推烂查不到心法名称可能不匹配，导入时请注意`)
+      // 判断是直接输入的UID查询
+      const isUidSearch = !isNaN(apiName)
+      console.log('isUidSearch', isUidSearch)
+      if (isUidSearch) {
+        userInfo.roleId = apiName
+        userInfo.isUidSearch = true
+      } else {
+        userInfo = await getUIdByName({
+          server: server?.[1],
+          name: apiName,
+        })?.then((res) => res?.data)
+        const 校验 = 校验门派(userInfo?.forceName)
+        if (!校验) {
+          message.warn(`当前心法由于推烂查不到心法名称可能不匹配，导入时请注意`)
+        }
       }
+      console.log('userInfo?.roleId', userInfo?.roleId)
       if (userInfo?.roleId) {
+        console.log('开始查询', userInfo?.roleId)
         const request = window?.location?.href?.includes('localhost')
           ? getEquipDataByUidV1
           : getEquipDataByUidV3
@@ -57,10 +71,14 @@ function AccountImport({ onOk }) {
           errorMessage = '没有查询到角色信息，清稍后再试'
         }
       } else {
-        errorMessage = '没有查询到角色信息，清稍后再试'
+        if (isUidSearch) {
+          errorMessage = '根据ID没有查询到角色信息，清检查ID或稍后再试'
+        } else {
+          errorMessage = '没有查询到角色信息，清稍后再试或用ID查询'
+        }
       }
     } catch (e) {
-      errorMessage = '没有查询到角色信息，清稍后再试'
+      errorMessage = '没有查询到角色信息，清稍后再试或用ID查询'
     }
     setLoading(false)
     if (!errorMessage) {
@@ -95,17 +113,24 @@ function AccountImport({ onOk }) {
             <p>本功能仅作为查询使用者自身账号属性，用作辅助选择配装。</p>
             <p>严禁使用本功能对他人进行出警、拉踩、诋毁等恶意行为。</p>
             <p>若使用本功能出现纠纷，本人概不负责。</p>
+            <p>
+              <a onClick={() => setHelpVisible(true)}>如何获取角色UID</a>
+            </p>
           </div>
         }
       />
       <div className='account-daoru-input-wrap no-padding'>
-        <ServerCascader value={server} onChange={(e) => changeServer(e)} />
+        <ServerCascader
+          className={'account-daoru-form-content'}
+          value={server}
+          onChange={(e) => changeServer(e)}
+        />
         <Input.Search
-          className='account-daoru-input-wrap-input'
+          className='account-daoru-form-content'
           value={name}
           loading={loading}
           onChange={(e) => changeName(e.target.value.trim())}
-          placeholder='请输入角色名称'
+          placeholder='请输入角色名称或UID'
           onPressEnter={(e: any) => {
             if (server?.length) {
               handleGetPzData(e.target.value.trim())
@@ -138,38 +163,49 @@ function AccountImport({ onOk }) {
               <p className='account-daoru-success-tip'>成功获取配装方案</p>
               <div className='account-daoru-success-content'>
                 <div className='account-daoru-success-info'>
-                  <img
-                    className='account-daoru-success-avatar'
-                    src={data?.userInfo?.personAvatar}
-                    alt=''
-                  />
+                  {!data?.userInfo?.isUidSearch ? (
+                    <img
+                      className='account-daoru-success-avatar'
+                      src={data?.userInfo?.personAvatar}
+                      alt=''
+                    />
+                  ) : null}
+
                   <div className='account-daoru-text-content'>
-                    <div className='account-daoru-success-title' title={data?.showData?.title}>
-                      {data?.userInfo?.roleName}
-                    </div>
-                    <span
-                      className={
-                        !data?.userInfo?.bodyName ? 'account-daoru-success-name-error' : ''
-                      }
-                    >
-                      {data?.userInfo?.bodyName || '体型未识别'}
-                    </span>
-                    {` | `}
-                    <span
-                      className={
-                        !data?.userInfo?.serverName ? 'account-daoru-success-name-error' : ''
-                      }
-                    >
-                      {data?.userInfo?.serverName || '服务器名称未识别'}
-                    </span>
-                    {` | `}
-                    <span
-                      className={
-                        !data?.userInfo?.forceName ? 'account-daoru-success-name-error' : ''
-                      }
-                    >
-                      {data?.userInfo?.forceName || '门派未识别'}
-                    </span>
+                    {data?.userInfo?.isUidSearch ? (
+                      <div className='account-daoru-success-title' title={data?.showData?.title}>
+                        使用ID查询时无法显示角色名称，不影响正常导入
+                      </div>
+                    ) : (
+                      <>
+                        <div className='account-daoru-success-title' title={data?.showData?.title}>
+                          {data?.userInfo?.roleName}
+                        </div>
+                        <span
+                          className={
+                            !data?.userInfo?.bodyName ? 'account-daoru-success-name-error' : ''
+                          }
+                        >
+                          {data?.userInfo?.bodyName || '体型未识别'}
+                        </span>
+                        {` | `}
+                        <span
+                          className={
+                            !data?.userInfo?.serverName ? 'account-daoru-success-name-error' : ''
+                          }
+                        >
+                          {data?.userInfo?.serverName || '服务器名称未识别'}
+                        </span>
+                        {` | `}
+                        <span
+                          className={
+                            !data?.userInfo?.forceName ? 'account-daoru-success-name-error' : ''
+                          }
+                        >
+                          {data?.userInfo?.forceName || '门派未识别'}
+                        </span>
+                      </>
+                    )}
                   </div>
                   <Button type='primary' onClick={handleClickImport}>
                     导入
@@ -209,14 +245,14 @@ function AccountImport({ onOk }) {
         open={helpVisible}
         onCancel={() => setHelpVisible(false)}
       >
-        {/* <p>
-          1、打开你的配装方案，点击导出。
-          <Image className='account-daoru-help-img' src={Img_Help_1} />
-        </p>
-        <p>
-          2、选择数据版,复制配装ID.
-          <Image className='account-daoru-help-img' src={Img_Help_2} />
-        </p> */}
+        <div>
+          1、发送你的角色至任意聊天频道。
+          <Image className='account-daoru-help-img' src={教程_1} />
+        </div>
+        <div>
+          2、按住「Ctrl」鼠标移动到名称上，复制玩家ID。
+          <Image className='account-daoru-help-img' src={教程_2} />
+        </div>
       </Modal>
     </div>
   )
@@ -239,19 +275,15 @@ const getPzData = (data) => {
 
 const 校验门派 = (校验名称) => {
   const { 简写 } = 获取当前数据()
-  if (简写 === 'shxj') {
-    return 校验名称 === '万灵山庄'
-  } else if (简写 === 'w_shxj') {
+  if (['shxj', 'w_shxj']?.includes(简写)) {
     return 校验名称 === '万灵山庄'
   } else if (简写 === 'lhj') {
     return 校验名称 === '蓬莱'
   } else if (简写 === 'txj') {
     return 校验名称 === '衍天宗'
-  } else if (简写 === 'gfj') {
+  } else if (['gfj', 'w_gfj']?.includes(简写)) {
     return 校验名称 === '刀宗'
-  } else if (简写 === 'w_gfj') {
-    return 校验名称 === '刀宗'
-  } else if (简写 === 'wf') {
+  } else if (['wf', 'w_wf']?.includes(简写)) {
     return 校验名称 === '北天药宗'
   } else if (简写 === 'hjy') {
     return 校验名称 === '万花'
