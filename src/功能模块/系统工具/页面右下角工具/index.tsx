@@ -1,13 +1,15 @@
 import { Modal } from 'antd'
-import React from 'react'
+import React, { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { 更新背景图片显示状态 } from '@/store/system'
+import 数据迁移 from './数据迁移'
 
 import './index.css'
 
 function 页面右下角工具() {
   const 背景图片显示状态 = useAppSelector((state) => state?.system?.背景图片显示状态)
   const dispatch = useAppDispatch()
+  const [数据迁移弹窗, 设置数据迁移弹窗] = useState<boolean>(false)
 
   const clearCache = () => {
     Modal.confirm({
@@ -28,12 +30,16 @@ function 页面右下角工具() {
   return (
     <div className='cache-wrapper'>
       <span className={'cache-btn'}>特别感谢「可乐」「冰糖雪梨橙」提供的服务器支持</span>
+      <span className='cache-btn' onClick={() => 设置数据迁移弹窗(true)}>
+        数据迁移
+      </span>
       <span className='cache-btn' onClick={handleChangeBackground}>
         {+(背景图片显示状态 || '') ? '关闭背景' : '开启背景'}
       </span>
       <span className='cache-btn' onClick={() => clearCache()}>
         清除缓存
       </span>
+      <数据迁移 open={数据迁移弹窗} onCancel={() => 设置数据迁移弹窗(false)} />
     </div>
   )
 }
