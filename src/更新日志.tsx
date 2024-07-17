@@ -19,7 +19,7 @@ export default [
       <p style={{ paddingLeft: 12 }} key='1.1.11.3'>
         <p>修复了「归去来棍·悟」的数值错误</p>
       </p>,
-      <p style={{ paddingLeft: 12, color: 'red' }} key='1.1.11.3'>
+      <p style={{ color: 'red' }} key='1.1.11.3'>
         本次重构代码较为底层，若有问题请及时反馈
       </p>,
     ],

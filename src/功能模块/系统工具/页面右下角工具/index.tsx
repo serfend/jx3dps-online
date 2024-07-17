@@ -29,7 +29,14 @@ function 页面右下角工具() {
 
   return (
     <div className='cache-wrapper'>
-      <span className={'cache-btn'}>特别感谢「可乐」「冰糖雪梨橙」提供的服务器支持</span>
+      <a
+        className='cache-btn'
+        href='https://www.jx3box.com/bps/79885'
+        target='_blank'
+        rel='noreferrer'
+      >
+        问题反馈
+      </a>
       <span className='cache-btn' onClick={() => 设置数据迁移弹窗(true)}>
         数据迁移
       </span>

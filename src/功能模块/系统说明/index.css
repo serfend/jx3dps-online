@@ -12,11 +12,5 @@
 }
 
 .service-tip {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  color: #fff;
-  margin: 0;
-  line-height: 36px;
-  font-size: 14px;
+  margin-left: 0px;
 }
