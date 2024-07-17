@@ -149,13 +149,15 @@ export const 增益排序 = (list: 属性加成[]): 属性加成[] => {
 // 对增益进行同类合并，然后再排序返回
 export const 增益合并并排序 = (list: 属性加成[]): 属性加成[] => {
   const obj = {}
+  const skillCoefficientList: 属性加成[] = []
   list.forEach((item) => {
     if (item) {
       if (obj[item.属性]) {
-        if (item.属性 === 属性类型.系数增伤) {
-          obj[item.属性] = obj[item.属性] * item.值
-        } else {
+        // 系数增伤不合并排序，否则多次计算会遗漏 目前只有系数增伤是乘算，其他的都为加算，若存在其他加算，这里也要过滤
+        if (item.属性 !== 属性类型.系数增伤) {
           obj[item.属性] += item.值
+        } else {
+          skillCoefficientList.push(item)
         }
       } else {
         obj[item.属性] = item.值
@@ -172,7 +174,7 @@ export const 增益合并并排序 = (list: 属性加成[]): 属性加成[] => {
     return SortKeyList.indexOf(a.属性) - SortKeyList.indexOf(b.属性)
   })
 
-  return newList.filter((item) => !!item)
+  return newList.filter((item) => !!item).concat(skillCoefficientList || [])
 }
 
 /**
@@ -248,7 +250,7 @@ export const 计算该技能下多个增益的增益集合 = (
   const 该技能增益列表 = 增益.增益名称.split(',')
 
   // 该技能数量下同时计算的多个增益的增益集合
-  let 增益集合列表: 技能计算增益数据列表[] = []
+  const 增益名称列表: string[] = []
 
   该技能增益列表.forEach((i) => {
     const 该技能增益 = (当前技能属性?.技能增益列表 || [])?.find((item) => {
@@ -269,17 +271,26 @@ export const 计算该技能下多个增益的增益集合 = (
     })
 
     if (该技能增益) {
-      const 该技能增益列表: 技能计算增益数据列表[] = (该技能增益?.增益集合 || []).map((item) => {
-        return {
-          ...item,
-          增益启用: true,
-          增益来源: 该技能增益?.增益名称,
-        }
-      })
-      增益集合列表 = 增益集合列表.concat(该技能增益列表)
+      增益名称列表.push(i)
     }
   })
 
+  return 增益名称列表
+}
+
+export const 获取增益实际数据集合 = (增益名称列表: string[], 当前技能属性: 技能基础数据模型) => {
+  let 增益集合列表: 技能计算增益数据列表[] = []
+  增益名称列表.forEach((增益名称) => {
+    const 该技能增益 = 当前技能属性?.技能增益列表?.find((item) => item?.增益名称 === 增益名称)
+    const 该技能增益列表: 技能计算增益数据列表[] = (该技能增益?.增益集合 || []).map((item) => {
+      return {
+        ...item,
+        增益启用: true,
+        增益来源: 该技能增益?.增益名称,
+      }
+    })
+    增益集合列表 = 增益集合列表.concat(该技能增益列表)
+  })
   return 增益集合列表
 }
 
@@ -435,9 +446,8 @@ export const 通用增益计算 = (增益: 属性加成, 最终计算属性: 最
       结果属性.技能增伤.非侠增伤 += 值
       break
     case 属性类型.系数增伤:
-      // 外面已经在合并排序的时候乘过一次了，这里不仅行计算
-      结果属性.技能增伤.系数增伤 = 值
-      // 结果属性.技能增伤.系数增伤 = 结果属性.技能增伤.系数增伤 * 值
+      // 结果属性.技能增伤.系数增伤 = 值
+      结果属性.技能增伤.系数增伤 = 结果属性.技能增伤.系数增伤 * 值
       break
     default:
       break
