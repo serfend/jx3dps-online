@@ -1,5 +1,6 @@
 import { Badge, Button } from 'antd'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { 获取页面参数 } from '@/工具函数/help'
 import 识别装备对比弹窗 from './识别装备对比'
 import 配装器 from './配装器'
 
@@ -8,6 +9,15 @@ import './index.css'
 function 属性录入() {
   const [配装器弹窗显示状态, 切换配装器弹窗显示状态] = useState<boolean>(false)
   const [识别装备对比, 设置识别装备对比] = useState<boolean>(false)
+
+  const urlServer = 获取页面参数('server')
+  const urlName = 获取页面参数('name')
+
+  useEffect(() => {
+    if (urlServer && urlName) {
+      切换配装器弹窗显示状态(true)
+    }
+  }, [urlServer, urlName])
 
   return (
     <div className={'character-set'}>

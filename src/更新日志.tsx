@@ -6,6 +6,16 @@ export default [
       '综合-功能',
       <p style={{ paddingLeft: 12 }} key='1.1.11.1'>
         <p>页面右下角新增「数据迁移」功能，方便在不同网址、客户端中同步数据</p>
+        <p>新增连接内携带服务和名称自动打开导入弹窗功能，例：</p>
+        <p>
+          <a
+            href='https://jx3.btcsg.top/?xf=lhj&server=唯我独尊&name=会灰'
+            target='_blank'
+            rel='noreferrer'
+          >
+            jx3.btcsg.top/?xf=lhj&server=唯我独尊&name=会灰
+          </a>
+        </p>
       </p>,
       '综合-重构',
       <p style={{ paddingLeft: 12 }} key='1.1.11.2'>

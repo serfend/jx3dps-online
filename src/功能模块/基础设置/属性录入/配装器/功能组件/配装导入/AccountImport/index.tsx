@@ -1,13 +1,14 @@
 // 根据账号角色导入
 // import { getEquipDataByName } from '@/api'
 import { Alert, Button, Image, Input, Modal, Spin, message } from 'antd'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getEquipData } from './util'
 import ServerCascader from '@/组件/ServerCascader'
 import { getUIdByName, getEquipDataByUidV3, getEquipDataByUidV1 } from '@/api'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
-import './index.css'
 import { GLOBAL_CDN_PREFIX } from '@/工具函数/const'
+import { 获取页面参数 } from '@/工具函数/help'
+import './index.css'
 
 const 教程_1 = `${GLOBAL_CDN_PREFIX}/account_tip_1.png`
 const 教程_2 = `${GLOBAL_CDN_PREFIX}/account_tip_2.png`
@@ -20,9 +21,19 @@ function AccountImport({ onOk }) {
   const [data, setData] = useState<any>(undefined)
   const [errorMsg, setErrorMsg] = useState<string>('')
 
-  const handleGetPzData = async (propsName?) => {
+  const urlName = 获取页面参数('name')
+
+  useEffect(() => {
+    if (urlName) {
+      changeName(urlName)
+    }
+  }, [urlName])
+
+  const handleGetPzData = async (propsName?, propsServer?) => {
     const apiName = propsName || name
-    if (!apiName) {
+    const apiServer = propsServer || server
+
+    if (!apiName || !apiServer?.length) {
       return
     }
     setLoading(true)
@@ -40,7 +51,7 @@ function AccountImport({ onOk }) {
         userInfo.isUidSearch = true
       } else {
         userInfo = await getUIdByName({
-          server: server?.[1],
+          server: apiServer?.[1],
           name: apiName,
         })?.then((res) => res?.data)
         const 校验 = 校验门派(userInfo?.forceName)
@@ -56,8 +67,8 @@ function AccountImport({ onOk }) {
           : getEquipDataByUidV3
 
         const requestRes: any = await request({
-          zone: server?.[0],
-          server: server?.[1],
+          zone: apiServer?.[0],
+          server: apiServer?.[1],
           game_role_id: userInfo?.roleId,
         })
 
@@ -124,6 +135,7 @@ function AccountImport({ onOk }) {
           className={'account-daoru-form-content'}
           value={server}
           onChange={(e) => changeServer(e)}
+          callback={handleGetPzData}
         />
         <Input.Search
           className='account-daoru-form-content'

@@ -7,6 +7,7 @@ import './index.css'
 
 function 魔盒配装方案导入({ visible, onClose, onOk }) {
   const [active, setActive] = useState('account')
+
   const beforeClose = () => {
     onClose()
   }
