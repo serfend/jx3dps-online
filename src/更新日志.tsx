@@ -9,11 +9,11 @@ export default [
         <p>新增连接内携带服务和名称自动打开导入弹窗功能，例：</p>
         <p>
           <a
-            href='https://jx3.btcsg.top/?xf=lhj&server=唯我独尊&name=会灰'
+            href='https://jx3.btcsg.top/?xf=lhj&server=梦江南&name=剑网三'
             target='_blank'
             rel='noreferrer'
           >
-            jx3.btcsg.top/?xf=lhj&server=唯我独尊&name=会灰
+            jx3.btcsg.top/?xf=lhj&server=梦江南&name=剑网三
           </a>
         </p>
       </p>,
