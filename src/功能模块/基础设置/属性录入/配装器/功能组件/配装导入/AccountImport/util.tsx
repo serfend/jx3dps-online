@@ -94,10 +94,10 @@ export const getEquipData = (data) => {
           额外消息.push(`装备库未内置五彩石${item?.effectColorStone?.Name}`)
           五彩石名称 = ''
         } else {
-          if (五彩石名称?.includes('(伍)')) {
-            五彩石名称 = 五彩石名称.replace('(伍)', '(陆)')
-            额外消息.push('五彩石自动转换为六级')
-          }
+          // if (五彩石名称?.includes('(伍)')) {
+          //   五彩石名称 = 五彩石名称.replace('(伍)', '(陆)')
+          //   额外消息.push('五彩石自动转换为六级')
+          // }
         }
 
         if (五彩石名称) {

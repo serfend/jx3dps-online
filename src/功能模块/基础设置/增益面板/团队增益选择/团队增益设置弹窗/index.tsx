@@ -8,6 +8,7 @@ import {
   InputNumber,
   Menu,
   Select,
+  Tag,
 } from 'antd'
 import React from 'react'
 import { useAppSelector } from '@/hooks'
@@ -110,6 +111,11 @@ function 团队增益设置弹窗({ open, onCancel, onChangeZengyi, 快捷设置
                           >
                             {item.增益名称}
                           </h1>
+                          {item?.增益心法端 === '无界' ? (
+                            <Tag className={`tuandui-zengyi-detail-wujie-tag`} color='purple'>
+                              无界
+                            </Tag>
+                          ) : null}
                           {当前是否存在冲突增益 ? (
                             <span className={`tuandui-zengyi-detail-title-disabled-tip`}>
                               增益和【{当前是否存在冲突增益?.增益名称}】冲突

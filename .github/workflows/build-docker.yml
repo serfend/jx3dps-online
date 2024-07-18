@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [develop]
+    branches: [publish]
 
 env:
   ARGOCD_SERVER: argocd.arkwish.com
