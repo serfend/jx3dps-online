@@ -10,7 +10,7 @@ import {
   Select,
   Tag,
 } from 'antd'
-import React from 'react'
+import React, { useState } from 'react'
 import { useAppSelector } from '@/hooks'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 import { 团队增益类型 } from '@/@types/团队增益'
@@ -33,6 +33,18 @@ function 团队增益设置弹窗({ open, onCancel, onChangeZengyi, 快捷设置
     '节日增益',
     '稀缺增益',
   ]
+
+  const [当前展开增益类型, 设置当前展开增益类型] = useState<string[]>(团队增益类型)
+
+  // 一键展开收齐
+  const 切换展开收起 = () => {
+    const 当前是否全部展开 = 当前展开增益类型?.length === 团队增益类型?.length
+    if (当前是否全部展开) {
+      设置当前展开增益类型([])
+    } else {
+      设置当前展开增益类型(团队增益类型)
+    }
+  }
 
   return (
     <Drawer
@@ -64,6 +76,9 @@ function 团队增益设置弹窗({ open, onCancel, onChangeZengyi, 快捷设置
               </Button>
             </Dropdown>
           ) : null}
+          <Button size='small' style={{ marginLeft: 12 }} onClick={切换展开收起}>
+            {当前展开增益类型?.length === 团队增益类型?.length ? '一键收起' : '一键展开'}
+          </Button>
         </div>
       }
       placement='left'
@@ -77,6 +92,8 @@ function 团队增益设置弹窗({ open, onCancel, onChangeZengyi, 快捷设置
         className='tuandui-zengyi-collapse'
         defaultActiveKey={团队增益类型}
         bordered={false}
+        activeKey={当前展开增益类型}
+        onChange={(e) => 设置当前展开增益类型(e as string[])}
       >
         {团队增益类型.map((key) => {
           return (
