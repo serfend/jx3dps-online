@@ -1,7 +1,8 @@
 import { 小药小吃数据类型 } from '@/@types/小药小吃'
+import { 属性简写枚举 } from '@/@types/枚举'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { 秒伤计算 } from '@/计算模块/计算函数'
-import { Select, SelectProps } from 'antd'
+import { Select, SelectProps, Tooltip } from 'antd'
 import React, { useState } from 'react'
 
 interface 小药小吃选择框入参 extends SelectProps {
@@ -72,18 +73,32 @@ const 小药小吃选择框: React.FC<小药小吃选择框入参> = (props) => 
           }
         )?.dpsUp
 
+        const 小吃详情 = (
+          <div>
+            {item?.增益集合?.map((a, index) => {
+              return (
+                <p key={`${item?.小吃名称}${index}`}>
+                  {属性简写枚举?.[a?.属性]}：{a?.值}
+                </p>
+              )
+            })}
+          </div>
+        )
+
         return (
           <Select.Option key={item?.小吃名称} value={item?.小吃名称} label={item.小吃名称}>
             <div className={'xiaochi-diff-item'}>
-              <span>
-                {item?.小吃名称?.split('（')?.[0]}
-                {/* {item?.小吃名称} */}
-                {item?.小吃名称?.split('（')?.[1] ? (
-                  <span className={`${item?.小吃品级 === '紫' ? 'xiaochi-zi' : 'xiaochi-lan'}`}>
-                    （{item?.小吃名称?.split('（')?.[1]}
-                  </span>
-                ) : null}
-              </span>
+              <Tooltip title={小吃详情} placement='left'>
+                <span>
+                  {item?.小吃名称?.split('（')?.[0]}
+                  {/* {item?.小吃名称} */}
+                  {item?.小吃名称?.split('（')?.[1] ? (
+                    <span className={`${item?.小吃品级 === '紫' ? 'xiaochi-zi' : 'xiaochi-lan'}`}>
+                      （{item?.小吃名称?.split('（')?.[1]}
+                    </span>
+                  ) : null}
+                </span>
+              </Tooltip>
               {upDps !== 0 ? (
                 <span className={`${upDps > 0 ? 'dps-up' : 'dps-down'}`}>
                   {upDps > 0 ? '+' : ''}
