@@ -54,26 +54,28 @@ function 配装组件标题({
     <div className='zhuangbei-form-header'>
       <div className='zhuangbei-form-left-1'>
         <h1 className='zhuangbei-form-title'>装备</h1>
-        <Checkbox
-          checked={开启装备智能对比}
-          onChange={(e) => 设置开启装备智能对比(e?.target?.checked)}
-          className={'zhuangbei-diff-btn'}
-        >
-          <span id='Guide_5'>智能对比</span>
-          <Tooltip
-            overlayInnerStyle={{ width: 350 }}
-            title={
-              <div>
-                <p>对比默认精炼等级下切换至另一件装备dps波动。</p>
-                <p>注意：目标为橙武时不会自动切换循环。</p>
-                <p>考虑性能，暂时只开放13200品以上装备的智能对比。</p>
-                <p>开启后打开装备选择框时会略微卡顿。</p>
-              </div>
-            }
+        <span id='Guide_5'>
+          <Checkbox
+            checked={开启装备智能对比}
+            onChange={(e) => 设置开启装备智能对比(e?.target?.checked)}
+            className={'zhuangbei-diff-btn'}
           >
-            <QuestionCircleOutlined className={'zhuangbei-diff-tip'} />
-          </Tooltip>
-        </Checkbox>
+            <span>智能对比</span>
+            <Tooltip
+              overlayInnerStyle={{ width: 350 }}
+              title={
+                <div>
+                  <p>对比默认精炼等级下切换至另一件装备dps波动。</p>
+                  <p>注意：目标为橙武时不会自动切换循环。</p>
+                  <p>考虑性能，暂时只开放13200品以上装备的智能对比。</p>
+                  <p>开启后打开装备选择框时会略微卡顿。</p>
+                </div>
+              }
+            >
+              <QuestionCircleOutlined className={'zhuangbei-diff-tip'} />
+            </Tooltip>
+          </Checkbox>
+        </span>
       </div>
       <div className='zhuangbei-form-left-2'>
         <h1 className='zhuangbei-form-title'>精炼</h1>

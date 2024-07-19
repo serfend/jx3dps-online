@@ -29,7 +29,7 @@ const 新手引导 = () => {
       dispatch(切换配装器弹窗显示状态(true))
       setTimeout(() => {
         dispatch(更新当前引导步骤(e))
-      }, 500)
+      }, 550)
     } else if (当前引导步骤 === 6 && e === 5) {
       dispatch(切换配装器弹窗显示状态(true))
       setTimeout(() => {
@@ -122,11 +122,20 @@ const 新手引导 = () => {
         description: (
           <div>
             <p>增益面板包含小吃小药、阵眼、团队增益等。</p>
-            <p>注意，要开启「是否启用」才会在计算时计算增益</p>
           </div>
         ),
         placement: 'right',
         target: () => document.getElementById('Guide_10') as any,
+      },
+      {
+        title: '启用增益',
+        description: (
+          <div>
+            <p>注意，要开启「启用增益」才会在计算时计算增益</p>
+          </div>
+        ),
+        placement: 'right',
+        target: () => document.getElementById('Guide_11') as any,
       },
       {
         title: '切换心法',
@@ -137,7 +146,7 @@ const 新手引导 = () => {
             <p>在使用中遇到问题，请至魔盒计算器帖下留言反馈</p>
           </div>
         ),
-        target: () => document.getElementById('Guide_11') as any,
+        target: () => document.getElementById('Guide_12') as any,
         nextButtonProps: {
           children: '教程结束',
         },
