@@ -48,18 +48,31 @@
   font-weight: 400;
 }
 
+.qixue-simulator-set-item-select {
+  height: unset;
+}
+
 .qixue-simulator-set-item-select-option {
   display: flex;
   align-items: center;
   padding-right: 24px;
 }
 
-.qixue-simulator-set-item-select-img {
+.qixue-simulator-set-item-select-img-wrap {
   width: 32px;
   height: 32px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   margin-right: 8px;
   margin-left: 2px;
+}
+
+.qixue-simulator-set-item-select-img {
+  width: 36px;
+  height: 36px;
 }
 
 .qixue-simulator-set-item-select-text {
@@ -71,7 +84,8 @@
   height: calc(100vw / 12 - 24px);
   max-height: calc(1366px / 12 - 24px);
   padding: 0;
-  border-radius: 25%;
+  border-radius: 10%;
+  position: relative;
 }
 
 .qixue-simulator-set-item-select.ant-select-single.ant-select-show-arrow .ant-select-selection-item,
@@ -94,12 +108,6 @@
 }
 
 .qixue-simulator-label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  margin: auto;
   text-align: center;
   display: flex;
   align-items: center;
@@ -123,7 +131,6 @@
   width: 100%;
   line-height: 22px;
   font-size: 14px;
-  margin-top: -12px;
   transition: color .2s;
   color: #fff;
 }

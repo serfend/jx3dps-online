@@ -98,7 +98,7 @@ function 装备部位选择(props: 装备部位选择入参, ref) {
   }
 
   return (
-    <div>
+    <div id='Guide_4'>
       <Select
         showSearch
         // allowClear

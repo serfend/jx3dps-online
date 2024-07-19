@@ -34,7 +34,9 @@ function 计算结果() {
       <Divider />
       <div className='dps-number-count-wrap'>
         <div className={'dps-number-count'}>
-          <div className={'dps-number-count-text'}>{当前计算结果?.秒伤}</div>
+          <div id='Guide_7' className={'dps-number-count-text'}>
+            {当前计算结果?.秒伤}
+          </div>
           <Button
             className={'dps-number-count-skill-btn'}
             style={{ marginLeft: 20 }}

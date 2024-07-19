@@ -8,6 +8,9 @@ const { 缓存映射 } = 获取当前数据()
 export interface 系统模块类型 {
   增益面板显示状态: boolean
   背景图片显示状态: boolean
+  新手引导流程状态: boolean
+  当前引导步骤: number
+  配装器弹窗显示状态: boolean
 }
 
 const 数据默认值 = 获取系统默认值()
@@ -31,10 +34,26 @@ export const 系统模块 = createSlice({
     更新增益面板显示状态: (state, action: PayloadAction<boolean>) => {
       state.增益面板显示状态 = action.payload
     },
+    更新新手引导流程状态: (state, action: PayloadAction<boolean>) => {
+      state.新手引导流程状态 = action.payload
+    },
+    更新当前引导步骤: (state, action: PayloadAction<number>) => {
+      state.当前引导步骤 = action.payload
+    },
+    切换配装器弹窗显示状态: (state, action: PayloadAction<boolean>) => {
+      state.配装器弹窗显示状态 = action.payload
+    },
   },
 })
 
-export const { 更新全部系统数据, 更新背景图片显示状态, 更新增益面板显示状态 } = 系统模块.actions // 导出操作state的喊出
+export const {
+  更新全部系统数据,
+  更新背景图片显示状态,
+  更新增益面板显示状态,
+  更新新手引导流程状态,
+  更新当前引导步骤,
+  切换配装器弹窗显示状态,
+} = 系统模块.actions // 导出操作state的喊出
 
 export const SystemState = (state: RootState) => state
 

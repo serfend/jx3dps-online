@@ -1,6 +1,8 @@
-import { Alert, Button, message, Modal, ModalProps } from 'antd'
+import { Alert, App, Button, message, Modal, ModalProps } from 'antd'
 
 const 数据迁移: React.FC<ModalProps> = (props) => {
+  const { modal } = App.useApp()
+
   const 复制当前数据 = () => {
     const localStorageData = {}
     for (let i = 0; i < localStorage.length; i++) {
@@ -30,7 +32,7 @@ const 数据迁移: React.FC<ModalProps> = (props) => {
   }
 
   const 导入数据前确认 = () => {
-    Modal.confirm({
+    modal.confirm({
       title: `确定要导入数据吗？导入成功后会刷新当前页面。`,
       content: '导入后将覆盖您原有的数据，且无法恢复。',
       okText: '我要导入',

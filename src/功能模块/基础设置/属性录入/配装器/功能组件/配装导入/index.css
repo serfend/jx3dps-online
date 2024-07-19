@@ -1,5 +1,6 @@
 .pz-daoru-modal .ant-modal-header {
   padding: 0;
+  margin-bottom: 16px;
 }
 
 .pz-daoru-modal .ant-modal-body {
@@ -7,10 +8,6 @@
 }
 
 .pz-daoru-tabs .ant-tabs-nav {
+  margin-top: -12px;
   margin-bottom: 0;
-}
-
-.pz-daoru-tabs .ant-tabs-nav-wrap {
-  padding-left: 24px;
-  padding-top:8px;
 }

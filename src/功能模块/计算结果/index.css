@@ -39,7 +39,7 @@
 .dps-number-count-time {
   padding: 16px 0 8px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .dps-number-count-time-label {
@@ -63,19 +63,19 @@
 .dps-number-count-text {
   font-size: 64px;
   line-height: 1;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .dps-number-count-skill {
   color: #ED4F00;
   margin-left: 16px;
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 20px;
 }
 
 .dps-number-count-skill-btn {
-  font-weight: 700;
+  font-weight: 600;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.12);
   margin-bottom: 8px;
   /* font-size: 20px; */

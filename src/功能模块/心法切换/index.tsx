@@ -5,10 +5,12 @@ import { Dropdown, Menu } from 'antd'
 import 所有心法数据 from '@/心法模块/心法'
 
 import './index.css'
+import { useAppSelector } from '@/hooks'
 
 const 当前数据 = 获取当前数据()
 
 function 心法切换() {
+  const 新手引导流程状态 = useAppSelector((state) => state.system.新手引导流程状态)
   const 当前Logo = 当前数据?.系统配置?.心法图标
 
   const 切换至对应心法 = (目标心法) => {
@@ -49,8 +51,8 @@ function 心法切换() {
 
   return (
     <div className='school-switch'>
-      <Dropdown overlay={menu}>
-        <img src={当前Logo} className='school-switch-img' />
+      <Dropdown overlay={menu} disabled={新手引导流程状态}>
+        <img id='Guide_11' src={当前Logo} className='school-switch-img' />
       </Dropdown>
       {当前数据?.心法所属端 === '无界' ? <div className='school-switch-wujie-bg' /> : null}
     </div>

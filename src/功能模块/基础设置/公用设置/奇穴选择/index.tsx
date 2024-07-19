@@ -81,7 +81,9 @@ const 奇穴选择: React.FC = () => {
                           </div>
                         }
                       >
-                        <img className={'qixue-set-item-select-img'} src={奇穴?.奇穴图片} />
+                        <div className='qixue-set-item-select-img-wrap'>
+                          <img className={'qixue-set-item-select-img'} src={奇穴?.奇穴图片} />
+                        </div>
                         <span className={'qixue-set-item-select-text'}>{奇穴?.奇穴名称}</span>
                       </Select.Option>
                     )

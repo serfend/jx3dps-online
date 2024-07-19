@@ -1,4 +1,4 @@
-import { Alert, Form, Input, Modal, Select, Tabs, Tooltip, message } from 'antd'
+import { Alert, App, Form, Input, Modal, Select, Tabs, Tooltip, message } from 'antd'
 import React, { useEffect, useMemo, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { 更新全部方案数据, 更新选中的方案数据 } from '@/store/data'
@@ -15,6 +15,7 @@ interface SaveCustomProjectModalProps {
 const LIMIT_NUM = 10
 
 function SaveCustomProjectModal(props: SaveCustomProjectModalProps) {
+  const { modal } = App.useApp()
   const { 自定义方案保存弹窗, 设置自定义方案保存弹窗, 保存自定义方案 } = props
   // 保存类型，覆盖｜新增
   const [自定义方案类型, 设置自定义方案类型] = useState<string>()
@@ -65,7 +66,7 @@ function SaveCustomProjectModal(props: SaveCustomProjectModalProps) {
     e.stopPropagation()
     e.preventDefault()
 
-    Modal.confirm({
+    modal.confirm({
       title: `确定要删除方案【${名称}】吗?`,
       content: '删除后将无法恢复',
       okText: '我要删除',

@@ -3,6 +3,8 @@
   align-items: center;
   justify-content: space-between;
   padding-right: 24px;
+  margin-top: -4px;
+  margin-bottom: 16px;
 }
 
 .max-fumo-all-check {
@@ -39,6 +41,7 @@
   line-height: 32px;
   margin-bottom: 8px;
   color: #F34242;
+  font-weight: 600;
 }
 
 .max-fumo-dps-up {
@@ -70,5 +73,5 @@
 
 .max-fumo-value {
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
 }

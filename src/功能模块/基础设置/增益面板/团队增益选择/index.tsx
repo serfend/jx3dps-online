@@ -11,6 +11,7 @@ const { 团队增益 = [] } = 获取当前数据()
 
 function 团队增益选择({ 保存数据并计算 }) {
   const 增益数据 = useAppSelector((state) => state.data.增益数据)
+  const 新手引导流程状态 = useAppSelector((state) => state.system.新手引导流程状态)
 
   const [visible, setVisible] = useState<boolean>(false)
 
@@ -84,7 +85,12 @@ function 团队增益选择({ 保存数据并计算 }) {
           className={'tuandui-setting-btn'}
           danger
           size='small'
-          onClick={() => setVisible(true)}
+          onClick={() => {
+            if (新手引导流程状态) {
+              return
+            }
+            setVisible(true)
+          }}
         >
           设置增益
         </Button>

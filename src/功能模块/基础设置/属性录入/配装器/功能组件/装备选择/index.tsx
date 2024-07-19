@@ -101,7 +101,7 @@ function 装备选择(props: 装备选择入参, ref) {
   }, [部位, 附魔])
 
   return (
-    <div className={'zhuangbei-form-item'} ref={ref}>
+    <div className={'zhuangbei-form-item'} ref={ref} id='Guide_3'>
       <div className='zhuangbei-form-item-left-1'>
         <装备部位选择
           value={value?.id}

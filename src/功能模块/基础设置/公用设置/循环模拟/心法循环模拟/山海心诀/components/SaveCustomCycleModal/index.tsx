@@ -1,4 +1,4 @@
-import { Alert, Checkbox, Form, Input, Modal, Select, Tabs } from 'antd'
+import { Alert, App, Checkbox, Form, Input, Modal, Select, Tabs } from 'antd'
 import React, { useEffect, useMemo, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
@@ -15,6 +15,8 @@ interface SaveCustomCycleModalProps {
 }
 
 function SaveCustomCycleModal(props: SaveCustomCycleModalProps) {
+  const { modal } = App.useApp()
+
   const { 自定义循环保存弹窗, 设置自定义循环保存弹窗, 保存自定义循环 } = props
   // 保存类型，覆盖｜新增
   const [自定义循环类型, 设置自定义循环类型] = useState<string>()
@@ -58,7 +60,7 @@ function SaveCustomCycleModal(props: SaveCustomCycleModalProps) {
     e.stopPropagation()
     e.preventDefault()
 
-    Modal.confirm({
+    modal.confirm({
       title: `确定要删除循环【${名称}】吗?`,
       content: '删除后将无法恢复',
       okText: '我要删除',

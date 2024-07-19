@@ -344,7 +344,7 @@ function 收益图表(_, ref) {
 
   return (
     <>
-      <div>
+      <div id='Guide_8'>
         <div className={'income-chart'} id='income-chart' />
         <div className='income-type-wrapper'>
           <div className={'income-chart-title'}>收益图表</div>

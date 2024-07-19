@@ -3,7 +3,7 @@
 }
 
 .dps-count-modal .ant-modal-body {
-  padding: 12px 24px 24px;
+  padding-top: 16px;
 }
 
 .dps-count-modal-title {
@@ -12,7 +12,7 @@
   justify-content: space-between;
   padding-right: 24px;
   height: 22px;
-  
+  margin-top: -4px;
 }
 
 .dps-line-header {

@@ -1,5 +1,5 @@
 // 一键设置最佳附魔
-import { Button, Checkbox, Col, Divider, Modal, Row, message } from 'antd'
+import { App, Button, Checkbox, Col, Divider, Modal, Row, message } from 'antd'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { useAppDispatch } from '@/hooks'
 import { RiseOutlined } from '@ant-design/icons'
@@ -28,6 +28,7 @@ function 最佳附魔设置({ 一键替换附魔, 对比秒伤, 对比装备信�
   const [最大Dps, 更新最大秒伤] = useState<number>(0)
   const [计算用时, 更新计算用时] = useState<number>(0)
   const [无附魔装备属性, 设置无附魔装备属性] = useState<角色基础属性类型>()
+  const { modal } = App.useApp()
 
   const [当前选择计算部位, 更新当前选择计算部位] = useState<装备位置部位枚举[]>(
     一键附魔默认部位?.length ? 一键附魔默认部位 : 全部部位
@@ -89,7 +90,7 @@ function 最佳附魔设置({ 一键替换附魔, 对比秒伤, 对比装备信�
 
   const 计算前提示 = () => {
     if (无附魔装备属性) {
-      Modal.confirm({
+      modal.confirm({
         title: `确定开始计算吗`,
         content: (
           <div>

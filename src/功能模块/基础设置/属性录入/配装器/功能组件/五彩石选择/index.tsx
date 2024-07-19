@@ -14,7 +14,7 @@ interface WucaishiFilterList {
 
 interface WuCaiShiXuanZeProps {
   value?: string
-  onChange?: (e: string) => void
+  onChange?: (e: string | undefined) => void
 }
 
 function WuCaiShiXuanZe(props: WuCaiShiXuanZeProps) {
@@ -38,16 +38,20 @@ function WuCaiShiXuanZe(props: WuCaiShiXuanZeProps) {
   }, [五彩石[6]])
 
   const handleChange = (e) => {
-    const list = 五彩石[jibie]
-    const findObj = list.find((item) => {
-      return (
-        item.装备增益?.[0]?.增益名称 === e?.[0] &&
-        item.装备增益?.[1]?.增益名称 === e?.[1] &&
-        item.装备增益?.[2]?.增益名称 === e?.[2]
-      )
-    })
-    if (findObj && findObj?.五彩石名称) {
-      onChange && onChange(findObj?.五彩石名称)
+    if (!e) {
+      onChange && onChange(undefined)
+    } else {
+      const list = 五彩石[jibie]
+      const findObj = list.find((item) => {
+        return (
+          item.装备增益?.[0]?.增益名称 === e?.[0] &&
+          item.装备增益?.[1]?.增益名称 === e?.[1] &&
+          item.装备增益?.[2]?.增益名称 === e?.[2]
+        )
+      })
+      if (findObj && findObj?.五彩石名称) {
+        onChange && onChange(findObj?.五彩石名称)
+      }
     }
   }
 
@@ -82,6 +86,7 @@ function WuCaiShiXuanZe(props: WuCaiShiXuanZeProps) {
           showSearch
           placeholder='选择五彩石'
           onChange={handleChange}
+          allowClear
           options={wucaishiFilterList}
         />
       </div>

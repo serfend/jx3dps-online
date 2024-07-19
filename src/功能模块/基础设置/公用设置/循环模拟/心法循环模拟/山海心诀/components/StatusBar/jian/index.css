@@ -10,7 +10,7 @@
 
 .cycle-status-bar-arrow {
   font-size: 18px;
-  font-weight: 900;
+  font-weight: 600;
   color: #ddd;
   transform: rotate(45deg);
 }
