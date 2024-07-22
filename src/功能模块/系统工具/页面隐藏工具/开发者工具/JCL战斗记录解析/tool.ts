@@ -82,7 +82,7 @@ export const 获取数据 = ({ 心法, 数据, 最大时间, 最小时间 }): �
         // 声明部分调用函数
         const 判断时间增加数量 = (时间数组) => {
           let 增益数量获取 = 1
-          const 造成伤害时间 = 时间数组[时间数组.length]?.[0] || 0
+          const 造成伤害时间 = 时间数组[时间数组.length - 1]?.[0] || 0
           if (造成伤害时间 <= 最大时间 * 16 && 造成伤害时间 >= 最小时间 * 16) {
             增益数量获取 = 时间数组?.length || 1
             if (typeof 造成伤害时间 === 'number') {
@@ -228,6 +228,9 @@ export const 获取数据 = ({ 心法, 数据, 最大时间, 最小时间 }): �
   console.log('res', res)
   // 对技能名称进行排序
   res.sort((a, b) => a.技能名称?.localeCompare(b?.技能名称))
+
+  console.log('战斗时间', 战斗时间)
+  console.log('初始时间', 初始时间)
 
   return {
     // 战斗时间: 战斗时间 / 16,
