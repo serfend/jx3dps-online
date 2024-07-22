@@ -30,11 +30,15 @@ export const 计算秒伤 = (params) => {
   }
 
   const 计算用装备信息 = 获取需要计算的装备信息(装备列表, 装备增益)
+  
 
   // 特殊处理部分门派需要指定加速的情况
   if(心法 === "花间游") {
     // 当花间配装无加速时，按一段加速计算
     if (!计算用装备信息.装备基础属性.加速等级) {
+      计算用装备信息.装备基础属性.加速等级 = 96
+    }
+    if (计算用装备信息.装备基础属性.加速等级 > 96) {
       计算用装备信息.装备基础属性.加速等级 = 96
     }
   }
@@ -220,25 +224,29 @@ const 获取对应的循环名称 = (心法, 奇穴 = [], 循环类型) => {
     }
   } else if (心法 === '无方') {
     if (循环类型 === '橙武') {
-      if (奇穴.includes('避奚') && 奇穴.includes('养荣')) {
+      if (奇穴.includes('应理与药')) {
+        return '应理_橙武'
+      } else if (奇穴.includes('避奚') && 奇穴.includes('养荣')) {
         return '避奚养荣_橙武'
       } else if (奇穴.includes('养荣')) {
         return '养荣_橙武'
       } else {
-        return '应理_橙武'
+        return '避奚养荣_橙武'
       }
+    } else if (奇穴.includes('应理与药')) {
+      return '资深战犯'
     } else if (奇穴.includes('避奚') && 奇穴.includes('养荣')) {
       return '避奚养荣_紫武'
     } else if (奇穴.includes('养荣')) {
       return '养荣_紫武'
     } else {
-      return '资深战犯'
+      return '避奚养荣_紫武'
     }
   } else if (心法 === '无方_悟') {
     if (循环类型 === '橙武') {
-      return '橙武_并且青川'
+      return '橙武_沾且青川'
     } else {
-      return '紫武_并且青川'
+      return '紫武_沾且青川'
     }
   } else if (心法 === '花间游') {
     if (循环类型 === '橙武') {
