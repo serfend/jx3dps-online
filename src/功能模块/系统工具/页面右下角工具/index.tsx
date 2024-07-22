@@ -1,7 +1,7 @@
-import { Modal } from 'antd'
+import { App } from 'antd'
 import React, { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks'
-import { 更新背景图片显示状态 } from '@/store/system'
+import { 更新当前引导步骤, 更新新手引导流程状态, 更新背景图片显示状态 } from '@/store/system'
 import 数据迁移 from './数据迁移'
 
 import './index.css'
@@ -10,9 +10,10 @@ function 页面右下角工具() {
   const 背景图片显示状态 = useAppSelector((state) => state?.system?.背景图片显示状态)
   const dispatch = useAppDispatch()
   const [数据迁移弹窗, 设置数据迁移弹窗] = useState<boolean>(false)
+  const { modal } = App.useApp()
 
   const clearCache = () => {
-    Modal.confirm({
+    modal.confirm({
       title:
         '⚠️警告，清除缓存将清空你的配装、增益等设置。清除后需重新配装。同时会清除在线链接其他门派的相同信息，请谨慎使用。',
       content: '仅作为计算数据异常、页面异常时使用。',
@@ -27,9 +28,24 @@ function 页面右下角工具() {
     dispatch(更新背景图片显示状态(!背景图片显示状态))
   }
 
+  const 开启新手引导 = () => {
+    dispatch(更新新手引导流程状态(true))
+    dispatch(更新当前引导步骤(0))
+  }
+
   return (
     <div className='cache-wrapper'>
-      <span className={'cache-btn'}>特别感谢「可乐」「冰糖雪梨橙」提供的服务器支持</span>
+      <a
+        className='cache-btn'
+        href='https://www.jx3box.com/bps/79885'
+        target='_blank'
+        rel='noreferrer'
+      >
+        问题反馈
+      </a>
+      <span className='cache-btn' onClick={() => 开启新手引导()}>
+        新手引导
+      </span>
       <span className='cache-btn' onClick={() => 设置数据迁移弹窗(true)}>
         数据迁移
       </span>

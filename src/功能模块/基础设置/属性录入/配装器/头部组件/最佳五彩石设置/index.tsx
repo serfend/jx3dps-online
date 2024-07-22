@@ -1,5 +1,5 @@
 // 一键设置最佳附魔
-import { Button, Modal, message } from 'antd'
+import { App, Button, Modal, message } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { useAppDispatch } from '@/hooks'
 import { RiseOutlined } from '@ant-design/icons'
@@ -20,6 +20,7 @@ function 最佳五彩石设置({ 一键替换五彩石, 对比秒伤, 对比装�
   const [最大Dps, 更新最大Dps] = useState<number>(0)
   const [计算用时, 更新计算用时] = useState<number>(0)
   const [无五彩石装备属性, 设置无五彩石装备属性] = useState<角色基础属性类型>()
+  const { modal } = App.useApp()
 
   // 所有组合的缓存数据
   const dispatch = useAppDispatch()
@@ -34,7 +35,7 @@ function 最佳五彩石设置({ 一键替换五彩石, 对比秒伤, 对比装�
   }
 
   const 计算前提示 = () => {
-    Modal.confirm({
+    modal.confirm({
       title: `确定开始计算吗`,
       content: `共 ${五彩石原始数据?.length} 个六级五彩石，计算将造成一定卡顿`,
       okText: '我要计算',

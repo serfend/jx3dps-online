@@ -8,7 +8,10 @@ const { 数据提供 } = 获取当前数据()
 function 顶部说明() {
   return (
     <>
-      <h1 className={'title-tip'}>{数据提供}</h1>
+      <h1 className={'title-tip'}>
+        {数据提供}
+        <span className='service-tip'>；服务支持：可乐 冰糖雪梨橙</span>
+      </h1>
       <当前版本 />
     </>
   )

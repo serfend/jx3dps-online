@@ -1,6 +1,6 @@
 // 循环模拟器
 import React, { useEffect, useMemo, useState } from 'react'
-import { Button, Modal, Tooltip, message } from 'antd'
+import { App, Button, Modal, Tooltip, message } from 'antd'
 import { ReactSortable } from 'react-sortablejs'
 import { CopyOutlined, DeleteOutlined, AlertOutlined } from '@ant-design/icons'
 
@@ -50,6 +50,7 @@ interface CycleSimulatorProps {
 }
 
 function CycleSimulator(props: CycleSimulatorProps) {
+  const { modal } = App.useApp()
   const { 打开循环模拟器, disabled } = props
   const [logData, setLogData] = useState<循环日志数据类型[]>([])
 
@@ -318,7 +319,7 @@ function CycleSimulator(props: CycleSimulatorProps) {
 
   // 删除本轮后全部循环
   const 删除本轮后全部循环 = (轮次) => {
-    Modal.confirm({
+    modal.confirm({
       title: '确认删除本轮后全部循环吗？',
       onOk() {
         // 获取最大的索引，判断生效范围

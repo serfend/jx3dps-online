@@ -1,5 +1,5 @@
 .cycle-custom-save-modal .ant-modal-body{
-  padding: 16px 24px;
+  padding-top: 16px;
 }
 
 .cycle-custom-save-modal-content .ant-tabs-content-holder {
@@ -30,7 +30,7 @@
 .cycle-custom-save-checkbox p {
   font-size: 16px;
   color: var(--ant-primary-color-hover);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 24px;
   margin-bottom: 12px;
   /* padding-top: 16px; */

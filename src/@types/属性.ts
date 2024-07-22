@@ -78,7 +78,7 @@ export enum 属性类型 {
 
   // 无视防御
   郭氏外功基础防御 = 'atPhysicsShieldPercent',
-  郭氏内功基础防御 = 'atMagicShieldPercent',
+  郭氏内功基础防御 = 'atMagicShieldPercent', // 合并 atPoisonMagicShieldPercent atSolarMagicShieldPercent atNeutralMagicShieldPercent atLunarMagicShieldPercent
   内功基础防御 = 'atMagicShield',
   外功基础防御 = 'atPhysicsShieldBase',
   郭氏全无视防御 = 'atAllShieldIgnorePercent',

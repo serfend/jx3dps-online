@@ -3,7 +3,7 @@
 }
 
 .zhuangbei-input-set-modal .ant-modal-body {
-  padding: 16px 24px;
+  padding-top: 16px;
 }
 
 .zhuangbei-input-set-modal .ant-form-item-label {
@@ -36,12 +36,12 @@
 .zhuangbei-form-title {
   font-size: 16px;
   color: var(--ant-primary-color);
-  font-weight: 700;
+  font-weight: 600;
   margin: 0;
 }
 
 .zhuangbei-form-left-1 {
-  width: 340px;
+  width: 390px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -83,7 +83,7 @@
 }
 
 .zhuangbei-form-set-btn {
-  margin-left: 8px;
+  margin-left: 12px;
 }
 
 .zhuangbei-input-set-modal-form {
@@ -91,15 +91,16 @@
 }
 
 .zhuangbei-input-set-modal-form-left {
-  width: 820px;
+  width: 850px;
 }
 
 .zhuangbei-set-dafumo-wrapper {
-  width: 80px;
+  width: 100px;
+  padding-left: 20px;
 }
 
 .zhuangbei-input-set-modal-form-right {
-  width: calc(100% - 820px - 80px);
+  width: calc(100% - 870px - 80px);
   padding-left: 10px;
   position: relative;
 }
@@ -127,7 +128,7 @@
 .zhuangbei-zengyi-title {
   font-size: 14px;
   color: var(--ant-primary-color);
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 6px;
 }
 
@@ -168,6 +169,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: -4px;
 }
 
 .zhuangbei-input-set-modal-title-operate {

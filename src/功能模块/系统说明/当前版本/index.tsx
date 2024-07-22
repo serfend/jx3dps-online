@@ -2,12 +2,16 @@ import { Button, Modal, Timeline } from 'antd'
 import React, { useEffect, useState } from 'react'
 import log_data from '@/更新日志'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
+import { useAppDispatch } from '@/hooks'
+import { 更新当前引导步骤, 更新新手引导流程状态 } from '@/store/system'
 import './index.css'
 
 const { 缓存映射 } = 获取当前数据()
 // const 当前问卷调查标识 = '2023-12'
 
 function Log() {
+  const dispatch = useAppDispatch()
+
   // 更新日志
   const [visible, setVisible] = useState(false)
   // 新版本公告
@@ -23,9 +27,17 @@ function Log() {
     // checkQuestion()
   }, [])
 
+  const 检查有无进行过引导 = () => {
+    const storageData = localStorage.getItem(缓存映射.新手引导)
+    if (!storageData) {
+      dispatch(更新新手引导流程状态(true))
+    }
+  }
+
   const checkLogVersion = () => {
     const storageVersion = localStorage.getItem(缓存映射.日志版本)
-    if (!storageVersion || storageVersion !== log_data?.[0]?.version) {
+    const storageNotice = localStorage.getItem(缓存映射.使用说明)
+    if (storageNotice && (!storageVersion || storageVersion !== log_data?.[0]?.version)) {
       setNewVersionModalVisible(true)
     }
   }
@@ -40,11 +52,14 @@ function Log() {
   const handleCloseNew = () => {
     localStorage?.setItem(缓存映射.日志版本, log_data?.[0]?.version)
     setNewVersionModalVisible(false)
+    检查有无进行过引导()
   }
 
   const handleCloseNotice = () => {
     localStorage?.setItem(缓存映射.使用说明, '1')
     setNoticeVisible(false)
+    dispatch(更新新手引导流程状态(true))
+    dispatch(更新当前引导步骤(0))
   }
 
   return (
@@ -55,6 +70,7 @@ function Log() {
         更新日志
       </span>
       <Modal
+        className='new-log-modal'
         width={800}
         title='新版本公告'
         centered

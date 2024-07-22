@@ -44,6 +44,7 @@ export enum 五彩石增益类型枚举 {
 }
 
 export const 属性简写枚举 = {
+  atBasePotentialAdd: '全属',
   atVitalityBase: '体质',
   atStrengthBase: '力道',
   atSpunkBase: '元气',

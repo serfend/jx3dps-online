@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '@/hooks'
 import { 秒伤计算, 触发秒伤计算 } from '@/计算模块/计算函数'
 import { 更新方案数据 } from '@/store/data'
 import ValueCheckBox from '@/组件/ValueCheckBox'
+import { 获取页面参数 } from '@/工具函数/help'
 
 import 根据表单选项获取装备信息 from './工具函数/根据表单选项获取装备信息'
 import 配装导入 from './功能组件/配装导入'
@@ -22,6 +23,8 @@ function 配装器(props: ModalProps) {
   const { open, onCancel } = props
   const dispatch = useAppDispatch()
 
+  const 新手引导流程状态 = useAppSelector((state) => state.system.新手引导流程状态)
+  const 当前引导步骤 = useAppSelector((state) => state.system.当前引导步骤)
   const 当前计算结果 = useAppSelector((state) => state?.data?.当前计算结果)
   const 装备信息 = useAppSelector((state) => state?.data?.装备信息)
 
@@ -35,12 +38,22 @@ function 配装器(props: ModalProps) {
     if (open) {
       更新当前装备信息(装备信息)
       设置更换装备后秒伤(0)
-      设置导入弹窗(false)
       设置开启装备智能对比(false)
       设置默认镶嵌宝石等级(8)
       初始化表单(装备信息)
+    } else {
+      设置导入弹窗(false)
     }
   }, [open])
+
+  const urlServer = 获取页面参数('server')
+  const urlName = 获取页面参数('name')
+
+  useEffect(() => {
+    if (urlServer && urlName) {
+      设置导入弹窗(true)
+    }
+  }, [urlServer, urlName])
 
   const [form] = Form.useForm()
 
@@ -93,6 +106,9 @@ function 配装器(props: ModalProps) {
 
   return (
     <Modal
+      maskClosable={false}
+      keyboard={false}
+      closable={![1, 2, 3, 4, 5]?.includes(当前引导步骤) || !新手引导流程状态}
       title={
         <头部组件
           更换装备计算秒伤={更换装备计算秒伤}
@@ -103,14 +119,24 @@ function 配装器(props: ModalProps) {
       }
       className={'zhuangbei-input-set-modal'}
       open={open}
-      width={1224}
+      width={1274}
       destroyOnClose
       footer={
         <div>
           <Badge count='New' size='small' offset={[-10, 0]}>
-            <Button onClick={() => 设置导入弹窗(true)}>配装导入</Button>
+            <Button
+              id='Guide_2'
+              onClick={() => {
+                if (新手引导流程状态) {
+                  return
+                }
+                设置导入弹窗(true)
+              }}
+            >
+              配装导入
+            </Button>
           </Badge>
-          <Button style={{ marginLeft: 12 }} type='primary' onClick={() => onOk()}>
+          <Button id='Guide_6' style={{ marginLeft: 12 }} type='primary' onClick={() => onOk()}>
             保存并计算
           </Button>
         </div>

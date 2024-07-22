@@ -1,13 +1,14 @@
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { Button, Checkbox, Dropdown, Menu, Tooltip } from 'antd'
 import React, { useState } from 'react'
+import 获取当前数据 from '@/数据/数据工具/获取当前数据'
+import { 更新方案数据 } from '@/store/data'
+import { 触发秒伤计算 } from '@/计算模块/计算函数'
+
 import 团队增益选择 from './团队增益选择'
 import 小药小吃选择 from './小药小吃选择'
 import 阵眼选择 from './阵眼选择'
-import 获取当前数据 from '@/数据/数据工具/获取当前数据'
-import { 更新方案数据 } from '@/store/data'
 import './index.css'
-import { 触发秒伤计算 } from '@/计算模块/计算函数'
 
 const { 默认数据 = {} } = 获取当前数据()
 const { 增益快捷设置数据 = [] } = 默认数据
@@ -37,7 +38,7 @@ function 增益面板() {
   }
 
   return (
-    <div className='zengyi-wrapper'>
+    <div className='zengyi-wrapper' id='Guide_10'>
       <h1 className='zengyi-title'>
         <div className='zengyi-title-text'>
           增益设置
@@ -63,14 +64,24 @@ function 增益面板() {
           ) : null}
         </div>
         <div className={'zengyi-operator'}>
-          <Checkbox checked={!!开启智能对比} onChange={(e) => 设置开启智能对比(e?.target?.checked)}>
+          <Checkbox
+            className='zengyi-operator-checkbox'
+            checked={!!开启智能对比}
+            onChange={(e) => 设置开启智能对比(e?.target?.checked)}
+          >
             <Tooltip title='对阵眼、小药做智能dps对比，仅在增益效果启用情况下生效，开启将增加性能损耗'>
               智能对比
             </Tooltip>
           </Checkbox>
-          <Checkbox checked={!!增益启用} onChange={(e) => 切换增益启用状态(e?.target?.checked)}>
-            是否启用
-          </Checkbox>
+          <span id='Guide_11'>
+            <Checkbox
+              className='zengyi-operator-checkbox'
+              checked={!!增益启用}
+              onChange={(e) => 切换增益启用状态(e?.target?.checked)}
+            >
+              启用增益
+            </Checkbox>
+          </span>
         </div>
       </h1>
       <阵眼选择

@@ -6,15 +6,21 @@
   margin-left: 4px;
 }
 
-.zhuangbei-select-item .ant-select-item-option-content {
+.zhuangbei-select-item.ant-select-item {
+  min-height: 24px;
+}
+
+.zhuangbei-select-item .ant-select-item-option-content,
+.zhuangbei-select .ant-select-selector .ant-select-selection-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+
 .zhuangbei-select-name {
   /* font-size: 16px; */
-  font-weight: 700;
+  font-weight: 600;
   margin-right: 8px;
   /* color: #1AA174; */
   color: var(--ant-primary-color);
@@ -37,7 +43,8 @@
 }
 
 .zhuangbei-select-level {
-  color: #333;
+  color: #000000A6;
+  /* line-height: 30px; */
 }
 
 .zhuangbei-diff {

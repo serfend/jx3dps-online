@@ -39,7 +39,7 @@
   justify-content: space-between;
   border:1px solid #d9d9d9;
   border-radius: 8px;
-  padding: 12px 24px;
+  padding: 12px 16px;
 }
 
 .account-daoru-success-tip{
@@ -50,7 +50,7 @@
 
 .account-daoru-success-title {
   flex: 1;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 16px;
   color: var(--ant-primary-color);
   /* max-width: 134px; */
@@ -88,7 +88,8 @@
 .account-daoru-res-tips-title {
   font-size: 14px;
   font-weight: 500;
-  color: #F34242
+  color: #F34242;
+  margin-bottom: 12px;
 }
 
 .account-daoru-res-tips-text {

@@ -3,6 +3,8 @@ import { Button, Space } from 'antd'
 import React, { useMemo, useState } from 'react'
 import { 团队增益数据类型, 增益选项数据类型 } from '@/@types/团队增益'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
+import classNames from 'classnames'
+
 import 团队增益设置弹窗 from './团队增益设置弹窗'
 import 团队增益图标 from './团队增益图标'
 import './index.css'
@@ -11,6 +13,7 @@ const { 团队增益 = [] } = 获取当前数据()
 
 function 团队增益选择({ 保存数据并计算 }) {
   const 增益数据 = useAppSelector((state) => state.data.增益数据)
+  const 新手引导流程状态 = useAppSelector((state) => state.system.新手引导流程状态)
 
   const [visible, setVisible] = useState<boolean>(false)
 
@@ -76,6 +79,8 @@ function 团队增益选择({ 保存数据并计算 }) {
     )
   }, [团队增益, 增益数据])
 
+  const cls = classNames('tuandui-list', 新手引导流程状态 ? 'onGuide' : '')
+
   return (
     <div className='tuandui-zengyi'>
       <div className='tuandui-zengyi-header'>
@@ -84,12 +89,17 @@ function 团队增益选择({ 保存数据并计算 }) {
           className={'tuandui-setting-btn'}
           danger
           size='small'
-          onClick={() => setVisible(true)}
+          onClick={() => {
+            if (新手引导流程状态) {
+              return
+            }
+            setVisible(true)
+          }}
         >
           设置增益
         </Button>
       </div>
-      <div className='tuandui-list'>
+      <div className={cls}>
         {显示团队增益?.length ? (
           <Space size={[12, 12]} wrap>
             {显示团队增益.map((item) => {

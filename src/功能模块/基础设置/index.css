@@ -20,13 +20,20 @@
 
 .basic-set-zengyi {
   width: 0;
+  height: 0;
   opacity: 0;
   transition: .2s;
-  /* overflow: hidden; */
-  overflow-y: auto;
+  overflow: hidden;
+  /* overflow-y: auto; */
 }
 
 .basic-set-zengyi.basic-set-zengyi-visible {
   width: 420px;
+  height: auto;
+  overflow: unset;
   opacity: 1;
+}
+
+.basic-set-zengyi.basic-set-zengyi-visible.onGuide {
+  overflow: hidden;
 }

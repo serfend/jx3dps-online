@@ -1,5 +1,6 @@
 import React from 'react'
 import { useAppSelector } from '@/hooks'
+import classNames from 'classnames'
 
 import 基础设置标题 from './基础设置标题'
 import 公用设置 from './公用设置'
@@ -12,6 +13,13 @@ import './index.css'
 
 function 基础设置() {
   const 增益面板显示状态 = useAppSelector((state) => state?.system?.增益面板显示状态)
+  const 新手引导流程状态 = useAppSelector((state) => state?.system?.新手引导流程状态)
+
+  const cls = classNames(
+    'basic-set-zengyi',
+    增益面板显示状态 ? 'basic-set-zengyi-visible' : '',
+    新手引导流程状态 ? 'onGuide' : ''
+  )
 
   return (
     <div className={'basic-set'}>
@@ -22,7 +30,7 @@ function 基础设置() {
         <属性录入 />
         <底部配置 />
       </div>
-      <div className={`basic-set-zengyi ${增益面板显示状态 ? 'basic-set-zengyi-visible' : null}`}>
+      <div className={cls}>
         <增益面板 />
       </div>
     </div>
