@@ -192,6 +192,8 @@ export const 判断装备主属性 = (item) => {
 // 属性类型枚举（转化魔盒的属性类型为本地属性类型
 const 属性枚举 = {
   atVitalityBase: '属性类型.体质',
+  atMaxLifeBase: '属性类型.基础气血上限',
+  atMaxLifeAdditional: '属性类型.额外气血上限',
   atStrengthBase: '属性类型.力道',
   atAgilityBase: '属性类型.身法',
   atSpunkBase: '属性类型.元气',

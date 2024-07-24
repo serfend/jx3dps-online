@@ -73,6 +73,11 @@ export interface 最终计算属性类型 {
    */
   技能增伤: 技能增伤类型
   /**
+   * @name 气血加成
+   * @description 各种类型的气血加成
+   */
+  气血加成: 气血加成类型
+  /**
    * @name 郭氏额外会效果值
    * @description 郭氏额外会效果值，直接带入会效计算公式，和其他会效加成加法计算
    */
@@ -140,4 +145,10 @@ export interface 技能增伤类型 {
   易伤增伤: number
   非侠增伤: number
   系数增伤: number // 这里的系数增伤直接修改系数，不乘在最后
+}
+
+export interface 气血加成类型 {
+  郭氏体质: number // 体质
+  郭氏基础气血上限: number // 例如 清心 肘子
+  郭氏最终气血上限: number // 例如雷
 }

@@ -24,14 +24,20 @@
  */
 
 export enum 属性类型 {
+  // 体制、气血，蓝量相关
+  体质 = 'atVitalityBase',
+  郭氏体质 = 'atVitalityBasePercentAdd',
+  基础气血上限 = 'atMaxLifeBase',
+  额外气血上限 = 'atMaxLifeAdditional',
+  郭氏基础气血上限 = 'atMaxLifePercentAdd', // 郭氏
+  郭氏最终气血上限 = 'atFinalMaxLifeAddPercent', // 郭氏
+
   // 基础属性
   全属性 = 'atBasePotentialAdd',
-  体质 = 'atVitalityBase',
   力道 = 'atStrengthBase',
   元气 = 'atSpunkBase',
   身法 = 'atAgilityBase',
   根骨 = 'atSpiritBase',
-  郭氏体质 = 'atVitalityBasePercentAdd',
   郭氏力道 = 'atStrengthBasePercentAdd',
   郭氏身法 = 'atAgilityBasePercentAdd',
   郭氏根骨 = 'atSpiritBasePercentAdd',

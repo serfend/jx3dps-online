@@ -11,10 +11,10 @@ import { 角色基础属性类型 } from '@/@types/角色'
 import { 获取判断增益后技能系数 } from '@/计算模块/统一工具函数/技能增益启用计算'
 import DpsKernelOptimizer from '@/计算模块/dps-kernel-optimizer'
 import { 获取计算目标信息 } from '@/计算模块/统一工具函数/工具函数'
+import { 获取加速等级 } from '@/工具函数/data'
 
 import { 获取角色需要展示的面板数据 } from './工具'
 import './index.css'
-import { 获取加速等级 } from '@/工具函数/data'
 
 const { 主属性, 性能功能关闭数组 = [] } = 获取当前数据()
 
@@ -32,7 +32,19 @@ function 面板信息() {
   const [开启优化算法, 切换开启优化算法] = useState<boolean>(false)
   const [显示增益后面板, 切换显示增益后面板] = useState<boolean>(false)
 
-  const mapKeyList = [主属性, '攻击', '会心', '会效', '破防', '无双', '破招', '全能', '加速']
+  const mapKeyList = [
+    '装分',
+    '气血',
+    主属性,
+    '攻击',
+    '会心',
+    '会效',
+    '破防',
+    '无双',
+    '破招',
+    '全能',
+    '加速',
+  ]
 
   const 显示数据 = useMemo(() => {
     return 获取角色需要展示的面板数据({
@@ -123,31 +135,37 @@ function 面板信息() {
           ) : null}
         </div>
       </div>
-      {mapKeyList.map((item) => {
-        const 最优属性: any =
-          开启优化算法 && 最大秒伤数据?.面板
-            ? 获取最优属性展示(item, 最大秒伤数据?.面板, 显示数据)
-            : {}
-        return (
-          <div className='character-item' key={item}>
-            <h1 className='character-label'>{item}</h1>
-            <Tooltip placement='topLeft' title={() => 获取面板显示数据数值(item, 显示数据)}>
-              <div className='character-content'>
-                <span className='character-content-normal'>{获取面板显示数据(item, 显示数据)}</span>
-                {开启优化算法 && 最优属性 && 最优属性?.value !== '-1' ? (
-                  <span
-                    className={`character-content-max ${
-                      !最优属性?.upperStatus ? 'character-content-upper' : 'character-content-down'
-                    }`}
-                  >
-                    {最优属性?.value}
+      <div className={`character-item-wrap`}>
+        {mapKeyList.map((item, index) => {
+          const 最优属性: any =
+            开启优化算法 && 最大秒伤数据?.面板
+              ? 获取最优属性展示(item, 最大秒伤数据?.面板, 显示数据)
+              : {}
+          return (
+            <div className={`character-item ${index < 4 ? 'character-item-harf' : ''}`} key={item}>
+              <h1 className='character-label'>{item}</h1>
+              <Tooltip placement='topLeft' title={() => 获取面板显示数据数值(item, 显示数据)}>
+                <div className='character-content'>
+                  <span className='character-content-normal'>
+                    {获取面板显示数据(item, 显示数据)}
                   </span>
-                ) : null}
-              </div>
-            </Tooltip>
-          </div>
-        )
-      })}
+                  {开启优化算法 && 最优属性 && 最优属性?.value !== '-1' ? (
+                    <span
+                      className={`character-content-max ${
+                        !最优属性?.upperStatus
+                          ? 'character-content-upper'
+                          : 'character-content-down'
+                      }`}
+                    >
+                      {最优属性?.value}
+                    </span>
+                  ) : null}
+                </div>
+              </Tooltip>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
@@ -155,8 +173,16 @@ function 面板信息() {
 export default 面板信息
 
 // 获取属性展示
-export const 获取面板显示数据 = (key: string, 角色最终属性: 角色基础属性类型) => {
+export const 获取面板显示数据 = (
+  key: string,
+  角色最终属性: 角色基础属性类型,
+  装备分数?: number
+) => {
   switch (key) {
+    case '装分':
+      return 装备分数 || 0
+    case '气血':
+      return 角色最终属性?.最终气血上限 || 0
     case 主属性:
       return 角色最终属性?.[主属性] || 0
     case '攻击':
@@ -181,12 +207,28 @@ export const 获取面板显示数据 = (key: string, 角色最终属性: 角色
         </>
       )
   }
-  return ''
+  return undefined
 }
+
 const 加速等级枚举 = ['零段加速', '一段加速', '二段加速', '三段加速', '四段加速', '五段加速']
 
-export const 获取面板显示数据数值 = (key: string, 角色最终属性: 角色基础属性类型) => {
+export const 获取面板显示数据数值 = (
+  key: string,
+  角色最终属性: 角色基础属性类型,
+  装备分数?: number
+) => {
   switch (key) {
+    case '装分':
+      return 装备分数 || undefined
+    case '气血':
+      return (
+        <div>
+          <p>体质</p>
+          <p> {角色最终属性?.体质 || 0}</p>
+          <p>最终气血上限</p>
+          <p> {角色最终属性.最终气血上限 || 0}</p>
+        </div>
+      )
     case 主属性:
       return 角色最终属性?.[主属性] || 0
     case '攻击':
@@ -211,7 +253,7 @@ export const 获取面板显示数据数值 = (key: string, 角色最终属性: 
     case '加速':
       return 角色最终属性.加速等级
   }
-  return ''
+  return undefined
 }
 
 // 获取最优属性展示
