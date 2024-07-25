@@ -5,6 +5,11 @@
  */
 export interface 角色基础属性类型 {
   /**
+   * @name 装分
+   * @description 当前装备总分
+   */
+  装分?: number
+  /**
    * @name 个人等级
    */
   等级?: number

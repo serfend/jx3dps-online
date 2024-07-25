@@ -144,10 +144,13 @@ function 面板信息() {
           return (
             <div className={`character-item ${index < 4 ? 'character-item-harf' : ''}`} key={item}>
               <h1 className='character-label'>{item}</h1>
-              <Tooltip placement='topLeft' title={() => 获取面板显示数据数值(item, 显示数据)}>
+              <Tooltip
+                placement='topLeft'
+                title={() => 获取面板显示数据数值(item, 显示数据, 显示数据?.装分)}
+              >
                 <div className='character-content'>
                   <span className='character-content-normal'>
-                    {获取面板显示数据(item, 显示数据)}
+                    {获取面板显示数据(item, 显示数据, 显示数据?.装分)}
                   </span>
                   {开启优化算法 && 最优属性 && 最优属性?.value !== '-1' ? (
                     <span
