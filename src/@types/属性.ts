@@ -109,7 +109,7 @@ export enum 属性类型 {
   // 技能增伤 同类增伤相加计算，系数增伤相乘计算。具体看计算公式
   全局伤害因子 = 'atGlobalSkillDamageFactorAdd',
   目标移动状增伤 = 'atSkillDamageDstMoveStateAdd',
-  通用增伤 = 'atSkillDamageCommonAdd',
+  通用增伤 = 'atSkillDamageCommonAdd', // atAllDamageAddPercent
   易伤增伤 = 'atSkillDamageFragileAdd',
   非侠增伤 = 'atSkillDamageNPCAdd',
   系数增伤 = 'atSkillCoefficientAdd',

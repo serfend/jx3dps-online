@@ -39,6 +39,7 @@ function 装备部位选择(props: 装备部位选择入参, ref) {
 
   const 当前计算结果 = useAppSelector((state) => state?.data?.当前计算结果)
   const [dpsUpList, setDpsUpList] = useState<{ uuid: string; dpsUp: number }[]>()
+  const [loading, setLoading] = useState<boolean>(false)
   const dispatch = useAppDispatch()
 
   // const 当前精炼等级 = useMemo(() => {
@@ -52,6 +53,7 @@ function 装备部位选择(props: 装备部位选择入参, ref) {
   // 获取dps提升装备列表
   const getDpsUpList = () => {
     if (开启装备智能对比) {
+      setLoading(true)
       // 获取旧装备列表
       const 当前装备列表信息 = form?.getFieldsValue()
       const 当前装备信息 = 根据表单选项获取装备信息(当前装备列表信息)
@@ -94,6 +96,7 @@ function 装备部位选择(props: 装备部位选择入参, ref) {
       if (newDpsUpList?.length) {
         setDpsUpList(newDpsUpList)
       }
+      setLoading(false)
     }
   }
 
@@ -101,11 +104,10 @@ function 装备部位选择(props: 装备部位选择入参, ref) {
     <div id='Guide_4'>
       <Select
         showSearch
-        // allowClear
-        // optionLabelProp={'label'}
+        loading={loading}
         className='zhuangbei-select'
         placeholder={`请选择${部位}`}
-        dropdownMatchSelectWidth={400}
+        popupMatchSelectWidth={400}
         optionFilterProp='label'
         onDropdownVisibleChange={(e) => {
           if (e) {

@@ -119,7 +119,7 @@ function 配装器(props: ModalProps) {
       }
       className={'zhuangbei-input-set-modal'}
       open={open}
-      width={1274}
+      width={1178}
       destroyOnClose
       footer={
         <div>

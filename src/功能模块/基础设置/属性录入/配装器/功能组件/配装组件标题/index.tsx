@@ -78,10 +78,13 @@ function 配装组件标题({
         </span>
       </div>
       <div className='zhuangbei-form-left-2'>
-        <h1 className='zhuangbei-form-title'>精炼</h1>
+        <h1 className='zhuangbei-form-title'>附魔</h1>
       </div>
       <div className='zhuangbei-form-left-3'>
-        <h1 className='zhuangbei-form-title'>镶嵌孔</h1>
+        <h1 className='zhuangbei-form-title'>精炼</h1>
+      </div>
+      <div className='zhuangbei-form-left-4'>
+        <h1 className='zhuangbei-form-title'>镶嵌</h1>
         <Dropdown
           menu={{
             items: [
@@ -95,9 +98,6 @@ function 配装组件标题({
             一键镶嵌
           </Button>
         </Dropdown>
-      </div>
-      <div className='zhuangbei-form-left-4'>
-        <h1 className='zhuangbei-form-title'>附魔</h1>
       </div>
       <div className='zhuangbei-form-left-5'>
         <h1 className='zhuangbei-form-title'>大附魔</h1>

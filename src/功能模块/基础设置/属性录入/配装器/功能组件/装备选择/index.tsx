@@ -115,7 +115,20 @@ function 装备选择(props: 装备选择入参, ref) {
           开启装备智能对比={开启装备智能对比}
         />
       </div>
-      <div className='zhuangbei-form-item-left-2'>
+      {当前装备支持附魔列表?.length && 当前选择装备数据?.id ? (
+        <div className='zhuangbei-form-item-left-2'>
+          <附魔选择
+            allValue={value}
+            form={form}
+            部位索引={部位索引}
+            开启装备智能对比={开启装备智能对比}
+            list={当前装备支持附魔列表}
+            value={value?.附魔}
+            onChange={onFumoSelect}
+          />
+        </div>
+      ) : null}
+      <div className='zhuangbei-form-item-left-3'>
         <精炼等级选择
           disabled={!当前选择装备数据?.id}
           key={当前选择装备数据?.id}
@@ -125,7 +138,7 @@ function 装备选择(props: 装备选择入参, ref) {
           装备数据={当前选择装备数据}
         />
       </div>
-      <div className='zhuangbei-form-item-left-3'>
+      <div className='zhuangbei-form-item-left-4'>
         <镶嵌孔选择
           data={当前选择装备数据 as any}
           value={value?.镶嵌孔数组}
@@ -133,11 +146,6 @@ function 装备选择(props: 装备选择入参, ref) {
           部位索引={部位索引}
         />
       </div>
-      {当前装备支持附魔列表?.length && 当前选择装备数据?.id ? (
-        <div className='zhuangbei-form-item-left-4'>
-          <附魔选择 list={当前装备支持附魔列表} value={value?.附魔} onChange={onFumoSelect} />
-        </div>
-      ) : null}
     </div>
   )
 }
