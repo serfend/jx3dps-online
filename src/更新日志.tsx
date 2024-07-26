@@ -1,5 +1,15 @@
 export default [
   {
+    version: '[雾海寻龙] 1.1.16',
+    date: '2024-07-26 10:30:00',
+    content: [
+      '无方',
+      <p style={{ paddingLeft: 12 }} key='1.1.16.1'>
+        <p>新增紫武养荣武学助手流派</p>
+      </p>,
+    ],
+  },
+  {
     version: '[雾海寻龙] 1.1.15',
     date: '2024-07-25 14:30:00',
     content: [
