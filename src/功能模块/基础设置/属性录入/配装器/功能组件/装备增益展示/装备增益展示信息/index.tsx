@@ -6,9 +6,11 @@ function 装备增益展示信息({ 增益类型, data }: { 增益类型: string
     switch (增益类型) {
       case '套装技能':
       case '冬至套装':
-      case '大橙武特效':
-      case '小橙武特效':
         return 增益类型
+      case '大橙武特效':
+        return '大橙武'
+      case '小橙武特效':
+        return '小橙武'
       case '切糕会心':
       case '切糕会心_英雄':
         return '切糕会心'
