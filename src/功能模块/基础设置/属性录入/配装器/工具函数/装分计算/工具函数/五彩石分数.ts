@@ -11,9 +11,11 @@ import { 客户端类型 } from '../type'
  * @return {*}
  */
 export function 获取五彩石分数(等级, 客户端: 客户端类型 = '旗舰') {
+  let 分数 = 0
   if (客户端 === '旗舰') {
-    return 等级 * (系数_A[客户端] * 系数_C[客户端]) * 3.5
+    分数 = 等级 * (系数_A[客户端] * 系数_C[客户端]) * 3.5
   } else {
-    return 等级 * 123.2
+    分数 = 等级 * 123.2
   }
+  return Math.round(分数)
 }

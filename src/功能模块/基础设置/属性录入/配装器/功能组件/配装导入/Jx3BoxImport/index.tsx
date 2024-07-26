@@ -21,11 +21,12 @@ function Jx3BoxImport({ onOk }) {
     setId(e.target.value.trim())
   }
 
-  const handleGetPzData = async () => {
+  const handleGetPzData = async (propsId?) => {
     setLoading(true)
     setData(undefined)
     setErrorMsg('')
-    const res: any = await getPzDataById({ id })
+    const apiId = propsId || id
+    const res: any = await getPzDataById({ id: apiId })
     setLoading(false)
     if (!res.code) {
       const getData = getPzData(res.data)
@@ -58,7 +59,16 @@ function Jx3BoxImport({ onOk }) {
         type='info'
       />
       <div className='pz-daoru-input-wrap'>
-        <Input value={id} onChange={changeId} placeholder='请输入魔盒配装方案ID' />
+        <Input.Search
+          className='pz-daoru-input'
+          value={id}
+          onChange={changeId}
+          placeholder='请输入魔盒配装方案ID'
+          onPressEnter={(e: any) => {
+            changeId(e)
+            handleGetPzData(e.target.value.trim())
+          }}
+        />
         <Button disabled={loading || !id} onClick={() => handleGetPzData()}>
           获取配装方案
         </Button>
@@ -84,7 +94,14 @@ function Jx3BoxImport({ onOk }) {
                     <div>{data?.showData?.display_name}</div>
                   </div>
                   <div className='pz-daoru-success-title' title={data?.showData?.title}>
-                    {data?.showData?.title}
+                    <a
+                      className='pz-daoru-success-title-text'
+                      target='_blank'
+                      href={`https://www.jx3box.com/pz/view/${id}`}
+                      rel='noreferrer'
+                    >
+                      {data?.showData?.title}
+                    </a>
                   </div>
                 </div>
                 <Button type='primary' onClick={handleClickImport}>

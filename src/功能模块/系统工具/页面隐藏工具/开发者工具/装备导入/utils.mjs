@@ -95,7 +95,7 @@ const getXiangqian = (data) => {
 export const 判断装备特效 = (item,赛季范围数据) => {
   let 特效效果 = undefined
   // 大CW
-  if (item.BelongMap === '橙武') {
+  if (item.BelongMap === '橙武' || item.BelongMap?.includes('奇遇橙武')) {
     特效效果 = "装备特效枚举.大橙武特效"
   }
   // 小CW
