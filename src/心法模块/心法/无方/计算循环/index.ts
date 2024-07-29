@@ -9,6 +9,7 @@ import type { 循环数据 } from '@/@types/循环'
 // import 测试循环 from './测试循环.json'
 import 资深战犯 from './资深战犯.json'
 import 养荣_紫武 from './养荣_紫武.json'
+import 养荣_助手 from './养荣_助手.json'
 // import 折枝_紫武 from './折枝_紫武.json'
 import 避奚养荣_紫武 from './避奚养荣_紫武.json'
 
@@ -18,10 +19,11 @@ import 避奚养荣_橙武 from './避奚养荣_橙武.json'
 
 const 计算循环: 循环数据[] = [
   // 测试循环,
-  资深战犯,
-  养荣_紫武,
-  // 折枝_紫武,
   避奚养荣_紫武,
+  养荣_紫武,
+  养荣_助手,
+  资深战犯,
+  // 折枝_紫武,
   应理_橙武,
   养荣_橙武,
   避奚养荣_橙武,

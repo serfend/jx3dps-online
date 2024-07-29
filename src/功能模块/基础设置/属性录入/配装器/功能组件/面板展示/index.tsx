@@ -37,6 +37,7 @@ function 面板展示(props: 面板展示入参) {
   const 显示数据 = useMemo(() => {
     const 计算后的原始最终属性 = 获取计算后原始属性(装备信息)
     const 计算后的当前显示属性 = 获取计算后原始属性(当前装备信息)
+
     const 对比枚举 = {}
     Object.keys(计算后的当前显示属性).forEach((key) => {
       const 原始属性数值 = 计算后的原始最终属性[key]
@@ -47,10 +48,23 @@ function 面板展示(props: 面板展示入参) {
           ? '变高'
           : '-1'
     })
+
     return { 数据: 计算后的当前显示属性, 对比枚举 }
   }, [当前装备信息, 当前奇穴信息, 装备信息, 增益数据, 增益启用, 显示增益后面板])
 
-  const mapKeyList = [主属性, '攻击', '会心', '会效', '破防', '无双', '破招', '全能', '加速']
+  const mapKeyList = [
+    '装分',
+    '气血',
+    主属性,
+    '攻击',
+    '会心',
+    '会效',
+    '破防',
+    '无双',
+    '破招',
+    '全能',
+    '加速',
+  ]
 
   return (
     <div
@@ -101,13 +115,15 @@ function 面板展示(props: 面板展示入参) {
               }
               title={
                 <div>
-                  <p>{获取面板显示数据数值(item, 显示数据?.数据)}</p>
+                  <p>{获取面板显示数据数值(item, 显示数据?.数据, 显示数据?.数据?.装分)}</p>
                   {有变化 ? <p>较原面板[{对比枚举结果}]</p> : null}
                 </div>
               }
             >
               <div className='zhuangbei-character-content'>
-                <span className={cls}>{获取面板显示数据(item, 显示数据?.数据)}</span>
+                <span className={cls}>
+                  {获取面板显示数据(item, 显示数据?.数据, 显示数据?.数据?.装分)}
+                </span>
               </div>
             </Tooltip>
           </div>
@@ -120,6 +136,9 @@ function 面板展示(props: 面板展示入参) {
 export default 面板展示
 
 export const 显示文案和实际属性枚举 = {
+  装分: '装分',
+  体质: '体质',
+  气血: '最终气血上限',
   力道: '力道',
   身法: '身法',
   元气: '元气',

@@ -7,6 +7,10 @@ export interface 附魔数据类型 {
    */
   附魔名称: string
   /**
+   * @name 附魔装分
+   */
+  附魔装分: number
+  /**
    * @name 增益集合
    */
   增益集合?: 属性加成[]

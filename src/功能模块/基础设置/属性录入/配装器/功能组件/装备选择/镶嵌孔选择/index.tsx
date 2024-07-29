@@ -1,5 +1,5 @@
 import { Select } from 'antd'
-import React from 'react'
+import React, { useMemo } from 'react'
 import { 装备属性信息模型, 镶嵌孔数组类型 } from '@/@types/装备'
 import './index.css'
 import { 属性简写枚举 } from '@/@types/枚举'
@@ -13,7 +13,12 @@ interface 镶嵌孔选择入参 {
 
 function 镶嵌孔选择(props: 镶嵌孔选择入参) {
   const { value, onChange, data, 部位索引 } = props
-  const list = Array.from({ length: 8 }, (v, i) => i + 1)
+
+  const list = useMemo(() => {
+    const list = Array.from({ length: 8 }, (v, i) => i + 1)
+    list.sort((a, b) => b - a)
+    return list
+  }, [])
 
   const beforeOnChange = (e: number, index) => {
     if (onChange) {

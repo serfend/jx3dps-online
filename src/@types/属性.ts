@@ -24,14 +24,20 @@
  */
 
 export enum 属性类型 {
+  // 体制、气血，蓝量相关
+  体质 = 'atVitalityBase',
+  郭氏体质 = 'atVitalityBasePercentAdd',
+  基础气血上限 = 'atMaxLifeBase',
+  额外气血上限 = 'atMaxLifeAdditional',
+  郭氏基础气血上限 = 'atMaxLifePercentAdd', // 郭氏
+  郭氏最终气血上限 = 'atFinalMaxLifeAddPercent', // 郭氏
+
   // 基础属性
   全属性 = 'atBasePotentialAdd',
-  体质 = 'atVitalityBase',
   力道 = 'atStrengthBase',
   元气 = 'atSpunkBase',
   身法 = 'atAgilityBase',
   根骨 = 'atSpiritBase',
-  郭氏体质 = 'atVitalityBasePercentAdd',
   郭氏力道 = 'atStrengthBasePercentAdd',
   郭氏身法 = 'atAgilityBasePercentAdd',
   郭氏根骨 = 'atSpiritBasePercentAdd',
@@ -103,7 +109,7 @@ export enum 属性类型 {
   // 技能增伤 同类增伤相加计算，系数增伤相乘计算。具体看计算公式
   全局伤害因子 = 'atGlobalSkillDamageFactorAdd',
   目标移动状增伤 = 'atSkillDamageDstMoveStateAdd',
-  通用增伤 = 'atSkillDamageCommonAdd',
+  通用增伤 = 'atSkillDamageCommonAdd', // atAllDamageAddPercent
   易伤增伤 = 'atSkillDamageFragileAdd',
   非侠增伤 = 'atSkillDamageNPCAdd',
   系数增伤 = 'atSkillCoefficientAdd',

@@ -5,6 +5,11 @@
  */
 export interface 角色基础属性类型 {
   /**
+   * @name 装分
+   * @description 当前装备总分
+   */
+  装分?: number
+  /**
    * @name 个人等级
    */
   等级?: number
@@ -49,10 +54,6 @@ export interface 角色基础属性类型 {
    */
   根骨: number
   /**
-   * @name 体质
-   */
-  体质: number
-  /**
    * @name 加速等级
    * @description 游戏内显示的具体无双值
    */
@@ -83,4 +84,20 @@ export interface 角色基础属性类型 {
    * @description 游戏内显示的具体全能等级
    */
   全能等级: number
+  /**
+   * @name 体质
+   */
+  体质: number
+  /**
+   * @name 基础气血上限
+   */
+  基础气血上限: number
+  /**
+   * @name 额外气血上限
+   */
+  额外气血上限: number
+  /**
+   * @name 最终气血上限
+   */
+  最终气血上限?: number
 }

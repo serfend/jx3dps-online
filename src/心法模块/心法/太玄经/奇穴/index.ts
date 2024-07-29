@@ -26,7 +26,7 @@ const 奇穴数据: 奇穴列表数据类型[] = [
     ],
   },
   {
-    是否不可编辑: true,
+    // 是否不可编辑: true,
     奇穴列表: [
       { 奇穴名称: '枭神', 奇穴图片: 'https://icon.jx3box.com/icon/14054.png' },
       { 奇穴名称: '列宿游', 奇穴图片: 'https://icon.jx3box.com/icon/17712.png' },

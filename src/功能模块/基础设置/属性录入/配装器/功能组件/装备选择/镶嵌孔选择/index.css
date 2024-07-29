@@ -11,7 +11,7 @@
 }
 
 .xiangqian-item + .xiangqian-item{
-  margin-left: 8px;
+  margin-left: 12px;
 }
 
 .xiangqian-label {
@@ -28,7 +28,7 @@
 .xiangqian-number-3,
 .xiangqian-number-4,
 .xiangqian-number-5 {
-  color: #333;
+  color: #777;
 }
 
 .xiangqian-number-6 {
