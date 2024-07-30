@@ -16,7 +16,7 @@ export const 获取当前各属性最大附魔 = (心法?) => {
     }
   })
   return Object.keys(res)
-    .filter((item) => item !== '加速')
+    .filter((item) => !['加速', '体质']?.includes(item))
     .map((key) => {
       return {
         收益: key,
