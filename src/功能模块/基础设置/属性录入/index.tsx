@@ -1,4 +1,4 @@
-import { Badge, Button } from 'antd'
+import { Button } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { 获取页面参数 } from '@/工具函数/help'
 import { useAppDispatch, useAppSelector } from '@/hooks'
@@ -50,16 +50,14 @@ function 属性录入() {
       >
         配装器
       </Button>
-      <Badge count='New'>
-        <Button
-          className={'character-set-in-btn'}
-          onClick={() => {
-            设置识别装备对比(true)
-          }}
-        >
-          识别装备对比
-        </Button>
-      </Badge>
+      <Button
+        className={'character-set-btn'}
+        onClick={() => {
+          设置识别装备对比(true)
+        }}
+      >
+        识别装备对比
+      </Button>
       <配装器
         open={配装器弹窗显示状态}
         onCancel={() => {
